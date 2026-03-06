@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma | Руководство и Контакты</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#A68A58", // Goldish/Bronze color from the dark logo
+                        "background-light": "#F9F9F7", // Requested matte white
+                        "background-dark": "#1A1A1A", // Dark charcoal for dark mode
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#262626",
+                        "text-main-light": "#111111",
+                        "text-main-dark": "#F9F9F7",
+                        "text-muted-light": "#666666",
+                        "text-muted-dark": "#A3A3A3",
+                    },
+                    fontFamily: {
+                        display: ["'Space Grotesk'", "sans-serif"],
+                        mono: ["'Space Mono'", "monospace"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0px", // Explicit 0px as requested for sharp look
+                    },
+                    backgroundImage: {
+                        'sculpture-pattern': "url('https://images.unsplash.com/photo-1549492423-40025948e174?q=80&w=2787&auto=format&fit=crop')", // Abstract architectural texture
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-feature-settings: "ss01", "ss02";
+        }
+        .sculpture-image {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A68A58;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-display antialiased transition-colors duration-300">
+<nav class="fixed w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<img alt="monumforma logo" class="h-10 w-10 block dark:hidden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC03Hm9bDT-Qy95EL-BVO2T7bBnPZ5YFMy9LBVAglMfuZpSQq5hxsRfWtyOfy-eaj7M5jgnZz6DoKmuyQlfA554F9YGn0tkbeU_OucpdiZxc8nTMBg2cbrqMRs6Volb4n1TwmRJqF6Y9X2sZVoIQXawC56aTtjYDWv6XxLIQ2WmAwTOgbWpDtJ5XqrQbCXHyYlMlpIo4D89VO1UuRzllsa6k4ZkcEsPUwVDzvfazFr6_h7jtod_KnyvLv20ZJdnoDtKf7aWiI2w1TWX"/>
+<img alt="monumforma logo" class="h-10 w-10 hidden dark:block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO-N93OHv50K3t_ch-LPDQ3_H2S_LEXH1ylViquN0-MCeoYdDjTMZ500bm3A4nPG_csffvmLXZGiM7o4t0cZQBvNlhb0GN44_fXnCt7UrB4Mk0qYtH1mMAxEiK8ADpozzUaAocw_yJF4llXZniW3l9OE1bJE7xMj4ZlYjWnI7QjK14kWXHY2vZy3EMaCmd616XWiKsRkpKLIWgICt0gKxqWEaR87EjlIwiyaOPrd3XRq3XYkt7LXzqh0wAS5-eV1EM2aFlz2QjyMMn"/>
+<span class="text-xl font-medium tracking-tight">monumforma</span>
+</div>
+<div class="hidden md:flex items-center gap-12 font-mono text-sm uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark">
+<a class="hover:text-primary transition-colors" href="#">Работы</a>
+<a class="hover:text-primary transition-colors" href="#">Видение</a>
+<a class="hover:text-primary transition-colors" href="#">Ателье</a>
+<a class="text-primary font-bold" href="#">Контакт</a>
+</div>
+<button class="md:hidden text-text-main-light dark:text-text-main-dark">
+<span class="material-icons">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-6 lg:px-12 max-w-7xl mx-auto">
+<header class="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+<div>
+<h1 class="text-5xl lg:text-7xl font-light leading-tight mb-6">Формируя <br/><span class="font-medium italic text-primary">Монументальное</span> Пространство</h1>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark max-w-md font-mono">Параметрические структуры и скульптурные инсталляции для городской среды.</p>
+</div>
+<div class="lg:text-right">
+<div class="inline-block border-l-2 border-primary pl-4 text-left">
+<p class="text-sm font-mono text-text-muted-light dark:text-text-muted-dark uppercase tracking-widest mb-1">Видение</p>
+<p class="text-xl font-medium">Константин Бурцев</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mt-1">Ведущий архитектор и скульптор</p>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+<div class="lg:col-span-5 flex flex-col justify-between space-y-16">
+<div class="space-y-6">
+<h2 class="text-2xl font-medium border-b border-gray-200 dark:border-gray-800 pb-4">Ателье и Офисы</h2>
+<p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed">Наша работа выходит за рамки географических границ, опираясь на богатое архитектурное наследие Испании. Мы приглашаем к сотрудничеству в проектах, требующих высокоточного параметрического проектирования и масштабного производства.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono text-sm">
+<div class="group">
+<h3 class="uppercase tracking-widest text-primary mb-2 text-xs">Headquarters</h3>
+<p class="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">Alicante</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">Av. de Maisonnave, 41</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">03003 Alicante, Spain</p>
+</div>
+<div class="group">
+<h3 class="uppercase tracking-widest text-primary mb-2 text-xs">Design Studio</h3>
+<p class="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">Valencia</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">Carrer de Colón, 12</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">46004 Valencia, Spain</p>
+</div>
+<div class="group">
+<h3 class="uppercase tracking-widest text-primary mb-2 text-xs">Fabrication</h3>
+<p class="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">Barcelona</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">Poblenou District</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">08018 Barcelona, Spain</p>
+</div>
+<div class="group">
+<h3 class="uppercase tracking-widest text-primary mb-2 text-xs">R&amp;D Lab</h3>
+<p class="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">San Sebastián</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">Tech Park Miramón</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">20009 Donostia, Spain</p>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-8 border border-gray-100 dark:border-gray-800 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-bl-full"></div>
+<h3 class="text-xl font-medium mb-6">Прямая связь</h3>
+<div class="space-y-4 font-mono text-sm">
+<a class="flex items-center gap-3 hover:text-primary transition-colors group" href="mailto:hola@monumforma.es">
+<span class="material-icons text-primary text-lg">alternate_email</span>
+<span class="border-b border-transparent group-hover:border-primary">hola@monumforma.es</span>
+</a>
+<a class="flex items-center gap-3 hover:text-primary transition-colors group" href="https://wa.me/34661224868">
+<span class="material-icons text-primary text-lg">chat</span>
+<span class="border-b border-transparent group-hover:border-primary">+34 661 224 868</span>
+</a>
+<a class="flex items-center gap-3 hover:text-primary transition-colors group" href="tel:+34661224868">
+<span class="material-icons text-primary text-lg">call</span>
+<span class="border-b border-transparent group-hover:border-primary">+34 661 224 868</span>
+</a>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 bg-white dark:bg-surface-dark p-8 lg:p-12 shadow-2xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800">
+<h2 class="text-3xl font-light mb-2">Начать проект</h2>
+<p class="text-text-muted-light dark:text-text-muted-dark mb-10 text-sm font-mono">Расскажите нам о вашем архитектурном видении.</p>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative group">
+<input class="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent rounded-none" id="name" name="name" placeholder="Name" type="text"/>
+<label class="absolute left-0 -top-3.5 text-xs font-mono text-text-muted-light dark:text-text-muted-dark transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary" for="name">Полное имя / Компания</label>
+</div>
+<div class="relative group">
+<input class="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent rounded-none" id="email" name="email" placeholder="Email" type="email"/>
+<label class="absolute left-0 -top-3.5 text-xs font-mono text-text-muted-light dark:text-text-muted-dark transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary" for="email">Email</label>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<label class="block text-xs font-mono text-text-muted-light dark:text-text-muted-dark mb-2 uppercase tracking-wide">Тип проекта</label>
+<select class="w-full bg-background-light dark:bg-background-dark border-0 p-4 text-sm focus:ring-1 focus:ring-primary rounded-none cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"><option>Общественная скульптура</option><option>Интерьерная инсталляция</option><option>Фасадная система</option><option>Параметрическая структура</option><option>Ландшафтная интеграция</option></select>
+</div>
+<div>
+<label class="block text-xs font-mono text-text-muted-light dark:text-text-muted-dark mb-2 uppercase tracking-wide">Предпочтение по материалам</label>
+<select class="w-full bg-background-light dark:bg-background-dark border-0 p-4 text-sm focus:ring-1 focus:ring-primary rounded-none cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"><option>Кортеновская сталь</option><option>Зеркальная сталь</option><option>Стекло / Кристалл</option><option>Бронза</option><option>Не определено / Нужна консультация</option></select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative group">
+<input class="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent rounded-none" id="location" name="location" placeholder="Location" type="text"/>
+<label class="absolute left-0 -top-3.5 text-xs font-mono text-text-muted-light dark:text-text-muted-dark transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary" for="location">Местоположение проекта (Город, Страна)</label>
+</div>
+<div class="relative group">
+<input class="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent rounded-none" id="scale" name="scale" placeholder="Scale" type="text"/>
+<label class="absolute left-0 -top-3.5 text-xs font-mono text-text-muted-light dark:text-text-muted-dark transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary" for="scale">Технический масштаб (например, высота 5м)</label>
+</div>
+</div>
+<div class="relative group mt-8">
+<textarea class="peer w-full bg-transparent border border-gray-300 dark:border-gray-600 p-4 text-base focus:outline-none focus:border-primary transition-colors placeholder-transparent rounded-none resize-none" id="message" placeholder="Message" rows="4"></textarea>
+<label class="absolute left-4 -top-2.5 bg-white dark:bg-surface-dark px-1 text-xs font-mono text-text-muted-light dark:text-text-muted-dark transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary" for="message">Дополнительный контекст</label>
+</div>
+<div class="flex items-center justify-between pt-4">
+<div class="flex items-center gap-3">
+<input class="text-primary focus:ring-primary border-gray-300 rounded-none w-4 h-4 cursor-pointer" id="privacy" type="checkbox"/>
+<label class="text-xs text-text-muted-light dark:text-text-muted-dark cursor-pointer select-none" for="privacy">Я согласен на обработку моих персональных данных.</label>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-10 py-4 uppercase tracking-widest text-xs font-bold font-mono transition-all transform hover:scale-[1.02] active:scale-[0.98]" type="submit">ОТПРАВИТЬ ЗАПРОС</button>
+</div>
+</form>
+</div>
+</div>
+<div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-1 h-64 md:h-80 w-full overflow-hidden">
+<div class="relative group overflow-hidden h-full">
+<img alt="Abstract glass monumental sculpture in forest" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE4HsjzfgMYatpXjccTZFPMq_MXJ1xEAAiBz65tqD4aceuaAZjY7uHXH0etOpPA4KWAAjpggamZr371_bjn4XR-sS3Ussz1KdKpBjeqQRcU7yWZqNl20Xp-5gZccICLQ_kvm4NXRHmSuh2eulQf2BT2WZyD7yMXMAeAfSIBvwe3hlyjpv791d4y9Oc6PzCsqVaIRB_YuzC3fOMzI5pUigl5eUn5FU5L_zdWnWYVGdQPsosDMNvqW5msH8iW1aoa4X9dS2gcC8qZlub"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="relative group overflow-hidden h-full">
+<img alt="Geometric corten steel sculpture illuminated at dusk" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC65cgd76PC2lW9_fFEMvGRd9hooB1wL43ZJIgT0BUWJUAH1bH3puaQIIC6JyIT1nZcgfAx5T3NF1J0AY-3djy0vYRJptSqTE2NgozHZ78hw3VjvrEki2DNlK6JmGjXWahtQcxln4CJ8W-Kpn9Bn9m2eun7oLta8WSMLzrQApeGXVyQpoE4tV4iNWkgxV5pTHK2kuitReR3_RDW-XW-jAgbisJZSF1hl-478HJ6t33ZPl3wrfiB9rTHm3Yx6SkDyQHfDlMGRCaeVvdQ"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="relative group overflow-hidden h-full">
+<img alt="Polished steel infinity loop sculpture reflecting sunset" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDksIOTlYQ2pkjpa8gUStnhE6rBJeCH3h-56u4w1K6c31chPetiEF5SYLg1wbOtXaDqHPSqusLF9XBYEKM3myfTCJPP8mFt-2cuCdBzSvKOYr77kJeeC2HCemxYeygYIYuCQh5hOuaR6jOOIoqR6euc83yKfKJrK9L2dwKfafzcgXt767rjrLpuDS1UUur40_exxCUWCIKm-Q98ULCiMSgvw5AQBC9RugSqGHqZPZSDzLD4efZlzXaYH-3Tlvg8FoWQ_QLCFYDAv3O_"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+</div>
+</main>
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark py-12 px-6 lg:px-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-xs font-mono text-text-muted-light dark:text-text-muted-dark uppercase tracking-widest">© 2024 monumforma. Все права защищены.</p>
+<div class="flex gap-6">
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors text-xl" href="#">
+<span class="sr-only">Instagram</span>
+<i class="fab fa-instagram">IG</i>
+</a>
+<a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors text-xl" href="#">
+<span class="sr-only">LinkedIn</span>
+<i class="fab fa-linkedin">IN</i>
+</a>
+</div>
+</div>
+</footer>
+<script>
+        // Check local storage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</body></html>

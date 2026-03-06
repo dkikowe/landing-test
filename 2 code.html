@@ -1,0 +1,286 @@
+<html><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma - Эволюция</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#C19D68", // Extracted gold/bronze tone from logo/images
+          "background-light": "#F5F5F3", // Soft off-white for high-end feel
+          "background-dark": "#121212", // Deep charcoal/black
+          "surface-light": "#FFFFFF",
+          "surface-dark": "#1C1C1C",
+          "divider-light": "#D4D4D4",
+          "divider-dark": "#333333",
+        },
+        fontFamily: {
+          display: ["Playfair Display", "serif"],
+          sans: ["Inter", "sans-serif"],
+          mono: ["Space Mono", "monospace"],
+        },
+        borderRadius: {
+          DEFAULT: "0px", // Architectural feel usually sharper
+        },
+      },
+    },
+  };
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+</style>
+</head><body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+<nav class="fixed top-0 w-full z-50 border-b-[0.5px] border-divider-light dark:border-divider-dark bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
+<div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border border-gray-900 dark:border-primary flex items-center justify-center">
+<span class="font-display font-bold text-lg leading-none pb-1 text-gray-900 dark:text-primary">m</span>
+</div>
+<span class="font-display text-xl tracking-tight font-medium">monumforma</span>
+</div>
+<div class="hidden md:flex gap-12 text-sm uppercase tracking-widest font-mono">
+<a class="hover:text-primary transition-colors" href="#">Проекты</a>
+<a class="text-primary" href="#">Эволюция</a>
+<a class="hover:text-primary transition-colors" href="#">Философия</a>
+<a class="hover:text-primary transition-colors" href="#">Контакты</a>
+</div>
+<button class="md:hidden text-gray-900 dark:text-gray-100">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</nav>
+<header class="pt-32 pb-16 px-6 max-w-7xl mx-auto border-b-[0.5px] border-divider-light dark:border-divider-dark">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8 fade-in-up">
+<h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-tight mb-6">Форма Следует за <br/><i class="font-serif text-primary">Движением.</i></h1>
+</div>
+<div class="lg:col-span-4 fade-in-up delay-100">
+<p class="text-lg md:text-xl font-light leading-relaxed text-gray-600 dark:text-gray-400 mb-8">От эфемерных световых инсталляций до монументальной архитектуры. Прослеживая нашу эволюцию с 2009 года до наших дней.</p>
+<div class="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-gray-500 dark:text-gray-500">
+<span>Осн. 2009</span>
+<span class="w-12 h-[0.5px] bg-gray-400 dark:bg-gray-600"></span>
+<span>Константин Бурцев</span>
+</div>
+</div>
+</div>
+</header>
+<section class="py-24 px-6 max-w-7xl mx-auto border-b-[0.5px] border-divider-light dark:border-divider-dark">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative aspect-[3/4] md:aspect-square overflow-hidden bg-gray-200 dark:bg-gray-800 fade-in-up delay-200 group">
+<img alt="Портрет Константина Бурцева" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 opacity-90 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJGFDaDoj7am4uTuSFXh5HnUc7ZjUolejNdloncnvkeY9q3rd0oXmHhhbmVo8L1bri_9jD-pFX0VfTnyWJrwHbC9fEXPt8bmDIIa4rX1hIEZUxil3EJZl9CYT-xzxYtP0mIrEpFeM9zc8sGWP0aCqscdnv6QSVAAZ8NL8cHEQhSXzuS3MAXxRUNlW0U7QQ0Q51c_t1_A3upkS5L-Ad4yi680RjSnU6Rfm1NV0Siit3OOM2Xnk2Zph3sh03dSEnvZ4yhLAL-4wJQrzI"/>
+<div class="absolute bottom-4 left-4 font-mono text-xs bg-background-light dark:bg-background-dark px-2 py-1 border border-divider-light dark:border-divider-dark">
+           Константин Бурцев, Основатель
+        </div>
+</div>
+<div class="fade-in-up delay-300">
+<svg class="w-12 h-12 text-primary mb-8 opacity-50" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.095 15.111 15.688 15.71 15.688C15.823 15.688 15.938 15.694 16.05 15.706C16.666 15.767 17.59 15.86 18.258 15.541C18.672 15.344 19.018 15.011 19.266 14.59C19.513 14.169 19.646 13.684 19.646 13.193C19.646 12.012 18.983 11.233 17.674 11.233C16.976 11.233 16.386 11.458 15.908 11.898C15.378 12.385 15.143 13.064 15.029 13.565C14.978 13.784 14.945 13.971 14.925 14.116L11.59 13.511C11.666 12.898 11.841 11.961 12.355 11.08C12.923 10.108 13.972 9.07 15.709 8.608C16.29 8.453 16.924 8.375 17.598 8.375C19.296 8.375 20.803 8.941 21.94 9.986C23.076 11.029 23.702 12.529 23.702 14.209C23.702 16.241 22.846 17.979 21.288 19.167C19.96 20.179 18.32 20.672 16.516 20.672C15.556 20.672 14.717 20.485 14.017 20.115V21H14.017ZM5.766 21L5.766 18C5.766 16.095 6.86 15.688 7.46 15.688C7.572 15.688 7.688 15.694 7.8 15.706C8.415 15.767 9.34 15.86 10.007 15.541C10.422 15.344 10.768 15.011 11.015 14.59C11.263 14.169 11.396 13.684 11.396 13.193C11.396 12.012 10.732 11.233 9.424 11.233C8.726 11.233 8.135 11.458 7.658 11.898C7.127 12.385 6.893 13.064 6.779 13.565C6.727 13.784 6.695 13.971 6.674 14.116L3.34 13.511C3.416 12.898 3.591 11.961 4.105 11.08C4.673 10.108 5.722 9.07 7.459 8.608C8.04 8.453 8.674 8.375 9.348 8.375C11.045 8.375 12.553 8.941 13.69 9.986C14.826 11.029 15.452 12.529 15.452 14.209C15.452 16.241 14.596 17.979 13.038 19.167C11.71 20.179 10.07 20.672 8.266 20.672C7.306 20.672 6.467 20.485 5.766 20.115V21H5.766Z"></path></svg>
+<blockquote class="font-display text-3xl md:text-4xl italic leading-tight text-gray-900 dark:text-gray-100 mb-6">"Архитектура жива, когда она отражает человека. Она перестает быть фоном и становится участником жизни."</blockquote>
+<p class="font-mono text-sm text-gray-500 dark:text-gray-500 uppercase tracking-wide">— Константин Бурцев</p>
+</div>
+</div>
+</section>
+<main class="max-w-7xl mx-auto px-6">
+<div class="py-12 border-l-[0.5px] border-r-[0.5px] border-divider-light dark:border-divider-dark pl-6 md:pl-12">
+<h2 class="font-mono text-sm uppercase tracking-widest text-primary mb-2">Хронология</h2>
+<p class="font-display text-2xl">Полтора десятилетия пространственных экспериментов.</p>
+</div>
+<section class="group relative border-t-[0.5px] border-divider-light dark:border-divider-dark py-16 md:py-24 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+<div class="md:col-span-3 flex flex-col justify-between h-full border-l-[0.5px] border-primary/30 pl-6 md:pl-0 md:border-l-0">
+<div>
+<span class="font-mono text-4xl md:text-5xl font-bold text-gray-300 dark:text-gray-700 block mb-2 group-hover:text-primary transition-colors duration-500">2009</span>
+<span class="font-mono text-sm uppercase tracking-widest text-gray-500">— 2013</span>
+</div>
+<div class="mt-8 md:mt-0">
+<h3 class="font-display text-xl font-semibold mb-2">Эра bti.one</h3>
+<p class="text-sm text-gray-500">Мультимедиа и Свет</p>
+</div>
+</div>
+<div class="md:col-span-5">
+<p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-8">
+            Студия начиналась как <strong>bti.one</strong>, фокусируясь на эфемерных переживаниях. Мы экспериментировали с видеомэппингом, световыми инсталляциями и временными пространственными интервенциями. Материал был нематериальным: фотоны, звуковые волны и моменты времени.
+          </p>
+<ul class="space-y-4 font-mono text-sm text-gray-600 dark:text-gray-400 border-l border-divider-light dark:border-divider-dark pl-4">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Интерактивные Фасады</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Цифровая Сценография</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Городские Фестивали Света</li>
+</ul>
+</div>
+<div class="md:col-span-4 relative">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Early light installation work" class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAclQXlW1gnDzGAlaihuXn4VQltTiA5xyecuKIIHD1v_d2BJkYBYZNHix_nC1FP78icGc43Pc0obDFXAlnrNI50dKi85eFLKskrMfjBuhIcmgk0WcJRYdou0lBDRC3Q2rwMgCAfggpLqJFBoCd_6i7opU5J2xpu9lE8kwJTR9w45KX78pgweuqoXxLoECjD3PGZCdPe6TaWGmD--1gSGC9Jo5NdPb72z2FS1nlKWvIqm5ZG0PWtJGq5KZsbnBIk1ugGdDDw4yjLV6IX"/>
+</div>
+<div class="absolute -bottom-4 -right-4 bg-background-light dark:bg-background-dark border border-divider-light dark:border-divider-dark p-4 max-w-[200px] z-10 hidden md:block">
+<p class="font-mono text-xs leading-tight">Первый масштабный видеомэппинг в Москве, 2011.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="group relative border-t-[0.5px] border-divider-light dark:border-divider-dark py-16 md:py-24 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+<div class="md:col-span-3 flex flex-col justify-between h-full border-l-[0.5px] border-primary/30 pl-6 md:pl-0 md:border-l-0">
+<div>
+<span class="font-mono text-4xl md:text-5xl font-bold text-gray-300 dark:text-gray-700 block mb-2 group-hover:text-primary transition-colors duration-500">2014</span>
+<span class="font-mono text-sm uppercase tracking-widest text-gray-500">— 2019</span>
+</div>
+<div class="mt-8 md:mt-0">
+<h3 class="font-display text-xl font-semibold mb-2">Эра bti.one</h3>
+<p class="text-sm text-gray-500">Кортен и Бетон</p>
+</div>
+</div>
+<div class="md:col-span-5">
+<p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-8">
+            Поворот к постоянству. Цифровые алгоритмы, использовавшиеся для света, были переведены в физическую материю. Мы начали работать с кортеновской сталью, складывая сложные геометрии в самонесущие структуры. Серия "Fold" переопределила общественные пространства в жилых комплексах.
+          </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-surface-dark p-4 border border-divider-light dark:border-divider-dark">
+<span class="block font-mono text-xs text-primary mb-1">Ключевой Проект</span>
+<span class="font-display text-lg">The Vertex</span>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 border border-divider-light dark:border-divider-dark">
+<span class="block font-mono text-xs text-primary mb-1">Материал</span>
+<span class="font-display text-lg">Погодоустойчивая Сталь</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 relative">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Geometric Corten Steel Sculpture glowing at dusk" class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp5wtm1_Mc4x_x5WA36m_hTDdXtJn2F2UglDezACWxivgCkPmthlzX5qcGuegq0jesAJGeAltvHW4ZDhbHnSeus_zIU_xh76KGaUdNhr3jEvxa8fVavHxfYloi3E5x8svpTXRtw3Z0I0cp2GLDkNZ73Bm8otl9x7AAbAZnPGoWxI6eBDMeYMZOUeEJUMaI2rLrrl-K5dXVukfre2iEU4se4q_p1zVZgOjVKvIxjzSDIP-6K860FD7n4r6PCnopLqNC2GcTcyU6d0eN"/>
+</div>
+</div>
+</div>
+</section>
+<section class="group relative border-t-[0.5px] border-divider-light dark:border-divider-dark py-16 md:py-24 transition-colors hover:bg-gray-50 dark:hover:bg-white/5">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+<div class="md:col-span-3 flex flex-col justify-between h-full border-l-[0.5px] border-primary/30 pl-6 md:pl-0 md:border-l-0">
+<div>
+<span class="font-mono text-4xl md:text-5xl font-bold text-gray-300 dark:text-gray-700 block mb-2 group-hover:text-primary transition-colors duration-500">2020</span>
+<span class="font-mono text-sm uppercase tracking-widest text-gray-500">— Наст. время</span>
+</div>
+<div class="mt-8 md:mt-0">
+<h3 class="font-display text-xl font-semibold mb-2">Сдвиг в сторону материалов</h3>
+<p class="text-sm text-gray-500">Параметрическая Текучесть</p>
+</div>
+</div>
+<div class="md:col-span-5">
+<p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-8">
+            Ребрендинг в <strong>monumforma</strong>. Теперь мы работаем на стыке высокотехнологичного производства и вычислительного дизайна. Наш фокус — зеркально полированная нержавеющая сталь и полупрозрачные стеклянные структуры, которые растворяются в окружающей среде, одновременно закрепляя её.
+          </p>
+<p class="text-md leading-relaxed text-gray-500 dark:text-gray-400 mb-8">
+            Мы не просто строим объекты; мы курируем отражение окружающего мира.
+          </p>
+<a class="inline-flex items-center gap-2 font-mono text-sm uppercase border-b border-primary pb-1 hover:text-primary transition-colors" href="#">
+            Смотреть текущую коллекцию <span aria-hidden="true">→</span>
+</a>
+</div>
+<div class="md:col-span-4 relative">
+<div class="aspect-[4/5] overflow-hidden mb-6">
+<img alt="Stainless steel infinity sculpture reflecting sunset" class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSRx-sjLdMm_I5DASjuMtOtr-j8cmjgocqP3cU47OWprMAMN8j90omATz-iENEaoa63WDXBowBF-gB9wahDKCqGk1AwxXTbZqrgwKPBbFX4S0MY7oYVXbriae8vuGPJe4btf5pazW_2bYJ7Lm_ABcYSvkymUEbM6xxFGQzw7xjbNe7-JOs8OkETKokrdNOH8bKiJYezi2IPTfwOXrGlhJHlgu7NAlPAcKhxxxJ1doH3FoGEsUx7K3gu5mcTD48sGAHjsWQzS_dyMjJ"/>
+</div>
+<div class="aspect-[4/3] overflow-hidden">
+<img alt="Translucent glass organic sculpture" class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjcRgMkijZ2-nbi3p7r-u0tlnI7cSPxppDV-8yu8Tvi5qCI8NjU3hxbN6pccQaW33-eKrNllJtdpPLrRexrEVXqJTPh6Gi2OSZ1rIibtjRQmflW52sSfX6t1lSnsZsN7XeLeMhd9qvwjGkRehBm3r5-jTgmtfGEa54vyNO7UmpuAIpE9y2IM8opscLqdxEe-dlcYSFgS8ZadshQ4_oIGwdXnOboSMy9RfHaji15RKu2V8w1UEwT7WK6WWaXm8W3W9OS5_4B8An63vc"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<section class="py-24 bg-gray-100 dark:bg-black mt-12 border-t border-divider-light dark:border-divider-dark">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-divider-light dark:bg-divider-dark border border-divider-light dark:border-divider-dark">
+<div class="bg-background-light dark:bg-background-dark p-8 md:p-12 hover:bg-white dark:hover:bg-surface-dark transition-colors duration-300">
+<h4 class="font-mono text-xs uppercase text-primary mb-4">01. Дизайн</h4>
+<h3 class="font-display text-2xl mb-4">Вычислительная логика</h3>
+<p class="text-gray-600 dark:text-gray-400 font-light">Использование Grasshopper и Python для создания форм, оптимизирующих использование материалов и структурную целостность.</p>
+</div>
+<div class="bg-background-light dark:bg-background-dark p-8 md:p-12 hover:bg-white dark:hover:bg-surface-dark transition-colors duration-300">
+<h4 class="font-mono text-xs uppercase text-primary mb-4">02. Производство</h4>
+<h3 class="font-display text-2xl mb-4">Точное проектирование</h3>
+<p class="text-gray-600 dark:text-gray-400 font-light">5-осевая фрезеровка с ЧПУ, лазерная резка и роботизированная сварка гарантируют соответствие цифрового двойника реальности.</p>
+</div>
+<div class="bg-background-light dark:bg-background-dark p-8 md:p-12 hover:bg-white dark:hover:bg-surface-dark transition-colors duration-300">
+<h4 class="font-mono text-xs uppercase text-primary mb-4">03. Монтаж</h4>
+<h3 class="font-display text-2xl mb-4">Глобальная логистика</h3>
+<p class="text-gray-600 dark:text-gray-400 font-light">От городских площадей в Дубае до частных садов в Лондоне. Мы берем на себя структурные расчеты и сборку.</p>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-background-light dark:bg-background-dark pt-24 pb-12 border-t-[0.5px] border-divider-light dark:border-divider-dark">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
+<div class="md:col-span-2">
+<span class="font-display text-2xl tracking-tight font-medium mb-8 block">monumforma</span>
+<p class="text-gray-500 max-w-sm mb-8">
+              Создание ориентиров для искусственной среды. Преодолевая разрыв между искусством и архитектурой с 2009 года.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 border border-divider-light dark:border-divider-dark flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all" href="#">
+<span class="sr-only">Instagram</span>
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="w-10 h-10 border border-divider-light dark:border-divider-dark flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all" href="#">
+<span class="sr-only">LinkedIn</span>
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-mono text-xs uppercase tracking-widest mb-6 text-gray-400">Компания</h5>
+<ul class="space-y-4 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">О нас</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Команда</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Карьера</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Пресса</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-mono text-xs uppercase tracking-widest mb-6 text-gray-400">Контакты</h5>
+<ul class="space-y-4 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="mailto:hello@monumforma.com">hello@monumforma.com</a></li>
+<li>+44 (0) 20 1234 5678</li>
+<li class="text-gray-500 font-normal">
+              142 Bermondsey Street<br/>
+              London, SE1 3TX<br/>
+              United Kingdom
+            </li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-divider-light dark:border-divider-dark font-mono text-xs text-gray-500 uppercase">
+<p>© 2025 monumforma. Все права защищены.</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="hover:text-primary" href="#">Конфиденциальность</a>
+<a class="hover:text-primary" href="#">Условия</a>
+<a class="hover:text-primary" href="#">Карта сайта</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

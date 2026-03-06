@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Технологии и Материалы | Monumforma</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#C4A473", // Metallic Gold/Bronze accent from the logo
+              "background-light": "#F5F5F5",
+              "background-dark": "#111111",
+              "surface-light": "#FFFFFF",
+              "surface-dark": "#1A1A1A",
+              "text-main-light": "#111111",
+              "text-main-dark": "#E5E5E5",
+              "text-muted-light": "#666666",
+              "text-muted-dark": "#999999",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              mono: ["Space Mono", "monospace"],
+            },
+            borderRadius: {
+              DEFAULT: "2px", // Sharp, architectural feel
+            },
+            spacing: {
+              '128': '32rem',
+            }
+          },
+        },
+      };
+    </script>
+<style>html { scroll-behavior: smooth; }::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C4A473; 
+        }.grid-bg {
+            background-image: linear-gradient(to right, rgba(100, 100, 100, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(100, 100, 100, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-display antialiased transition-colors duration-300">
+<nav class="fixed w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="flex justify-between h-20 items-center">
+<div class="flex-shrink-0 flex items-center gap-4">
+<div class="flex items-center gap-3">
+<img alt="Monumforma Logo" class="h-10 w-10 grayscale invert dark:invert-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy8S1z2HaPdyp5FnW3eC1rsuddllkZqnGgbBxPd-OIDcC2BO5B10xteo_5NHt1KWT9LnfxTYxY7gk9bonOXTIogN2a-8UJhPweGCSz2KUgMVKOnd7eH_vr3F6EH-4fTLjg_Zu961_SUwq6uakbdQHCiUrfDBz7AhpJnouTkog1y4oexG6db7fc9smw1q3CLbrH7BOyo7rkMgrnEOAsJiRaaYZAUKbTiXCHBJi3imdw-Fcp2QI3C4yXG8J8POhiJ6Rr0XtabbfWPDeo"/>
+<span class="text-xl font-bold tracking-tight lowercase">monumforma</span>
+</div>
+</div>
+<div class="hidden md:flex space-x-12 items-center">
+<a class="text-sm uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#">ПРОЕКТЫ</a>
+<a class="text-sm uppercase tracking-widest text-primary border-b border-primary" href="#">МАТЕРИАЛЫ &amp; ТЕХ</a>
+<a class="text-sm uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#">СТУДИЯ</a>
+<a class="text-sm uppercase tracking-widest text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#">КОНТАКТЫ</a>
+</div>
+<div class="flex items-center">
+<button class="p-2 text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-outlined text-xl">contrast</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden grid-bg">
+<div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+<div class="max-w-3xl">
+<p class="font-mono text-primary text-sm mb-6 tracking-widest">/// MATERIALITY_LIBRARY_V.04</p>
+<h1 class="text-5xl lg:text-7xl font-light mb-8 leading-tight">Где Параметрический Дизайн <br/> Встречает <span class="italic font-serif text-primary">Вечную Материю</span>.</h1>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark max-w-xl leading-relaxed font-mono text-sm border-l-2 border-primary pl-6">
+                    Наша библиотека материалов объединяет передовые композитные технологии с вечными архитектурными металлами. Создано для монументального масштаба и бесконечной долговечности.
+                </p>
+</div>
+</div>
+<div class="absolute right-0 top-0 h-full w-1/3 opacity-10 dark:opacity-20 pointer-events-none hidden lg:block">
+<svg class="h-full w-full stroke-current text-text-main-light dark:text-text-main-dark" viewbox="0 0 400 800">
+<path d="M50,0 Q200,400 50,800 M150,0 Q300,400 150,800 M250,0 Q400,400 250,800" fill="none" stroke-width="1"></path>
+</svg>
+</div>
+</header>
+<section class="py-20 bg-surface-light dark:bg-surface-dark border-y border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="flex justify-between items-end mb-16">
+<h2 class="text-3xl font-light">Спецификации Материалов</h2>
+<div class="hidden md:block font-mono text-xs text-text-muted-light dark:text-text-muted-dark">ЛИСТАТЬ ДЛЯ ПОДРОБНОСТЕЙ ↓</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group relative bg-background-light dark:bg-background-dark border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors duration-500">
+<div class="aspect-[4/3] w-full overflow-hidden bg-gray-200 relative">
+<img alt="Corten Steel Texture" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdt-GQGsk8fMbU7bkqWFPr5X2xAHv-24WXA2M5vhg2KZoZuV-8oRSm5fno396dPQ_Uo3_CY9FfFXtstjf5fNxpUT5Nj0Iw2cYMD5JN2k0-EMq_fP7XbydKstmSNIsOW281KAV962_UdLR5P3K2lwJDpxHmTl3OKqXMNpnPyYokuhdZnsF6fsaZltAh3UBEVWr47SWbVXFzd53aFoVxS4A_EUIrhdmRLVj-3uLQP7qiMSo1YIEG7fpp_FXXC_T_qEoB5NBIeUfNPBZ6"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold uppercase tracking-wider">КОРТЕНОВСКАЯ СТАЛЬ</h3>
+<span class="text-primary font-mono text-xs border border-primary px-2 py-0.5">CS-09</span>
+</div>
+<div class="space-y-3 font-mono text-xs text-text-muted-light dark:text-text-muted-dark border-t border-gray-200 dark:border-gray-700 pt-4">
+<div class="flex justify-between">
+<span>СПЛАВ:</span>
+<span class="text-text-main-light dark:text-text-main-dark">ASTM A588</span>
+</div>
+<div class="flex justify-between">
+<span>ОТДЕЛКА:</span>
+<span class="text-text-main-light dark:text-text-main-dark">ЕСТЕСТВЕННОЕ ОКИСЛЕНИЕ</span>
+</div>
+<div class="flex justify-between">
+<span>СРОК СЛУЖБЫ:</span>
+<span class="text-text-main-light dark:text-text-main-dark">100+ ЛЕТ</span>
+</div>
+<div class="mt-4 text-justify leading-tight opacity-80">
+                                Самозащищающаяся сталь, которая со временем приобретает стабильный ржавый вид. Идеально подходит для крупномасштабных уличных монументальных форм.
+                            </div>
+</div>
+</div>
+</div>
+<div class="group relative bg-background-light dark:bg-background-dark border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors duration-500">
+<div class="aspect-[4/3] w-full overflow-hidden bg-gray-200 relative">
+<img alt="Polished Stainless Steel Texture" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2m2d7YafEHROaGPxeM5g1wFg2SkjaUmn8XXhsg55BsMbZNxrzl0HoDcOvpqjncIBSKjiB5RB_qTPTFfKRv2rZl49ZGozud9qNGi86a2_kFcMBghh952DOqIi8-J5E2NK82cx3VkxxGDyWpt8PNL2ck5Wut4bhwA27xAF-1RpbSTJGOdB94x2BSfeoyTf8eA-SKtTIp0OzgPPXt7q-1MpHWg6TEop19nYgqdz7g_BgmM3L4jh_RIT0DT3aUJgV_8OlhuczDRdVp7JM"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold uppercase tracking-wider">МОРСКАЯ СТАЛЬ</h3>
+<span class="text-primary font-mono text-xs border border-primary px-2 py-0.5">SS-316L</span>
+</div>
+<div class="space-y-3 font-mono text-xs text-text-muted-light dark:text-text-muted-dark border-t border-gray-200 dark:border-gray-700 pt-4">
+<div class="flex justify-between">
+<span>СПЛАВ:</span>
+<span class="text-text-main-light dark:text-text-main-dark">316L НЕРЖАВЕЮЩАЯ</span>
+</div>
+<div class="flex justify-between">
+<span>ОТДЕЛКА:</span>
+<span class="text-text-main-light dark:text-text-main-dark">СУПЕР ЗЕРКАЛО #8</span>
+</div>
+<div class="flex justify-between">
+<span>ОТРАЖЕНИЕ:</span>
+<span class="text-text-main-light dark:text-text-main-dark">98% ОПТИЧЕСКОЕ</span>
+</div>
+<div class="mt-4 text-justify leading-tight opacity-80">
+                                Текучие, жидкоподобные поверхности, достигаемые многоступенчатой ручной полировкой. Максимальная коррозионная стойкость.
+                            </div>
+</div>
+</div>
+</div>
+<div class="group relative bg-background-light dark:bg-background-dark border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors duration-500">
+<div class="aspect-[4/3] w-full overflow-hidden bg-gray-200 relative">
+<img alt="Patinated Bronze Texture" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBIZwuvLx1N6n6CTJU0fWklWNT1cbO8XyzuvcQJuZ2mngh9PtLmYeeeKc1ZLQKsqH1hHPv_-2bk9LPBvgTXurhU3WcocG9xU9W4QZmfGdcAHW3OIa_qqctkSu-7ZWpJe55NPXKjH49EqeW4gHLs299z2hDI3HPlrFvOyGzzE_rhHIr4oPFcgMafJ7ihMot8B8K-_DlL2T9YwO-0SPb9xsi9rXtxYHtrWprY0ZVgQONZtvXYIO44AIDDxkeTh4C2utH4UMV-BWkJ4Jp"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold uppercase tracking-wider">СТАТУАРНАЯ БРОНЗА</h3>
+<span class="text-primary font-mono text-xs border border-primary px-2 py-0.5">BZ-Si</span>
+</div>
+<div class="space-y-3 font-mono text-xs text-text-muted-light dark:text-text-muted-dark border-t border-gray-200 dark:border-gray-700 pt-4">
+<div class="flex justify-between">
+<span>СОСТАВ:</span>
+<span class="text-text-main-light dark:text-text-main-dark">КРЕМНИЕВАЯ БРОНЗА</span>
+</div>
+<div class="flex justify-between">
+<span>ПАТИНА:</span>
+<span class="text-text-main-light dark:text-text-main-dark">ЗАКАЗНАЯ ТЕРМИЧЕСКАЯ</span>
+</div>
+<div class="flex justify-between">
+<span>ЛИТЬЕ:</span>
+<span class="text-text-main-light dark:text-text-main-dark">ПО ВЫПЛАВЛЯЕМЫМ МОДЕЛЯМ</span>
+</div>
+<div class="mt-4 text-justify leading-tight opacity-80">
+                                Традиционный материал в новом прочтении. Способен запечатлеть мельчайшие параметрические детали благодаря точному литью.
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 grid-bg relative">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="mb-16 max-w-2xl">
+<p class="font-mono text-primary text-sm mb-4">/// PROCESS_FLOW</p>
+<h2 class="text-4xl font-light mb-6">От Цифры к Физической Форме</h2>
+<p class="text-text-muted-light dark:text-text-muted-dark font-light">
+                    Мы преодолеваем разрыв между вычислительным дизайном и промышленным мастерством. Каждый проект проходит тщательное моделирование перед физическим изготовлением.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t border-gray-200 dark:border-gray-800">
+<div class="p-8 border-r border-b border-gray-200 dark:border-gray-800 hover:bg-surface-light dark:hover:bg-surface-dark transition-colors group">
+<div class="h-16 w-16 mb-8 relative">
+<svg class="w-full h-full stroke-text-main-light dark:stroke-text-main-dark fill-none stroke-[1.5]" viewbox="0 0 64 64">
+<path class="group-hover:stroke-primary transition-colors duration-300" d="M4,32 Q16,4 32,32 T60,32"></path>
+<path class="opacity-50 group-hover:stroke-primary transition-colors duration-300" d="M4,32 Q16,60 32,32 T60,32"></path>
+<circle class="fill-primary stroke-none" cx="32" cy="32" r="2"></circle>
+</svg>
+</div>
+<h4 class="font-mono text-sm text-primary mb-2">01. СИМУЛЯЦИЯ</h4>
+<h3 class="text-xl font-bold mb-3">Параметрический анализ</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                        Структурная оптимизация с использованием конечно-элементного анализа (FEA) для обеспечения целостности при ветровых и сейсмических нагрузках.
+                    </p>
+</div>
+<div class="p-8 border-r border-b border-gray-200 dark:border-gray-800 hover:bg-surface-light dark:hover:bg-surface-dark transition-colors group">
+<div class="h-16 w-16 mb-8 relative">
+<svg class="w-full h-full stroke-text-main-light dark:stroke-text-main-dark fill-none stroke-[1.5]" viewbox="0 0 64 64">
+<rect class="group-hover:stroke-primary transition-colors duration-300" height="48" width="48" x="8" y="8"></rect>
+<line x1="8" x2="56" y1="20" y2="20"></line>
+<line x1="20" x2="20" y1="20" y2="56"></line>
+<rect height="10" stroke-dasharray="2,2" width="10" x="35" y="35"></rect>
+</svg>
+</div>
+<h4 class="font-mono text-sm text-primary mb-2">02. ДОКУМЕНТАЦИЯ</h4>
+<h3 class="text-xl font-bold mb-3">BIM интеграция</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                        Модели с полным уровнем детализации (LOD) 400 для бесшовной интеграции в архитектурные генеральные планы.
+                    </p>
+</div>
+<div class="p-8 border-r border-b border-gray-200 dark:border-gray-800 hover:bg-surface-light dark:hover:bg-surface-dark transition-colors group">
+<div class="h-16 w-16 mb-8 relative">
+<svg class="w-full h-full stroke-text-main-light dark:stroke-text-main-dark fill-none stroke-[1.5]" viewbox="0 0 64 64">
+<polyline class="group-hover:stroke-primary transition-colors duration-300" points="10,50 25,35 45,35 55,15"></polyline>
+<circle cx="25" cy="35" r="3"></circle>
+<circle cx="45" cy="35" r="3"></circle>
+<path class="fill-current" d="M55,15 L50,10 L60,10 Z"></path>
+</svg>
+</div>
+<h4 class="font-mono text-sm text-primary mb-2">03. ПРОИЗВОДСТВО</h4>
+<h3 class="text-xl font-bold mb-3">Роботизированная фрезеровка</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                        5-осевая фрезеровка ЧПУ крупномасштабных форм для композитного литья или прямой резьбы по камню с субмиллиметровой точностью.
+                    </p>
+</div>
+<div class="p-8 border-r border-b border-gray-200 dark:border-gray-800 hover:bg-surface-light dark:hover:bg-surface-dark transition-colors group">
+<div class="h-16 w-16 mb-8 relative">
+<svg class="w-full h-full stroke-text-main-light dark:stroke-text-main-dark fill-none stroke-[1.5]" viewbox="0 0 64 64">
+<path class="group-hover:stroke-primary transition-colors duration-300" d="M32,10 L32,54 M10,32 L54,32"></path>
+<circle cx="32" cy="32" r="16" stroke-dasharray="4,4"></circle>
+<circle class="opacity-30" cx="32" cy="32" r="22"></circle>
+</svg>
+</div>
+<h4 class="font-mono text-sm text-primary mb-2">04. СБОРКА</h4>
+<h3 class="text-xl font-bold mb-3">Ручная отделка</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                        Ручная полировка, патинирование и сборка на месте нашей командой мастеров для обеспечения музейного качества.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-surface-dark text-white relative overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Sculptural Detail" class="w-full h-full object-cover opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB6obJD68cpdtwXbYSLA_WtaC_zvsZRsMe9xZgJY8fSZaZv-wFGPzFHZkZTqIFJbuBGywwRJkhokOd6P1rTeQMajTtf0AHvpDt-WfubD33BV2PleeuFio9ygtotCgsSgQDZrZFDSYHjKtXLpAC4raWWIvkbmFM8bxdVLh1oUnXq_ktHLiXdQoc87OEuOwbmDSGrLMZKkTtyMr4anxu78TwXKawzwy9BdE-oNvF6-bNBR5TGbW6MU9mp6HZiKtJCvCkg_EDLmliE9Ng"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent"></div>
+</div>
+<div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1">
+<div class="inline-block border border-primary/50 text-primary px-4 py-1 font-mono text-xs mb-6">КЕЙС: БАШНЯ AEON</div>
+<h2 class="text-4xl lg:text-5xl font-light mb-6">Стеклофибробетон (СФБ)</h2>
+<p class="text-gray-400 text-lg mb-8 max-w-lg">
+                     Для лобби башни Aeon мы разработали уникальную сверхпрочную бетонную смесь. Легкая, но обладающая тактильной плотностью камня.
+                 </p>
+<div class="grid grid-cols-2 gap-8 border-t border-gray-800 pt-8 font-mono text-sm">
+<div>
+<div class="text-gray-500 mb-1">СНИЖЕНИЕ ВЕСА</div>
+<div class="text-2xl text-white">-65%</div>
+</div>
+<div>
+<div class="text-gray-500 mb-1">ПРОЧНОСТЬ НА РАЗРЫВ</div>
+<div class="text-2xl text-white">18 МПа</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full">
+<div class="grid grid-cols-2 gap-4">
+<img alt="Concrete Texture Detail" class="w-full h-64 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500 border border-gray-800" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY_28WWEx-o8Mve-gr_XjEZZSr3S8PIXgXhpxTWcKMOAP8P7YVqMzAQakmGzw3eossmajn3rrVoQKvURq6xjLt5cGPpNzjNcDj7gZ2MjYg97ZDpfKzVJqiU2wZBrbO2H9UQucvcZsSMJEa7PFEIq6i-igfFfq4iS1VQ5c_RCNkfVR-b2DGEPLMioyaQGQch8qZfMDxI1wzrYQ5KJ0JtPjtbNuof9pRu2_Hcu29JhlZKFtxB6PErLFGMSFt8YliRxBfxRaez7De-qZl"/>
+<img alt="Concrete Form" class="w-full h-64 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500 border border-gray-800 mt-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGTE3Hmop5tCSkfiKpqPAwRCcX_klsdRoG6xFQFMJoL1CuRrc614HXZwBTFM3qpebih-3GQwfcIt3hHyhJYnIyP9eT3M5wwp4MLWsFGTBuPb4HBMlWwKY_Rnqm1S5UqKMdiOa11r8DET9tjigpesAx_Ff3FATf6NGA_VqCDpnuhMtv3t9p_SGquXetasTgWt_IVAzpkjCi4JORbaqaxsdB4wMjvgvhBwNZAMPuaul7DyISJUZ-8C9jYrLKTwo2JzJNYtGFVkRKPgwv"/>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 mb-6">
+<img alt="Monumforma Logo" class="h-8 w-8 grayscale invert dark:invert-0 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy9A7DwM2Lhp2iWVXeujY-R69FRhOG66WX7UseIN5Yip4dWDodKfOhPfUTg7rnjxIjLfIfJ2U57SocETjHMKwwWvsyC1QLnycYAgY4CAkjcEl8tpViQwqpbVxZ3glE_UPmrHRcv7oyN_GIU5HUgznw2t_cRyYd5aUgaLQWqv64YocSmA-zSaeowvga0_acfr-06Npul7DeDTI_U_dd1xwcGB5Zi5t0N_g3CBWMXx7T87EDx6geA8FmnuUVoi1_iqcRu_mlLRrKEys6"/>
+<span class="text-lg font-bold tracking-tight lowercase">monumforma</span>
+</div>
+<p class="text-text-muted-light dark:text-text-muted-dark max-w-sm text-sm">
+                        Определяя общественные пространства через монументальное искусство и передовое производство.
+                    </p>
+</div>
+<div>
+<h4 class="font-mono text-xs text-primary mb-4">КОНТАКТЫ</h4>
+<ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+<li><a class="hover:text-primary" href="#">inquiries@monumforma.com</a></li>
+<li>+1 (555) 092-1100</li>
+<li>Лос-Анджелес, Калифорния</li>
+</ul>
+</div>
+<div>
+<h4 class="font-mono text-xs text-primary mb-4">ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ</h4>
+<ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+<li><a class="hover:text-primary" href="#">Условия обслуживания</a></li>
+<li><a class="hover:text-primary" href="#">Политика конфиденциальности</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-text-muted-light dark:text-text-muted-dark font-mono">
+<p>© 2024 MONUMFORMA. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-primary" href="#">INSTAGRAM</a>
+<a class="hover:text-primary" href="#">LINKEDIN</a>
+<a class="hover:text-primary" href="#">ARCHDAILY</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
