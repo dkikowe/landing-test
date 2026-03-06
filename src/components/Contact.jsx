@@ -19,15 +19,6 @@ export default function Contact() {
     }
   }, []);
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-    if (document.documentElement.classList.contains("dark")) {
-      localStorage.theme = "dark";
-    } else {
-      localStorage.theme = "light";
-    }
-  };
-
   return (
     <div className="bg-[#F9F9F7] dark:bg-[#1A1A1A] text-[#111111] dark:text-[#F9F9F7] font-['Space_Grotesk'] antialiased transition-colors duration-300 min-h-screen">
       <style>{`

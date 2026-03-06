@@ -259,7 +259,7 @@ export default function Evolution() {
               </p>
               <a
                 className="inline-flex items-center gap-2 font-['Space_Mono'] text-sm uppercase border-b border-[#C19D68] pb-1 hover:text-[#C19D68] transition-colors"
-                href="#"
+                href="/projects"
               >
                 Смотреть текущую коллекцию <span aria-hidden="true">→</span>
               </a>

@@ -48,7 +48,7 @@ export default function TechnologiesAndMaterials() {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <p className="font-['Space_Mono'] text-[#C4A473] text-sm mb-6 tracking-widest">
-              /// MATERIALITY_LIBRARY_V.04
+              {"/// MATERIALITY_LIBRARY_V.04"}
             </p>
             <h1 className="text-5xl lg:text-7xl font-light mb-8 leading-tight">
               Где Параметрический Дизайн <br /> Встречает{" "}
@@ -230,7 +230,7 @@ export default function TechnologiesAndMaterials() {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-8">
           <div className="mb-16 max-w-2xl">
             <p className="font-['Space_Mono'] text-[#C4A473] text-sm mb-4">
-              /// PROCESS_FLOW
+              {"/// PROCESS_FLOW"}
             </p>
             <h2 className="text-4xl font-light mb-6">
               От Цифры к Физической Форме
