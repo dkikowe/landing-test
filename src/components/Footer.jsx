@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#FFFFFF] dark:bg-[#1E1E1E] border-t border-gray-200 dark:border-gray-800 pt-20 pb-12">
-      <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-12 gap-8">
+    <footer className="bg-[#FFFFFF] dark:bg-[#1E1E1E] border-t border-gray-200 dark:border-gray-800 pt-20 pb-12 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-12 gap-y-10 gap-x-4 md:gap-8">
         <div className="col-span-12 md:col-span-4 lg:col-span-3">
           <div className="flex items-center gap-4 mb-8">
             <img
               src="/assets/logowhite.png"
               alt="monumforma logo"
-              className="h-[100px] w-auto invert dark:invert-0"
+              className="h-[80px] md:h-[100px] w-auto max-w-full object-contain invert dark:invert-0"
             />
           </div>
-          <p className="font-['Roboto_Mono'] ml-4 text-xs text-gray-500 leading-relaxed mb-6">
+          <p className="font-['Roboto_Mono'] ml-0 md:ml-4 text-xs text-gray-500 leading-relaxed mb-6">
             Лондон • Нью-Йорк • Дубай
             <br />
             Глобальные услуги архитектурного производства.
@@ -26,42 +26,42 @@ export default function Footer() {
           <ul className="font-['Roboto_Mono'] text-xs space-y-4 text-gray-600 dark:text-gray-400">
             <li>
               <Link
-                className="hover:text-[#BFA37E] transition-colors"
+                className="hover:text-[#BFA37E] transition-colors uppercase"
                 to="/projects"
               >
-                Проекты
+                ПРОЕКТЫ
               </Link>
             </li>
             <li>
               <Link
-                className="hover:text-[#BFA37E] transition-colors"
+                className="hover:text-[#BFA37E] transition-colors uppercase"
                 to="/expertise"
               >
-                Экспертиза
+                КОМПЕТЕНЦИИ
               </Link>
             </li>
             <li>
               <Link
-                className="hover:text-[#BFA37E] transition-colors"
+                className="hover:text-[#BFA37E] transition-colors uppercase"
                 to="/process"
               >
-                Ателье
+                ИНЖЕНЕРИЯ
               </Link>
             </li>
             <li>
               <Link
-                className="hover:text-[#BFA37E] transition-colors"
-                to="/materials"
+                className="hover:text-[#BFA37E] transition-colors uppercase"
+                to="/company"
               >
-                Материалы
+                О КОМПАНИИ
               </Link>
             </li>
             <li>
               <Link
-                className="hover:text-[#BFA37E] transition-colors"
+                className="hover:text-[#BFA37E] transition-colors uppercase"
                 to="/contact"
               >
-                Контакты
+                КОНТАКТЫ
               </Link>
             </li>
           </ul>
@@ -70,7 +70,7 @@ export default function Footer() {
           <h4 className="font-['Roboto_Mono'] text-xs uppercase tracking-widest text-[#BFA37E] mb-6">
             Контакты
           </h4>
-          <ul className="font-['Roboto_Mono'] text-xs space-y-4 text-gray-600 dark:text-gray-400">
+          <ul className="font-['Roboto_Mono'] text-xs space-y-4 text-gray-600 dark:text-gray-400 break-words">
             <li>inquiries@monumforma.com</li>
             <li>+44 (0) 20 7123 4567</li>
             <li>12 Industrial Way, London, UK</li>
@@ -83,16 +83,16 @@ export default function Footer() {
             </h4>
             <form className="flex border-b border-gray-300 dark:border-gray-700 pb-2">
               <input
-                className="bg-transparent border-none p-0 w-full font-['Roboto_Mono'] text-sm focus:ring-0 placeholder-gray-500 dark:placeholder-gray-600 text-gray-900 dark:text-gray-100"
+                className="bg-transparent border-none p-0 w-full font-['Roboto_Mono'] text-sm focus:ring-0 placeholder-gray-500 dark:placeholder-gray-600 text-gray-900 dark:text-gray-100 min-w-0"
                 placeholder="Адрес электронной почты"
                 type="email"
               />
-              <button className="text-[#BFA37E] font-['Roboto_Mono'] text-xs uppercase hover:text-[#826A45] transition-colors">
+              <button className="text-[#BFA37E] font-['Roboto_Mono'] text-xs uppercase hover:text-[#826A45] transition-colors whitespace-nowrap ml-2">
                 Подписаться
               </button>
             </form>
           </div>
-          <div className="mt-8 lg:mt-0 text-right">
+          <div className="mt-8 lg:mt-0 text-left lg:text-right">
             <p className="font-['Roboto_Mono'] text-[10px] text-gray-400 dark:text-gray-600 uppercase">
               © 2024 Monumforma. Все права защищены.
             </p>

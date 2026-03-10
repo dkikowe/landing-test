@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&amp;family=Roboto+Mono:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#BFA37E",
+                        "background-light": "#f9f9f7",
+                        "background-dark": "#0a0a0a",
+                        "deep-gray": "#1a1a1a",
+                        "off-black": "#050505",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Roboto Mono", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }</script>
+<style type="text/tailwindcss">
+        .swiss-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .wireframe-bg {
+            background-image: radial-gradient(circle, #bca180 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+        }
+        .text-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+        }
+        .modal:target {
+            display: flex;
+        }
+        .modal-body {
+            line-height: 1.8;
+        }
+        .condensed-header {
+            font-stretch: extra-condensed;
+            letter-spacing: -0.02em;
+        }
+        .abstract-pattern {
+            background-color: #050505;
+            background-image: 
+                linear-gradient(rgba(188, 161, 128, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(188, 161, 128, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(188, 161, 128, 0.1) 0%, transparent 70%);
+            background-size: 80px 80px, 80px 80px, 100% 100%;
+        }
+        .abstract-lines {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .abstract-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #bca180, transparent);
+            height: 1px;
+            width: 100%;
+            opacity: 0.15;
+            filter: blur(1px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+<div class="relative min-h-screen w-full flex flex-col">
+<header class="fixed top-0 w-full z-50 bg-background-light/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-20 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">architecture</span>
+<h1 class="text-xl font-black tracking-tighter uppercase">monumforma</h1>
+</div>
+<nav class="hidden md:flex gap-12 text-[11px] font-bold uppercase tracking-[0.2em]">
+<a class="hover:text-primary transition-colors" href="#">Проекты</a>
+<a class="text-primary" href="#">Компетенции</a>
+<a class="hover:text-primary transition-colors" href="#">О бюро</a>
+<a class="hover:text-primary transition-colors" href="#">Контакты</a>
+</nav>
+<button class="px-6 py-2 border border-primary text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
+                EN / RU
+            </button>
+</div>
+</header>
+<main class="pt-32 pb-20 overflow-x-hidden">
+<section class="max-w-[1440px] mx-auto px-6 lg:px-20 mb-32">
+<div class="swiss-grid">
+<div class="col-span-12 lg:col-span-8">
+<span class="font-mono text-xs text-primary mb-4 block tracking-[0.3em]">00 // CAPABILITIES</span>
+<h2 class="text-6xl md:text-8xl font-black tracking-[-0.04em] leading-[0.9] mb-8 uppercase">Наши <br/>Компетенции</h2>
+</div>
+<div class="col-span-12 lg:col-span-4 flex flex-col justify-end pb-2">
+<p class="font-mono text-[10px] text-slate-400 leading-relaxed uppercase tracking-tighter">
+                        monumforma / architectural excellence / 2024<br/>
+                        specialized in complex geometry and material science / 
+                        international standards of quality and aesthetics
+                    </p>
+</div>
+</div>
+</section>
+<section class="max-w-[1440px] mx-auto px-6 lg:px-20 mb-40">
+<div class="swiss-grid border-t border-primary/20 pt-10">
+<div class="col-span-12 lg:col-span-4 mb-10 lg:mb-0">
+<h3 class="text-3xl font-black mb-4 uppercase tracking-tight leading-none">Архитектурные<br/>арт-объекты</h3>
+<p class="font-mono text-[11px] text-primary mb-8 tracking-widest uppercase">ARCHITECTURAL ART / BRONZE / CORTEN / METALLURGY</p>
+<p class="text-sm text-slate-600 leading-relaxed max-w-sm mb-6">
+                        Мы проектируем и создаем монументальные скульптуры и арт-инсталляции мирового класса. Наша экспертиза в работе с литой бронзой и кортеном позволяет реализовывать объекты любой сложности.
+                    </p>
+<a class="inline-flex items-center gap-4 px-8 py-4 bg-primary text-white text-[11px] font-bold uppercase tracking-widest hover:bg-black transition-all group" href="#deep-dive-arch">
+                        Explore Expertise
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<div class="grid grid-cols-2 gap-4 mt-12">
+<div>
+<span class="font-mono text-[10px] text-primary block border-b border-primary/20 pb-2 mb-2 uppercase">Metallurgy</span>
+<p class="text-[10px] text-slate-500 uppercase">Сложное художественное литье и прецизионная обработка.</p>
+</div>
+<div>
+<span class="font-mono text-[10px] text-primary block border-b border-primary/20 pb-2 mb-2 uppercase">Public Art</span>
+<p class="text-[10px] text-slate-500 uppercase">Проектирование знаковых объектов городской среды.</p>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="group relative overflow-hidden aspect-[3/4] bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3nLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNozrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbnu3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Fluid Geometry</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Cast Bronze</p>
+<p>Tech: Generative Design</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-[3/4] bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Industrial Core</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Corten Steel</p>
+<p>Tech: Laser Processing</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-[3/4] bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Public Landmark</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Stainless Steel</p>
+<p>Tech: Mirror Polishing</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-[3/4] bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDH24sapg6vn27w9GnwW0PpxNGK6qKbgNdcl9EbbjFR7X5A87SgH6evk7TxcfnvfJDIEPaxCC-0wleR7h324P0aFppAvlmXCI8vIk7crmkJBh4pE79efZps9bd1FgXu1QqaxZFawhedyjbCZaip9GbmthulDsoU00Ac6l0TGmL6ULQtCSOBieq2tFHd7VOH3Lx_0T_WSlJ1Vl1Lz_s4jR-OjZxieHly-8XaAIXjz9nctKPdyeeM3fEbxlCQliSAAN2nYb9OhrxSaByi')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Tactile Texture</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Hand-Patinated Bronze</p>
+<p>Tech: Precision Milling</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-[3/4] bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJq_171BA4ZR9Ks2rFu2Ej3im6WLDStwxdFNWMLrJOjPYkff14XcUd-FPBYeW1jEthp2Nf3k5BURnxyXE5W7UPwxgNIFEHyRw90zNZwhFAmTSdrxTLaetnt6ReM3lgnugiS4bnG4I-TNDKPFoYwVY3sIbgTJjWs-LV7usV4xEQyV3WOcsj5bpxMGPtWDexze03zTEiE09HjxJfJutpoyc4_s7vwAX4OzFLVE43XQDavKK2uAdOv7SG0bGBq8ldZas4QC8mHCGopp0-')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Garden Object</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Aluminum Alloy</p>
+<p>Tech: Argon Welding</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-[3/4] bg-slate-200">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo2zFujsO4WUbx4oSvzUnyQklT2LTVAwsx-x1KPJ4BwDXRCSQWjYylWsEzzdTR9ed7ZoOxhm7e9LrwW0i7pbOf7IiA9vnEz_ZwOh9JaRfUH87L4v1ITwVxLd5pnC2IWBBPPgSOAYYCCbN2f4D-hZvpOURNXCzfcqPoVvfU3cWW8JlS9qKPFLbhLq3cspW6zK5Bga9JPXHcAjs-PZzOOtqhtJf0QyrZ4F8CJ84ublr-hr9cKlLTnNwt4M3GSJfexOzL7sV42hlbPBRw')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Hidden Frame</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Carbon Steel</p>
+<p>Tech: Structural BIM</p>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</section>
+<section class="bg-background-dark text-slate-100 py-32 relative overflow-hidden">
+<div class="wireframe-bg absolute inset-0"></div>
+<div class="max-w-[1440px] mx-auto px-6 lg:px-20 relative z-10">
+<div class="swiss-grid items-center">
+<div class="col-span-12 lg:col-span-7">
+<div class="aspect-video bg-slate-900 border border-primary/20 flex items-center justify-center relative group overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-50 group-hover:opacity-80 transition-opacity duration-1000" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"></div>
+<span class="material-symbols-outlined text-7xl text-primary animate-pulse relative z-10">motion_mode</span>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-5 pl-0 lg:pl-12">
+<span class="font-mono text-xs text-primary mb-2 block tracking-widest uppercase">02 // DIGITAL &amp; MOTION</span>
+<h3 class="text-5xl font-black mb-8 uppercase leading-[0.9]">Медиа<br/>архитектура</h3>
+<p class="text-sm text-slate-400 mb-8 max-w-md">
+                            Мы интегрируем передовые цифровые технологии в физическую оболочку зданий, создавая живые организмы, реагирующие на окружающую среду.
+                        </p>
+<a class="inline-flex items-center gap-4 px-8 py-4 border border-primary text-primary text-[11px] font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all group mb-12" href="#deep-dive-media">
+                            Explore Expertise
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<div class="space-y-6">
+<div class="border-l-2 border-primary/30 pl-6">
+<h4 class="font-mono text-[11px] text-primary uppercase mb-1">Kinetic Chandeliers</h4>
+<p class="text-[10px] text-slate-500 uppercase">Сложные двигающиеся системы и мехатроника.</p>
+</div>
+<div class="border-l-2 border-primary/30 pl-6">
+<h4 class="font-mono text-[11px] text-primary uppercase mb-1">Smart Envelopes</h4>
+<p class="text-[10px] text-slate-500 uppercase">Медиафасады с адаптивным управлением яркостью.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-[1440px] mx-auto px-6 lg:px-20 py-40">
+<div class="swiss-grid mb-20 items-end">
+<div class="col-span-12 lg:col-span-6">
+<span class="font-mono text-xs text-primary mb-4 block tracking-[0.3em]">03 // ATMOSPHERE</span>
+<h3 class="text-6xl font-black tracking-tight uppercase leading-[0.9]">Световые<br/>пространства</h3>
+</div>
+<div class="col-span-12 lg:col-span-6 flex flex-col items-start gap-6">
+<p class="text-slate-500 max-w-md text-sm uppercase tracking-tighter leading-relaxed">
+                        Комплексное световое проектирование: от концептуальной иллюминации фасадов до праздничного оформления городских площадей.
+                    </p>
+<a class="inline-flex items-center gap-4 px-8 py-4 bg-background-dark text-white text-[11px] font-bold uppercase tracking-widest hover:bg-primary transition-all group" href="#deep-dive-light">
+                        Explore Expertise
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6"><div class="group relative overflow-hidden aspect-square grayscale hover:grayscale-0 transition-all duration-700">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDH24sapg6vn27w9GnwW0PpxNGK6qKbgNdcl9EbbjFR7X5A87SgH6evk7TxcfnvfJDIEPaxCC-0wleR7h324P0aFppAvlmXCI8vIk7crmkJBh4pE79efZps9bd1FgXu1QqaxZFawhedyjbCZaip9GbmthulDsoU00Ac6l0TGmL6ULQtCSOBieq2tFHd7VOH3Lx_0T_WSlJ1Vl1Lz_s4jR-OjZxieHly-8XaAIXjz9nctKPdyeeM3fEbxlCQliSAAN2nYb9OhrxSaByi')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Urban Glow</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Optical Glass</p>
+<p>Tech: Dynamic Illumination</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-square grayscale hover:grayscale-0 transition-all duration-700">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJq_171BA4ZR9Ks2rFu2Ej3im6WLDStwxdFNWMLrJOjPYkff14XcUd-FPBYeW1jEthp2Nf3k5BURnxyXE5W7UPwxgNIFEHyRw90zNZwhFAmTSdrxTLaetnt6ReM3lgnugiS4bnG4I-TNDKPFoYwVY3sIbgTJjWs-LV7usV4xEQyV3WOcsj5bpxMGPtWDexze03zTEiE09HjxJfJutpoyc4_s7vwAX4OzFLVE43XQDavKK2uAdOv7SG0bGBq8ldZas4QC8mHCGopp0-')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Atmospheric Void</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Diffused LED</p>
+<p>Tech: Smart Controls</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-square grayscale hover:grayscale-0 transition-all duration-700">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo2zFujsO4WUbx4oSvzUnyQklT2LTVAwsx-x1KPJ4BwDXRCSQWjYylWsEzzdTR9ed7ZoOxhm7e9LrwW0i7pbOf7IiA9vnEz_ZwOh9JaRfUH87L4v1ITwVxLd5pnC2IWBBPPgSOAYYCCbN2f4D-hZvpOURNXCzfcqPoVvfU3cWW8JlS9qKPFLbhLq3cspW6zK5Bga9JPXHcAjs-PZzOOtqhtJf0QyrZ4F8CJ84ublr-hr9cKlLTnNwt4M3GSJfexOzL7sV42hlbPBRw')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Linear Flow</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: RGBW Strips</p>
+<p>Tech: DMX Networking</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-square grayscale hover:grayscale-0 transition-all duration-700">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3nLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNozrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbnu3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Golden Echo</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Brass &amp; Light</p>
+<p>Tech: Ambient Sculpting</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-square grayscale hover:grayscale-0 transition-all duration-700">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Steel Pulse</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Perforated Steel</p>
+<p>Tech: Backlit Motion</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden aspect-square grayscale hover:grayscale-0 transition-all duration-700">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"></div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+<h4 class="text-white font-bold uppercase mb-2">Crystal Axis</h4>
+<div class="font-mono text-[9px] text-primary uppercase space-y-1">
+<p>Material: Optical Acrylic</p>
+<p>Tech: Refraction Design</p>
+</div>
+</div>
+</div></div>
+</section>
+<section class="relative min-h-screen w-full flex items-center overflow-hidden bg-off-black group/section">
+<!-- High-Impact Background Image with Parallax effect -->
+<div class="absolute inset-0 bg-cover bg-center bg-fixed opacity-40 transition-transform duration-1000 group-hover/section:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo2zFujsO4WUbx4oSvzUnyQklT2LTVAwsx-x1KPJ4BwDXRCSQWjYylWsEzzdTR9ed7ZoOxhm7e9LrwW0i7pbOf7IiA9vnEz_ZwOh9JaRfUH87L4v1ITwVxLd5pnC2IWBBPPgSOAYYCCbN2f4D-hZvpOURNXCzfcqPoVvfU3cWW8JlS9qKPFLbhLq3cspW6zK5Bga9JPXHcAjs-PZzOOtqhtJf0QyrZ4F8CJ84ublr-hr9cKlLTnNwt4M3GSJfexOzL7sV42hlbPBRw')"></div>
+<!-- Technical Wireframe Overlay (Reveals on Hover) -->
+<div class="absolute inset-0 opacity-0 group-hover/section:opacity-20 transition-opacity duration-700 pointer-events-none">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<defs>
+<pattern height="10" id="tech-grid" patternunits="userSpaceOnUse" width="10">
+<path d="M 10 0 L 0 0 0 10" fill="none" stroke="#BFA37E" stroke-width="0.1"></path>
+<circle cx="0" cy="0" fill="#BFA37E" r="0.2"></circle>
+</pattern>
+</defs>
+<rect fill="url(#tech-grid)" height="100" width="100"></rect>
+</svg>
+</div>
+<div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-20 w-full">
+<div class="swiss-grid">
+<div class="col-span-12 lg:col-span-6 flex flex-col justify-center p-8 lg:p-16 border border-white/5 bg-black/20 backdrop-blur-sm group hover:border-primary/40 transition-all duration-700 hover:shadow-[0_0_50px_-12px_rgba(191,163,126,0.2)]">
+<div class="flex items-center gap-4 mb-8">
+<span class="font-mono text-[10px] text-primary tracking-[0.5em] uppercase">Module 04 // Vertical Integration</span>
+<div class="h-px flex-grow bg-primary/20"></div>
+</div>
+<h2 class="text-4xl md:text-6xl font-black tracking-tight leading-[1.1] mb-10 uppercase text-white">
+                    Полный цикл <br/><span class="text-primary">Реализации</span>
+</h2>
+<div class="space-y-6 text-slate-400 font-light leading-relaxed mb-12">
+<p class="text-sm md:text-base uppercase tracking-tight">
+                        Мы переосмысливаем границы возможного, объединяя радикальную архитектурную мысль с бескомпромиссной инженерной точностью. Наша ответственность охватывает всю генетику проекта — от концептуальной сингулярности до физического воплощения.
+                    </p>
+<p class="text-[11px] font-mono text-primary/60 uppercase tracking-widest">
+                        Synthesis of Art &amp; Structural Intelligence // End-to-End Control
+                    </p>
+</div>
+<div class="flex flex-wrap gap-8 mb-12">
+<div class="flex flex-col">
+<span class="font-mono text-primary text-xl">Precision</span>
+<span class="text-[9px] uppercase tracking-tighter text-slate-500">Micron-level accuracy</span>
+</div>
+<div class="flex flex-col border-l border-white/10 pl-8">
+<span class="font-mono text-primary text-xl">Integrity</span>
+<span class="text-[9px] uppercase tracking-tighter text-slate-500">Uncompromised vision</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-6 px-12 py-5 border border-primary/30 text-white text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-primary hover:text-black transition-all duration-500 group/btn w-fit" href="#deep-dive-full-cycle">
+                    Explore Ecosystem
+                    <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-2 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+<div class="hidden lg:flex col-span-6 flex-col justify-between py-16">
+<div class="flex flex-col items-end gap-12 text-primary/30">
+<span class="material-symbols-outlined text-5xl hover:text-primary transition-colors cursor-crosshair">deployed_code</span>
+<span class="material-symbols-outlined text-5xl hover:text-primary transition-colors cursor-crosshair">precision_manufacturing</span>
+<span class="material-symbols-outlined text-5xl hover:text-primary transition-colors cursor-crosshair">architecture</span>
+</div>
+<div class="flex justify-end">
+<div class="rotate-90 origin-right flex items-center gap-6">
+<span class="w-24 h-px bg-primary/20"></span>
+<p class="font-mono text-[9px] text-primary/40 uppercase tracking-[0.6em] whitespace-nowrap">Architectural Bureau Monumforma // 2024 Protocol</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-primary/5 py-40 border-y border-primary/10 relative overflow-hidden">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-20">
+<div class="text-center mb-24">
+<h3 class="text-5xl font-black mb-4 uppercase tracking-tighter">8 этапов реализации</h3>
+<p class="font-mono text-xs text-primary uppercase tracking-[0.4em]">Integrated Project Workflow</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">01</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">lightbulb</span> Исследование и Концепция
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                Анализ архитектурного контекста, формирование художественного видения и разработка первичных визуальных гипотез.
+                            </p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">02</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">architecture</span> Эскизное проектирование
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                3D-моделирование сложной геометрии, подбор материалов и определение световых сценариев.
+                            </p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">03</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">engineering</span> Конструкторская документация
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                Инженерные расчеты (КМ/КМД), разработка уникальных узлов крепления и систем автоматизации.
+                            </p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">04</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">precision_manufacturing</span> Опытный образец
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                Изготовление фрагментов (mock-ups) для тестов освещенности, текстур и механики движения.
+                            </p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">05</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">factory</span> Собственное производство
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                Художественное литье, плазменная резка, аргонная сварка и ручное патинирование металлов.
+                            </p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">06</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">code</span> Разработка ПО и сценариев
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                Написание алгоритмов управления кинетикой и создание эксклюзивного видеоконтента.
+                            </p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">07</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">construction</span> Монтаж и ПНР
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                Профессиональная установка на объекте, пуско-наладка систем и обучение персонала.
+                            </p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="font-mono text-5xl text-primary/20 group-hover:text-primary transition-colors duration-500 leading-none">08</span>
+<div>
+<h4 class="text-sm font-black mb-3 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">verified_user</span> Эксплуатация
+                            </h4>
+<p class="text-[11px] font-mono text-slate-500 uppercase leading-relaxed">
+                                Гарантийное обслуживание, технический мониторинг и контентная поддержка объектов.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-40 bg-background-light">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-20">
+<div class="swiss-grid mb-16">
+<div class="col-span-12 lg:col-span-4">
+<h3 class="text-3xl font-black uppercase tracking-tighter">Наши Клиенты</h3>
+<p class="font-mono text-[10px] text-primary mt-2 uppercase tracking-widest italic">Trusted by Global Leaders</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-primary/10 border border-primary/10">
+<div class="bg-white aspect-video flex items-center justify-center p-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-black text-lg tracking-tighter uppercase">ARCHI</span>
+</div>
+<div class="bg-white aspect-video flex items-center justify-center p-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-black text-lg tracking-tighter uppercase">DEVELOP</span>
+</div>
+<div class="bg-white aspect-video flex items-center justify-center p-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-black text-lg tracking-tighter uppercase">METRO</span>
+</div>
+<div class="bg-white aspect-video flex items-center justify-center p-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-black text-lg tracking-tighter uppercase">GALLERY</span>
+</div>
+<div class="bg-white aspect-video flex items-center justify-center p-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-black text-lg tracking-tighter uppercase">URBAN</span>
+</div>
+<div class="bg-white aspect-video flex items-center justify-center p-8 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-black text-lg tracking-tighter uppercase">TECH</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-background-dark text-slate-500 py-12 border-t border-white/5">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<h2 class="text-white text-lg font-black tracking-tighter uppercase">monumforma</h2>
+<span class="font-mono text-[10px]">© 2024 / ARCHITECTURAL STUDIO</span>
+</div>
+<div class="flex gap-10 font-mono text-[10px] uppercase tracking-widest">
+<a class="hover:text-white transition-colors" href="#">Instagram</a>
+<a class="hover:text-white transition-colors" href="#">Behance</a>
+<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+</div>
+<div class="text-right font-mono text-[10px] uppercase">
+                Designed for Excellence<br/>
+                Based in Moscow / Worldwide Delivery
+            </div>
+</div>
+</footer>
+</div>
+<div class="modal bg-off-black text-slate-300 overflow-y-auto" id="deep-dive-arch">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+<a class="fixed top-12 right-12 z-50 text-primary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl">close</span>
+</a>
+<header class="mb-24 border-b border-white/5 pb-12">
+<span class="font-mono text-xs text-primary mb-4 block tracking-[0.4em]">EXPERT INSIGHT // 01</span>
+<h2 class="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">Материальность и Монументальность</h2>
+<p class="max-w-2xl text-lg font-light leading-relaxed">
+                Мы рассматриваем архитектурные арт-объекты как симбиоз высокой инженерии и художественной интуиции. Наша студия специализируется на работе с вечными материалами: бронзой, кортеновской сталью и титаном, превращая их в смысловые доминанты современного пространства.
+            </p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Философия Металла
+                </h3>
+<p class="mb-6">
+                    В мире скоротечных трендов мы выбираем материалы, которые стареют благородно. <strong>Художественное литье из бронзы</strong> позволяет нам добиваться бесшовности и текучести форм, недоступных другим методам. Каждая отливка проходит многоступенчатый процесс ручной доводки, где мастер чувствует микрорельеф поверхности, создавая уникальную тактильную историю.
+                </p>
+<p>
+<strong>Кортеновская сталь (Corten)</strong> — наш выбор для масштабных городских инсталляций. Ее естественная патина не только защищает металл, но и создает живой, меняющийся во времени облик объекта, органично вписывая его в ландшафтную архитектуру.
+                </p>
+</section>
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Инженерия Формы
+                </h3>
+<p class="mb-6">
+                    Создание знаковых скульптур требует не только таланта художника, но и точности инженера. Мы используем передовое <strong>генеративное проектирование</strong> для оптимизации внутренних силовых каркасов. Это позволяет создавать грациозные, кажущиеся невесомыми конструкции, способные выдерживать колоссальные ветровые нагрузки.
+                </p>
+<p>
+                    Наша экспертиза включает в себя полный цикл: от разработки КМД до сложного логистического планирования и шеф-монтажа. Мы работаем с ведущими металлургическими производствами, обеспечивая уровень качества, соответствующий мировым стандартам <strong>Public Art</strong>.
+                </p>
+</section>
+</div><div class="mt-16">
+<h3 class="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Gallery Extension
+    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3nLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNozrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbnu3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"></div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full font-mono text-[10px] uppercase text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 text-primary">
+<th class="py-4 px-2">Parameter</th>
+<th class="py-4 px-2">Specification</th>
+<th class="py-4 px-2">Notes</th>
+</tr>
+</thead>
+<tbody class="text-slate-400">
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Weight Range</td>
+<td class="py-4 px-2">250kg - 12,000kg</td>
+<td class="py-4 px-2">Variable by scale</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Material Grade</td>
+<td class="py-4 px-2">CuSn12 Bronze / S355J2W Corten</td>
+<td class="py-4 px-2">Structural standards</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Tolerance</td>
+<td class="py-4 px-2">± 0.5mm</td>
+<td class="py-4 px-2">CNC &amp; Foundry precision</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-24 bg-deep-gray p-12 border border-white/5">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center">
+<span class="font-mono text-primary text-2xl block mb-2">500+</span>
+<span class="text-[9px] uppercase tracking-widest text-slate-500">Тонн отлитого металла</span>
+</div>
+<div class="text-center">
+<span class="font-mono text-primary text-2xl block mb-2">0.1mm</span>
+<span class="text-[9px] uppercase tracking-widest text-slate-500">Точность стыковки</span>
+</div>
+<div class="text-center">
+<span class="font-mono text-primary text-2xl block mb-2">50Y+</span>
+<span class="text-[9px] uppercase tracking-widest text-slate-500">Гарантия эстетики</span>
+</div>
+<div class="text-center">
+<span class="font-mono text-primary text-2xl block mb-2">Global</span>
+<span class="text-[9px] uppercase tracking-widest text-slate-500">Доставка и монтаж</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal bg-off-black text-slate-300 overflow-y-auto" id="deep-dive-media">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+<a class="fixed top-12 right-12 z-50 text-primary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl">close</span>
+</a>
+<header class="mb-24 border-b border-white/5 pb-12">
+<span class="font-mono text-xs text-primary mb-4 block tracking-[0.4em]">EXPERT INSIGHT // 02</span>
+<h2 class="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">Цифровая Кинетика Пространства</h2>
+<p class="max-w-2xl text-lg font-light leading-relaxed">
+                Медиаархитектура сегодня — это не просто экраны на фасадах. Это интеллектуальные системы, где свет, механика и цифровой контент сливаются в единый перформанс. Мы проектируем динамические фасады и кинетические люстры, которые меняют восприятие пространства в реальном времени.
+            </p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Интеллектуальный Свет
+                </h3>
+<p class="mb-6">
+                    Мы создаем <strong>медиафасады высокой плотности</strong>, которые интегрируются непосредственно в структуру здания. Наша технология позволяет сохранять прозрачность остекления и архитектурный облик в дневное время, превращая здание в холст для цифрового искусства ночью.
+                </p>
+<p>
+<strong>Адаптивные системы управления</strong> на базе протоколов DMX и Art-Net позволяют синхронизировать тысячи световых точек. Мы разрабатываем кастомные сценарии, которые могут реагировать на погоду, количество людей в холле или внешние информационные потоки.
+                </p>
+</section>
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Магия Кинетики
+                </h3>
+<p class="mb-6">
+                    Наше подразделение мехатроники проектирует <strong>кинетические люстры и подвижные фасады</strong>. Каждое звено такой системы управляется индивидуальным сервоприводом с точностью до миллиметра. Мы объединяем физику движения с цифровой эстетикой, создавая гипнотические инсталляции для атриумов и общественных пространств.
+                </p>
+<p>
+                    Безопасность и долговечность — наши приоритеты. Мы используем компоненты промышленного класса и разрабатываем собственное ПО для мониторинга состояния каждого двигателя, обеспечивая бесперебойную работу сложнейших механизмов в режиме 24/7.
+                </p>
+</section>
+</div><div class="mt-16">
+<h3 class="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Gallery Extension
+    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDH24sapg6vn27w9GnwW0PpxNGK6qKbgNdcl9EbbjFR7X5A87SgH6evk7TxcfnvfJDIEPaxCC-0wleR7h324P0aFppAvlmXCI8vIk7crmkJBh4pE79efZps9bd1FgXu1QqaxZFawhedyjbCZaip9GbmthulDsoU00Ac6l0TGmL6ULQtCSOBieq2tFHd7VOH3Lx_0T_WSlJ1Vl1Lz_s4jR-OjZxieHly-8XaAIXjz9nctKPdyeeM3fEbxlCQliSAAN2nYb9OhrxSaByi')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJq_171BA4ZR9Ks2rFu2Ej3im6WLDStwxdFNWMLrJOjPYkff14XcUd-FPBYeW1jEthp2Nf3k5BURnxyXE5W7UPwxgNIFEHyRw90zNZwhFAmTSdrxTLaetnt6ReM3lgnugiS4bnG4I-TNDKPFoYwVY3sIbgTJjWs-LV7usV4xEQyV3WOcsj5bpxMGPtWDexze03zTEiE09HjxJfJutpoyc4_s7vwAX4OzFLVE43XQDavKK2uAdOv7SG0bGBq8ldZas4QC8mHCGopp0-')"></div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full font-mono text-[10px] uppercase text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 text-primary">
+<th class="py-4 px-2">Parameter</th>
+<th class="py-4 px-2">Specification</th>
+<th class="py-4 px-2">Notes</th>
+</tr>
+</thead>
+<tbody class="text-slate-400">
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Resolution</td>
+<td class="py-4 px-2">P2 - P10 Pixel Pitch</td>
+<td class="py-4 px-2">Custom densities</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Refresh Rate</td>
+<td class="py-4 px-2">&gt; 3840 Hz</td>
+<td class="py-4 px-2">Flicker-free visual</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Interface</td>
+<td class="py-4 px-2">Madrix / Resolume / Custom API</td>
+<td class="py-4 px-2">Real-time response</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="modal bg-off-black text-slate-300 overflow-y-auto" id="deep-dive-light">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+<a class="fixed top-12 right-12 z-50 text-primary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl">close</span>
+</a>
+<header class="mb-24 border-b border-white/5 pb-12">
+<span class="font-mono text-xs text-primary mb-4 block tracking-[0.4em]">EXPERT INSIGHT // 03</span>
+<h2 class="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">Световой Сценарий Города</h2>
+<p class="max-w-2xl text-lg font-light leading-relaxed">
+                Свет — мощнейший инструмент трансформации городской среды. Мы не просто освещаем здания, мы создаем ночной образ города, подчеркивая величие архитектурного наследия и создавая праздничную атмосферу в современных коммерческих кластерах.
+            </p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Архитектурная Подсветка
+                </h3>
+<p class="mb-6">
+                    Работа с памятниками архитектуры требует ювелирного подхода. Мы используем <strong>акцентное освещение</strong> с узкоградусной оптикой, чтобы выявить пластику фасада, не создавая при этом светового загрязнения. Наша экспертиза в области колористики позволяет подбирать идеальную цветовую температуру, соответствующую материалу отделки.
+                </p>
+<p>
+<strong>Энергоэффективные решения</strong> — стандарт нашей работы. Мы внедряем системы интеллектуального диммирования, которые снижают потребление энергии в глубокие ночные часы, сохраняя при этом безопасность и эстетическую привлекательность объекта.
+                </p>
+</section>
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Праздничный Декор и Ритейл
+                </h3>
+<p class="mb-6">
+                    Оформление топовых моллов и городских набережных — это искусство создания настроения. Мы разрабатываем комплексные проекты <strong>новогодней иллюминации</strong>, включающие в себя крупногабаритные световые арт-объекты и динамические гирлянды.
+                </p>
+<p>
+                    Наш подход базируется на создании иммерсивного опыта. Свет становится частью маркетинговой стратегии пространства, привлекая посетителей и создавая "инстаграмные" локации, которые работают на узнаваемость бренда и лояльность аудитории.
+                </p>
+</section>
+</div><div class="mt-16">
+<h3 class="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Gallery Extension
+    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo2zFujsO4WUbx4oSvzUnyQklT2LTVAwsx-x1KPJ4BwDXRCSQWjYylWsEzzdTR9ed7ZoOxhm7e9LrwW0i7pbOf7IiA9vnEz_ZwOh9JaRfUH87L4v1ITwVxLd5pnC2IWBBPPgSOAYYCCbN2f4D-hZvpOURNXCzfcqPoVvfU3cWW8JlS9qKPFLbhLq3cspW6zK5Bga9JPXHcAjs-PZzOOtqhtJf0QyrZ4F8CJ84ublr-hr9cKlLTnNwt4M3GSJfexOzL7sV42hlbPBRw')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3nLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNozrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbnu3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"></div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full font-mono text-[10px] uppercase text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 text-primary">
+<th class="py-4 px-2">Parameter</th>
+<th class="py-4 px-2">Specification</th>
+<th class="py-4 px-2">Notes</th>
+</tr>
+</thead>
+<tbody class="text-slate-400">
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Lumen Output</td>
+<td class="py-4 px-2">Up to 80,000 lm</td>
+<td class="py-4 px-2">High-intensity fixtures</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Power Consumption</td>
+<td class="py-4 px-2">Eco-mode optimized</td>
+<td class="py-4 px-2">Smart dimming profiles</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Control Protocol</td>
+<td class="py-4 px-2">DMX512 / RDM / Art-Net</td>
+<td class="py-4 px-2">Bidirectional monitoring</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="modal bg-off-black text-slate-300 overflow-y-auto" id="deep-dive-full-cycle">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+<a class="fixed top-12 right-12 z-50 text-primary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl">close</span>
+</a>
+<header class="mb-24 border-b border-white/5 pb-12">
+<span class="font-mono text-xs text-primary mb-4 block tracking-[0.4em]">EXPERT INSIGHT // 04</span>
+<h2 class="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">Вертикальная Интеграция Процессов</h2>
+<p class="max-w-2xl text-lg font-light leading-relaxed">
+                Принцип полного цикла — это наша гарантия того, что смелая концепция не будет упрощена на этапе производства. Мы объединяем проектный офис, инжиниринговый центр и собственную фабрику в единый бесшовный механизм.
+            </p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> От Идеи до Чертежа
+                </h3>
+<p class="mb-6">
+                    Мы верим, что <strong>архитектурное проектирование</strong> должно учитывать технологические ограничения производства с первого дня. Наши архитекторы работают в плотной связке с инженерами-конструкторами, используя <strong>BIM-технологии</strong> для точного моделирования всех узлов и коммуникаций.
+                </p>
+<p>
+                    Такой подход исключает ошибки при монтаже и позволяет реализовывать формы, которые другие студии считают невыполнимыми. Мы разрабатываем уникальные протоколы взаимодействия между творческим и техническим отделами.
+                </p>
+</section>
+<section>
+<h3 class="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Промышленное Искусство
+                </h3>
+<p class="mb-6">
+                    Собственная <strong>производственная площадка</strong> оснащена станками ЧПУ последнего поколения для высокоточной резки и обработки металлов. Мы контролируем качество каждого шва и каждой патинированной поверхности. 
+                </p>
+<p>
+<strong>Шеф-монтаж</strong> и сервисное обслуживание завершают цикл. Мы не просто сдаем объект — мы обеспечиваем его техническое сопровождение, контентное обновление медиа-систем и превентивный мониторинг конструкций на протяжении всего срока эксплуатации.
+                </p>
+</section>
+</div><div class="mt-16">
+<h3 class="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+<span class="w-8 h-[1px] bg-primary"></span> Gallery Extension
+    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3nLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNozrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbnu3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"></div>
+<div class="aspect-video bg-cover bg-center border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"></div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full font-mono text-[10px] uppercase text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 text-primary">
+<th class="py-4 px-2">System Node</th>
+<th class="py-4 px-2">Integration Level</th>
+<th class="py-4 px-2">Output</th>
+</tr>
+</thead>
+<tbody class="text-slate-400">
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Design Hub</td>
+<td class="py-4 px-2">100% BIM LOD 400</td>
+<td class="py-4 px-2">Fabrication-ready files</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">Logistics</td>
+<td class="py-4 px-2">Global Customs/Cargo</td>
+<td class="py-4 px-2">Oversized loads expertise</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="py-4 px-2">On-Site</td>
+<td class="py-4 px-2">IR Inspection</td>
+<td class="py-4 px-2">Verified structural integrity</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -5,6 +5,7 @@ import Manifest from "./components/Manifest";
 import Evolution from "./components/Evolution";
 import TechnicalExpertise from "./components/TechnicalExpertise";
 import ProjectIndex from "./components/ProjectIndex";
+import ProjectDetail from "./components/ProjectDetail";
 import TechnologiesAndMaterials from "./components/TechnologiesAndMaterials";
 import ArchitecturalProcess from "./components/ArchitecturalProcess";
 import Company from "./components/Company";
@@ -21,6 +22,7 @@ function App() {
           <Route path="evolution" element={<Evolution />} />
           <Route path="expertise" element={<TechnicalExpertise />} />
           <Route path="projects" element={<ProjectIndex />} />
+          <Route path="projects/:id" element={<ProjectDetail />} />
           <Route path="materials" element={<TechnologiesAndMaterials />} />
           <Route path="process" element={<ArchitecturalProcess />} />
           <Route path="company" element={<Company />} />

@@ -37,7 +37,7 @@ export default function Contact() {
       <main className="pt-32 pb-20 px-6 lg:px-12 max-w-[1440px] mx-auto">
         <header className="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
           <div>
-            <h1 className="text-5xl lg:text-7xl font-light leading-tight mb-6">
+            <h1 className="text-3xl lg:text-7xl font-light leading-tight mb-6">
               Формируя <br />
               <span className="font-medium italic text-[#A68A58]">
                 Монументальное

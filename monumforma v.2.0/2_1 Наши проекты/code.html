@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#BFA37E",
+                        "background-light": "#F9F9F7",
+                        "background-dark": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Roboto Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .swiss-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .wireframe-hover:hover .wireframe-overlay {
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-background-dark dark:text-background-light transition-colors duration-300">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full border-b border-background-dark/10 dark:border-background-light/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-12 py-4">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2 group cursor-pointer">
+<div class="size-6 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark text-sm">architecture</span>
+</div>
+<h1 class="text-xl font-black tracking-tighter lowercase">monumforma</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-xs font-medium uppercase tracking-widest hover:text-primary transition-colors" href="#">Projects</a>
+<a class="text-xs font-medium uppercase tracking-widest hover:text-primary transition-colors" href="#">Studio</a>
+<a class="text-xs font-medium uppercase tracking-widest hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-lg">search</span>
+<input class="bg-transparent border-b border-background-dark/20 dark:border-background-light/20 focus:border-primary focus:ring-0 text-[10px] font-mono tracking-widest pl-10 pr-4 py-1 w-48 transition-all" placeholder="SEARCH ARCHIVE" type="text"/>
+</div>
+<button class="flex items-center justify-center size-10 border border-background-dark/10 dark:border-background-light/10 hover:border-primary transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<div class="size-10 bg-primary/10 border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
+<section class="swiss-grid mb-16">
+<div class="col-span-12 lg:col-span-8">
+<h2 class="text-6xl lg:text-8xl font-black tracking-tighter mb-6">Архив проектов</h2>
+<p class="max-w-xl text-lg opacity-70 leading-relaxed">
+                        Professional index of architectural works and spatial interventions. Exploration of form, light, and urban integration through a technical lens.
+                    </p>
+</div>
+</section>
+<div class="sticky top-20 z-40 flex flex-wrap gap-2 mb-12 py-4 bg-background-light dark:bg-background-dark border-y border-background-dark/5 dark:border-background-light/5">
+<button class="px-6 py-2 bg-primary text-background-dark text-[10px] font-mono font-bold tracking-widest uppercase">
+                    All Works
+                </button>
+<button class="px-6 py-2 border border-background-dark/10 dark:border-background-light/10 hover:border-primary text-[10px] font-mono tracking-widest uppercase transition-colors">
+                    Архитектурные объекты
+                </button>
+<button class="px-6 py-2 border border-background-dark/10 dark:border-background-light/10 hover:border-primary text-[10px] font-mono tracking-widest uppercase transition-colors">
+                    Медиаархитектура
+                </button>
+<button class="px-6 py-2 border border-background-dark/10 dark:border-background-light/10 hover:border-primary text-[10px] font-mono tracking-widest uppercase transition-colors">
+                    Световые инсталляции
+                </button>
+</div>
+<div class="swiss-grid gap-y-16">
+<div class="col-span-12 lg:col-span-7 group wireframe-hover cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden bg-background-dark/5 dark:bg-background-light/5 mb-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHXuLMXLHlEMep8BQcvkpxBMOMCPXMevU2rwHdwM2L5sy0FRi63q4Y_OtZHhg6pMomD1wDUH55jSW-IAYGt2oeLqCampM0s5LYqrsjnwGpZ69cwoO2pG0e6oJ3NFphVNgkmtLCI4l5xJ7CAEDw9Nm49Ml0hy23qqhPSCjR7ebWUgkDP335Vop3dA27F49-lMfAwPzMdsTjxxw9rNfhIYi2208X3vuUdMxDpQ5TFKNCVCmDVONfi6uIw8qZnr6ULrkmLVHVg4eOMhQ')"></div>
+<div class="wireframe-overlay absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 flex items-center justify-center">
+<div class="w-full h-full border border-primary/30 rotate-3 scale-90 flex items-center justify-center">
+<div class="w-[80%] h-[80%] border border-primary/20 -rotate-6"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Project #22 Passage</h3>
+<div class="flex items-center gap-4 text-[11px] font-mono text-primary uppercase tracking-widest">
+<span>ID: 022</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Concrete</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Scale: Urban</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-5 lg:mt-24 group wireframe-hover cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden bg-background-dark/5 dark:bg-background-light/5 mb-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA1CHL83r5-cCPFhkW57HHyiWKCziEQmJZ0fTlKbPBH8NfVJwu6Roihtuie7VaZ0f2mkJp7l62wUFwU-Vd3bqrNXg_7EVM-MCug4xe2lzjwaYrW5cq4kexue99piI6sTC3g5PJUELrcHg07jSWDgwU3CAKj6vaDBiKc-wfXGrFDgM7xIwYRWM9Q8M9nXD6MovX5Fh4X_r_SKFcdPaSUtzcZf3AYyp5eyXnbhw0VWoiAIymttDuCqf7q-4PhC4sdLsq-IsGSiX72l3U')"></div>
+<div class="wireframe-overlay absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500">
+<div class="absolute inset-0 grid grid-cols-4 grid-rows-4 border border-primary/10"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Project #11 Hotel</h3>
+<div class="flex items-center gap-4 text-[11px] font-mono text-primary uppercase tracking-widest">
+<span>ID: 011</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Glass &amp; Steel</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Scale: Urban</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 group wireframe-hover cursor-pointer">
+<div class="relative aspect-square overflow-hidden bg-background-dark/5 dark:bg-background-light/5 mb-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIe92rPNWzWEsDRuk6t3DY93ZYLvxykV-YhKKYQekpAMfgkdcUGVO5f5JjfOaoXduQ13Rt4vsnPil6rd9LPx0rXjmgSeXFm0tdLjqRBwTCmwAa-bcoArh0TqDzauFuMBBAxBZq7xiu7t0_fIEmec-nsF1_Qtz42REzjl4pzyMW2wNjiajvfjZKg0PT-fAH80Lvari1Q5x-XHPlejuXiUYBIBYHaWForn7mawyoLgZmXLZXRUhEyqbJDiOemUGUuaMSa0I2Hkf4xF0')"></div>
+<div class="wireframe-overlay absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl">motion_mode</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Kinetic Systems</h3>
+<div class="flex items-center gap-4 text-[11px] font-mono text-primary uppercase tracking-widest">
+<span>ID: 009</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Media</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Scale: Urban</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-8 group wireframe-hover cursor-pointer">
+<div class="relative aspect-[21/9] overflow-hidden bg-background-dark/5 dark:bg-background-light/5 mb-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOLisXaKOVYM_a5N1LUTf6G-R6skcEJUmJ37MkKqYJSVs3thNh7ybt2_j_ZVINGoJ6jdDo4gmm94OjYjgfrIZP5sYGZSMpUA3VRxTSmHRbLZjzBaEGqn9a-3AJHeS2MAXnkxaoW-0h2UWgjLkZYjLm6ois5YYRolSTbfj9c3aqyJIOLLZWRi8YjZEDj60nUTy924Wj71p_l9xC5zUkC082WBBhoG1kmrcnO5E66IsxWe28lpdxOGdHecGR6yK4GFLEMmaGUnvelOQ')"></div>
+<div class="wireframe-overlay absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500"></div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Light Pavilion</h3>
+<div class="flex items-center gap-4 text-[11px] font-mono text-primary uppercase tracking-widest">
+<span>ID: 015</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Light</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Scale: Pavilion</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 group wireframe-hover cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden bg-background-dark/5 dark:bg-background-light/5 mb-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGgl-sjtEyJta31bYoZHdpmRsrkoIRVGHPv3enqqB_g1CvnRpz1TccGC8VvYueLZyEsKXpZZ9ESpPCVCNvRxw-c63Hzfr5_raFjhWpHgTH77FECas6My921-8jhi8iUovZcVdDaKk_Yp-l6KehUtiPtAocdmY2TH-6xNbiq_WIsC5Uz73WFWctiWrXSc1VLPsLYiLFcKLjdUHyua3PZ65-3CeOdSYwdf9QWG657f-GrFMd69ZkbOADfVixwVFbchW4BlpHJCddpOQ')"></div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Urban Core</h3>
+<div class="flex items-center gap-4 text-[11px] font-mono text-primary uppercase tracking-widest">
+<span>ID: 004</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Stone</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Scale: Urban</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 lg:mt-[-100px] group wireframe-hover cursor-pointer">
+<div class="relative aspect-square overflow-hidden bg-background-dark/5 dark:bg-background-light/5 mb-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5X0eB_9H21Pa1JAV-W-wsqgI5cLjT1t4J8v3atLSthmiDsFBRG3RK_2SWwvpmh0vPWtkCzBUHq4XarIkVQcsLpbQvuh6nEOfPCbrDYAEytI6lMucGtoon33ho9xqj4e5IZ4c3axB3GVtFUEcAYnPI4e1VPCks2sXGmVmseKn8wpwHHjM47qe5-Nn1cL7NK445bOU_7IjAkFopM9oXIXno9xB57CUSyy06Lo-CMrVot83MhtOc9nU9RDL6s5BgIu_i7whYBD8wrBc')"></div>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Refraction Hub</h3>
+<div class="flex items-center gap-4 text-[11px] font-mono text-primary uppercase tracking-widest">
+<span>ID: 031</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Glass</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>Scale: Interior</span>
+</div>
+</div>
+</div>
+</div>
+<section class="mt-32 pt-16 border-t border-background-dark/10 dark:border-background-light/10 swiss-grid">
+<div class="col-span-12 lg:col-span-4">
+<p class="text-[10px] font-mono tracking-[0.3em] uppercase opacity-50 mb-8">Metadata Analysis</p>
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-background-dark/5 dark:border-background-light/5 pb-2">
+<span class="text-xs uppercase tracking-widest">Total Works</span>
+<span class="font-mono text-primary">142</span>
+</div>
+<div class="flex justify-between items-end border-b border-background-dark/5 dark:border-background-light/5 pb-2">
+<span class="text-xs uppercase tracking-widest">Global Locations</span>
+<span class="font-mono text-primary">24</span>
+</div>
+<div class="flex justify-between items-end border-b border-background-dark/5 dark:border-background-light/5 pb-2">
+<span class="text-xs uppercase tracking-widest">Active Research</span>
+<span class="font-mono text-primary">08</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 lg:col-start-7 flex flex-col justify-end">
+<h4 class="text-3xl font-bold tracking-tight mb-6">Looking for a specific intervention?</h4>
+<button class="w-fit flex items-center gap-4 px-8 py-4 bg-background-dark dark:bg-background-light text-background-light dark:text-background-dark hover:bg-primary transition-colors group">
+<span class="text-xs font-bold uppercase tracking-widest">Contact Archive Manager</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="w-full bg-background-dark text-background-light py-12 px-6 lg:px-12 mt-24">
+<div class="max-w-[1440px] mx-auto swiss-grid items-start">
+<div class="col-span-12 lg:col-span-4">
+<h2 class="text-xl font-black lowercase mb-4">monumforma</h2>
+<p class="text-xs opacity-50 font-mono tracking-wider max-w-[200px]">Speculative architecture &amp; spatial research.</p>
+</div>
+<div class="col-span-6 lg:col-span-2">
+<p class="text-[10px] font-mono uppercase text-primary mb-6 tracking-widest">Index</p>
+<ul class="space-y-3 text-xs uppercase tracking-widest font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Archive</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Lab</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Press</a></li>
+</ul>
+</div>
+<div class="col-span-6 lg:col-span-2">
+<p class="text-[10px] font-mono uppercase text-primary mb-6 tracking-widest">Follow</p>
+<ul class="space-y-3 text-xs uppercase tracking-widest font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Instagram</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Behance</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Are.na</a></li>
+</ul>
+</div>
+<div class="col-span-12 lg:col-span-4 flex flex-col items-end gap-2 mt-12 lg:mt-0">
+<p class="text-[10px] font-mono opacity-50">© 2024 monumforma archival systems</p>
+<p class="text-[10px] font-mono opacity-50">40° 42' 46" N | 74° 00' 21" W</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma | Эстетика и Инженерия</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: 'class',
+          theme: {
+            extend: {
+              colors: {
+                'surface': '#F9F9F7',
+                'deep': '#0A0A0A',
+                'accent': '#BFA37E',
+                'graphite': '#1A1A1A',
+              },
+              fontFamily: {
+                'sans': ['Inter', 'sans-serif'],
+                'mono': ['Roboto Mono', 'monospace'],
+              },
+              letterSpacing: {
+                'tighter': '-0.05em',
+                'widest': '0.2em',
+              }
+            }
+          }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @keyframes slow-pan {
+          0% { transform: scale(1.1) translateX(0); }
+          100% { transform: scale(1.1) translateX(-2%); }
+        }
+        @keyframes reveal-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-pan { animation: slow-pan 20s ease-in-out infinite alternate; }
+        .reveal-on-scroll { animation: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .glass-nav {
+          background: rgba(10, 10, 10, 0.8);
+          backdrop-filter: blur(12px);
+        }
+        .wireframe-bg {
+          background-image: radial-gradient(circle at 2px 2px, rgba(191, 163, 126, 0.05) 1px, transparent 0);
+          background-size: 40px 40px;
+        }
+        .border-accent-glow {
+          border: 1px solid rgba(191, 163, 126, 0.5);
+          box-shadow: 0 0 15px rgba(191, 163, 126, 0.1);
+        }
+        .card-premium-hover:hover {
+          border-color: #BFA37E;
+          box-shadow: 0 0 30px rgba(191, 163, 126, 0.25);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-deep text-white font-sans antialiased selection:bg-accent selection:text-deep">
+<header class="fixed top-0 w-full z-50 glass-nav border-b border-white/5">
+<div class="max-w-[1800px] mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-accent flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-deep text-xl">architecture</span>
+</div>
+<span class="text-xl font-black tracking-tighter lowercase">monumforma</span>
+</div>
+<nav class="hidden lg:flex items-center gap-8 text-[10px] font-mono uppercase tracking-widest text-white/60">
+<a class="hover:text-accent transition-colors" href="#">Projects</a>
+<a class="hover:text-accent transition-colors" href="#">Concept</a>
+<a class="hover:text-accent transition-colors" href="#">Engineering</a>
+<a class="hover:text-accent transition-colors" href="#">Production</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="hidden md:block px-6 py-2 border border-accent/30 text-[10px] font-mono uppercase tracking-widest hover:bg-accent hover:text-deep transition-all">
+              Consultation
+            </button>
+<div class="w-10 h-10 rounded-full border border-white/10 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTPjdjd6FU_sZE9n0ZOkxol185XM2nRVI7cHeIy4myysMOojhYRFjY5amx_J_4AzjgieKKWa5k1C4XC7YrWyo94HkBvmQI_UK7ZldlLoqSgtOQuvRfOSkQM3PbUa4seevmjrKuXQghKzi7dsaFC2_PJYFnBrkNxxgAWgDrjsSRaoRCY2HLAP-KfHh_XzgUPIZksTrxTj54fiPN7HPD_XXrzuSmhqaywpaXu7FWOAT9BH-Hf0EFH_ysLBtwidmH0ATRIOxqcLYqTRZU')"></div>
+</div>
+</div>
+</header>
+<main>
+<section class="relative h-screen w-full flex items-center overflow-hidden reveal-on-scroll">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-deep via-deep/60 to-transparent z-10"></div>
+<img alt="Architectural Structure" class="w-full h-full object-cover opacity-60 animate-pan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBMbNKjQ0WQb6-oeY0lXxLAKsLlJITUEvvzjF0O2ps9mhUbiesSPuOqmgzvgndi14SWJuMWldH28Ng9yjtsZ5FpqNYdPTU33S3PChEyXNS7XinOdxgpoXBeF8FeWaAa-6iDStBtIR6KSJGutaH6RF6gJ7Ud-S8jw8O9h3F4G9JMfHQ9pnKXGruZu17DFEoeiTCSO4FDil8yU5vkdYBmegBiyUXq95SMSVdSy-bip2MuuwCqSV48rvOTcJCihx0h1wBR0Z3BWF0QC3j"/>
+</div>
+<div class="relative z-20 max-w-[1800px] mx-auto px-6 w-full pt-20">
+<div class="max-w-5xl">
+<div class="flex items-center gap-4 mb-6">
+<span class="w-12 h-[1px] bg-accent"></span>
+<span class="font-mono text-xs text-accent uppercase tracking-widest">Core // Manifesto // Synthesis</span>
+</div>
+<h1 class="text-[clamp(3rem,8vw,8rem)] font-black leading-[0.9] tracking-tighter uppercase mb-8">
+                    Эстетика <span class="text-accent italic font-light">&amp;</span><br/>
+                    Инженерия
+                </h1>
+<p class="text-xl md:text-2xl text-white/60 max-w-2xl leading-relaxed mb-12">
+                    Симбиоз художественного видения и безупречного расчета. Мы создаем формы, которые бросают вызов гравитации и времени.
+                </p>
+<div class="flex flex-col md:flex-row items-start md:items-center gap-8">
+<button class="group flex items-center gap-4 bg-white text-deep px-8 py-5 font-bold uppercase text-xs tracking-widest hover:bg-accent transition-colors">
+                      Explore Capabilities
+                      <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-mono text-[10px] text-white/40 uppercase">
+<span>70% Art</span>
+<span>30% Engineering</span>
+</div>
+<div class="w-48 h-[2px] bg-white/10 relative">
+<div class="absolute inset-0 bg-accent w-[70%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 left-6 z-20 font-mono text-[10px] text-white/30 uppercase tracking-widest">
+            System Active: Structural_Engine_v4.8
+        </div>
+</section>
+<section class="py-32 px-6 bg-surface text-deep wireframe-bg reveal-on-scroll">
+<div class="max-w-[1800px] mx-auto grid lg:grid-cols-2 gap-24 items-start">
+<div class="relative group sticky top-32">
+<div class="absolute -top-4 -left-4 w-32 h-32 border-t-2 border-l-2 border-accent/30 group-hover:scale-110 transition-transform"></div>
+<img alt="Generative Design" class="w-full grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVcIAzQE1RfEcCJkfj0Sf53JhC0LEpToeULGKDc1JGmm4C37RARFQ1T9YSHZYvaXL46FFEPPdxeA1bDyU4qReed43Yq7K4AvTdOaONVruDmJMXdI5OkAmCig_IClzfMvWv__Y81Sj8QBPOylVLoCEhoKBX_l9T57wSWKz3A3ZA4pSde0BAtLMVxJkgQ2LIVqU_2Z75H_fk6m6dG8ZD8pGHeMDtJtUDpFB2rQ3mTJ4D_1Qrs6DYc2oWjSGqTC3p2t6cGk_ufKzNhwHl"/>
+<div class="absolute bottom-6 left-6 bg-deep text-white p-6 max-w-xs">
+<span class="block font-mono text-[10px] text-accent mb-2 uppercase">Topology Optimization</span>
+<p class="text-sm leading-relaxed text-white/70 italic">Algorithmic weight reduction without structural loss.</p>
+</div>
+</div>
+<div class="space-y-16">
+<div>
+<span class="font-mono text-xs text-accent uppercase tracking-widest block mb-4">Process Stage: 01 // Ideation</span>
+<h2 class="text-6xl font-black uppercase tracking-tighter leading-none mb-8">Алгоритмическая<br/><span class="text-accent">Эксплорация</span></h2>
+<p class="text-xl text-black/60 leading-relaxed max-w-xl">Наш творческий генезис базируется на контекстно-ориентированном синтезе и глубоком анализе пространственных нарративов.</p>
+</div>
+<div class="grid grid-cols-1 gap-12">
+<div class="grid md:grid-cols-2 gap-8 items-start group">
+<div class="border-l-4 border-accent pl-6 py-2 transition-all group-hover:pl-8">
+<span class="block font-mono text-[10px] text-accent uppercase tracking-widest mb-2">Analysis</span>
+<h4 class="text-2xl font-black uppercase tracking-tight">Контекстуальный Синтез</h4>
+</div>
+<div class="p-6 bg-white border border-black/5 shadow-sm group-hover:border-accent/40 transition-colors">
+<p class="text-sm text-black/60 font-mono leading-relaxed uppercase">Глубокое погружение в топологию и культурный слой локации. Мы извлекаем данные о ветровых потоках, освещенности и пешеходном трафике, превращая их в параметры будущей формы.</p>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-8 items-start group">
+<div class="border-l-4 border-accent pl-6 py-2 transition-all group-hover:pl-8">
+<span class="block font-mono text-[10px] text-accent uppercase tracking-widest mb-2">Computation</span>
+<h4 class="text-2xl font-black uppercase tracking-tight">Генеративная Деконструкция</h4>
+</div>
+<div class="p-6 bg-white border border-black/5 shadow-sm group-hover:border-accent/40 transition-colors">
+<p class="text-sm text-black/60 font-mono leading-relaxed uppercase">Использование генетических алгоритмов для поиска оптимального баланса между эстетической сложностью и структурной стабильностью. Процесс, где код становится соавтором скульптора.</p>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-8 items-start group">
+<div class="border-l-4 border-accent pl-6 py-2 transition-all group-hover:pl-8">
+<span class="block font-mono text-[10px] text-accent uppercase tracking-widest mb-2">Narrative</span>
+<h4 class="text-2xl font-black uppercase tracking-tight">Редефиниция Пространства</h4>
+</div>
+<div class="p-6 bg-white border border-black/5 shadow-sm group-hover:border-accent/40 transition-colors">
+<p class="text-sm text-black/60 font-mono leading-relaxed uppercase">Финальная стадия перевода математической модели в эмоциональный опыт. Мы создаем не просто объекты, а сценарии взаимодействия, которые меняют восприятие привычной среды.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-6 bg-deep reveal-on-scroll">
+<div class="max-w-[1800px] mx-auto mb-20">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+<div class="max-w-2xl">
+<span class="font-mono text-xs text-accent uppercase tracking-widest block mb-4">Analysis &amp; Physics</span>
+<h2 class="text-6xl font-black uppercase tracking-tighter leading-none mb-6">Инженерия как искусство</h2>
+</div>
+<p class="text-lg text-white/50 max-w-md">
+                    Любой художественный жест остается лишь мечтой без фундаментальной науки. Мы гарантируем 100% результат за счет глубокого анализа экстремальных нагрузок.
+                </p>
+</div>
+</div>
+<div class="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-deep p-10 border-accent-glow card-premium-hover transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-accent text-4xl mb-8 group-hover:scale-125 transition-transform duration-500">leak_add</span>
+<h3 class="text-xl font-bold uppercase mb-4">Сейсмика</h3>
+<p class="text-sm text-white/40 leading-relaxed mb-12">Расчеты устойчивости при динамических колебаниях грунта до 9 баллов по шкале Рихтера.</p>
+<span class="font-mono text-6xl text-white/5 absolute bottom-4 right-4 group-hover:text-accent/20 transition-colors">01</span>
+</div>
+<div class="bg-deep p-10 border-accent-glow card-premium-hover transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-accent text-4xl mb-8 group-hover:scale-125 transition-transform duration-500">air</span>
+<h3 class="text-xl font-bold uppercase mb-4">Ветровые</h3>
+<p class="text-sm text-white/40 leading-relaxed mb-12">Аэродинамические испытания и расчеты пиковых порывов ветра в разных климатических зонах.</p>
+<span class="font-mono text-6xl text-white/5 absolute bottom-4 right-4 group-hover:text-accent/20 transition-colors">02</span>
+</div>
+<div class="bg-deep p-10 border-accent-glow card-premium-hover transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-accent text-4xl mb-8 group-hover:scale-125 transition-transform duration-500">ac_unit</span>
+<h3 class="text-xl font-bold uppercase mb-4">Крио-нагрузки</h3>
+<p class="text-sm text-white/40 leading-relaxed mb-12">Анализ весовых нагрузок снежного покрова и температурного расширения уникальных сплавов.</p>
+<span class="font-mono text-6xl text-white/5 absolute bottom-4 right-4 group-hover:text-accent/20 transition-colors">03</span>
+</div>
+<div class="bg-deep p-10 border-accent-glow card-premium-hover transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-accent text-4xl mb-8 group-hover:scale-125 transition-transform duration-500">waves</span>
+<h3 class="text-xl font-bold uppercase mb-4">Агрессивная среда</h3>
+<p class="text-sm text-white/40 leading-relaxed mb-12">Специализированные покрытия и материалы для работы в суровых прибрежных и соленых зонах.</p>
+<span class="font-mono text-6xl text-white/5 absolute bottom-4 right-4 group-hover:text-accent/20 transition-colors">04</span>
+</div>
+</div>
+</section>
+<section class="py-32 px-6 bg-surface text-deep reveal-on-scroll">
+<div class="max-w-[1800px] mx-auto">
+<div class="grid md:grid-cols-3 gap-6 mb-6">
+<div class="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+<div class="mb-16">
+<span class="font-mono text-[10px] text-accent uppercase tracking-widest block mb-6">Facility.Unit_01</span>
+<h3 class="text-3xl font-black uppercase tracking-tighter mb-6">Металлообработка</h3>
+<p class="text-sm text-black/50 leading-relaxed max-w-xs font-mono">Работа со сталью, алюминием и нержавеющей сталью. Полный цикл: сварка, полировка и сборка.</p>
+</div>
+<span class="material-symbols-outlined text-accent/40 text-4xl group-hover:scale-125 group-hover:text-accent transition-all duration-500">precision_manufacturing</span>
+</div>
+<div class="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+<div class="mb-16">
+<span class="font-mono text-[10px] text-accent uppercase tracking-widest block mb-6">Facility.Unit_02</span>
+<h3 class="text-3xl font-black uppercase tracking-tighter mb-6">Композиты</h3>
+<p class="text-sm text-black/50 leading-relaxed max-w-xs font-mono">Производство изделий из стеклопластика и эпоксидных смол. Создание бесшовных органических форм.</p>
+</div>
+<span class="material-symbols-outlined text-accent/40 text-4xl group-hover:scale-125 group-hover:text-accent transition-all duration-500">layers</span>
+</div>
+<div class="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+<div class="mb-16">
+<span class="font-mono text-[10px] text-accent uppercase tracking-widest block mb-6">Facility.Unit_03</span>
+<h3 class="text-3xl font-black uppercase tracking-tighter mb-6">Световые системы</h3>
+<p class="text-sm text-black/50 leading-relaxed max-w-xs font-mono">Изготовление световых конструкций, настройка интеллектуальных систем управления и мультимедиа.</p>
+</div>
+<span class="material-symbols-outlined text-accent/40 text-4xl group-hover:scale-125 group-hover:text-accent transition-all duration-500">lightbulb</span>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+<div class="mb-16">
+<span class="font-mono text-[10px] text-accent uppercase tracking-widest block mb-6">Facility.Unit_04</span>
+<h3 class="text-3xl font-black uppercase tracking-tighter mb-6">Чистовая сборка</h3>
+<p class="text-sm text-black/50 leading-relaxed max-w-xs font-mono">Специализированный цех для финального монтажа. Ювелирная подгонка деталей перед отправкой.</p>
+</div>
+<span class="material-symbols-outlined text-accent/40 text-4xl group-hover:scale-125 group-hover:text-accent transition-all duration-500">build</span>
+</div>
+<div class="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+<div class="mb-16">
+<span class="font-mono text-[10px] text-accent uppercase tracking-widest block mb-6">Network.Global</span>
+<h3 class="text-3xl font-black uppercase tracking-tighter mb-6">Глобальный Альянс</h3>
+<p class="text-sm text-black/50 leading-relaxed max-w-xs font-mono">Сотрудничество с 12+ мировыми партнерами позволяет реализовывать проекты любой сложности.</p>
+</div>
+<span class="material-symbols-outlined text-accent/40 text-4xl group-hover:scale-125 group-hover:text-accent transition-all duration-500">public</span>
+</div>
+<div class="bg-deep text-white p-12 border border-accent flex flex-col justify-between group overflow-hidden relative shadow-[0_0_40px_rgba(191,163,126,0.2)]">
+<div class="relative z-10">
+<h3 class="text-5xl font-black uppercase tracking-tighter mb-8 leading-none">100% Контроль</h3>
+<p class="text-sm text-white/50 leading-relaxed mb-12 max-w-xs font-mono uppercase">Независимо от места производства, мы гарантируем контроль каждого этапа.</p>
+</div>
+<div class="relative z-10">
+<button class="w-full py-5 border border-accent text-accent font-mono text-[10px] uppercase tracking-widest hover:bg-accent hover:text-deep transition-all duration-300 shadow-[0_0_15px_rgba(191,163,126,0.3)]">Request Production Specs</button>
+</div>
+<div class="absolute inset-0 bg-accent/10 opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-48 px-6 bg-deep overflow-hidden reveal-on-scroll">
+<div class="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
+<span class="text-[40vw] font-black leading-none uppercase select-none">MF</span>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto text-center">
+<span class="font-mono text-xs text-accent uppercase tracking-widest block mb-12">Final Synthesis</span>
+<h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-tight mb-16">
+              Каждый болт, каждый расчет ветра — это акт любви к искусству.
+            </h2>
+<div class="flex flex-col items-center gap-8">
+<div class="w-[1px] h-24 bg-accent shadow-[0_0_10px_#BFA37E]"></div>
+<p class="text-xl text-white/40 max-w-lg leading-relaxed italic">
+                    «Мы верим, что монументальность создается не только размером, но и точностью. Наша миссия — делать смелые мечты осязаемыми».
+                </p>
+<div class="mt-8 font-mono text-[10px] uppercase tracking-widest text-accent">Philosophy of monumforma</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-deep border-t border-white/5 pt-24 pb-12 px-6">
+<div class="max-w-[1800px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+<div class="space-y-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-accent/20 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-accent text-xl">architecture</span>
+</div>
+<span class="text-xl font-black tracking-tighter lowercase">monumforma</span>
+</div>
+<p class="text-xs text-white/40 uppercase tracking-widest leading-loose font-mono">
+                    Est. 2008 / Синтез эстетики и строгой инженерии. Мы создаем будущее через призму точных вычислений.
+                </p>
+</div>
+<div class="space-y-8">
+<h5 class="font-mono text-[10px] text-accent uppercase tracking-widest">Navigation</h5>
+<ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-white/60">
+<li><a class="hover:text-accent transition-colors" href="#">Projects</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Concept</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Engineering</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Facility</a></li>
+</ul>
+</div>
+<div class="space-y-8">
+<h5 class="font-mono text-[10px] text-accent uppercase tracking-widest">Locations</h5>
+<ul class="space-y-4 text-[10px] font-mono uppercase tracking-wider text-white/40">
+<li>HQ: Zurich, Switzerland</li>
+<li>FAB: Almaty, Kazakhstan</li>
+<li>R&amp;D: Global Network</li>
+</ul>
+</div>
+<div class="space-y-8">
+<h5 class="font-mono text-[10px] text-accent uppercase tracking-widest">Connect</h5>
+<div class="flex gap-4">
+<a class="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-deep transition-all" href="#">FB</a>
+<a class="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-deep transition-all" href="#">IG</a>
+<a class="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-deep transition-all" href="#">LI</a>
+</div>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-8 items-center font-mono text-[9px] text-white/20 uppercase tracking-[0.3em]">
+<span>© 2024 monumforma. All structural systems nominal.</span>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="#">Privacy</a>
+<a class="hover:text-white transition-colors" href="#">Terms</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

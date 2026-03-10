@@ -1,335 +1,396 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function Company() {
-  useEffect(() => {
-    // Dark mode logic
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  const teamMembers = [
-    {
-      role: "Ведущий Архитектор",
-      name: "Анна С.",
-      desc: "Специалист по параметрическому моделированию и сложным геометриям.",
-    },
-    {
-      role: "Главный Инженер",
-      name: "Михаил К.",
-      desc: "Эксперт в области конструкционных расчетов и материаловедения.",
-    },
-    {
-      role: "Дизайнер Среды",
-      name: "Елена В.",
-      desc: "Создает концепции интеграции арт-объектов в городские пространства.",
-    },
-  ];
-
   return (
     <div className="bg-[#F9F9F7] dark:bg-[#0F0F0F] text-[#0A0A0A] dark:text-[#F0F0F0] font-['DM_Sans'] transition-colors duration-300 min-h-screen">
       <style>{`
         body { font-feature-settings: "ss01", "ss02", "cv01", "cv02"; }
+        .swiss-grid { background-image: radial-gradient(circle, #2d2a26 1px, transparent 1px); background-size: 40px 40px; }
+        .dark .swiss-grid { background-image: radial-gradient(circle, #2d2a26 1px, transparent 1px); }
+        :not(.dark) .swiss-grid { background-image: radial-gradient(circle, #e5e5e5 1px, transparent 1px); }
       `}</style>
 
-      {/* Header Section */}
-      <header className="pt-32 pb-12 px-6 max-w-[1440px] mx-auto border-b border-[#E5E5E5] dark:border-[#404040]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-          <div className="lg:col-span-8">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-['Syne'] font-bold tracking-tighter leading-[0.9] mb-6">
-              <span className="text-[#D4AF37] italic">О КОМПАНИИ</span>
-            </h1>
-          </div>
-          <div className="lg:col-span-4 flex flex-col gap-4 font-['Space_Mono'] text-sm text-[#666666] dark:text-[#999999] border-l border-[#E5E5E5] dark:border-[#404040] pl-6">
-            <p>РАЗДЕЛ РАССКАЗЫВАЕТ О КОМПАНИИ, КОМАНДЕ И ИСТОРИИ РАЗВИТИЯ</p>
-            <p className="mt-4">
-              Мы создаем не просто объекты, а новые смыслы в пространстве,
-              объединяя искусство, технологии и инженерию.
-            </p>
-          </div>
-        </div>
-      </header>
+      {/* Header Section (Existing) */}
 
-      <main className="max-w-[1440px] mx-auto pb-20">
-        {/* 5.1 About */}
-        <section className="px-6 py-16 border-b border-[#E5E5E5] dark:border-[#404040]">
-          <div className="max-w-4xl">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 font-['Syne']">
-              О компании
-            </h2>
-            <p className="font-['DM_Sans'] text-lg md:text-xl text-[#666666] dark:text-[#999999] leading-relaxed mb-8">
-              Студия monumforma занимается проектированием и производством
-              монументальных архитектурных форм, арт-объектов и кинетических
-              инсталляций. Мы работаем на стыке искусства и высоких технологий,
-              превращая смелые идеи в физическую реальность.
+      <main className="pt-0">
+        {/* Hero Section from Source */}
+        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-[#F9F9F7] dark:bg-[#12100d] text-[#0A0A0A] dark:text-[#F9F9F7]">
+          <div className="absolute inset-0 z-0 opacity-40">
+            <div
+              className="w-full h-full bg-slate-200 dark:bg-slate-800"
+              data-alt="Dark abstract architectural video background loop"
+            ></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#F9F9F7]/20 via-[#F9F9F7]/60 to-[#F9F9F7] dark:from-[#12100d]/20 dark:via-[#12100d]/60 dark:to-[#12100d]"></div>
+          </div>
+          <div className="relative z-10 text-center px-6 max-w-4xl">
+            <span className="font-mono text-[#bca180] text-sm uppercase tracking-[0.3em] mb-6 block">
+              Est. 2012
+            </span>
+            <h1 className="text-4xl md:text-8xl font-display font-black mb-8 tracking-tighter leading-none text-[#0A0A0A] dark:text-[#F9F9F7]">
+              АРХИТЕКТУРНЫЙ
+              <br />
+              МАНИФЕСТ
+            </h1>
+            <p className="text-lg md:text-xl text-[#0A0A0A]/60 dark:text-[#F9F9F7]/60 max-w-2xl mx-auto font-light leading-relaxed font-['DM_Sans']">
+              Строгость формы, технологическое совершенство и художественная
+              интуиция. Мы создаем пространство, которое диктует новые смыслы.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <div className="p-6 bg-[#FFFFFF] dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#404040]">
-                <h3 className="font-['Space_Mono'] text-[#D4AF37] text-sm uppercase mb-4">
-                  Философия
+          </div>
+        </section>
+
+        {/* Evolution Timeline */}
+        <section className="py-32 px-6 bg-[#F9F9F7] dark:bg-[#12100d] text-[#0A0A0A] dark:text-[#F9F9F7] overflow-hidden transition-colors duration-300">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-1  items-center">
+            <div className="mb-20">
+              <span className="font-mono text-[#bca180] text-xs uppercase mb-2 block">
+                История развития
+              </span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-[#0A0A0A] dark:text-[#F9F9F7]">
+                ХРОНОЛОГИЯ
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10">
+              {/* Year Item */}
+              <div className="bg-[#F9F9F7] dark:bg-[#12100d] p-10 hover:bg-[#bca180]/10 dark:hover:bg-[#bca180]/5 transition-colors group cursor-default">
+                <span className="font-mono text-[#bca180] text-sm mb-12 block">
+                  2012 — 2014
+                </span>
+                <h3 className="text-2xl font-display font-bold mb-4 text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Основание
                 </h3>
-                <p className="text-sm">
-                  Форма следует за движением. Мы верим, что статика может быть
-                  динамичной, а тяжелые материалы — визуально легкими.
+                <p className="text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm leading-relaxed mb-8 font-display">
+                  Запуск экспериментальной лаборатории в Милане. Первый проект
+                  частной виллы «Forma 01».
                 </p>
+                <div className="w-full h-1 bg-black/5 dark:bg-white/5 overflow-hidden">
+                  <div className="w-0 group-hover:w-full h-full bg-[#bca180] transition-all duration-700"></div>
+                </div>
               </div>
-              <div className="p-6 bg-[#FFFFFF] dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#404040]">
-                <h3 className="font-['Space_Mono'] text-[#D4AF37] text-sm uppercase mb-4">
+              <div className="bg-[#F9F9F7] dark:bg-[#12100d] p-10 hover:bg-[#bca180]/10 dark:hover:bg-[#bca180]/5 transition-colors group cursor-default">
+                <span className="font-mono text-[#bca180] text-sm mb-12 block">
+                  2015 — 2018
+                </span>
+                <h3 className="text-2xl font-display font-bold mb-4 text-[#0A0A0A] dark:text-[#F9F9F7]">
                   Масштаб
                 </h3>
-                <p className="text-sm">
-                  От камерных интерьерных скульптур до многометровых городских
-                  доминант, изменяющих облик района.
+                <p className="text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm leading-relaxed mb-8 font-display">
+                  Переход к проектированию общественных пространств. Победа в
+                  конкурсе на музей в Берлине.
                 </p>
+                <div className="w-full h-1 bg-black/5 dark:bg-white/5 overflow-hidden">
+                  <div className="w-0 group-hover:w-full h-full bg-[#bca180] transition-all duration-700"></div>
+                </div>
               </div>
-              <div className="p-6 bg-[#FFFFFF] dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#404040]">
-                <h3 className="font-['Space_Mono'] text-[#D4AF37] text-sm uppercase mb-4">
+              <div className="bg-[#F9F9F7] dark:bg-[#12100d] p-10 hover:bg-[#bca180]/10 dark:hover:bg-[#bca180]/5 transition-colors group cursor-default">
+                <span className="font-mono text-[#bca180] text-sm mb-12 block">
+                  2019 — 2021
+                </span>
+                <h3 className="text-2xl font-display font-bold mb-4 text-[#0A0A0A] dark:text-[#F9F9F7]">
                   Технологии
                 </h3>
-                <p className="text-sm">
-                  Параметрическое проектирование, роботизированное производство
-                  и интеграция умных систем управления светом.
+                <p className="text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm leading-relaxed mb-8 font-display">
+                  Интеграция BIM-моделирования и параметрического дизайна.
+                  Открытие офиса в Москве.
                 </p>
+                <div className="w-full h-1 bg-black/5 dark:bg-white/5 overflow-hidden">
+                  <div className="w-0 group-hover:w-full h-full bg-[#bca180] transition-all duration-700"></div>
+                </div>
+              </div>
+              <div className="bg-[#F9F9F7] dark:bg-[#12100d] p-10 hover:bg-[#bca180]/10 dark:hover:bg-[#bca180]/5 transition-colors group cursor-default">
+                <span className="font-mono text-[#bca180] text-sm mb-12 block">
+                  2022 — NOW
+                </span>
+                <h3 className="text-2xl font-display font-bold mb-4 text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Эволюция
+                </h3>
+                <p className="text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm leading-relaxed mb-8 font-display">
+                  Разработка концепции «Живой архитектуры». Новые горизонты в
+                  устойчивом строительстве.
+                </p>
+                <div className="w-full h-1 bg-black/5 dark:bg-white/5 overflow-hidden">
+                  <div className="w-0 group-hover:w-full h-full bg-[#bca180] transition-all duration-700"></div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 5.2 Team */}
-        <section className="px-6 py-16 border-b border-[#E5E5E5] dark:border-[#404040]">
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-['Syne']">
-              Команда
-            </h2>
-            <p className="font-['Space_Mono'] text-sm md:text-base text-[#666666] dark:text-[#999999] max-w-2xl">
-              Архитекторы, инженеры и дизайнеры, объединенные страстью к
-              инновациям.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="group relative bg-[#FFFFFF] dark:bg-[#1A1A1A] border border-[#E5E5E5] dark:border-[#404040] overflow-hidden"
-              >
-                <div className="aspect-[3/4] bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
-                  {/* Placeholder for team member photo - using a generic architectural pattern or abstract image if no real photo available */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800 opacity-50"></div>
-                  <div className="absolute inset-0 flex items-center justify-center text-[#D4AF37] opacity-20 font-['Syne'] text-9xl font-bold">
-                    {index + 1}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <span className="font-['Space_Mono'] text-xs text-[#D4AF37] uppercase tracking-widest block mb-2">
-                    {member.role}
-                  </span>
-                  <h3 className="text-xl font-bold mb-2 font-['Syne']">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-[#666666] dark:text-[#999999]">
-                    {member.desc}
-                  </p>
-                </div>
+        {/* Principal Investigator */}
+        <section className="py-32 px-6 bg-[#F9F9F7] dark:bg-[#12100d] text-[#0A0A0A] dark:text-[#F9F9F7] overflow-hidden transition-colors duration-300">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="relative">
+              <div className="aspect-[4/5] bg-neutral-200 dark:bg-neutral-900 overflow-hidden rounded-lg">
+                <img
+                  className="w-full h-full object-cover grayscale contrast-125"
+                  data-alt="Black and white portrait of Konstantin Burtsev"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaDxSLSSq6ERigHAo0kAnW5lMr6mBkxT864v38nlxBY_61pKtMHKRBo4Lw-3QY_VPqWyn7mNY9VkRoV3o-pfeMoTqUlEtSzd57QoRr6MKQQGrdwvjPYyGxqJMYkJPlVQm3uncdduzTolyfX4XDPX3r1GXMA2M2HaeVppSKnweLiGJJoi5362XlCK-dbtmoS94RxTYGzuvK_QFr62inWloaxPLhUL70lVfmihLEBL_4gFLjcsyq4c8Nvxt4Y0rfDbZ8tmieRqtequr5"
+                  alt="Konstantin Burtsev"
+                />
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 5.3 Founder */}
-        <section className="px-6 py-16 border-b border-[#E5E5E5] dark:border-[#404040]">
-          <h2 className="text-3xl md:text-5xl font-bold mb-12 font-['Syne']">
-            Основатель
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="relative aspect-[3/4] md:aspect-square overflow-hidden bg-gray-200 dark:bg-gray-800 group border border-[#E5E5E5] dark:border-[#404040]">
-              <img
-                alt="Портрет Константина Бурцева"
-                className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 opacity-90 hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJGFDaDoj7am4uTuSFXh5HnUc7ZjUolejNdloncnvkeY9q3rd0oXmHhhbmVo8L1bri_9jD-pFX0VfTnyWJrwHbC9fEXPt8bmDIIa4rX1hIEZUxil3EJZl9CYT-xzxYtP0mIrEpFeM9zc8sGWP0aCqscdnv6QSVAAZ8NL8cHEQhSXzuS3MAXxRUNlW0U7QQ0Q51c_t1_A3upkS5L-Ad4yi680RjSnU6Rfm1NV0Siit3OOM2Xnk2Zph3sh03dSEnvZ4yhLAL-4wJQrzI"
-              />
-              <div className="absolute bottom-4 left-4 font-['Space_Mono'] text-xs bg-[#F9F9F7] dark:bg-[#0F0F0F] px-2 py-1 border border-[#E5E5E5] dark:border-[#404040]">
-                Константин Бурцев, Основатель
+              <div className="absolute -bottom-10 -right-10 bg-[#bca180] p-12 hidden lg:block">
+                <span className="font-mono text-[#12100d] text-6xl font-black">
+                  KB.
+                </span>
               </div>
             </div>
             <div>
-              <span className="material-symbols-outlined text-5xl text-[#D4AF37] mb-8 opacity-50">
-                format_quote
+              <span className="font-mono text-[#bca180] text-sm mb-6 block uppercase tracking-widest">
+                Основатель и главный архитектор
               </span>
-              <blockquote className="font-['Syne'] text-3xl md:text-4xl italic leading-tight text-[#0A0A0A] dark:text-[#F0F0F0] mb-8">
-                "Архитектура жива, когда она отражает человека. Она перестает
-                быть фоном и становится участником жизни."
-              </blockquote>
-              <p className="font-['Space_Mono'] text-sm text-[#666666] dark:text-[#999999] uppercase tracking-wide border-l-2 border-[#D4AF37] pl-4">
-                Видение студии — создавать объекты, которые не просто занимают
-                место, а формируют атмосферу и вызывают эмоции.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 5.4 Approach */}
-        <section className="px-6 py-16 border-b border-[#E5E5E5] dark:border-[#404040] bg-[#FFFFFF] dark:bg-[#161616]">
-          <div className="max-w-4xl mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-['Syne']">
-              Подход к проектам
-            </h2>
-            <p className="font-['Space_Mono'] text-sm md:text-base text-[#666666] dark:text-[#999999]">
-              Внимание к пространству, соединение архитектуры и технологий,
-              работа с материалами.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#E5E5E5] dark:bg-[#404040] border border-[#E5E5E5] dark:border-[#404040]">
-            <div className="bg-[#F9F9F7] dark:bg-[#0F0F0F] p-8 md:p-12 hover:bg-white dark:hover:bg-[#1A1A1A] transition-colors duration-300">
-              <h4 className="font-['Space_Mono'] text-xs uppercase text-[#D4AF37] mb-4">
-                01. Дизайн
-              </h4>
-              <h3 className="font-['Syne'] text-2xl mb-4 font-bold">
-                Вычислительная логика
-              </h3>
-              <p className="text-[#666666] dark:text-[#999999] font-light">
-                Использование алгоритмов для создания форм, оптимизирующих
-                использование материалов и структурную целостность.
-              </p>
-            </div>
-            <div className="bg-[#F9F9F7] dark:bg-[#0F0F0F] p-8 md:p-12 hover:bg-white dark:hover:bg-[#1A1A1A] transition-colors duration-300">
-              <h4 className="font-['Space_Mono'] text-xs uppercase text-[#D4AF37] mb-4">
-                02. Производство
-              </h4>
-              <h3 className="font-['Syne'] text-2xl mb-4 font-bold">
-                Точное проектирование
-              </h3>
-              <p className="text-[#666666] dark:text-[#999999] font-light">
-                ЧПУ фрезеровка, лазерная резка и роботизированная сварка
-                гарантируют соответствие цифрового двойника реальности.
-              </p>
-            </div>
-            <div className="bg-[#F9F9F7] dark:bg-[#0F0F0F] p-8 md:p-12 hover:bg-white dark:hover:bg-[#1A1A1A] transition-colors duration-300">
-              <h4 className="font-['Space_Mono'] text-xs uppercase text-[#D4AF37] mb-4">
-                03. Монтаж
-              </h4>
-              <h3 className="font-['Syne'] text-2xl mb-4 font-bold">
-                Глобальная логистика
-              </h3>
-              <p className="text-[#666666] dark:text-[#999999] font-light">
-                От городских площадей до частных парков. Мы берем на себя
-                структурные расчеты и профессиональную сборку.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 5.5 Evolution */}
-        <section className="px-6 py-16 border-b border-[#E5E5E5] dark:border-[#404040]">
-          <h2 className="text-3xl md:text-5xl font-bold mb-12 font-['Syne']">
-            Эволюция
-          </h2>
-          <div className="space-y-12">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 border-l border-[#D4AF37] pl-8 ml-4 md:ml-0">
-              <div className="md:col-span-3">
-                <span className="font-['Space_Mono'] text-4xl font-bold text-[#D4AF37]">
-                  2009
-                </span>
-                <p className="text-sm text-[#666666] dark:text-[#999999] mt-2 uppercase tracking-widest">
-                  Эра bti.one
+              <h2 className="text-3xl md:text-5xl font-display font-black mb-10 tracking-tighter text-[#0A0A0A] dark:text-[#F9F9F7]">
+                КОНСТАНТИН БУРЦЕВ
+              </h2>
+              <div className="space-y-6 text-[#0A0A0A]/70 dark:text-[#F9F9F7]/70 text-lg leading-relaxed font-light font-['DM_Sans']">
+                <p>
+                  «Архитектура — это не просто стены. Это способ управления
+                  пространством и эмоциями людей. Мы не строим здания, мы
+                  создаем системы взаимодействия материи и света».
+                </p>
+                <p>
+                  Обладатель международных премий, выпускник Миланского
+                  политехнического университета, Константин внедряет принципы
+                  швейцарской строгости в каждый проект студии.
                 </p>
               </div>
-              <div className="md:col-span-9">
-                <h3 className="text-xl font-bold mb-2">Мультимедиа и Свет</h3>
-                <p className="text-[#666666] dark:text-[#999999]">
-                  Эксперименты с видеомэппингом, световыми инсталляциями и
-                  временными пространственными интервенциями. Материал был
-                  нематериальным: фотоны, звуковые волны и моменты времени.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 border-l border-[#D4AF37] pl-8 ml-4 md:ml-0">
-              <div className="md:col-span-3">
-                <span className="font-['Space_Mono'] text-4xl font-bold text-[#D4AF37]">
-                  2014
-                </span>
-                <p className="text-sm text-[#666666] dark:text-[#999999] mt-2 uppercase tracking-widest">
-                  Кортен и Бетон
-                </p>
-              </div>
-              <div className="md:col-span-9">
-                <h3 className="text-xl font-bold mb-2">
-                  Поворот к постоянству
-                </h3>
-                <p className="text-[#666666] dark:text-[#999999]">
-                  Цифровые алгоритмы переведены в физическую материю. Работа с
-                  кортеновской сталью, сложные геометрии в самонесущих
-                  структурах.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 border-l border-[#D4AF37] pl-8 ml-4 md:ml-0">
-              <div className="md:col-span-3">
-                <span className="font-['Space_Mono'] text-4xl font-bold text-[#D4AF37]">
-                  2020
-                </span>
-                <p className="text-sm text-[#666666] dark:text-[#999999] mt-2 uppercase tracking-widest">
-                  monumforma
-                </p>
-              </div>
-              <div className="md:col-span-9">
-                <h3 className="text-xl font-bold mb-2">
-                  Сдвиг в сторону материалов
-                </h3>
-                <p className="text-[#666666] dark:text-[#999999]">
-                  Ребрендинг. Фокус на зеркально полированной нержавеющей стали
-                  и полупрозрачных стеклянных структурах. Стык
-                  высокотехнологичного производства и вычислительного дизайна.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 5.6 Clients */}
-        <section className="px-6 py-16">
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-['Syne']">
-              Клиенты и партнёры
-            </h2>
-            <p className="font-['Space_Mono'] text-sm md:text-base text-[#666666] dark:text-[#999999] max-w-2xl">
-              Девелоперы, города, коммерческие пространства.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-[#E5E5E5] dark:bg-[#404040] border border-[#E5E5E5] dark:border-[#404040]">
-            {[
-              "UR",
-              "NP",
-              "AT",
-              "MC",
-              "CG",
-              "UP",
-              "RC",
-              "HF",
-              "PT",
-              "UC",
-              "CM",
-              "LD",
-            ].map((code, i) => (
-              <div
-                key={i}
-                className="bg-[#F9F9F7] dark:bg-[#0F0F0F] p-6 min-h-[140px] flex flex-col justify-between hover:bg-white dark:hover:bg-[#1A1A1A] transition-colors"
-              >
-                <div className="h-10 w-10 border border-[#D4AF37] flex items-center justify-center font-['Space_Mono'] text-xs text-[#D4AF37]">
-                  {code}
+              <div className="mt-12 flex gap-8">
+                <div>
+                  <p className="font-mono text-[#bca180] text-2xl font-bold">
+                    15+
+                  </p>
+                  <p className="text-xs text-[#0A0A0A]/40 dark:text-[#F9F9F7]/40 uppercase mt-1">
+                    Лет практики
+                  </p>
                 </div>
-                <p className="font-['Space_Mono'] text-[11px] tracking-widest uppercase text-[#666666] dark:text-[#888888]">
-                  Partner {code}
+                <div>
+                  <p className="font-mono text-[#bca180] text-2xl font-bold">
+                    40+
+                  </p>
+                  <p className="text-xs text-[#0A0A0A]/40 dark:text-[#F9F9F7]/40 uppercase mt-1">
+                    Проектов
+                  </p>
+                </div>
+                <div>
+                  <p className="font-mono text-[#bca180] text-2xl font-bold">
+                    12
+                  </p>
+                  <p className="text-xs text-[#0A0A0A]/40 dark:text-[#F9F9F7]/40 uppercase mt-1">
+                    Наград
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-32 px-6 bg-[#F0F0F0] dark:bg-[#181614] text-[#0A0A0A] dark:text-[#F9F9F7] transition-colors duration-300">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-20 gap-8 text-center md:text-left">
+              <div>
+                <span className="font-mono text-[#bca180] text-xs uppercase mb-2 block">
+                  Экспертиза
+                </span>
+                <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  КОМАНДА
+                </h2>
+              </div>
+              <p className="max-w-md text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm font-['DM_Sans']">
+                Наш коллектив объединяет архитекторов, инженеров и художников,
+                работающих на стыке дисциплин.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+              {/* Member */}
+              <div className="group">
+                <div className="aspect-square bg-neutral-200 dark:bg-neutral-800 mb-6 overflow-hidden rounded-lg">
+                  <img
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    data-alt="Portrait of Elena Markova, Lead Architect"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWZpVW1Va2ewh67BdBNVYCWwHcMHviqMQcCwufk1oq5M-Zim9EXf5ippUJUY-Uo2SYrS7V6Mo255j46ED9MrlDCUNGHVmXjFkh0To0nP6ixqawla50E2VG5_bE_71cegyz7WfxFXYN7XbxymzomVk7Lue_J8Qo_vz2NKR8cYdN-qnHRDc7UEPzT-ugKWnJHuMTZn1tRx_0VFRbRxIW5aTZO3v6pYB2_t_tc0R85Wgpj-dKgbPH6n9KHusVuzbcj7cg_ans5Ib9EQNF"
+                    alt="Elena Markova"
+                  />
+                </div>
+                <h4 className="text-xl font-display font-bold mb-1 text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Елена Маркова
+                </h4>
+                <p className="font-mono text-xs text-[#bca180] uppercase">
+                  Ведущий архитектор
                 </p>
               </div>
-            ))}
+              {/* Member */}
+              <div className="group">
+                <div className="aspect-square bg-neutral-200 dark:bg-neutral-800 mb-6 overflow-hidden rounded-lg">
+                  <img
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    data-alt="Portrait of Dmitry Volkov, BIM Engineer"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoRfOQdVNxkik9Z5f6kH6ERL7sZJB6jX7tZOCjMQFieUZiVjptTIGM1bgqh9esW8aI8aZFc__askqBuvUtgF_2dMTl51QL9J0ST1rqHDi6Htf7dZPA42ar7131wFvI8cuDxDwFFkcR0IXYLGibtq7PfUfXPjJxsNbtP0kN0teBYVoH678JhaqdIntF3lYt7EhneGX9sDa5AZNet6psJSBZG99CQp3bp3VtEtbE5pxAmQKbIF4NM84ptmXGH5qSV2TqcUtzBEMFwPUK"
+                    alt="Dmitry Volkov"
+                  />
+                </div>
+                <h4 className="text-xl font-display font-bold mb-1 text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Дмитрий Волков
+                </h4>
+                <p className="font-mono text-xs text-[#bca180] uppercase">
+                  BIM Инженер
+                </p>
+              </div>
+              {/* Member */}
+              <div className="group">
+                <div className="aspect-square bg-neutral-200 dark:bg-neutral-800 mb-6 overflow-hidden rounded-lg">
+                  <img
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    data-alt="Portrait of Anna Belova, Designer"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6Cql6d4Dj05jcAVjCoXAm7GJ7dP_UoNPef9sbqbFGY2vGeiYh6V0j0rhqELiCofK40qH4WF3cO4L2JFetEHpqR-sgXM-bHdDhjRhLXZLqWXiiGXP_IlCmfwAxdH0plZX_CKoBtMYL8Ay_jTV4Onm3_vdSvv6wRI_jp-SE9CG-MPvcRprcemjPfboCR6j0buF6ZCmai7I38obAj-f-KdmyAxum0w0OXf4Gy3WXq7yt31GGDTJCgWFurgPeUDYP4pTrO145vj9Codzs"
+                    alt="Anna Belova"
+                  />
+                </div>
+                <h4 className="text-xl font-display font-bold mb-1 text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Анна Белова
+                </h4>
+                <p className="font-mono text-xs text-[#bca180] uppercase">
+                  Дизайнер среды
+                </p>
+              </div>
+              {/* Member */}
+              <div className="group">
+                <div className="aspect-square bg-neutral-200 dark:bg-neutral-800 mb-6 overflow-hidden rounded-lg">
+                  <img
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    data-alt="Portrait of Igor Sokolov, Project Manager"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR1dxAtZUUtSfpxrJEkl2ErfOgSIhAhBDb9tTcHrCatQhvaviUmB8Kaj7DUrShdbwS7Q6qn0esowKQ-b-Z2CyaFZz-DOOLx4fp20XcEWUukfub-GdNFNP0kmKrAVbS5h7KI5UxH1FGbLwzp7bn0XMOszRr4C3jAS5JTjqvL_IARmBdQcZN9qZTKPzQYb1Q3w53t7QbldpKXO24dDWyD3l27eqe1t5qnmGictpAbFZduG2KN7JbJvkzvXFK6ANRvuZwIliT7GLb1cnL"
+                    alt="Igor Sokolov"
+                  />
+                </div>
+                <h4 className="text-xl font-display font-bold mb-1 text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Игорь Соколов
+                </h4>
+                <p className="font-mono text-xs text-[#bca180] uppercase">
+                  Project Manager
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Geometry of Feeling Philosophy */}
+        <section className="py-32 px-6 bg-[#F9F9F7] dark:bg-[#12100d] text-[#0A0A0A] dark:text-[#F9F9F7] relative overflow-hidden transition-colors duration-300">
+          <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none">
+            <div className="w-[800px] h-[800px] border border-[#bca180]/40 rounded-full flex items-center justify-center">
+              <div className="w-[600px] h-[600px] border border-[#bca180]/30 rounded-full flex items-center justify-center">
+                <div className="w-[400px] h-[400px] border border-[#bca180]/20 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+          <div className="max-w-7xl mx-auto relative z-10 text-center">
+            <span className="font-mono text-[#bca180] text-xs uppercase mb-6 block tracking-[0.4em]">
+              Philosophy
+            </span>
+            <h2 className="text-3xl md:text-7xl font-display font-black mb-16 tracking-tighter text-[#0A0A0A] dark:text-[#F9F9F7]">
+              ГЕОМЕТРИЯ ЧУВСТВ
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+              <div className="p-8 border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02]">
+                <span className="font-mono text-[#bca180] text-4xl block mb-6">
+                  50%
+                </span>
+                <h4 className="text-xl font-display font-bold mb-4 uppercase text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Строгость
+                </h4>
+                <p className="text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm leading-relaxed font-['DM_Sans']">
+                  Сетчатые структуры, четкая иерархия и математическая
+                  выверенность каждого элемента конструкции.
+                </p>
+              </div>
+              <div className="p-8 border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02]">
+                <span className="font-mono text-[#bca180] text-4xl block mb-6">
+                  30%
+                </span>
+                <h4 className="text-xl font-display font-bold mb-4 uppercase text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Технологии
+                </h4>
+                <p className="text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm leading-relaxed font-['DM_Sans']">
+                  Параметрическое моделирование, инновационные материалы и
+                  алгоритмический подход к дизайну.
+                </p>
+              </div>
+              <div className="p-8 border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02]">
+                <span className="font-mono text-[#bca180] text-4xl block mb-6">
+                  20%
+                </span>
+                <h4 className="text-xl font-display font-bold mb-4 uppercase text-[#0A0A0A] dark:text-[#F9F9F7]">
+                  Текучесть
+                </h4>
+                <p className="text-[#0A0A0A]/50 dark:text-[#F9F9F7]/50 text-sm leading-relaxed font-['DM_Sans']">
+                  Художественная интуиция, органические формы и работа с
+                  эмоциональным восприятием света.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Partners & CTA */}
+        <section className="py-32 px-6 bg-[#F9F9F7] dark:bg-[#12100d] text-[#0A0A0A] dark:text-[#F9F9F7] border-t border-black/5 dark:border-white/5 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-16">
+              <span className="font-mono text-[#bca180] text-xs uppercase mb-2 block">
+                Сотрудничество
+              </span>
+              <h2 className="text-3xl font-display font-bold tracking-tight text-[#0A0A0A] dark:text-[#F9F9F7]">
+                НАШИ ПАРТНЕРЫ
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10 mb-32">
+              <div className="h-32 bg-[#F9F9F7] dark:bg-[#12100d] flex items-center justify-center p-8 grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                <div
+                  className="w-full h-8 bg-black/10 dark:bg-[#F9F9F7]/10"
+                  data-alt="Partner logo placeholder"
+                ></div>
+              </div>
+              <div className="h-32 bg-[#F9F9F7] dark:bg-[#12100d] flex items-center justify-center p-8 grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                <div
+                  className="w-full h-8 bg-black/10 dark:bg-[#F9F9F7]/10"
+                  data-alt="Partner logo placeholder"
+                ></div>
+              </div>
+              <div className="h-32 bg-[#F9F9F7] dark:bg-[#12100d] flex items-center justify-center p-8 grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                <div
+                  className="w-full h-8 bg-black/10 dark:bg-[#F9F9F7]/10"
+                  data-alt="Partner logo placeholder"
+                ></div>
+              </div>
+              <div className="h-32 bg-[#F9F9F7] dark:bg-[#12100d] flex items-center justify-center p-8 grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                <div
+                  className="w-full h-8 bg-black/10 dark:bg-[#F9F9F7]/10"
+                  data-alt="Partner logo placeholder"
+                ></div>
+              </div>
+              <div className="h-32 bg-[#F9F9F7] dark:bg-[#12100d] flex items-center justify-center p-8 grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                <div
+                  className="w-full h-8 bg-black/10 dark:bg-[#F9F9F7]/10"
+                  data-alt="Partner logo placeholder"
+                ></div>
+              </div>
+              <div className="h-32 bg-[#F9F9F7] dark:bg-[#12100d] flex items-center justify-center p-8 grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                <div
+                  className="w-full h-8 bg-black/10 dark:bg-[#F9F9F7]/10"
+                  data-alt="Partner logo placeholder"
+                ></div>
+              </div>
+            </div>
+            {/* Final CTA */}
+            <div className="bg-[#bca180] p-12 md:p-24 rounded-lg flex flex-col items-center text-center">
+              <h2 className="text-[#12100d] text-2xl md:text-6xl font-display font-black mb-8 tracking-tighter">
+                ГОТОВЫ НАЧАТЬ ПРОЕКТ?
+              </h2>
+              <p className="text-[#12100d]/80 text-lg max-w-xl mb-12 font-['DM_Sans']">
+                Обсудите вашу идею с нашими экспертами и получите
+                предварительное архитектурное видение.
+              </p>
+              <button className="px-12 py-5 bg-[#12100d] text-[#F9F9F7] font-black rounded-lg hover:bg-white hover:text-[#12100d] transition-all uppercase tracking-widest text-sm font-mono">
+                Оставить заявку
+              </button>
+            </div>
           </div>
         </section>
       </main>
