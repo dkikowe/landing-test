@@ -97,7 +97,7 @@ export default function ArchitecturalProcess() {
 
         <section className="py-32 px-6 bg-[#F9F9F7] text-[#0A0A0A] wireframe-bg reveal-on-scroll">
           <div className="max-w-[1800px] mx-auto grid lg:grid-cols-2 gap-24 items-start">
-            <div className="relative group sticky top-32">
+            <div className="relative group lg:sticky lg:top-32">
               <div className="absolute -top-4 -left-4 w-32 h-32 border-t-2 border-l-2 border-[#BFA37E]/30 group-hover:scale-110 transition-transform"></div>
               <img
                 alt="Generative Design"
@@ -268,12 +268,12 @@ export default function ArchitecturalProcess() {
         <section className="py-32 px-6 bg-[#F9F9F7] text-[#0A0A0A] reveal-on-scroll">
           <div className="max-w-[1800px] mx-auto">
             <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
-                <div className="mb-16">
-                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-6">
+              <div className="bg-white p-6 md:p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+                <div className="mb-8 md:mb-16">
+                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-3 md:mb-6">
                     Facility.Unit_01
                   </span>
-                  <h3 className="text-3xl font-black uppercase tracking-tighter mb-6">
+                  <h3 className="text-xl md:text-3xl font-black uppercase tracking-tighter mb-3 md:mb-6">
                     Металлообработка
                   </h3>
                   <p className="text-sm text-black/50 leading-relaxed max-w-xs font-['Space_Mono']">
@@ -281,16 +281,16 @@ export default function ArchitecturalProcess() {
                     цикл: сварка, полировка и сборка.
                   </p>
                 </div>
-                <span className="material-symbols-outlined text-[#BFA37E]/40 text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
+                <span className="material-symbols-outlined text-[#BFA37E]/40 text-3xl md:text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
                   precision_manufacturing
                 </span>
               </div>
-              <div className="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
-                <div className="mb-16">
-                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-6">
+              <div className="bg-white p-6 md:p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+                <div className="mb-8 md:mb-16">
+                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-3 md:mb-6">
                     Facility.Unit_02
                   </span>
-                  <h3 className="text-3xl font-black uppercase tracking-tighter mb-6">
+                  <h3 className="text-xl md:text-3xl font-black uppercase tracking-tighter mb-3 md:mb-6">
                     Композиты
                   </h3>
                   <p className="text-sm text-black/50 leading-relaxed max-w-xs font-['Space_Mono']">
@@ -298,16 +298,16 @@ export default function ArchitecturalProcess() {
                     Создание бесшовных органических форм.
                   </p>
                 </div>
-                <span className="material-symbols-outlined text-[#BFA37E]/40 text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
+                <span className="material-symbols-outlined text-[#BFA37E]/40 text-3xl md:text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
                   layers
                 </span>
               </div>
-              <div className="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
-                <div className="mb-16">
-                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-6">
+              <div className="bg-white p-6 md:p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+                <div className="mb-8 md:mb-16">
+                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-3 md:mb-6">
                     Facility.Unit_03
                   </span>
-                  <h3 className="text-3xl font-black uppercase tracking-tighter mb-6">
+                  <h3 className="text-xl md:text-3xl font-black uppercase tracking-tighter mb-3 md:mb-6">
                     Световые системы
                   </h3>
                   <p className="text-sm text-black/50 leading-relaxed max-w-xs font-['Space_Mono']">
@@ -315,18 +315,18 @@ export default function ArchitecturalProcess() {
                     интеллектуальных систем управления и мультимедиа.
                   </p>
                 </div>
-                <span className="material-symbols-outlined text-[#BFA37E]/40 text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
+                <span className="material-symbols-outlined text-[#BFA37E]/40 text-3xl md:text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
                   lightbulb
                 </span>
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
-                <div className="mb-16">
-                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-6">
+              <div className="bg-white p-6 md:p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+                <div className="mb-8 md:mb-16">
+                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-3 md:mb-6">
                     Facility.Unit_04
                   </span>
-                  <h3 className="text-3xl font-black uppercase tracking-tighter mb-6">
+                  <h3 className="text-xl md:text-3xl font-black uppercase tracking-tighter mb-3 md:mb-6">
                     Чистовая сборка
                   </h3>
                   <p className="text-sm text-black/50 leading-relaxed max-w-xs font-['Space_Mono']">
@@ -334,16 +334,16 @@ export default function ArchitecturalProcess() {
                     подгонка деталей перед отправкой.
                   </p>
                 </div>
-                <span className="material-symbols-outlined text-[#BFA37E]/40 text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
+                <span className="material-symbols-outlined text-[#BFA37E]/40 text-3xl md:text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
                   build
                 </span>
               </div>
-              <div className="bg-white p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
-                <div className="mb-16">
-                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-6">
+              <div className="bg-white p-6 md:p-12 border-accent-glow card-premium-hover transition-all duration-500 group relative">
+                <div className="mb-8 md:mb-16">
+                  <span className="font-['Space_Mono'] text-[10px] text-[#BFA37E] uppercase tracking-widest block mb-3 md:mb-6">
                     Network.Global
                   </span>
-                  <h3 className="text-3xl font-black uppercase tracking-tighter mb-6">
+                  <h3 className="text-xl md:text-3xl font-black uppercase tracking-tighter mb-3 md:mb-6">
                     Глобальный Альянс
                   </h3>
                   <p className="text-sm text-black/50 leading-relaxed max-w-xs font-['Space_Mono']">
@@ -351,16 +351,16 @@ export default function ArchitecturalProcess() {
                     реализовывать проекты любой сложности.
                   </p>
                 </div>
-                <span className="material-symbols-outlined text-[#BFA37E]/40 text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
+                <span className="material-symbols-outlined text-[#BFA37E]/40 text-3xl md:text-4xl group-hover:scale-125 group-hover:text-[#BFA37E] transition-all duration-500">
                   public
                 </span>
               </div>
-              <div className="bg-[#0A0A0A] text-white p-12 border border-[#BFA37E] flex flex-col justify-between group overflow-hidden relative shadow-[0_0_40px_rgba(191,163,126,0.2)]">
+              <div className="bg-[#0A0A0A] text-white p-6 md:p-12 border border-[#BFA37E] flex flex-col justify-between group overflow-hidden relative shadow-[0_0_40px_rgba(191,163,126,0.2)]">
                 <div className="relative z-10">
-                  <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-8 leading-none">
+                  <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tighter mb-6 md:mb-8 leading-none">
                     100% Контроль
                   </h3>
-                  <p className="text-sm text-white/50 leading-relaxed mb-12 max-w-xs font-['Space_Mono'] uppercase">
+                  <p className="text-sm text-white/50 leading-relaxed mb-8 md:mb-12 max-w-xs font-['Space_Mono'] uppercase">
                     Независимо от места производства, мы гарантируем контроль
                     каждого этапа.
                   </p>

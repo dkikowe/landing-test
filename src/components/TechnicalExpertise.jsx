@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export default function TechnicalExpertise() {
+  const { hash } = useLocation();
+
   useEffect(() => {
     // Dark mode logic
     if (
@@ -12,6 +16,27 @@ export default function TechnicalExpertise() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          const headerOffset = 120; // Height of header + padding
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }, 100); // Small delay to ensure rendering
+      }
+    } else {
+        window.scrollTo(0, 0);
+    }
+  }, [hash]);
 
   return (
     <div className="bg-[#F9F9F7] dark:bg-[#0A0A0A] font-display text-slate-900 dark:text-slate-100 selection:bg-[#BFA37E] selection:text-white transition-colors duration-300 min-h-screen">
@@ -97,7 +122,7 @@ export default function TechnicalExpertise() {
         </section>
         <section className="max-w-[1440px] mx-auto px-6 lg:px-20 mb-40">
           <div className="swiss-grid border-t border-[#BFA37E]/20 pt-10">
-            <div className="col-span-12 lg:col-span-4 mb-10 lg:mb-0">
+            <div className="col-span-12 lg:col-span-4 mb-10 lg:mb-0" id="architectural-objects">
               <h3 className="text-2xl md:text-3xl font-black mb-4 uppercase tracking-tight leading-none">Архитектурные<br/>арт-объекты</h3>
               <p className="font-mono text-[11px] text-[#BFA37E] mb-8 tracking-widest uppercase">ARCHITECTURAL ART / BRONZE / CORTEN / METALLURGY</p>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm mb-6">
@@ -194,7 +219,7 @@ export default function TechnicalExpertise() {
                   <span className="material-symbols-outlined text-7xl text-[#BFA37E] animate-pulse relative z-10">motion_mode</span>
                 </div>
               </div>
-              <div className="col-span-12 lg:col-span-5 pl-0 lg:pl-12">
+              <div className="col-span-12 lg:col-span-5 pl-0 lg:pl-12" id="media-architecture">
                 <span className="font-mono text-xs text-[#BFA37E] mb-2 block tracking-widest uppercase">02 // DIGITAL & MOTION</span>
                 <h3 className="text-3xl md:text-5xl font-black mb-8 uppercase leading-[0.9]">Медиа<br/>архитектура</h3>
                 <p className="text-sm text-slate-400 mb-8 max-w-md">
@@ -220,7 +245,7 @@ export default function TechnicalExpertise() {
         </section>
         <section className="max-w-[1440px] mx-auto px-6 lg:px-20 py-40">
           <div className="swiss-grid mb-20 items-end">
-            <div className="col-span-12 lg:col-span-6">
+            <div className="col-span-12 lg:col-span-6" id="light-spaces">
               <span className="font-mono text-xs text-[#BFA37E] mb-4 block tracking-[0.3em]">03 // ATMOSPHERE</span>
               <h3 className="text-4xl md:text-6xl font-black tracking-tight uppercase leading-[0.9]">Световые<br/>пространства</h3>
             </div>

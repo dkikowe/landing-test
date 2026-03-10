@@ -91,7 +91,7 @@ export default function Manifest() {
         {/* First Row: Two equal columns */}
         <div className="flex flex-col md:flex-row border-y border-primary/20">
           <Link
-            to="/projects"
+            to="/expertise#architectural-objects"
             className="relative flex-1 h-[60vh] md:h-[70vh] group overflow-hidden border-r border-primary/10 block"
           >
             <div
@@ -117,7 +117,7 @@ export default function Manifest() {
             </div>
           </Link>
           <Link
-            to="/expertise"
+            to="/expertise#media-architecture"
             className="relative flex-1 h-[60vh] md:h-[70vh] group overflow-hidden block"
           >
             <div
@@ -147,7 +147,7 @@ export default function Manifest() {
         {/* Second Row: Large block + Manifest */}
         <div className="flex flex-col md:flex-row border-b border-primary/20">
           <Link
-            to="/projects"
+            to="/expertise#light-spaces"
             className="relative md:w-2/3 h-[60vh] md:h-[60vh] group overflow-hidden border-r border-primary/10 block"
           >
             <div
