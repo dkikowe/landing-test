@@ -513,6 +513,523 @@ export default function TechnicalExpertise() {
           </div>
         </section>
       </main>
+
+      {/* Detailed Expertise Modals (from original HTML) */}
+      <div className="modal bg-[#050505] text-slate-300 overflow-y-auto" id="deep-dive-arch">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = "";
+            }}
+            className="fixed top-12 right-12 z-50 text-[#BFA37E] hover:text-white transition-colors"
+          >
+            <span className="material-symbols-outlined text-4xl">close</span>
+          </button>
+
+          <header className="mb-24 border-b border-white/5 pb-12">
+            <span className="font-mono text-xs text-[#BFA37E] mb-4 block tracking-[0.4em]">
+              EXPERT INSIGHT // 01
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">
+              Материальность и Монументальность
+            </h2>
+            <p className="max-w-2xl text-lg font-light leading-relaxed">
+              Мы рассматриваем архитектурные арт-объекты как симбиоз высокой инженерии и художественной
+              интуиции. Наша студия специализируется на работе с вечными материалами: бронзой, кортеновской
+              сталью и титаном, превращая их в смысловые доминанты современного пространства.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> Философия Металла
+              </h3>
+              <p className="mb-6">
+                В мире скоротечных трендов мы выбираем материалы, которые стареют благородно.{" "}
+                <strong>Художественное литье из бронзы</strong> позволяет нам добиваться бесшовности и
+                текучести форм, недоступных другим методам. Каждая отливка проходит многоступенчатый процесс
+                ручной доводки, где мастер чувствует микрорельеф поверхности, создавая уникальную тактильную
+                историю.
+              </p>
+              <p>
+                <strong>Кортеновская сталь (Corten)</strong> — наш выбор для масштабных городских
+                инсталляций. Ее естественная патина не только защищает металл, но и создает живой, меняющийся
+                во времени облик объекта, органично вписывая его в ландшафтную архитектуру.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> Инженерия Формы
+              </h3>
+              <p className="mb-6">
+                Создание знаковых скульптур требует не только таланта художника, но и точности инженера. Мы
+                используем передовое <strong>генеративное проектирование</strong> для оптимизации внутренних
+                силовых каркасов. Это позволяет создавать грациозные, кажущиеся невесомыми конструкции,
+                способные выдерживать колоссальные ветровые нагрузки.
+              </p>
+              <p>
+                Наша экспертиза включает в себя полный цикл: от разработки КМД до сложного логистического
+                планирования и шеф-монтажа. Мы работаем с ведущими металлургическими производствами,
+                обеспечивая уровень качества, соответствующий мировым стандартам <strong>Public Art</strong>.
+              </p>
+            </section>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[#BFA37E]" /> Gallery Extension
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3nLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNozrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbnu3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"
+                }}
+              />
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full font-mono text-[10px] uppercase text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 text-[#BFA37E]">
+                    <th className="py-4 px-2">Parameter</th>
+                    <th className="py-4 px-2">Specification</th>
+                    <th className="py-4 px-2">Notes</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-400">
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Weight Range</td>
+                    <td className="py-4 px-2">250kg - 12,000kg</td>
+                    <td className="py-4 px-2">Variable by scale</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Material Grade</td>
+                    <td className="py-4 px-2">CuSn12 Bronze / S355J2W Corten</td>
+                    <td className="py-4 px-2">Structural standards</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Tolerance</td>
+                    <td className="py-4 px-2">± 0.5mm</td>
+                    <td className="py-4 px-2">CNC &amp; Foundry precision</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="mt-24 bg-[#1A1A1A] p-12 border border-white/5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <span className="font-mono text-[#BFA37E] text-2xl block mb-2">500+</span>
+                <span className="text-[9px] uppercase tracking-widest text-slate-500">
+                  Тонн отлитого металла
+                </span>
+              </div>
+              <div className="text-center">
+                <span className="font-mono text-[#BFA37E] text-2xl block mb-2">0.1mm</span>
+                <span className="text-[9px] uppercase tracking-widest text-slate-500">
+                  Точность стыковки
+                </span>
+              </div>
+              <div className="text-center">
+                <span className="font-mono text-[#BFA37E] text-2xl block mb-2">50Y+</span>
+                <span className="text-[9px] uppercase tracking-widest text-slate-500">
+                  Гарантия эстетики
+                </span>
+              </div>
+              <div className="text-center">
+                <span className="font-mono text-[#BFA37E] text-2xl block mb-2">Global</span>
+                <span className="text-[9px] uppercase tracking-widest text-slate-500">
+                  Доставка и монтаж
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="modal bg-[#050505] text-slate-300 overflow-y-auto" id="deep-dive-media">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = "";
+            }}
+            className="fixed top-12 right-12 z-50 text-[#BFA37E] hover:text-white transition-colors"
+          >
+            <span className="material-symbols-outlined text-4xl">close</span>
+          </button>
+
+          <header className="mb-24 border-b border-white/5 pb-12">
+            <span className="font-mono text-xs text-[#BFA37E] mb-4 block tracking-[0.4em]">
+              EXPERT INSIGHT // 02
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">
+              Цифровая Кинетика Пространства
+            </h2>
+            <p className="max-w-2xl text-lg font-light leading-relaxed">
+              Медиаархитектура сегодня — это не просто экраны на фасадах. Это интеллектуальные системы, где
+              свет, механика и цифровой контент сливаются в единый перформанс. Мы проектируем динамические
+              фасады и кинетические люстры, которые меняют восприятие пространства в реальном времени.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> Интеллектуальный Свет
+              </h3>
+              <p className="mb-6">
+                Мы создаем <strong>медиафасады высокой плотности</strong>, которые интегрируются
+                непосредственно в структуру здания. Наша технология позволяет сохранять прозрачность
+                остекления и архитектурный облик в дневное время, превращая здание в холст для цифрового
+                искусства ночью.
+              </p>
+              <p>
+                <strong>Адаптивные системы управления</strong> на базе протоколов DMX и Art-Net позволяют
+                синхронизировать тысячи световых точек. Мы разрабатываем кастомные сценарии, которые могут
+                реагировать на погоду, количество людей в холле или внешние информационные потоки.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> Магия Кинетики
+              </h3>
+              <p className="mb-6">
+                Наше подразделение мехатроники проектирует <strong>кинетические люстры и подвижные фасады</strong>.
+                Каждое звено такой системы управляется индивидуальным сервоприводом с точностью до миллиметра. Мы
+                объединяем физику движения с цифровой эстетикой, создавая гипнотические инсталляции для атриумов и
+                общественных пространств.
+              </p>
+              <p>
+                Безопасность и долговечность — наши приоритеты. Мы используем компоненты промышленного класса и
+                разрабатываем собственное ПО для мониторинга состояния каждого двигателя, обеспечивая бесперебойную
+                работу сложнейших механизмов в режиме 24/7.
+              </p>
+            </section>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[#BFA37E]" /> Gallery Extension
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCnSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDH24sapg6vn27w9GnwW0PpxNGK6qKbgNdcl9EbbjFR7X5A87SgH6evk7TxcfnvfJDIEPaxCC-0wleR7h324P0aFppAvlmXCI8vIk7crmkJBh4pE79efZps9bd1FgXu1QqaxZFawhedyjbCZaip9GbmthulDsoU00Ac6l0TGmL6ULQtCSOBie2tFHd7VOH3Lx_0T_WSlJ1Vl1Lz_s4jR-OjZxieHly-8XaAIXjz9nctKPdyeeM3fEbxlCQliSAAN2nYb9OhrxSaByi')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJq_171BA4ZR9Ks2rFu2Ej3im6WLDStwxdFNWMLrJOjPYkff14XcUd-FPBYeW1jEthp2Nf3k5BURnxyXE5W7UPwxgNIFEHyRw90zNZwhFAmTSdrxTLaetnt6ReM3lgnugiS4bnG4I-TNDKPFoYwVY3sIbgTJjWs-LV7usV4xEQyV3WOcsj5bpxMGPtWDexze03zTEiE09HjxJfJutpoyc4_s7vwAX4OzFLVE43XQDavKK2uAdOv7SG0bGBq8ldZas4QC8mHCGopp0-')"
+                }}
+              />
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full font-mono text-[10px] uppercase text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 text-[#BFA37E]">
+                    <th className="py-4 px-2">Parameter</th>
+                    <th className="py-4 px-2">Specification</th>
+                    <th className="py-4 px-2">Notes</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-400">
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Resolution</td>
+                    <td className="py-4 px-2">P2 - P10 Pixel Pitch</td>
+                    <td className="py-4 px-2">Custom densities</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Refresh Rate</td>
+                    <td className="py-4 px-2">&gt; 3840 Hz</td>
+                    <td className="py-4 px-2">Flicker-free visual</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Interface</td>
+                    <td className="py-4 px-2">Madrix / Resolume / Custom API</td>
+                    <td className="py-4 px-2">Real-time response</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="modal bg-[#050505] text-slate-300 overflow-y-auto" id="deep-dive-light">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = "";
+            }}
+            className="fixed top-12 right-12 z-50 text-[#BFA37E] hover:text-white transition-colors"
+          >
+            <span className="material-symbols-outlined text-4xl">close</span>
+          </button>
+
+          <header className="mb-24 border-b border-white/5 pb-12">
+            <span className="font-mono text-xs text-[#BFA37E] mb-4 block tracking-[0.4em]">
+              EXPERT INSIGHT // 03
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">
+              Световой Сценарий Города
+            </h2>
+            <p className="max-w-2xl text-lg font-light leading-relaxed">
+              Свет — мощнейший инструмент трансформации городской среды. Мы не просто освещаем здания, мы
+              создаем ночной образ города, подчеркивая величие архитектурного наследия и создавая праздничную
+              атмосферу в современных коммерческих кластерах.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> Архитектурная Подсветка
+              </h3>
+              <p className="mb-6">
+                Работа с памятниками архитектуры требует ювелирного подхода. Мы используем{" "}
+                <strong>акцентное освещение</strong> с узкоградусной оптикой, чтобы выявить пластику фасада, не
+                создавая при этом светового загрязнения. Наша экспертиза в области колористики позволяет
+                подбирать идеальную цветовую температуру, соответствующую материалу отделки.
+              </p>
+              <p>
+                <strong>Энергоэффективные решения</strong> — стандарт нашей работы. Мы внедряем системы
+                интеллектуального диммирования, которые снижают потребление энергии в глубокие ночные часы,
+                сохраняя при этом безопасность и эстетическую привлекательность объекта.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> Праздничный Декор и Ритейл
+              </h3>
+              <p className="mb-6">
+                Оформление топовых моллов и городских набережных — это искусство создания настроения. Мы
+                разрабатываем комплексные проекты <strong>новогодней иллюминации</strong>, включающие в себя
+                крупногабаритные световые арт-объекты и динамические гирлянды.
+              </p>
+              <p>
+                Наш подход базируется на создании иммерсивного опыта. Свет становится частью маркетинговой
+                стратегии пространства, привлекая посетителей и создавая "инстаграмные" локации, которые
+                работают на узнаваемость бренда и лояльность аудитории.
+              </p>
+            </section>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[#BFA37E]" /> Gallery Extension
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo2zFujsO4WUbx4oSvzUnyQklT2LTVAwsx-x1KPJ4BwDXRCSQWjYylWsEzzdTR9ed7ZoOxhm7e9LrwW0i7pbOf7IiA9vnEz_ZwOh9JaRfUH87L4v1ITwVxLd5pnC2IWBBPPgSOAYYCCbN2f4D-hZvpOURNXCzfcqPoVvfU3cWW8JlS9qKPFLbhLq3cspW6зK5Bга9JPXHcAjs-PZzOOtqhtJf0QyrZ4F8CJ84ublr-hr9cKlLTnNwt4M3GSJfexOzL7sV42hlbPBRw')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3нLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNozrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbnu3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"
+                }}
+              />
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full font-mono text-[10px] uppercase text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 text-[#BFA37E]">
+                    <th className="py-4 px-2">Parameter</th>
+                    <th className="py-4 px-2">Specification</th>
+                    <th className="py-4 px-2">Notes</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-400">
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Lumen Output</td>
+                    <td className="py-4 px-2">Up to 80,000 lm</td>
+                    <td className="py-4 px-2">High-intensity fixtures</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Power Consumption</td>
+                    <td className="py-4 px-2">Eco-mode optimized</td>
+                    <td className="py-4 px-2">Smart dimming profiles</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Control Protocol</td>
+                    <td className="py-4 px-2">DMX512 / RDM / Art-Net</td>
+                    <td className="py-4 px-2">Bidirectional monitoring</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="modal bg-[#050505] text-slate-300 overflow-y-auto" id="deep-dive-full-cycle">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-40 py-24 relative w-full">
+          <button
+            type="button"
+            onClick={() => {
+              window.location.hash = "";
+            }}
+            className="fixed top-12 right-12 z-50 text-[#BFA37E] hover:text-white transition-colors"
+          >
+            <span className="material-symbols-outlined text-4xl">close</span>
+          </button>
+
+          <header className="mb-24 border-b border-white/5 pb-12">
+            <span className="font-mono text-xs text-[#BFA37E] mb-4 block tracking-[0.4em]">
+              EXPERT INSIGHT // 04
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black uppercase mb-8 leading-none condensed-header text-white">
+              Вертикальная Интеграция Процессов
+            </h2>
+            <p className="max-w-2xl text-lg font-light leading-relaxed">
+              Принцип полного цикла — это наша гарантия того, что смелая концепция не будет упрощена на этапе
+              производства. Мы объединяем проектный офис, инжиниринговый центр и собственную фабрику в единый
+              бесшовный механизм.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 modal-body">
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> От Идеи до Чертежа
+              </h3>
+              <p className="mb-6">
+                Мы верим, что <strong>архитектурное проектирование</strong> должно учитывать технологические
+                ограничения производства с первого дня. Наши архитекторы работают в плотной связке с
+                инженерами-конструкторами, используя <strong>BIM-технологии</strong> для точного моделирования
+                всех узлов и коммуникаций.
+              </p>
+              <p>
+                Такой подход исключает ошибки при монтаже и позволяет реализовывать формы, которые другие
+                студии считают невыполнимыми. Мы разрабатываем уникальные протоколы взаимодействия между
+                творческим и техническим отделами.
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-white font-bold uppercase mb-6 tracking-widest text-sm flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#BFA37E]" /> Промышленное Искусство
+              </h3>
+              <p className="mb-6">
+                Собственная <strong>производственная площадка</strong> оснащена станками ЧПУ последнего
+                поколения для высокоточной резки и обработки металлов. Мы контролируем качество каждого шва и
+                каждой патинированной поверхности.
+              </p>
+              <p>
+                <strong>Шеф-монтаж</strong> и сервисное обслуживание завершают цикл. Мы не просто сдаем объект —
+                мы обеспечиваем его техническое сопровождение, контентное обновление медиа-систем и
+                превентивный мониторинг конструкций на протяжении всего срока эксплуатации.
+              </p>
+            </section>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-white font-bold uppercase mb-8 tracking-widest text-sm flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-[#BFA37E]" /> Gallery Extension
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-yWY6fgR1gXrOpQxlpdb0T0i8kKJhUuRLLmkRpM1HVhB7CflZCErASd_f3RcBgVnVgobmL40izjsLs1CSOpsBp9XbsZoty-vnBatqPB92-w-O5RrGQHUTxhRPuUOpTtzlUZ8WHSSqKLUpvTNVyUDxX2mvQ9uYh4z-i7IpfuNeuvXrCGMCнSlX9gNcwHfIojhCgQTLaZnGVMzM73uQIJ-VayGg9PPD8py82L9brQjKJRSVWVlpAH64Q4p5L2A6iZDNMgnM3rtklEX')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi1alm_0HpYV8r5NHVUjf3нLlRd4B9sdqqy91yLFSPbqlvsjIIRZ4xAg7vdL1W3PDAGdMREeJJJnw4LYG-owc2vGNoзrg_1hliPUAymMMtRIA4ZnBUDCqPU8ewxh39DU7e0jPC4HVB0OumJDKqwiK-q09S4FOrvZTbну3UHWienx9K7P7yeoo0Dj3ReIL8kzadvjbUyTko5qlfr2j9vR92Nqh02Hw7LVlsItJzftNyBjysSfoDK5h4IxMq868Ly_8GDiBKNPRKz6B0')"
+                }}
+              />
+              <div
+                className="aspect-video bg-cover bg-center border border-white/5"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-DSxB-RgWb1ZCzKTainfgyb4apl88N70UkGTBCkh1zQ7CQKRYf2sgSPlUCEiJF4ykpqv6ROF9RhM7oTVE68Gq30vgRcz1Y2YFMLSGynjWi4B-6ZFCAp83aKc0edAz6_3pbLPIaH77fLRqu_XUxFPcI8kqHOUwKnfgRmPj5kVpXhj6Ww9HLk-qNBU8772tXz5ZfkAcuIGN-dH-joFxw7essoeAOKULTyMKzPbkwojXCANNrs7Z57LJYIF8_dsW9MmO1KyWbsJf4mUB')"
+                }}
+              />
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full font-mono text-[10px] uppercase text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 text-[#BFA37E]">
+                    <th className="py-4 px-2">System Node</th>
+                    <th className="py-4 px-2">Integration Level</th>
+                    <th className="py-4 px-2">Output</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-400">
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Design Hub</td>
+                    <td className="py-4 px-2">100% BIM LOD 400</td>
+                    <td className="py-4 px-2">Fabrication-ready files</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">Logistics</td>
+                    <td className="py-4 px-2">Global Customs/Cargo</td>
+                    <td className="py-4 px-2">Oversized loads expertise</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-2">On-Site</td>
+                    <td className="py-4 px-2">IR Inspection</td>
+                    <td className="py-4 px-2">Verified structural integrity</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
