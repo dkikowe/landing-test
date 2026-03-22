@@ -173,7 +173,7 @@ export default function ArchitecturalProcess() {
           style={{ background: "#F9F9F7", color: "#141414" }}
         >
           <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-24 items-start">
-            <div className="relative group sticky top-32 reveal">
+            <div className="relative group lg:sticky top-32 reveal">
               <img
                 alt="Generative Design"
                 className="w-full grayscale hover:grayscale-0 transition-all duration-700"
