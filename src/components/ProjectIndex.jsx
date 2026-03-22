@@ -858,7 +858,7 @@ export default function ProjectIndex() {
                       >
                         Проектов в архиве
                       </span>
-                      <span className="font-mono text-primary">58</span>
+                      <span className="font-mono text-primary">182</span>
                     </div>
                     <div
                       className="flex justify-between items-end border-b pb-2"

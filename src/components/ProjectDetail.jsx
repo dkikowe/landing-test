@@ -66,7 +66,7 @@ export default function ProjectDetail() {
       <div 
         id="hero-sticky-wrap" 
         ref={heroWrapRef}
-        style={{ position: "sticky", top: 0, zIndex: 1, height: "100vh", overflow: "hidden" }}
+        style={{ position: "sticky", top: 0, zIndex: 1, height: "100dvh", overflow: "hidden" }}
       >
         <section 
           id="hero-section" 
@@ -140,7 +140,7 @@ export default function ProjectDetail() {
       {/* PAGE CONTENT */}
       <div 
         id="page-content"
-        style={{ position: "relative", zIndex: 10, background: "#F9F9F7", marginTop: "-2px" }}
+        style={{ position: "relative", zIndex: 10, background: "#F9F9F7", marginTop: "0" }}
       >
         {/* META STRIP — technical labels */}
         <div className="border-b" style={{ background: "#F5F5F3", borderColor: "rgba(20,20,20,.07)" }}>

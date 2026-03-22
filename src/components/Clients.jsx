@@ -530,6 +530,60 @@ export default function Clients() {
           </div>
         </section>
 
+        {/* АРХИТЕКТУРНЫЕ БЮРО */}
+        <section id="architects" className="py-28 px-8 md:px-14" style={{ background: '#fff', borderTop: '1px solid rgba(0,0,0,.06)' }}>
+          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-4 reveal">
+              <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-4">Архитектурные бюро</p>
+              <h2 className="font-light uppercase tracking-tight leading-none mb-6" style={{ fontSize: 'clamp(2rem,3vw,2.8rem)' }}>Партнёр, который<br/>усиливает ваши<br/>проекты.</h2>
+              <div className="h-px w-12 mb-8" style={{ background: '#BFA37E' }}></div>
+              <p className="font-light leading-relaxed mb-6" style={{ color: 'rgba(0,0,0,.5)' }}>Два формата. Первый — вы приносите задачу, мы предлагаем концепцию, готовим документацию на изделие, производим и монтируем. Второй — реализация ваших готовых замыслов: производство по предоставленной документации или совместная разработка конструктива.</p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Концепция и визуализация под задачу</span></div>
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Техническая документация</span></div>
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Субподряд или прямой договор</span></div>
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Оценка реализуемости</span></div>
+              </div>
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6 reveal d1">
+              <div className="client-img-wrap mb-6" style={{ height: '320px' }}>
+                <img alt="Architecture studio collaboration" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyVRLjxwBFDjdiIQmiWSt2UCvAmsQfbWOR8ofnOJ3Koxy02C0gCCC9IlSay-oz9dS8qTuoZJaJp1X5qCFeETncy4Np27xBLvn1WavkZ4-VshVr83ALo05FCFz9WkD5HwEbvozjZoQsa5KLBX_8KXtZUWBFTQ4Kyni5LeIToib3qL0N-DdDHNeUK4Rr8sIlb0l_qfr5UBQvcY07oRLr7WFOoE7ntwYwL6lIHUAGC11rluwLKZbpDRflxk_d8lgoaoTAz8IIsVkFKxTZ"/>
+              </div>
+              <div className="py-5 border-t" style={{ borderColor: 'rgba(0,0,0,.07)' }}>
+                <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-1">Пример совместной работы</p>
+                <p className="font-light text-sm" style={{ color: 'rgba(0,0,0,.5)' }}>Параметрически построенная форма — от концепции до рабочих чертежей и монтажа на объекте.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* КУЛЬТУРА */}
+        <section id="culture" className="py-28 px-8 md:px-14" style={{ background: '#f5f5f3', borderTop: '1px solid rgba(0,0,0,.06)' }}>
+          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-7 reveal">
+              <div className="client-img-wrap mb-6" style={{ height: '380px' }}>
+                <img alt="Festival installation" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldUVennI4I72et6AuVe32w-YlxSfQ0R38jKo5B5P-XJymM8WIfFZ9bzsdLK-9EiP4Aod628-0yPk5Qd0P4fH2xedJ61ejgvtwQIRrAHBEpmSIRSF_3jM4bi-IzUv3NqSPJ0yUC0BmlxMSf0qwZuaeJG_u86SS5hAvEdMzhMfcWm6_PLgzklpzlEcQKHeuvSxiWEwTn2go_LINB_7FEI2U8vzKSlNFTmo_LfeGgthMeiCrTundUjsfP1Z6vPhX9D4n_rpWph4NfbeF"/>
+              </div>
+              <div className="py-5 border-t" style={{ borderColor: 'rgba(0,0,0,.07)' }}>
+                <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-1">Пример — световые объекты для городского события</p>
+                <p className="font-light text-sm" style={{ color: 'rgba(0,0,0,.5)' }}>Временная инсталляция. Монтаж за ночь, демонтаж без следов. Конструкции адаптированы для повторного использования.</p>
+              </div>
+            </div>
+            <div className="lg:col-span-4 lg:col-start-9 reveal d1">
+              <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-4">Культура и события</p>
+              <h2 className="font-light uppercase tracking-tight leading-none mb-6" style={{ fontSize: 'clamp(2rem,3vw,2.8rem)' }}>Музеи,<br/>фестивали,<br/>выставки.</h2>
+              <div className="h-px w-12 mb-8" style={{ background: '#BFA37E' }}></div>
+              <p className="font-light leading-relaxed mb-6" style={{ color: 'rgba(0,0,0,.5)' }}>Инсталляция, которую снимают и распространяют — это часть самого события. Работаем с жёсткими дедлайнами — это наша норма, не исключение.</p>
+              <div className="space-y-2 mb-8">
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Временные и постоянные инсталляции</span></div>
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Сценография выставочных пространств</span></div>
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Световые объекты для фестивалей</span></div>
+                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Монтаж и демонтаж в сжатые сроки</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* СРОКИ И ГАРАНТИЯ */}
         <section className="py-20 px-8 md:px-14" style={{ background: '#fff', borderTop: '1px solid rgba(0,0,0,.06)' }}>
           <div className="max-w-[1400px] mx-auto">
@@ -631,59 +685,6 @@ export default function Clients() {
           </div>
         </section>
 
-        {/* АРХИТЕКТУРНЫЕ БЮРО */}
-        <section id="architects" className="py-28 px-8 md:px-14" style={{ background: '#fff', borderTop: '1px solid rgba(0,0,0,.06)' }}>
-          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-4 reveal">
-              <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-4">Архитектурные бюро</p>
-              <h2 className="font-light uppercase tracking-tight leading-none mb-6" style={{ fontSize: 'clamp(2rem,3vw,2.8rem)' }}>Партнёр, который<br/>усиливает ваши<br/>проекты.</h2>
-              <div className="h-px w-12 mb-8" style={{ background: '#BFA37E' }}></div>
-              <p className="font-light leading-relaxed mb-6" style={{ color: 'rgba(0,0,0,.5)' }}>Два формата. Первый — вы приносите задачу, мы предлагаем концепцию, готовим документацию на изделие, производим и монтируем. Второй — реализация ваших готовых замыслов: производство по предоставленной документации или совместная разработка конструктива.</p>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Концепция и визуализация под задачу</span></div>
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Техническая документация</span></div>
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Субподряд или прямой договор</span></div>
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Оценка реализуемости</span></div>
-              </div>
-            </div>
-            <div className="lg:col-span-7 lg:col-start-6 reveal d1">
-              <div className="client-img-wrap mb-6" style={{ height: '320px' }}>
-                <img alt="Architecture studio collaboration" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyVRLjxwBFDjdiIQmiWSt2UCvAmsQfbWOR8ofnOJ3Koxy02C0gCCC9IlSay-oz9dS8qTuoZJaJp1X5qCFeETncy4Np27xBLvn1WavkZ4-VshVr83ALo05FCFz9WkD5HwEbvozjZoQsa5KLBX_8KXtZUWBFTQ4Kyni5LeIToib3qL0N-DdDHNeUK4Rr8sIlb0l_qfr5UBQvcY07oRLr7WFOoE7ntwYwL6lIHUAGC11rluwLKZbpDRflxk_d8lgoaoTAz8IIsVkFKxTZ"/>
-              </div>
-              <div className="py-5 border-t" style={{ borderColor: 'rgba(0,0,0,.07)' }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-1">Пример совместной работы</p>
-                <p className="font-light text-sm" style={{ color: 'rgba(0,0,0,.5)' }}>Параметрически построенная форма — от концепции до рабочих чертежей и монтажа на объекте.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* КУЛЬТУРА */}
-        <section id="culture" className="py-28 px-8 md:px-14" style={{ background: '#f5f5f3', borderTop: '1px solid rgba(0,0,0,.06)' }}>
-          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-7 reveal">
-              <div className="client-img-wrap mb-6" style={{ height: '380px' }}>
-                <img alt="Festival installation" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldUVennI4I72et6AuVe32w-YlxSfQ0R38jKo5B5P-XJymM8WIfFZ9bzsdLK-9EiP4Aod628-0yPk5Qd0P4fH2xedJ61ejgvtwQIRrAHBEpmSIRSF_3jM4bi-IzUv3NqSPJ0yUC0BmlxMSf0qwZuaeJG_u86SS5hAvEdMzhMfcWm6_PLgzklpzlEcQKHeuvSxiWEwTn2go_LINB_7FEI2U8vzKSlNFTmo_LfeGgthMeiCrTundUjsfP1Z6vPhX9D4n_rpWph4NfbeF"/>
-              </div>
-              <div className="py-5 border-t" style={{ borderColor: 'rgba(0,0,0,.07)' }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-1">Пример — световые объекты для городского события</p>
-                <p className="font-light text-sm" style={{ color: 'rgba(0,0,0,.5)' }}>Временная инсталляция. Монтаж за ночь, демонтаж без следов. Конструкции адаптированы для повторного использования.</p>
-              </div>
-            </div>
-            <div className="lg:col-span-4 lg:col-start-9 reveal d1">
-              <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-4">Культура и события</p>
-              <h2 className="font-light uppercase tracking-tight leading-none mb-6" style={{ fontSize: 'clamp(2rem,3vw,2.8rem)' }}>Музеи,<br/>фестивали,<br/>выставки.</h2>
-              <div className="h-px w-12 mb-8" style={{ background: '#BFA37E' }}></div>
-              <p className="font-light leading-relaxed mb-6" style={{ color: 'rgba(0,0,0,.5)' }}>Инсталляция, которую снимают и распространяют — это часть самого события. Работаем с жёсткими дедлайнами — это наша норма, не исключение.</p>
-              <div className="space-y-2 mb-8">
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Временные и постоянные инсталляции</span></div>
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Сценография выставочных пространств</span></div>
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Световые объекты для фестивалей</span></div>
-                <div className="flex items-center gap-3"><div className="w-1 h-1 flex-shrink-0" style={{ background: '#BFA37E' }}></div><span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.45)' }}>Монтаж и демонтаж в сжатые сроки</span></div>
-              </div>
-            </div>
-          </div>
-        </section>
 
 
         {/* ══ ГЕОГРАФИЯ И СТАНДАРТЫ ══ */}
@@ -727,11 +728,11 @@ export default function Clients() {
                   Без обязательств, без стандартных презентаций. Расскажите о задаче — мы поделимся тем, как видим решение, и что это может стоить.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/contact" className="inline-flex items-center gap-3 px-10 py-4 font-mono text-[10px] uppercase tracking-widest transition-all" style={{ background: '#111', color: '#fff', border: '2px solid #111' }} onMouseOver={(e) => { e.currentTarget.style.background='#BFA37E'; e.currentTarget.style.borderColor='#BFA37E'; e.currentTarget.style.color='#111'; }} onMouseOut={(e) => { e.currentTarget.style.background='#111'; e.currentTarget.style.borderColor='#111'; e.currentTarget.style.color='#fff'; }}>
+                  <Link to="/contact" className="inline-flex items-center gap-3 px-10 py-4 font-mono text-[10px] uppercase tracking-widest transition-all" style={{ background: '#BFA37E', color: '#111', border: '1px solid #BFA37E' }} onMouseOver={(e) => { e.currentTarget.style.background='#fff'; e.currentTarget.style.borderColor='#fff'; e.currentTarget.style.color='#111'; }} onMouseOut={(e) => { e.currentTarget.style.background='#BFA37E'; e.currentTarget.style.borderColor='#BFA37E'; e.currentTarget.style.color='#111'; }}>
                     Обсудить проект
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </Link>
-                  <a href="https://wa.me/34661224868" className="inline-flex items-center gap-3 px-10 py-4 font-mono text-[10px] uppercase tracking-widest border transition-all hover:border-primary hover:text-primary" style={{ borderColor: 'rgba(0,0,0,.15)', color: 'rgba(0,0,0,.45)' }}>
+                  <a href="https://wa.me/34661224868" className="inline-flex items-center gap-3 px-10 py-4 font-mono text-[10px] uppercase tracking-widest transition-all" style={{ background: '#fff', color: '#111', border: '1px solid rgba(0,0,0,.15)' }} onMouseOver={(e) => { e.currentTarget.style.background='#BFA37E'; e.currentTarget.style.borderColor='#BFA37E'; e.currentTarget.style.color='#111'; }} onMouseOut={(e) => { e.currentTarget.style.background='#fff'; e.currentTarget.style.borderColor='rgba(0,0,0,.15)'; e.currentTarget.style.color='#111'; }}>
                     Запросить консультацию инженера
                     <span className="material-symbols-outlined text-sm">engineering</span>
                   </a>

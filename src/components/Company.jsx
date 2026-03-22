@@ -64,7 +64,7 @@ export default function Company() {
   }, []);
 
   return (
-    <div className="bg-[#F9F9F7] text-[#0A0A0A] font-['DM_Sans'] min-h-screen">
+    <div className="bg-[#F9F9F7] text-[#0A0A0A] font-display min-h-screen">
       <main className="pt-0">
         <style>{`
           @keyframes heroFadeUp {
@@ -331,11 +331,12 @@ export default function Company() {
                 ></div>
               </div>
               <div className="lg:col-span-7 lg:col-start-6 reveal">
-                <p
-                  className="font-light leading-relaxed mb-8"
+                <blockquote
+                  className="font-light leading-snug mb-10 border-l-2 pl-8 text-reveal"
                   style={{
                     fontSize: "clamp(1rem,1.4vw,1.2rem)",
                     color: "rgba(20,20,20,0.7)",
+                    borderColor: "#BFA37E",
                   }}
                 >
                   Студия основана на пересечении двух дисциплин — инженерии и
@@ -343,18 +344,11 @@ export default function Company() {
                   проверенное десятилетиями практики, даёт точность: расчёт,
                   допуск, нагрузку. Дизайн среды задаёт другое измерение — опыт
                   человека в пространстве.
-                </p>
-                <p
-                  className="font-light leading-relaxed mb-6"
-                  style={{
-                    fontSize: "clamp(1rem,1.4vw,1.2rem)",
-                    color: "rgba(20,20,20,0.7)",
-                  }}
-                >
+                  <br /><br />
                   Точность отвечает на вопрос{" "}
                   <em style={{ color: "#141414" }}>как</em>. Нас интересует
                   другой — <em style={{ color: "#141414" }}>зачем</em>.
-                </p>
+                </blockquote>
                 <p
                   className="font-light leading-relaxed"
                   style={{ color: "rgba(20,20,20,0.5)", maxWidth: "540px" }}

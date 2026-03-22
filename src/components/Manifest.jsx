@@ -29,18 +29,19 @@ export default function Manifest() {
       if (!heroWrap || !heroBg || !heroVeil) return;
 
       const s = window.scrollY;
-      // Ускоряем анимацию: теперь она завершается за первые 150px скролла (при малейшем скролле)
-      const p = Math.min(1, s / 150);
+      // Плавная анимация, зависящая от высоты экрана (постепенное исчезновение)
+      const maxScroll = window.innerHeight || 800;
+      const p = Math.min(1, s / maxScroll);
 
       // Весь hero вниз + исчезает
-      heroWrap.style.transform = `translateY(${p * 120}px)`;
+      heroWrap.style.transform = `translateY(${s * 0.3}px)`;
       heroWrap.style.opacity = 1 - p;
 
-      // Тёмно-графитовый veil нарастает динамически
-      heroVeil.style.opacity = Math.min(1, p * 2.2);
+      // Белый veil нарастает динамически
+      heroVeil.style.opacity = p;
 
       // Фон параллакс внутри
-      heroBg.style.transform = `translateY(${s * 0.3}px)`;
+      heroBg.style.transform = `translateY(${s * 0.2}px)`;
     };
 
     window.addEventListener("scroll", updateHero, { passive: true });

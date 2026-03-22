@@ -1,26 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Fonts to include in index.html:
-// <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 // <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 // <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 
 export default function Contact() {
-  useEffect(() => {
-    // Dark mode logic
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
   return (
-    <div className="bg-[#F9F9F7] dark:bg-[#1A1A1A] text-[#111111] dark:text-[#F9F9F7] font-['Space_Grotesk'] antialiased transition-colors duration-300 min-h-screen">
+    <div className="bg-[#F9F9F7]  text-[#111111]  font-display antialiased transition-colors duration-300 min-h-screen">
       <style>{`
         body { font-feature-settings: "ss01", "ss02"; }
         .sculpture-image {
@@ -44,18 +30,18 @@ export default function Contact() {
               </span>{" "}
               Пространство
             </h1>
-            <p className="text-lg text-[#666666] dark:text-[#A3A3A3] max-w-md font-['Space_Mono']">
+            <p className="text-lg text-[#666666]  max-w-md font-mono">
               Параметрические структуры и скульптурные инсталляции для городской
               среды.
             </p>
           </div>
           <div className="lg:text-right">
             <div className="inline-block border-l-2 border-[#A68A58] pl-4 text-left">
-              <p className="text-sm font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] uppercase tracking-widest mb-1">
+              <p className="text-sm font-mono text-[#666666]  uppercase tracking-widest mb-1">
                 Видение
               </p>
               <p className="text-xl font-medium">Константин Бурцев</p>
-              <p className="text-sm text-[#666666] dark:text-[#A3A3A3] mt-1">
+              <p className="text-sm text-[#666666]  mt-1">
                 Ведущий архитектор и скульптор
               </p>
             </div>
@@ -65,17 +51,17 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <div className="lg:col-span-5 flex flex-col justify-between space-y-16">
             <div className="space-y-6">
-              <h2 className="text-2xl font-medium border-b border-gray-200 dark:border-gray-800 pb-4">
+              <h2 className="text-2xl font-medium border-b border-gray-200  pb-4">
                 Ателье и Офисы
               </h2>
-              <p className="text-[#666666] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#666666]  leading-relaxed">
                 Наша работа выходит за рамки географических границ, опираясь на
                 богатое архитектурное наследие Испании. Мы приглашаем к
                 сотрудничеству в проектах, требующих высокоточного
                 параметрического проектирования и масштабного производства.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-['Space_Mono'] text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono text-sm">
               <div className="group">
                 <h3 className="uppercase tracking-widest text-[#A68A58] mb-2 text-xs">
                   Headquarters
@@ -83,12 +69,8 @@ export default function Contact() {
                 <p className="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">
                   Alicante
                 </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  Av. de Maisonnave, 41
-                </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  03003 Alicante, Spain
-                </p>
+                <p className="text-[#666666] ">Av. de Maisonnave, 41</p>
+                <p className="text-[#666666] ">03003 Alicante, Spain</p>
               </div>
               <div className="group">
                 <h3 className="uppercase tracking-widest text-[#A68A58] mb-2 text-xs">
@@ -97,12 +79,8 @@ export default function Contact() {
                 <p className="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">
                   Valencia
                 </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  Carrer de Colón, 12
-                </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  46004 Valencia, Spain
-                </p>
+                <p className="text-[#666666] ">Carrer de Colón, 12</p>
+                <p className="text-[#666666] ">46004 Valencia, Spain</p>
               </div>
               <div className="group">
                 <h3 className="uppercase tracking-widest text-[#A68A58] mb-2 text-xs">
@@ -111,12 +89,8 @@ export default function Contact() {
                 <p className="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">
                   Barcelona
                 </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  Poblenou District
-                </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  08018 Barcelona, Spain
-                </p>
+                <p className="text-[#666666] ">Poblenou District</p>
+                <p className="text-[#666666] ">08018 Barcelona, Spain</p>
               </div>
               <div className="group">
                 <h3 className="uppercase tracking-widest text-[#A68A58] mb-2 text-xs">
@@ -125,18 +99,14 @@ export default function Contact() {
                 <p className="text-lg font-bold mb-1 group-hover:translate-x-1 transition-transform">
                   San Sebastián
                 </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  Tech Park Miramón
-                </p>
-                <p className="text-[#666666] dark:text-[#A3A3A3]">
-                  20009 Donostia, Spain
-                </p>
+                <p className="text-[#666666] ">Tech Park Miramón</p>
+                <p className="text-[#666666] ">20009 Donostia, Spain</p>
               </div>
             </div>
-            <div className="bg-white dark:bg-[#262626] p-8 border border-gray-100 dark:border-gray-800 shadow-sm relative overflow-hidden">
+            <div className="bg-white  p-8 border border-gray-100  shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 w-16 h-16 bg-[#A68A58]/10 rounded-bl-full"></div>
               <h3 className="text-xl font-medium mb-6">Прямая связь</h3>
-              <div className="space-y-4 font-['Space_Mono'] text-sm">
+              <div className="space-y-4 font-mono text-sm">
                 <a
                   className="flex items-center gap-3 hover:text-[#A68A58] transition-colors group"
                   href="mailto:hola@monumforma.es"
@@ -173,23 +143,23 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <div className="lg:col-span-7 bg-white dark:bg-[#262626] p-8 lg:p-12 shadow-2xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800">
+          <div className="lg:col-span-7 bg-white  p-8 lg:p-12 shadow-2xl shadow-gray-200/50  border border-gray-100 ">
             <h2 className="text-3xl font-light mb-2">Начать проект</h2>
-            <p className="text-[#666666] dark:text-[#A3A3A3] mb-10 text-sm font-['Space_Mono']">
+            <p className="text-[#666666]  mb-10 text-sm font-mono">
               Расскажите нам о вашем архитектурном видении.
             </p>
             <form className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="relative group">
                   <input
-                    className="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
+                    className="peer w-full bg-transparent border-b border-gray-300  py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
                     id="name"
                     name="name"
                     placeholder="Name"
                     type="text"
                   />
                   <label
-                    className="absolute left-0 -top-3.5 text-xs font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
+                    className="absolute left-0 -top-3.5 text-xs font-mono text-[#666666]  transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
                     htmlFor="name"
                   >
                     Полное имя / Компания
@@ -197,14 +167,14 @@ export default function Contact() {
                 </div>
                 <div className="relative group">
                   <input
-                    className="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
+                    className="peer w-full bg-transparent border-b border-gray-300  py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
                     id="email"
                     name="email"
                     placeholder="Email"
                     type="email"
                   />
                   <label
-                    className="absolute left-0 -top-3.5 text-xs font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
+                    className="absolute left-0 -top-3.5 text-xs font-mono text-[#666666]  transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
                     htmlFor="email"
                   >
                     Email
@@ -213,10 +183,10 @@ export default function Contact() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-xs font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] mb-2 uppercase tracking-wide">
+                  <label className="block text-xs font-mono text-[#666666]  mb-2 uppercase tracking-wide">
                     Тип проекта
                   </label>
-                  <select className="w-full bg-[#F9F9F7] dark:bg-[#1A1A1A] border-0 p-4 text-sm focus:ring-1 focus:ring-[#A68A58] rounded-none cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                  <select className="w-full bg-[#F9F9F7]  border-0 p-4 text-sm focus:ring-1 focus:ring-[#A68A58] rounded-none cursor-pointer hover:bg-gray-100  transition-colors">
                     <option>Общественная скульптура</option>
                     <option>Интерьерная инсталляция</option>
                     <option>Фасадная система</option>
@@ -225,10 +195,10 @@ export default function Contact() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] mb-2 uppercase tracking-wide">
+                  <label className="block text-xs font-mono text-[#666666]  mb-2 uppercase tracking-wide">
                     Предпочтение по материалам
                   </label>
-                  <select className="w-full bg-[#F9F9F7] dark:bg-[#1A1A1A] border-0 p-4 text-sm focus:ring-1 focus:ring-[#A68A58] rounded-none cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                  <select className="w-full bg-[#F9F9F7]  border-0 p-4 text-sm focus:ring-1 focus:ring-[#A68A58] rounded-none cursor-pointer hover:bg-gray-100  transition-colors">
                     <option>Кортеновская сталь</option>
                     <option>Зеркальная сталь</option>
                     <option>Стекло / Кристалл</option>
@@ -240,14 +210,14 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="relative group">
                   <input
-                    className="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
+                    className="peer w-full bg-transparent border-b border-gray-300  py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
                     id="location"
                     name="location"
                     placeholder="Location"
                     type="text"
                   />
                   <label
-                    className="absolute left-0 -top-3.5 text-xs font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
+                    className="absolute left-0 -top-3.5 text-xs font-mono text-[#666666]  transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
                     htmlFor="location"
                   >
                     Местоположение проекта (Город, Страна)
@@ -255,14 +225,14 @@ export default function Contact() {
                 </div>
                 <div className="relative group">
                   <input
-                    className="peer w-full bg-transparent border-b border-gray-300 dark:border-gray-600 py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
+                    className="peer w-full bg-transparent border-b border-gray-300  py-3 text-lg focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none"
                     id="scale"
                     name="scale"
                     placeholder="Scale"
                     type="text"
                   />
                   <label
-                    className="absolute left-0 -top-3.5 text-xs font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
+                    className="absolute left-0 -top-3.5 text-xs font-mono text-[#666666]  transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
                     htmlFor="scale"
                   >
                     Технический масштаб (например, высота 5м)
@@ -271,13 +241,13 @@ export default function Contact() {
               </div>
               <div className="relative group mt-8">
                 <textarea
-                  className="peer w-full bg-transparent border border-gray-300 dark:border-gray-600 p-4 text-base focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none resize-none"
+                  className="peer w-full bg-transparent border border-gray-300  p-4 text-base focus:outline-none focus:border-[#A68A58] transition-colors placeholder-transparent rounded-none resize-none"
                   id="message"
                   placeholder="Message"
                   rows="4"
                 ></textarea>
                 <label
-                  className="absolute left-4 -top-2.5 bg-white dark:bg-[#262626] px-1 text-xs font-['Space_Mono'] text-[#666666] dark:text-[#A3A3A3] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
+                  className="absolute left-4 -top-2.5 bg-white  px-1 text-xs font-mono text-[#666666]  transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#A68A58]"
                   htmlFor="message"
                 >
                   Дополнительный контекст
@@ -291,14 +261,14 @@ export default function Contact() {
                     type="checkbox"
                   />
                   <label
-                    className="text-xs text-[#666666] dark:text-[#A3A3A3] cursor-pointer select-none"
+                    className="text-xs text-[#666666]  cursor-pointer select-none"
                     htmlFor="privacy"
                   >
                     Я согласен на обработку моих персональных данных.
                   </label>
                 </div>
                 <button
-                  className="bg-[#A68A58] hover:bg-[#A68A58]/90 text-white px-10 py-4 uppercase tracking-widest text-xs font-bold font-['Space_Mono'] transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="bg-[#A68A58] hover:bg-[#A68A58]/90 text-white px-10 py-4 uppercase tracking-widest text-xs font-bold font-mono transition-all transform hover:scale-[1.02] active:scale-[0.98]"
                   type="submit"
                 >
                   ОТПРАВИТЬ ЗАПРОС
