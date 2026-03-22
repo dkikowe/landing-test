@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — Проекты</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-dark': '#141414', 'bg-light': '#F9F9F7' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+@keyframes fu { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .28s cubic-bezier(.16,1,.3,1) both}
+.h3{animation:fu 1.4s .44s cubic-bezier(.16,1,.3,1) both}
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.fb{transition:color .3s,border-color .3s,background .3s;cursor:pointer}
+.fb:hover{border-color:rgba(191,163,126,.6)}
+.fb.active{background:#BFA37E;color:#141414;border-color:#BFA37E}
+.swiss{display:grid;grid-template-columns:repeat(12,1fr);gap:2rem}
+.pc{display:block;text-decoration:none;color:inherit;cursor:pointer}
+.pc-img{overflow:hidden;position:relative;margin-bottom:1.25rem}
+.pc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.16,1,.3,1),filter .7s ease;filter:grayscale(15%)}
+.pc:hover .pc-img img{transform:scale(1.05);filter:grayscale(0%)}
+.pc-meta{display:flex;align-items:center;gap:1rem;margin-top:.6rem;flex-wrap:wrap}
+.pc-dot{width:4px;height:4px;background:#BFA37E;border-radius:50% !important;flex-shrink:0}
+.pc.hf{display:none}
+
+/* VEIL hidden */
+#hero-veil{display:none}
+#page-content{background:#F9F9F7}
+
+/* INTRO */
+#intro{padding:8rem 3.5rem 3rem;background:#F9F9F7}
+#intro h1{font-size:clamp(3rem,6vw,6rem);font-weight:300;letter-spacing:-.025em;line-height:.95;color:#141414;margin:0 0 1.5rem}
+#intro .sub{font-size:clamp(.95rem,1.3vw,1.05rem);font-weight:300;color:rgba(20,20,20,.45);max-width:500px;line-height:1.6;margin:0}
+
+/* NAV */
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#141414;text-decoration:none}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#141414;transition:transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s}
+.btn-cta:hover{background:transparent;color:#141414}
+</style>
+</head>
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<nav id="site-nav" class="scrolled">
+  <a href="index.html" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="max-w-[1440px] mx-auto">
+    <h1>Архив проектов</h1>
+    <p class="sub">Архив реализованных и текущих проектов.<br>Пространственные объекты, световые инсталляции, медиаархитектура.</p>
+  </div>
+</div>
+
+<div id="page-content" style="margin-top:0">
+  <div class="sticky top-0 z-40 border-b" style="background:rgba(249,249,247,.97);backdrop-filter:blur(10px);border-color:rgba(20,20,20,.08)">
+    <div class="max-w-[1440px] mx-auto px-8 md:px-14 flex items-center justify-between h-14">
+      <div class="flex items-center gap-2 overflow-x-auto" id="fr">
+        <button class="fb active px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap" style="border-color:rgba(20,20,20,.12)" data-f="all">Все работы</button>
+        <button class="fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap" style="border-color:rgba(20,20,20,.12);color:rgba(20,20,20,.5)" data-f="light">Праздничное оформление</button>
+        <button class="fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap" style="border-color:rgba(20,20,20,.12);color:rgba(20,20,20,.5)" data-f="media">Мультимедиа</button>
+        <button class="fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap" style="border-color:rgba(20,20,20,.12);color:rgba(20,20,20,.5)" data-f="objects">Арт-объекты</button>
+        <button class="fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap" style="border-color:rgba(20,20,20,.12);color:rgba(20,20,20,.5)" data-f="dev">В разработке</button>
+      </div>
+      <span class="font-mono text-[10px] uppercase tracking-widest ml-4 whitespace-nowrap" style="color:rgba(20,20,20,.3)" id="cnt">12 проектов</span>
+    </div>
+  </div>
+
+  <main class="max-w-[1440px] mx-auto px-8 md:px-14 py-20">
+
+    <!-- ROW 1: CENTRAL PLAZA (7) + NORDIC WINTER (5) -->
+    <div class="swiss mb-8">
+      <a class="pc reveal col-span-12 lg:col-span-7" href="#" data-f="light">
+        <div class="pc-img" style="aspect-ratio:16/10"><img alt="Central Plaza" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldUVennI4I72et6AuVe32w-YlxSfQ0R38jKo5B5P-XJymM8WIfFZ9bzsdLK-9EiP4Aod628-0yPk5Qd0P4fH2xedJ61ejgvtwQIRrAHBEpmSIRSF_3jM4bi-IzUv3NqSPJ0yUC0BmlxMSf0qwZuaeJG_u86SS5hAvEdMzhMfcWm6_PLgzklpzlEcQKHeuvSxiWEwTn2go_LINB_7FEI2U8vzKSlNFTmo_LfeGgthMeiCrTundUjsfP1Z6vPhX9D4n_rpWph4NfbeF"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Central Plaza</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Праздничное оформление</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Municipal Commission</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Capital Region</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-5 lg:mt-24" href="#" data-f="light">
+        <div class="pc-img" style="aspect-ratio:4/5"><img alt="Nordic Winter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfGRnRhZ4D_ZLaJm-8P4h9_JU-Jl99xO7G0KcjUIB6SCvz2ubgTmgl97ezTmWtOaYIqCogjZsIVwIbTFB5FI1kMDOD0W9EC4bqxAoJCCyT1P00TjOhDSyF7px2Hwe-4CHR_idWFDMUGPuyxVU7KiERxBFi1EEzyFj_-QtVYzrmnRVTtVZ9OqWBlsj6NwAq0TPsF_yteEA4Z1zxznU2qC-MCaeszmtqvy_vHhyAi6HVQZ6S7IEK7K4kQtB2rv3EgmY9hwDs4lXCOIC"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Nordic Winter</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Праздничное оформление</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Capital Region</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 2: AURORA (8) + DIGITAL CANVAS (4) -->
+    <div class="swiss mb-8">
+      <a class="pc reveal col-span-12 lg:col-span-4" href="#" data-f="light">
+        <div class="pc-img" style="aspect-ratio:3/4"><img alt="Aurora" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2adHrk6cfEWxdZyys0C3lXJmLKNXAFr9sEFPbJq8EVD5I1TwzWWlw1nULwEwmVBznXsq16ETTrvfeputOCwPgTEI3CIehlfl6vvDNXam49DYK4vphHgHsPFlNNlYHjxfY04a6rooPcBkBfTBVISM-zv9OI_67HeI0desGJlbDN1fFHaV_goNTmdOJ0S2CJPhrTHQlLnzRWW_kXaCVQ6QPxWMld-Db0_Kp70KDBBXxNDoYjKQlCFQEvDbE88WnX8QDP08SX3rPe4J7"/></div>
+        <h3 class="text-xl font-light uppercase tracking-tight">Aurora</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Праздничное оформление</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Capital Region</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-8 lg:mt-[-40px]" href="#" data-f="media">
+        <div class="pc-img" style="aspect-ratio:16/10"><img alt="Digital Canvas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyVRLjxwBFDjdiIQmiWSt2UCvAmsQfbWOR8ofnOJ3Koxy02C0gCCC9IlSay-oz9dS8qTuoZJaJp1X5qCFeETncy4Np27xBLvn1WavkZ4-VshVr83ALo05FCFz9WkD5HwEbvozjZoQsa5KLBX_8KXtZUWBFTQ4Kyni5LeIToib3qL0N-DdDHNeUK4Rr8sIlb0l_qfr5UBQvcY07oRLr7WFOoE7ntwYwL6lIHUAGC11rluwLKZbpDRflxk_d8lgoaoTAz8IIsVkFKxTZ"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Digital Canvas</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Мультимедиа</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Capital Region</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 3: SILVER FOREST (7) + CONSTELLATION (5) -->
+    <div class="swiss mb-8">
+      <a class="pc reveal col-span-12 lg:col-span-7" href="#" data-f="light">
+        <div class="pc-img" style="aspect-ratio:16/10"><img alt="Silver Forest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATovlV39tQpjucQSb6EsuzQdCblfsMwRPIs11mxACgXHZDS8kbhDal1XanoVV22qeI3Hf34U1Sz5S5-UKpp7VpUZBifop7nBGxsvhEI9gayPJyA42WAIWF7lxX3069DBZGG17Vie6AgofQYHFGwJruMv5VZSUfaEBUyKeXY02hUn8kNzuiF15ONzHZTL0fdlLa-Dn1W6begYVlssidwa4XzIJe98ll1rlN9DdDP1m_QpMhUql2yLwijTzvURbY2x9mcusz9prbKPcp"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Silver Forest</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Праздничное оформление</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Northern Capital</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-5 lg:mt-20" href="#" data-f="light">
+        <div class="pc-img" style="aspect-ratio:4/5"><img alt="Constellation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1uzqlT1Sr4tVtX27b1DvLay-Px56xMBdxevn__-Hg_lGY-1CEInhzKd6X1nBxriS0xsx0nqAQYpvGLMFftJAfWXrylmap8zkT9Z1MkP6Wi5nCeNpsG_s0MfT7XQanB1PwvHuomuqy3BLLeSOs5vud_S0skwCiRohBoiofkSCzTdsXAegXcNmA5WYjZ-hXBXy5o5Lya9Emzjcr1_JT5j843IdljFh6jEkHml37iHCEN7FYK7_3ynP1W3ZFIbts97TL-Y1ILWgRII"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Constellation</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Праздничное оформление</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Northern Capital</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 4: GEOMETRY (4) + CENTRAL PARK (8) -->
+    <div class="swiss mb-8">
+      <a class="pc reveal col-span-12 lg:col-span-4" href="#" data-f="light">
+        <div class="pc-img" style="aspect-ratio:1/1"><img alt="Geometry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMs0orzF2FtEs4LE-uOY-0z7ro0xTiF9WZoyF1NKa2ZhdjnWJAQfk35VBK31gsvmSGA-S8Oy5J7uwiyT0WKogBRr5UNOiRnyv71rBU-Au51AZKMor1BwM5kFHar2c7Ndqdrk3EMnrv5KLcSl-7sGKucBLgZGZT3Pio9QSa0seMRNzkAFjYFs77dOFwXXxp1SaPQUBQnyCgY5_Pu0HvGDPQ8R9Axgrz3YFA2Spl1ni-9NAZ9Ag3NBwSGJcBUcnOOSU_OJ4DvQvqH61u"/></div>
+        <h3 class="text-xl font-light uppercase tracking-tight">Geometry</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Праздничное оформление</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional Flagship</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-8" href="#" data-f="media">
+        <div class="pc-img" style="aspect-ratio:21/9"><img alt="Central Park" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNS-FWZUsMYZTSMtIKH0U4Ozhdd5_85qa_0sSyTCpIZjOTLa8PswOFtP-rRj5gnL338tZWO2DIRmiLfTENKu0FMHkxvBLrZXAbRq6hRExk2cUZhB3Q9d0_RmjMqYnCNYDU1SKwEyt4_PQ45bx6ECUkN9-kdWBfyls1TBSD7hxRtgC6atNdaxOJYxzTIlfBUo4SywMBaTq4xw6ciVTNVKRydN3NDXvHjGh4bKtB7FtcogH9cFrc9d77UY6uC3HMO89MMQbdMGy5xqSl"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Central Park</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Мультимедиа</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional Developer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional Flagship</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 5: MAGIC PIANO (6) + KINETIC CHANDELIER (6) -->
+    <div class="swiss mb-8">
+      <a class="pc reveal col-span-12 lg:col-span-6" href="#" data-f="media">
+        <div class="pc-img" style="aspect-ratio:3/4"><img alt="Magic Piano" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Magic Piano</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Мультимедиа</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Capital Region</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-6 lg:mt-[-60px]" href="#" data-f="media">
+        <div class="pc-img" style="aspect-ratio:3/4"><img alt="Kinetic Chandelier" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGAdx3ehF7y0gAaYtnrWx_b-8_t3K_UkNMbYnHZQQW-gtbmGZftglyZ3GebqzeUVJa90OOx2QP_xgCZ0HWbXWaDyjr_arrL7NNoz3yeqSfJMOjUuFR5ZgR3p9fEdrF9WbJPAR7mM97Uyv-W55RFmuthsb1CLhUsWR2UItDqXqarSjFsHsL_WZBsLQFJ2CnG6SOq7cXA58iMDgzVmMxJ2s9moI9Xh3S6Ey_3eXl-G3_gFF8Gzjc5polQyI5ZnS_vtH5AYQghME9_Eeb"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Kinetic Chandelier</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Мультимедиа</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional Developer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional Flagship</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 6: FOREST CAMPUS (8) + RADISSON OBJECT (4) -->
+    <div class="swiss mb-8">
+      <a class="pc reveal col-span-12 lg:col-span-8" href="#" data-f="objects">
+        <div class="pc-img" style="aspect-ratio:16/9"><img alt="Forest Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxfj8-imnVbLN4qJfMR3cUThBizt4wIHcqbioDUj9GO3MeNf-4W2BJU5EqvDCAMZzy9rjTB44rsVEEC6HnBnTOAR9YnzHYCdgeIvIVRVuIWlZ1ZbaWaNAS8DEeBnZZa26yCMcJexMRmwxMSZxSl3f6trytG1pnwBBwT2sHtWYFY-Gk98NTIjIDKdYhRIQzX1tDeu3Hva0nOlliKIfo5U-BHY7myaWGtUxCQT6zIpROUs9VdpM1uc-q3wT4INQUU7UWXvzxEU_O7pC8"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Forest Campus</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Арт-объект</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional Flagship</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-4 lg:mt-16" href="#" data-f="objects">
+        <div class="pc-img" style="aspect-ratio:3/4"><img alt="Radisson Object" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"/></div>
+        <h3 class="text-xl font-light uppercase tracking-tight">Radisson Object</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Арт-объект</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">International Hotel Group</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Capital Region</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 7: WIND (4) + OWL (4) + AERIAL GARDEN (4) -->
+    <div class="swiss mb-8">
+      <a class="pc reveal col-span-12 lg:col-span-4" href="#" data-f="objects">
+        <div class="pc-img" style="aspect-ratio:3/4"><img alt="Wind" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNS-FWZUsMYZTSMtIKH0U4Ozhdd5_85qa_0sSyTCpIZjOTLa8PswOFtP-rRj5gnL338tZWO2DIRmiLfTENKu0FMHkxvBLrZXAbRq6hRExk2cUZhB3Q9d0_RmjMqYnCNYDU1SKwEyt4_PQ45bx6ECUkN9-kdWBfyls1TBSD7hxRtgC6atNdaxOJYxzTIlfBUo4SywMBaTq4xw6ciVTNVKRydN3NDXvHjGh4bKtB7FtcogH9cFrc9d77UY6uC3HMO89MMQbdMGy5xqSl"/></div>
+        <h3 class="text-xl font-light uppercase tracking-tight">Wind</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Арт-объект</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Public Commission</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional City</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-4 lg:mt-16" href="#" data-f="objects">
+        <div class="pc-img" style="aspect-ratio:3/4"><img alt="Owl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoelvO_UGTW5A9ZCq3ejeW9JMqDoIEftFm9fv6laTJJN4NOC5upVWgzZj77oINPGJyTNkLftaagxjfFAUxzbj3DK8F3CfkUlHnSbF0TcJ5ArPV7g9GEPAvVGJtkNexMfKfykVa-_vRyNIfGWApATuL4cYHTPHk-ZkX6WD1ZNDKHxYBkaeTp9ki4je56gEgET8h_6GTjOB2p0uHVIMLNNiQgkWBZY_xQkgpCBRNqL0pL3c89ovfCOT0f7NqUmeruftcGkGselw5jTcP"/></div>
+        <h3 class="text-xl font-light uppercase tracking-tight">Owl</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Арт-объект</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Educational Institution</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional City</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-4 lg:mt-8" href="#" data-f="objects">
+        <div class="pc-img" style="aspect-ratio:3/4"><img alt="Aerial Garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGAdx3ehF7y0gAaYtnrWx_b-8_t3K_UkNMbYnHZQQW-gtbmGZftglyZ3GebqzeUVJa90OOx2QP_xgCZ0HWbXWaDyjr_arrL7NNoz3yeqSfJMOjUuFR5ZgR3p9fEdrF9WbJPAR7mM97Uyv-W55RFmuthsb1CLhUsWR2UItDqXqarSjFsHsL_WZBsLQFJ2CnG6SOq7cXA58iMDgzVmMxJ2s9moI9Xh3S6Ey_3eXl-G3_gFF8Gzjc5polQyI5ZnS_vtH5AYQghME9_Eeb"/></div>
+        <h3 class="text-xl font-light uppercase tracking-tight">Aerial Garden</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Арт-объект</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Swedish Global Retailer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Regional Flagship</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 8: MRIYA OBJECT (5) + ORQUÍDEA in dev (7) -->
+    <div class="swiss mb-0">
+      <a class="pc reveal col-span-12 lg:col-span-5" href="#" data-f="objects">
+        <div class="pc-img" style="aspect-ratio:4/5"><img alt="Mriya Object" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"/></div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">Mriya Object</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Арт-объект</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Resort & Spa</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Coastal Location</span>
+        </div>
+      </a>
+      <a class="pc reveal col-span-12 lg:col-span-7 lg:mt-20" href="#" data-f="dev">
+        <div class="pc-img" style="aspect-ratio:16/10;position:relative"><img alt="Orquídea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMs0orzF2FtEs4LE-uOY-0z7ro0xTiF9WZoyF1NKa2ZhdjnWJAQfk35VBK31gsvmSGA-S8Oy5J7uwiyT0WKogBRr5UNOiRnyv71rBU-Au51AZKMor1BwM5kFHar2c7Ndqdrk3EMnrv5KLcSl-7sGKucBLgZGZT3Pio9QSa0seMRNzkAFjYFs77dOFwXXxp1SaPQUBQnyCgY5_Pu0HvGDPQ8R9Axgrz3YFA2Spl1ni-9NAZ9Ag3NBwSGJcBUcnOOSU_OJ4DvQvqH61u"/>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:#141414;padding:.25rem .75rem"><span class="font-mono text-[9px] uppercase tracking-widest" style="color:#BFA37E">В разработке</span></div>
+        </div>
+        <h3 class="text-2xl font-light uppercase tracking-tight">ORQUÍDEA | Junco Houses</h3>
+        <div class="pc-meta">
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Арт-объект</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Residential Developer</span>
+          <div class="pc-dot"></div>
+          <span class="font-mono text-[10px] text-primary uppercase tracking-widest">Alfàs del Pi, Alicante — 2025</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- PORTFOLIO CTA BLOCK -->
+    <div class="border-t mt-24 pt-16" style="border-color:rgba(20,20,20,.08)">
+      <div class="swiss items-center">
+        <div class="col-span-12 lg:col-span-6">
+          <p class="font-mono text-[10px] uppercase tracking-[.3em] mb-4" style="color:rgba(20,20,20,.4)">Полный архив</p>
+          <h4 class="font-light tracking-tight mb-3" style="font-size:clamp(1.6rem,2.5vw,2.2rem)">58 реализованных проектов</h4>
+          <p style="font-size:.95rem;font-weight:300;color:rgba(20,20,20,.5);max-width:420px;line-height:1.7">Полное портфолио включает коммерческие и муниципальные объекты, ритейл-программы и частные инсталляции. Доступно по запросу.</p>
+        </div>
+        <div class="col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col gap-4">
+          <a href="#portfolio-request" class="btn-cta w-fit" id="portfolio-btn">
+            <span class="font-mono text-[10px] uppercase tracking-widest">Запросить портфолио</span>
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+          <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.3)">PDF · Отправим в течение 24 часов</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PORTFOLIO REQUEST FORM (inline, hidden by default) -->
+    <div id="portfolio-request" class="mt-12 pt-12 border-t" style="border-color:rgba(20,20,20,.06);display:none">
+      <div class="swiss">
+        <div class="col-span-12 lg:col-span-5">
+          <p class="font-mono text-[10px] uppercase tracking-[.3em] mb-6" style="color:rgba(20,20,20,.4)">Запрос портфолио</p>
+          <div class="space-y-4">
+            <div>
+              <input type="text" placeholder="Имя и компания" id="pf-name" class="w-full border-b bg-transparent pb-3 text-sm font-light outline-none" style="border-color:rgba(20,20,20,.15);color:#141414" />
+            </div>
+            <div>
+              <input type="email" placeholder="Email" id="pf-email" class="w-full border-b bg-transparent pb-3 text-sm font-light outline-none" style="border-color:rgba(20,20,20,.15);color:#141414" />
+            </div>
+            <div>
+              <input type="text" placeholder="Тип проекта / бюджет (опционально)" id="pf-project" class="w-full border-b bg-transparent pb-3 text-sm font-light outline-none" style="border-color:rgba(20,20,20,.15);color:#141414" />
+            </div>
+            <div class="pt-2">
+              <button onclick="submitPortfolio()" class="btn-cta">
+                <span class="font-mono text-[10px] uppercase tracking-widest">Отправить запрос</span>
+                <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-12 lg:col-span-5 lg:col-start-8 flex flex-col justify-center">
+          <div class="space-y-3">
+            <div class="flex justify-between items-end border-b pb-2" style="border-color:rgba(20,20,20,.07)"><span class="font-mono text-[10px] uppercase tracking-widest" style="color:rgba(20,20,20,.5)">Проектов в архиве</span><span class="font-mono text-primary">58</span></div>
+            <div class="flex justify-between items-end border-b pb-2" style="border-color:rgba(20,20,20,.07)"><span class="font-mono text-[10px] uppercase tracking-widest" style="color:rgba(20,20,20,.5)">Лет опыта</span><span class="font-mono text-primary">17</span></div>
+            <div class="flex justify-between items-end border-b pb-2" style="border-color:rgba(20,20,20,.07)"><span class="font-mono text-[10px] uppercase tracking-widest" style="color:rgba(20,20,20,.5)">Фабрик-партнёров</span><span class="font-mono text-primary">12</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E"><span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span></div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const btns=document.querySelectorAll('.fb'),cards=document.querySelectorAll('.pc'),cnt=document.getElementById('cnt');
+function updateCount(n){cnt.textContent=n+' проект'+(n===1?'':(n<5?'а':'ов'));}
+updateCount(cards.length);
+btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>{x.classList.remove('active');x.style.color='rgba(20,20,20,.5)'});
+  b.classList.add('active');b.style.color='';
+  const f=b.dataset.f;let n=0;
+  cards.forEach(c=>{const show=f==='all'||c.dataset.f===f;c.classList.toggle('hf',!show);if(show)n++});
+  updateCount(n);
+}));
+
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+
+const siteNav=document.getElementById('site-nav');
+window.addEventListener('scroll',()=>{
+  siteNav.classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
+
+// Portfolio request toggle
+document.getElementById('portfolio-btn').addEventListener('click',function(e){
+  e.preventDefault();
+  const form=document.getElementById('portfolio-request');
+  form.style.display=form.style.display==='none'?'block':'none';
+  if(form.style.display==='block'){form.scrollIntoView({behavior:'smooth',block:'start'});}
+});
+
+function submitPortfolio(){
+  const name=document.getElementById('pf-name').value.trim();
+  const email=document.getElementById('pf-email').value.trim();
+  if(!name||!email){alert('Укажите имя и email');return;}
+  const btn=document.querySelector('#portfolio-request button');
+  btn.innerHTML='<span class="font-mono text-[10px] uppercase tracking-widest">Запрос отправлен</span>';
+  btn.disabled=true;
+  btn.style.opacity='.5';
+}
+</script>
+</body>
+</html>

@@ -8,6 +8,7 @@ import ProjectIndex from "./components/ProjectIndex";
 import ProjectDetail from "./components/ProjectDetail";
 import TechnologiesAndMaterials from "./components/TechnologiesAndMaterials";
 import ArchitecturalProcess from "./components/ArchitecturalProcess";
+import Clients from "./components/Clients";
 import Company from "./components/Company";
 import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
@@ -25,6 +26,7 @@ function App() {
           <Route path="projects/:id" element={<ProjectDetail />} />
           <Route path="materials" element={<TechnologiesAndMaterials />} />
           <Route path="process" element={<ArchitecturalProcess />} />
+          <Route path="clients" element={<Clients />} />
           <Route path="company" element={<Company />} />
           <Route path="contact" element={<Contact />} />
         </Route>
