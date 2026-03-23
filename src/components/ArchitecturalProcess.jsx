@@ -58,7 +58,7 @@ export default function ArchitecturalProcess() {
         .btn-cta { display:inline-flex; align-items:center; gap:1rem; font-family:'Roboto Mono',monospace; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; background:#BFA37E; color:#141414; padding:1rem 2rem; text-decoration:none; border:1px solid #BFA37E; transition:background .3s,color .3s; }
         .btn-cta:hover { background:transparent; color:#141414; }
 
-        #intro-section { background:#F9F9F7; min-height:100vh; display:flex; align-items:center; padding:28px 3.5rem 5rem; }
+        
         #intro-photo { position:relative; }
         #intro-photo img {
           width:100%;
@@ -68,7 +68,10 @@ export default function ArchitecturalProcess() {
         }
       `}</style>
 
-      <section id="intro-section" className="pt-8">
+      <section
+        id="intro-section"
+        className="bg-[#F9F9F7] min-h-screen flex items-center pt-28 md:pt-8 pb-4 md:pb-20 px-8 md:px-14"
+      >
         <div className="max-w-[1400px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div
@@ -169,10 +172,10 @@ export default function ArchitecturalProcess() {
 
       <div id="page-content">
         <section
-          className="py-28 px-8 md:px-14"
+          className="py-6 px-8 md:px-14"
           style={{ background: "#F9F9F7", color: "#141414" }}
         >
-          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-24 items-start">
+          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 md:gap-24 gap-48 items-start">
             <div className="relative group lg:sticky top-32 reveal">
               <img
                 alt="Generative Design"

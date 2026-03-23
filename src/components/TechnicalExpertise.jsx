@@ -97,7 +97,7 @@ export default function TechnicalExpertise() {
       {/* ═══ INTRO ═══ */}
       <section
         id="intro-section"
-        className="bg-[#F9F9F7] min-h-screen flex items-center pt-8 pb-20 px-8 md:px-14"
+        className="bg-[#F9F9F7] min-h-screen flex items-center pt-16 md:pt-8 pb-20 px-8 md:px-14"
       >
         <div className="max-w-[1400px] mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

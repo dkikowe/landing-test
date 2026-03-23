@@ -23,13 +23,20 @@ export default function Clients() {
     
     function updateHero() {
       if (!heroWrap || !heroBg || !heroVeil) return;
-      const s = window.scrollY, vh = window.innerHeight;
-      // Начинает исчезать сразу, полностью исчезает на 40% высоты экрана
-      const p = Math.min(1, s / (vh * 0.4));
-      heroWrap.style.transform = `translateY(${s * 0.4}px)`;
-      heroWrap.style.opacity   = 1 - p;
-      heroVeil.style.opacity   = Math.min(1, p * 2.2);
-      heroBg.style.transform   = `translateY(${s * 0.3}px)`;
+      const s = window.scrollY;
+      // Плавная анимация, зависящая от высоты экрана (постепенное исчезновение)
+      const maxScroll = window.innerHeight || 800;
+      const p = Math.min(1, s / maxScroll);
+
+      // Весь hero вниз + исчезает
+      heroWrap.style.transform = `translateY(${s * 0.3}px)`;
+      heroWrap.style.opacity = 1 - p;
+
+      // Белый veil нарастает динамически
+      heroVeil.style.opacity = p;
+
+      // Фон параллакс внутри
+      heroBg.style.transform = `translateY(${s * 0.2}px)`;
     }
     
     window.addEventListener('scroll', updateHero, { passive: true });

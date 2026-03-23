@@ -710,7 +710,7 @@ export default function ProjectIndex() {
                   className="font-light tracking-tight mb-3"
                   style={{ fontSize: "clamp(1.6rem,2.5vw,2.2rem)" }}
                 >
-                  58 реализованных проектов
+                  182 реализованных проектов
                 </h4>
                 <p
                   style={{

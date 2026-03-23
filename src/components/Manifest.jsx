@@ -669,17 +669,6 @@ export default function Manifest() {
                     className="grid grid-cols-12 gap-4 items-center py-6 px-2 cursor-pointer select-none"
                     onClick={() => toggleComp(idx)}
                   >
-                    <div className="col-span-1">
-                      <span
-                        className="comp-num font-mono text-3xl font-light transition-colors duration-300"
-                        style={{
-                          color:
-                            openComp === idx ? "#BFA37E" : "rgba(0,0,0,0.12)",
-                        }}
-                      >
-                        {comp.num}
-                      </span>
-                    </div>
                     <div className="col-span-9 lg:col-span-4">
                       <h4 className="text-lg font-light text-[#111] uppercase tracking-tight">
                         {comp.title}
