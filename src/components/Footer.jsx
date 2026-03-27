@@ -13,7 +13,7 @@ export default function Footer() {
             <img
               src="/assets/logowhite.png"
               alt="monumforma logo"
-              className="h-[80px] md:h-[100px] w-auto max-w-full object-contain invert "
+              className="h-[80px] md:h-[100px] w-auto max-w-full object-contain"
             />{" "}
           </div>{" "}
           <p className="font-['Roboto_Mono'] ml-0 md:ml-4 text-xs text-gray-500 leading-relaxed mb-6">
