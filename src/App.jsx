@@ -13,12 +13,21 @@ import Company from "./components/Company";
 import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import MagicPiano from "./components/MagicPiano";
+import IkeaMall from "./components/IkeaMall";
+import IkeaXmas from "./components/IkeaXmas";
+import IkeaPark from "./components/IkeaPark";
+import Forest from "./components/Forest";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
+        <Route path="/forest" element={<Forest />} />
+        <Route path="/ikea-park" element={<IkeaPark />} />
+        <Route path="/ikea-xmas" element={<IkeaXmas />} />
+        <Route path="/ikea_xmasl" element={<IkeaXmas />} />
+        <Route path="/ikea-mall" element={<IkeaMall />} />
         <Route path="/magicpiano" element={<MagicPiano />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Manifest />} />

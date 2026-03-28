@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — IKEA | Новогоднее оформление</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-light': '#F9F9F7', 'bg-dark': '#141414' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.h0{animation:fu 1.4s cubic-bezier(.16,1,.3,1) both}
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .25s cubic-bezier(.16,1,.3,1) both}
+
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+
+.gal-img{overflow:hidden}
+.gal-img img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gal-img:hover img{transform:scale(1.04)}
+
+#hero-sticky-wrap{position:sticky;top:0;z-index:1;height:100vh;overflow:hidden}
+#hero-section{width:100%;height:100%;position:relative;display:flex;align-items:flex-end}
+#hero-veil{position:fixed;inset:0;z-index:9;background:#F9F9F7;opacity:0;pointer-events:none;will-change:opacity}
+#page-content{position:relative;z-index:10;background:#F9F9F7;margin-top:-2px}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:color .4s;text-decoration:none}
+#site-nav.scrolled .nav-logo{color:#141414}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#fff;transition:background .4s,transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+#site-nav.scrolled .burger span{background:#141414}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s;cursor:pointer}
+.btn-cta:hover{background:transparent;color:#141414}
+
+.award-badge{display:inline-flex;align-items:center;gap:.6rem;font-family:'Roboto Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#BFA37E;border:1px solid rgba(191,163,126,.4);padding:.5rem 1rem}
+</style>
+</head>
+
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a href="#" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<div id="hero-veil"></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 1 · HERO                                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="hero-sticky-wrap">
+  <section id="hero-section" style="background:#141414">
+    <div class="absolute inset-0">
+      <img alt="Новогоднее оформление IKEA — атриум торгового центра"
+           class="w-full h-full object-cover" style="object-position:center 35%"
+           src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1800&q=80"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(20,20,20,.9) 0%, rgba(20,20,20,.3) 50%, rgba(20,20,20,.2) 100%)"></div>
+    </div>
+
+    <!-- breadcrumb -->
+    <div class="absolute top-28 left-8 md:left-14 z-10 h0">
+      <p class="font-mono text-[9px] uppercase tracking-[.4em]" style="color:rgba(255,255,255,.35)">
+        monumforma&nbsp;&nbsp;/&nbsp;&nbsp;Проекты&nbsp;&nbsp;/&nbsp;&nbsp;Mall — Новый год
+      </p>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-14 pb-16 grid lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-8">
+        <h1 class="font-light text-white leading-none tracking-tight h1" style="font-size:clamp(2.5rem,5.5vw,5rem)">
+          Новогоднее<br/>оформление mall
+        </h1>
+        <p class="font-light mt-4 h2" style="color:rgba(255,255,255,.45);font-size:clamp(.85rem,1.2vw,1rem);letter-spacing:.02em">
+          Комплексная световая среда торгового центра — 160 000 м²
+        </p>
+      </div>
+      <div class="lg:col-span-4 lg:col-start-9 h2 flex flex-col gap-4 pb-2">
+        <div class="flex items-center gap-4">
+          <div class="w-px h-10 flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.3)">Период</p>
+            <p class="font-light text-white">2022–2023</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-px h-10 flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.3)">Награда</p>
+            <p class="font-light text-white">1 место — лучшее оформление молла</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <div class="w-px h-9 relative overflow-hidden" style="background:rgba(255,255,255,.12)">
+        <div class="absolute inset-0 sl" style="background:#BFA37E"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-content">
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2 · ПАРАМЕТРЫ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="border-b" style="background:#F0EFEB;border-color:rgba(20,20,20,.07)">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 grid grid-cols-2 md:grid-cols-6">
+      <div class="py-7 pr-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Тип</p>
+        <p class="font-light text-base leading-snug">Комплексное оформление</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Площадь</p>
+        <p class="font-light text-base">160 000 м²</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Подвесные элементы</p>
+        <p class="font-light text-base">144 объекта</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Напольные объекты</p>
+        <p class="font-light text-base">37 единиц</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Производство</p>
+        <p class="font-light text-base">10 недель</p>
+      </div>
+      <div class="py-7 pl-6">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Монтаж</p>
+        <p class="font-light text-base">3 недели,<br/>ночные смены</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 3 · СУТЬ ПРОЕКТА                                  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-4 reveal">
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Среда,<br/>а не украшение.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1">
+          <p class="font-light leading-relaxed mb-6" style="font-size:1.05rem;color:rgba(20,20,20,.65)">
+            Задача была не «украсить торговый центр к Новому году». Задача — создать среду, в которую хочется вернуться. Которая продлевает время пребывания, меняет настроение и становится самостоятельным поводом для визита.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.65)">
+            160 000 м² объекта — атриум, галереи, внешние зоны — объединены единым визуальным и атмосферным сценарием. Не отдельные элементы, а непрерывный маршрут.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 4 · ВИЗУАЛ — крупный кадр                        -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="reveal" style="background:#141414">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">Атриум — центральная инсталляция</p>
+    </div>
+    <div class="gal-img" style="height:clamp(340px,60vw,780px)">
+      <img alt="Новогоднее оформление IKEA — вид на атриум"
+           class="w-full h-full object-cover"
+           src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1800&q=80"/>
+    </div>
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">Световые облака, центральная сцена, интерактивный поезд</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5 · ИНЖЕНЕРИЯ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16 mb-14 reveal">
+        <div class="lg:col-span-4">
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Масштаб требует<br/>точности.
+          </h2>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16 reveal d1">
+        <div>
+          <p class="font-light leading-relaxed mb-6" style="color:rgba(20,20,20,.6)">
+            144 подвесных элемента — каждый с расчётом нагрузки, тросовой системой и анкерным креплением. 37 напольных объекта, часть из которых крупногабаритные конструкции собственного производства.
+          </p>
+          <p class="font-light leading-relaxed mb-8" style="color:rgba(20,20,20,.5)">
+            Монтаж — в действующем торговом центре, только ночью. Три недели без остановки работы объекта, с соблюдением сроков.
+          </p>
+          <div class="grid grid-cols-2 gap-6 pt-8" style="border-top:1px solid rgba(20,20,20,.08)">
+            <div>
+              <p class="font-mono text-[9px] text-primary uppercase tracking-widest mb-2">Конструкции</p>
+              <p class="font-mono text-[10px] uppercase leading-loose" style="color:rgba(20,20,20,.45)">Тросовые системы, анкерные крепления, крупногабаритные объекты</p>
+            </div>
+            <div>
+              <p class="font-mono text-[9px] text-primary uppercase tracking-widest mb-2">Производство</p>
+              <p class="font-mono text-[10px] uppercase leading-loose" style="color:rgba(20,20,20,.45)">Собственное, под ключ, 10 недель</p>
+            </div>
+          </div>
+        </div>
+        <div class="gal-img">
+          <img alt="Монтаж подвесных конструкций — крупный план"
+               class="w-full h-full object-cover" style="aspect-ratio:3/2"
+               src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=900&q=80"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 6 · ТЕХНОЛОГИИ И ИНТЕРАКТИВ                       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16 mb-14 reveal">
+        <div class="lg:col-span-4">
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Видеть, слышать,<br/>чувствовать.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Среда работает на всех уровнях восприятия — визуальном, звуковом, тактильном и обонятельном. Посетитель не смотрит на оформление — он находится внутри него.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4 блока технологий -->
+      <div class="grid md:grid-cols-2 gap-px reveal d1" style="background:rgba(20,20,20,.07)">
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Интерактивный поезд</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Эффект движения по расписанию, воспроизводит звук хода и генерирует сертифицированный дым. Самостоятельный аттракцион внутри атриума.</p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Свет через смартфон</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Световые сценарии новогодних ёлок управляются посетителями с личного телефона. Оформление реагирует на присутствие человека.</p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Единый световой сценарий</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Распределённая световая система охватывает весь объект. Атриум, галереи, внешние зоны — единое дыхание.</p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Ароматизация галерей</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Разные запаховые сценарии в галереях: хвоя, корица, цитрус, мята. Атмосфера, которую невозможно не запомнить.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7 · ГАЛЕРЕЯ                                       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-12">
+        <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.4rem,2vw,2rem)">Проект в кадрах</h2>
+      </div>
+
+      <!-- Row 1: wide + square -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-3 reveal">
+        <div class="gal-img md:col-span-3">
+          <img alt="Атриум — общий план оформления"
+               class="w-full object-cover" style="aspect-ratio:16/10"
+               src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1200&q=80"/>
+        </div>
+        <div class="gal-img md:col-span-2">
+          <img alt="Световые облака над атриумом"
+               class="w-full object-cover" style="aspect-ratio:4/3"
+               src="https://images.unsplash.com/photo-1476611338391-6f395a0dd82e?w=800&q=80"/>
+        </div>
+      </div>
+
+      <!-- Row 2: 3 equal -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3 reveal d1">
+        <div class="gal-img">
+          <img alt="Напольная декорация — крупный план"
+               class="w-full object-cover" style="aspect-ratio:3/4"
+               src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=700&q=80"/>
+        </div>
+        <div class="gal-img">
+          <img alt="Интерактивный поезд в атриуме"
+               class="w-full object-cover" style="aspect-ratio:3/4"
+               src="https://images.unsplash.com/photo-1547190027-9156686aa2f0?w=700&q=80"/>
+        </div>
+        <div class="gal-img">
+          <img alt="Новогодние ёлки с управлением через смартфон"
+               class="w-full object-cover" style="aspect-ratio:3/4"
+               src="https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=700&q=80"/>
+        </div>
+      </div>
+
+      <!-- Row 3: 2 wide -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 reveal d2">
+        <div class="gal-img">
+          <img alt="Внешнее оформление фасада"
+               class="w-full object-cover" style="aspect-ratio:16/9"
+               src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=900&q=80"/>
+        </div>
+        <div class="gal-img">
+          <img alt="Галерея — световой сценарий"
+               class="w-full object-cover" style="aspect-ratio:16/9"
+               src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=80"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8 · ПРОЦЕСС                                       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-16">
+        <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">Как это<br/>создавалось.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px reveal" style="background:rgba(20,20,20,.07)">
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Концепция</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Единый пространственный сценарий для всего объекта — от атриума до внешних зон</p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Проектирование</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Расчёт нагрузок, адаптация конструкций под объект, проработка интерактивных систем</p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Производство</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">181 объект собственного изготовления. 10 недель — от материала до готовой конструкции</p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Монтаж</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">3 недели ночных работ в действующем молле. Объект не останавливался ни на день</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 9 · РЕЗУЛЬТАТ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16 items-start">
+        <div class="lg:col-span-5 reveal">
+          <h2 class="font-light uppercase tracking-tight leading-none mb-8" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            +14% к трафику.<br/>1 место в отрасли.
+          </h2>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Посещаемость выросла на 14% по сравнению с предыдущим сезоном. Время пребывания увеличилось. Проект получил награду 1 место, как лучшее оформление молла.
+          </p>
+          <div class="mt-8">
+            <div class="award-badge">
+              <span class="material-symbols-outlined" style="font-size:13px">workspace_premium</span>
+              1 место — лучшее оформление молла, 2022–2023
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7 reveal d1">
+          <div class="grid grid-cols-2 gap-px" style="background:rgba(20,20,20,.07)">
+
+            <div class="p-10" style="background:#F0EFEB">
+              <p class="font-light mb-2" style="font-size:clamp(2.5rem,4vw,3.5rem);line-height:1">+14%</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">посещаемость сезона</p>
+            </div>
+
+            <div class="p-10" style="background:#F0EFEB">
+              <p class="font-light mb-2" style="font-size:clamp(2.5rem,4vw,3.5rem);line-height:1">181</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">изделие собственного производства</p>
+            </div>
+
+            <div class="p-10" style="background:#F0EFEB">
+              <p class="font-light mb-2" style="font-size:clamp(2.5rem,4vw,3.5rem);line-height:1">160.000</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">м² охваченного пространства</p>
+            </div>
+
+            <div class="p-10" style="background:#F0EFEB">
+              <p class="font-light mb-2" style="font-size:clamp(2.5rem,4vw,3.5rem);line-height:1">4</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">сенсорных уровня среды</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 10 · ФИНАЛЬНЫЙ КАДР                               -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="position:relative;background:#141414;overflow:hidden">
+    <div class="gal-img" style="height:clamp(420px,65vw,820px)">
+      <img alt="Новогоднее оформление IKEA — финальный кадр"
+           class="w-full h-full object-cover" style="opacity:.45"
+           src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1800&q=80"/>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style="z-index:2">
+      <div class="max-w-[1400px] mx-auto w-full reveal">
+        <h2 class="font-light text-white leading-none tracking-tight mb-10" style="font-size:clamp(2rem,4.5vw,4rem)">
+          Это не декор.
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:#BFA37E"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.65);font-size:clamp(1rem,1.4vw,1.25rem)">Это среда, которая меняет поведение людей в вашем пространстве</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:2rem;left:2.5rem;z-index:2">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.25)">Световой сценарий — весь объект, единая система</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- CTA + НАВИГАЦИЯ                                   -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-20 pb-20 border-b" style="border-color:rgba(20,20,20,.08)">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div>
+            <h2 class="font-light tracking-tight leading-none" style="font-size:clamp(1.6rem,2.5vw,2.4rem)">Нужно комплексное оформление<br/>вашего объекта?</h2>
+          </div>
+          <a href="#" class="btn-cta flex-shrink-0">
+            Получить предложение за 48 часов
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background:rgba(20,20,20,.06)">
+        <a href="#" class="flex items-center gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_back</span>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Все проекты</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Вернуться в архив</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-end gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <div class="text-right">
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Следующий проект</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Волшебное фортепиано</p>
+          </div>
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E">
+          <span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span>
+        </div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const heroWrap=document.getElementById('hero-sticky-wrap'),heroVeil=document.getElementById('hero-veil'),siteNav=document.getElementById('site-nav');
+function onScroll(){const sy=window.scrollY,h=heroWrap.offsetHeight;heroVeil.style.opacity=Math.min(1,Math.max(0,(sy-h*.3)/(h*.5)));siteNav.classList.toggle('scrolled',sy>h*.4)}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

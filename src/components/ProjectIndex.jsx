@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { IKEA_XMAS_SPLASH } from "./IkeaXmas";
+import { IKEA_PARK_SPLASH } from "./IkeaPark";
+import { FOREST_SPLASH } from "./Forest";
 
 export default function ProjectIndex() {
   const [filter, setFilter] = useState("all");
@@ -37,7 +40,7 @@ export default function ProjectIndex() {
     { f: "light" },
     { f: "light" },
     { f: "media" },
-    { f: "media" },
+    { f: "light" },
     { f: "light" },
     { f: "light" },
     { f: "light" },
@@ -241,7 +244,7 @@ export default function ProjectIndex() {
             </Link>
           </div>
 
-          {/* ROW 2: ВОЛШЕБНОЕ ФОРТЕПИАНО (3-й проект) + DIGITAL CANVAS */}
+          {/* ROW 2: ВОЛШЕБНОЕ ФОРТЕПИАНО (4) + IKEA (8 — на месте Digital Canvas) */}
           <div className="swiss mb-8">
             <Link
               to="/magicpiano"
@@ -271,48 +274,48 @@ export default function ProjectIndex() {
               </div>
             </Link>
             <Link
-              to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-8 lg:mt-[-25px] ${!isVisible("media") ? "hidden" : ""}`}
+              to="/ikea-mall"
+              className={`pc reveal col-span-12 lg:col-span-8 lg:mt-[-25px] ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "16/10" }}>
                 <img
-                  alt="Digital Canvas"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyVRLjxwBFDjdiIQmiWSt2UCvAmsQfbWOR8ofnOJ3Koxy02C0gCCC9IlSay-oz9dS8qTuoZJaJp1X5qCFeETncy4Np27xBLvn1WavkZ4-VshVr83ALo05FCFz9WkD5HwEbvozjZoQsa5KLBX_8KXtZUWBFTQ4Kyni5LeIToib3qL0N-DdDHNeUK4Rr8sIlb0l_qfr5UBQvcY07oRLr7WFOoE7ntwYwL6lIHUAGC11rluwLKZbpDRflxk_d8lgoaoTAz8IIsVkFKxTZ"
+                  alt="IKEA — световое оформление торгового центра"
+                  src="/ikea-mall/it1.jpg"
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Digital Canvas
+                IKEA — Световое оформление
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Мультимедиа
+                  Праздничное оформление
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  Торговый центр · 157 000 м²
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Capital Region
+                  Световая инфраструктура
                 </span>
               </div>
             </Link>
           </div>
 
-          {/* ROW 3: SILVER FOREST (7) + CONSTELLATION (5) */}
+          {/* ROW 3: IKEA — НОВОГОДНИЙ MALL (7) + ПАРК IKEA (5) */}
           <div className="swiss mb-8">
             <Link
-              to="/projects/022"
+              to="/ikea-xmas"
               className={`pc reveal col-span-12 lg:col-span-7 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "16/10" }}>
                 <img
-                  alt="Silver Forest"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuATovlV39tQpjucQSb6EsuzQdCblfsMwRPIs11mxACgXHZDS8kbhDal1XanoVV22qeI3Hf34U1Sz5S5-UKpp7VpUZBifop7nBGxsvhEI9gayPJyA42WAIWF7lxX3069DBZGG17Vie6AgofQYHFGwJruMv5VZSUfaEBUyKeXY02hUn8kNzuiF15ONzHZTL0fdlLa-Dn1W6begYVlssidwa4XzIJe98ll1rlN9DdDP1m_QpMhUql2yLwijTzvURbY2x9mcusz9prbKPcp"
+                  alt="IKEA — новогоднее оформление mall"
+                  src={IKEA_XMAS_SPLASH}
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Silver Forest
+                Новогоднее оформление mall
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
@@ -320,57 +323,51 @@ export default function ProjectIndex() {
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  IKEA · Mall
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Northern Capital
+                  160 000 м²
                 </span>
               </div>
             </Link>
             <Link
-              to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-5 lg:mt-20 ${!isVisible("light") ? "hidden" : ""}`}
+              to="/ikea-park"
+              className={`pc reveal col-span-12 lg:col-span-5 lg:mt-20 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "4/5" }}>
-                <img
-                  alt="Constellation"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1uzqlT1Sr4tVtX27b1DvLay-Px56xMBdxevn__-Hg_lGY-1CEInhzKd6X1nBxriS0xsx0nqAQYpvGLMFftJAfWXrylmap8zkT9Z1MkP6Wi5nCeNpsG_s0MfT7XQanB1PwvHuomuqy3BLLeSOs5vud_S0skwCiRohBoiofkSCzTdsXAegXcNmA5WYjZ-hXBXy5o5Lya9Emzjcr1_JT5j843IdljFh6jEkHml37iHCEN7FYK7_3ynP1W3ZFIbts97TL-Y1ILWgRII"
-                />
+                <img alt="Парк IKEA" src={IKEA_PARK_SPLASH} />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Constellation
+                Парк IKEA
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  Арт-инсталляция
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  Public space
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Northern Capital
+                  58 объектов
                 </span>
               </div>
             </Link>
           </div>
 
-          {/* ROW 4: GEOMETRY (4) + CENTRAL PARK (8) */}
+          {/* ROW 4: РОЖДЕСТВЕНСКИЙ ЛЕС (4) + CENTRAL PARK (8) */}
           <div className="swiss mb-8">
             <Link
-              to="/projects/022"
+              to="/forest"
               className={`pc reveal col-span-12 lg:col-span-4 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "1/1" }}>
-                <img
-                  alt="Geometry"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMs0orzF2FtEs4LE-uOY-0z7ro0xTiF9WZoyF1NKa2ZhdjnWJAQfk35VBK31gsvmSGA-S8Oy5J7uwiyT0WKogBRr5UNOiRnyv71rBU-Au51AZKMor1BwM5kFHar2c7Ndqdrk3EMnrv5KLcSl-7sGKucBLgZGZT3Pio9QSa0seMRNzkAFjYFs77dOFwXXxp1SaPQUBQnyCgY5_Pu0HvGDPQ8R9Axgrz3YFA2Spl1ni-9NAZ9Ag3NBwSGJcBUcnOOSU_OJ4DvQvqH61u"
-                />
+                <img alt="Рождественский лес IKEA" src={FOREST_SPLASH} />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Geometry
+                Рождественский лес
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
@@ -378,11 +375,11 @@ export default function ProjectIndex() {
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  IKEA
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional Flagship
+                  150 000 м² · галерея
                 </span>
               </div>
             </Link>

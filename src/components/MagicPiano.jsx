@@ -128,7 +128,7 @@ export default function MagicPiano() {
                 Точка притяжения внутри торгового центра
               </p>
             </div>
-            <div className="mp-h2 flex flex-col gap-4 pb-2 lg:col-span-4 lg:col-start-9">
+            <div className="mp-h2 flex flex-col gap-4 pb-2 lg:col-span-4 lg:col-start-9 lg:mt-14">
               <div className="flex items-center gap-4">
                 <div
                   className="h-10 w-px flex-shrink-0"
