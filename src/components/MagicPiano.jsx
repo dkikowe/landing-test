@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 import "./MagicPiano.css";
 
 /** Медиа из public/magic-piano (папка «№3 Готовые фото») */
@@ -824,41 +825,9 @@ export default function MagicPiano() {
             </div>
           </div>
         </section>
-
-        <footer
-          className="border-t px-8 py-14 md:px-14"
-          style={{
-            background: "#141414",
-            color: "#F9F9F7",
-            borderColor: "rgba(255,255,255,.06)",
-          }}
-        >
-          <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-10 md:flex-row">
-            <div className="flex items-center gap-3">
-              <div
-                className="flex h-6 w-6 items-center justify-center"
-                style={{ background: "#BFA37E" }}
-              >
-                <span
-                  className="material-symbols-outlined"
-                  style={{ color: "#141414", fontSize: 14 }}
-                >
-                  architecture
-                </span>
-              </div>
-              <span className="text-lg font-light tracking-tight">
-                monumforma
-              </span>
-            </div>
-            <p
-              className="font-mono text-[9px] uppercase leading-loose"
-              style={{ color: "rgba(255,255,255,.2)" }}
-            >
-              © 2025 monumforma studio — Valencia &amp; Barcelona, España
-            </p>
-          </div>
-        </footer>
       </div>
+
+      <Footer />
     </div>
   );
 }
