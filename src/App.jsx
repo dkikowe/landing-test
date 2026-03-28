@@ -12,12 +12,14 @@ import Clients from "./components/Clients";
 import Company from "./components/Company";
 import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
+import MagicPiano from "./components/MagicPiano";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
+        <Route path="/magicpiano" element={<MagicPiano />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Manifest />} />
           <Route path="evolution" element={<Evolution />} />

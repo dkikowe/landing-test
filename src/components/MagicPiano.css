@@ -1,0 +1,280 @@
+/* Magic Piano case study — scoped to avoid clashes with index.css */
+
+#magic-piano-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+@keyframes mp-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#magic-piano-root .mp-h0 {
+  animation: mp-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#magic-piano-root .mp-h1 {
+  animation: mp-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#magic-piano-root .mp-h2 {
+  animation: mp-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes mp-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#magic-piano-root .mp-sl {
+  animation: mp-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#magic-piano-root .mp-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#magic-piano-root .mp-reveal.mp-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#magic-piano-root .mp-d1 {
+  transition-delay: 0.1s;
+}
+#magic-piano-root .mp-d2 {
+  transition-delay: 0.2s;
+}
+
+#magic-piano-root .mp-gal-img {
+  overflow: hidden;
+}
+#magic-piano-root .mp-gal-img img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#magic-piano-root .mp-gal-img:hover img {
+  transform: scale(1.04);
+}
+
+/* Галерея «Проект в кадрах» — сетка как в ref HTML (gap-3) */
+#magic-piano-root .mp-gallery-rail {
+  isolation: isolate;
+}
+#magic-piano-root .mp-gal-video-wrap {
+  background: #141414;
+  cursor: pointer;
+}
+#magic-piano-root .mp-gal-video-el {
+  display: block;
+}
+/* Скрыть любые нативные контролы WebKit, если браузер их покажет */
+#magic-piano-root .mp-gal-video-el::-webkit-media-controls {
+  display: none !important;
+}
+#magic-piano-root .mp-gal-video-el::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+#mp-hero-sticky-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 100vh;
+  overflow: hidden;
+}
+#mp-hero-section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+#mp-hero-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  background: #f9f9f7;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+#mp-page-content {
+  position: relative;
+  z-index: 10;
+  background: #f9f9f7;
+  margin-top: -2px;
+}
+
+#mp-site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 3.5rem;
+  transition: background 0.4s, border-color 0.4s;
+}
+#mp-site-nav.mp-scrolled {
+  background: rgba(249, 249, 247, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
+}
+#magic-piano-root .mp-nav-logo {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: color 0.4s;
+  text-decoration: none;
+}
+#mp-site-nav.mp-scrolled .mp-nav-logo {
+  color: #141414;
+}
+#magic-piano-root .mp-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+#magic-piano-root .mp-burger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  transition: background 0.4s, transform 0.35s cubic-bezier(0.76, 0, 0.24, 1),
+    opacity 0.25s;
+  transform-origin: center;
+}
+#mp-site-nav.mp-scrolled .mp-burger span {
+  background: #141414;
+}
+#magic-piano-root .mp-burger.mp-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+#magic-piano-root .mp-burger.mp-open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+#magic-piano-root .mp-burger.mp-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+#mp-nav-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(420px, 100vw);
+  height: 100vh;
+  background: #f9f9f7;
+  z-index: 199;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 3.5rem 3rem;
+  transform: translateX(100%);
+  transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+  border-left: 1px solid rgba(20, 20, 20, 0.07);
+}
+#mp-nav-panel.mp-open {
+  transform: translateX(0);
+}
+#mp-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 198;
+  background: rgba(20, 20, 20, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s;
+}
+#mp-nav-overlay.mp-open {
+  opacity: 1;
+  pointer-events: all;
+}
+#magic-piano-root .mp-nav-link {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: -0.01em;
+  color: #141414;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
+  transition: color 0.25s, padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#magic-piano-root .mp-nav-link:hover {
+  color: #bfa37e;
+  padding-left: 0.6rem;
+}
+#magic-piano-root .mp-nav-link.mp-active {
+  color: #bfa37e;
+}
+#magic-piano-root .mp-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f9f9f7;
+  background: #141414;
+  padding: 0.85rem 1.75rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+#magic-piano-root .mp-nav-cta:hover {
+  background: #bfa37e;
+}
+#magic-piano-root .mp-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: #bfa37e;
+  color: #141414;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border: 1px solid #bfa37e;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+#magic-piano-root .mp-btn-cta:hover {
+  background: transparent;
+  color: #141414;
+}
