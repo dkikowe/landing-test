@@ -36,13 +36,13 @@ export default function ProjectIndex() {
   const cards = [
     { f: "light" },
     { f: "light" },
+    { f: "media" },
+    { f: "media" },
+    { f: "light" },
+    { f: "light" },
     { f: "light" },
     { f: "media" },
     { f: "light" },
-    { f: "light" },
-    { f: "light" },
-    { f: "media" },
-    { f: "media" },
     { f: "media" },
     { f: "objects" },
     { f: "objects" },
@@ -241,32 +241,32 @@ export default function ProjectIndex() {
             </Link>
           </div>
 
-          {/* ROW 2: AURORA (8) + DIGITAL CANVAS (4) */}
+          {/* ROW 2: ВОЛШЕБНОЕ ФОРТЕПИАНО (3-й проект) + DIGITAL CANVAS */}
           <div className="swiss mb-8">
             <Link
-              to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-4 ${!isVisible("light") ? "hidden" : ""}`}
+              to="/magicpiano"
+              className={`pc reveal col-span-12 lg:col-span-4 ${!isVisible("media") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Aurora"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2adHrk6cfEWxdZyys0C3lXJmLKNXAFr9sEFPbJq8EVD5I1TwzWWlw1nULwEwmVBznXsq16ETTrvfeputOCwPgTEI3CIehlfl6vvDNXam49DYK4vphHgHsPFlNNlYHjxfY04a6rooPcBkBfTBVISM-zv9OI_67HeI0desGJlbDN1fFHaV_goNTmdOJ0S2CJPhrTHQlLnzRWW_kXaCVQ6QPxWMld-Db0_Kp70KDBBXxNDoYjKQlCFQEvDbE88WnX8QDP08SX3rPe4J7"
+                  alt="Волшебное фортепиано"
+                  src="/magic-piano/vf2.jpeg"
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Aurora
+                Волшебное фортепиано
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  Мультимедиа
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  Интерактивная инсталляция
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Capital Region
+                  Торговый центр · 2019
                 </span>
               </div>
             </Link>
@@ -415,24 +415,24 @@ export default function ProjectIndex() {
             </Link>
           </div>
 
-          {/* ROW 5: MAGIC PIANO (6) + KINETIC CHANDELIER (6) */}
+          {/* ROW 5: AURORA + KINETIC CHANDELIER */}
           <div className="swiss mb-8">
             <Link
               to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-6 ${!isVisible("media") ? "hidden" : ""}`}
+              className={`pc reveal col-span-12 lg:col-span-6 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Magic Piano"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"
+                  alt="Aurora"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2adHrk6cfEWxdZyys0C3lXJmLKNXAFr9sEFPbJq8EVD5I1TwzWWlw1nULwEwmVBznXsq16ETTrvfeputOCwPgTEI3CIehlfl6vvDNXam49DYK4vphHgHsPFlNNlYHjxfY04a6rooPcBkBfTBVISM-zv9OI_67HeI0desGJlbDN1fFHaV_goNTmdOJ0S2CJPhrTHQlLnzRWW_kXaCVQ6QPxWMld-Db0_Kp70KDBBXxNDoYjKQlCFQEvDbE88WnX8QDP08SX3rPe4J7"
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Magic Piano
+                Aurora
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Мультимедиа
+                  Праздничное оформление
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">

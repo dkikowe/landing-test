@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef } from "react";
+import Header from "./Header";
 import "./MagicPiano.css";
 
 /** Медиа из public/magic-piano (папка «№3 Готовые фото») */
@@ -6,36 +7,8 @@ const MP = "/magic-piano";
 
 export default function MagicPiano() {
   const heroWrapRef = useRef(null);
+  const heroBgRef = useRef(null);
   const heroVeilRef = useRef(null);
-  const siteNavRef = useRef(null);
-  const galleryVideoRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const playGalleryVideo = useCallback(() => {
-    galleryVideoRef.current?.play()?.catch(() => {});
-  }, []);
-
-  const resetGalleryVideo = useCallback(() => {
-    const v = galleryVideoRef.current;
-    if (!v) return;
-    v.pause();
-    v.currentTime = 0;
-  }, []);
-
-  const closeMenu = useCallback(() => {
-    setMenuOpen(false);
-  }, []);
-
-  const toggleMenu = useCallback(() => {
-    setMenuOpen((o) => !o);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
 
   useEffect(() => {
     document.title =
@@ -63,31 +36,29 @@ export default function MagicPiano() {
     return () => obs.disconnect();
   }, []);
 
+  /** Hero scroll — как в Manifest.jsx */
   useEffect(() => {
-    const onScroll = () => {
-      const heroWrap = heroWrapRef.current;
-      const heroVeil = heroVeilRef.current;
-      const siteNav = siteNavRef.current;
-      if (!heroWrap || !heroVeil || !siteNav) return;
-      const sy = window.scrollY;
-      const h = heroWrap.offsetHeight;
-      heroVeil.style.opacity = String(
-        Math.min(1, Math.max(0, (sy - h * 0.3) / (h * 0.5)))
-      );
-      siteNav.classList.toggle("mp-scrolled", sy > h * 0.4);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const heroWrap = heroWrapRef.current;
+    const heroBg = heroBgRef.current;
+    const heroVeil = heroVeilRef.current;
 
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === "Escape") closeMenu();
+    const updateHero = () => {
+      if (!heroWrap || !heroBg || !heroVeil) return;
+
+      const s = window.scrollY;
+      const maxScroll = window.innerHeight || 800;
+      const p = Math.min(1, s / maxScroll);
+
+      heroWrap.style.transform = `translateY(${s * 0.3}px)`;
+      heroWrap.style.opacity = String(1 - p);
+      heroVeil.style.opacity = String(p);
+      heroBg.style.transform = `translateY(${s * 0.2}px)`;
     };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [closeMenu]);
+
+    window.addEventListener("scroll", updateHero, { passive: true });
+    updateHero();
+    return () => window.removeEventListener("scroll", updateHero);
+  }, []);
 
   return (
     <div
@@ -95,88 +66,36 @@ export default function MagicPiano() {
       className="font-display overflow-x-hidden text-[#141414]"
       style={{ background: "#F9F9F7" }}
     >
-      <nav id="mp-site-nav" ref={siteNavRef}>
-        <a href="/" className="mp-nav-logo">
-          monumforma
-        </a>
-        <button
-          type="button"
-          className={`mp-burger ${menuOpen ? "mp-open" : ""}`}
-          aria-label="Меню"
-          aria-expanded={menuOpen}
-          onClick={toggleMenu}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </nav>
+      <Header />
+
+      {/* Hero — sticky + скролл-анимация как в Manifest (hero-wrap / hero-bg / hero-veil) */}
       <div
-        id="mp-nav-overlay"
-        className={menuOpen ? "mp-open" : ""}
-        role="presentation"
-        onClick={closeMenu}
-      />
-      <div id="mp-nav-panel" className={menuOpen ? "mp-open" : ""}>
-        <nav style={{ marginTop: "1rem" }}>
-          <a className="mp-nav-link mp-active" href="/projects">
-            Проекты
-          </a>
-          <a className="mp-nav-link" href="/expertise">
-            Компетенции
-          </a>
-          <a className="mp-nav-link" href="/process">
-            Инженерия
-          </a>
-          <a className="mp-nav-link" href="/clients">
-            Клиентам
-          </a>
-          <a className="mp-nav-link" href="/company">
-            О компании
-          </a>
-          <a className="mp-nav-link" href="/contact">
-            Контакты
-          </a>
-        </nav>
-        <a className="mp-nav-cta" href="/contact">
-          Обсудить проект{" "}
-          <span className="material-symbols-outlined" style={{ fontSize: 14 }}>
-            arrow_forward
-          </span>
-        </a>
-        <p
-          className="font-mono mt-8"
-          style={{
-            fontSize: ".6rem",
-            letterSpacing: ".18em",
-            color: "rgba(20,20,20,.3)",
-            textTransform: "uppercase",
-          }}
-        >
-          Valencia &amp; Barcelona, España
-        </p>
-      </div>
+        ref={heroWrapRef}
+        className="sticky top-0 z-[1] flex h-screen w-full flex-col overflow-hidden will-change-[transform,opacity]"
+      >
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img
+            ref={heroBgRef}
+            alt="Волшебное фортепиано — два интерактивных рояля в атриуме торгового центра"
+            className="absolute left-0 top-0 z-0 h-full w-full object-cover will-change-transform"
+            style={{ objectPosition: "center 40%" }}
+            src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=1800&q=80"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 z-10"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(20,20,20,.85) 0%, rgba(20,20,20,.25) 50%, rgba(20,20,20,.15) 100%)",
+            }}
+          />
+        </div>
 
-      <div id="mp-hero-veil" ref={heroVeilRef} />
+        <div
+          ref={heroVeilRef}
+          className="pointer-events-none absolute inset-0 z-[15] bg-white opacity-0"
+        />
 
-      <div id="mp-hero-sticky-wrap" ref={heroWrapRef}>
-        <section id="mp-hero-section" style={{ background: "#141414" }}>
-          <div className="absolute inset-0">
-            <img
-              alt="Волшебное фортепиано — два интерактивных рояля в атриуме торгового центра"
-              className="h-full w-full object-cover"
-              style={{ objectPosition: "center 40%" }}
-              src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=1800&q=80"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(20,20,20,.85) 0%, rgba(20,20,20,.25) 50%, rgba(20,20,20,.15) 100%)",
-              }}
-            />
-          </div>
-
+        <div className="relative z-20 flex h-full w-full flex-col">
           <div className="absolute left-8 top-28 z-10 md:left-14 mp-h0">
             <p
               className="font-mono text-[9px] uppercase tracking-[.4em]"
@@ -187,7 +106,7 @@ export default function MagicPiano() {
             </p>
           </div>
 
-          <div className="relative z-10 mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-8 px-8 pb-16 md:px-14 lg:grid-cols-12">
+          <div className="mt-auto mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-8 px-8 pb-16 md:px-14 lg:grid-cols-12">
             <div className="lg:col-span-8">
               <h1
                 className="mp-h1 font-light leading-none tracking-tight text-white"
@@ -253,10 +172,10 @@ export default function MagicPiano() {
               />
             </div>
           </div>
-        </section>
+        </div>
       </div>
 
-      <div id="mp-page-content">
+      <div id="page-content" className="relative z-[2] bg-[#F9F9F7]">
         <div
           className="border-b"
           style={{
@@ -495,20 +414,14 @@ export default function MagicPiano() {
             {/* Ряд 1 как в ref: 3+2 — видео + фото; далее те же пропорции gap-3 mb-3 */}
             <div className="mp-gallery-rail">
               <div className="mp-reveal mb-3 grid grid-cols-1 gap-3 md:grid-cols-5">
-                <div
-                  className="mp-gal-img mp-gal-video-wrap md:col-span-3"
-                  onMouseEnter={playGalleryVideo}
-                  onMouseLeave={resetGalleryVideo}
-                >
+                <div className="mp-gal-img mp-gal-video-wrap md:col-span-3">
                   <video
-                    ref={galleryVideoRef}
                     className="mp-gal-video-el h-full w-full object-cover"
                     style={{ aspectRatio: "16/10" }}
-                    muted
-                    loop
+                    controls
                     playsInline
                     preload="metadata"
-                    aria-label="Волшебное фортепиано — видео (воспроизведение при наведении)"
+                    aria-label="Волшебное фортепиано — видео проекта"
                   >
                     <source src={`${MP}/result.mp4`} type="video/mp4" />
                   </video>
