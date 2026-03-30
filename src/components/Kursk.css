@@ -1,0 +1,85 @@
+/* Kursk (AR installation) — scope under #kursk-root */
+#kursk-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+#kursk-root .ku-h0 {
+  animation: ku-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#kursk-root .ku-h1 {
+  animation: ku-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#kursk-root .ku-h2 {
+  animation: ku-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#kursk-root .ku-h3 {
+  animation: ku-fu 1.4s 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ku-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ku-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#kursk-root .ku-sl {
+  animation: ku-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#kursk-root .ku-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#kursk-root .ku-reveal.ku-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#kursk-root .ku-d1 {
+  transition-delay: 0.1s;
+}
+#kursk-root .ku-d2 {
+  transition-delay: 0.2s;
+}
+#kursk-root .ku-d3 {
+  transition-delay: 0.3s;
+}
+
+#kursk-root .ku-gal-img {
+  overflow: hidden;
+}
+#kursk-root .ku-gal-img img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#kursk-root .ku-gal-img:hover img {
+  transform: scale(1.04);
+}
+

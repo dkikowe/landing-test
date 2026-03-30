@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — Дополненная реальность | LED 7×4 м</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-light': '#F9F9F7', 'bg-dark': '#141414' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'], condensed: ['Barlow Condensed','sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.h0{animation:fu 1.4s cubic-bezier(.16,1,.3,1) both}
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .25s cubic-bezier(.16,1,.3,1) both}
+.h3{animation:fu 1.4s .38s cubic-bezier(.16,1,.3,1) both}
+
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+.d3{transition-delay:.3s}
+
+.gal-img{overflow:hidden}
+.gal-img img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gal-img:hover img{transform:scale(1.04)}
+
+#hero-sticky-wrap{position:sticky;top:0;z-index:1;height:100vh;overflow:hidden}
+#hero-section{width:100%;height:100%;position:relative;display:flex;align-items:flex-end}
+#hero-veil{position:fixed;inset:0;z-index:9;background:#F9F9F7;opacity:0;pointer-events:none;will-change:opacity}
+#page-content{position:relative;z-index:10;background:#F9F9F7;margin-top:-2px}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:color .4s;text-decoration:none}
+#site-nav.scrolled .nav-logo{color:#141414}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#fff;transition:background .4s,transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+#site-nav.scrolled .burger span{background:#141414}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s;cursor:pointer}
+.btn-cta:hover{background:transparent;color:#141414}
+
+.big-num{font-family:'Barlow Condensed',sans-serif;font-weight:200;line-height:.88;letter-spacing:-.02em}
+
+/* Двухсторонний разделитель */
+.divider-label{display:flex;align-items:center;gap:1.5rem}
+.divider-label::before,.divider-label::after{content:'';flex:1;height:1px}
+.divider-label::before{background:rgba(20,20,20,.1)}
+.divider-label::after{background:rgba(20,20,20,.1)}
+.divider-label-dark::before,.divider-label-dark::after{background:rgba(255,255,255,.08)}
+
+.spec-tag{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(20,20,20,.15);padding:.3rem .7rem;display:inline-block;white-space:nowrap}
+.spec-tag-invert{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.45)}
+
+/* Сценарий-карточка */
+.scenario-card{border-top:1px solid rgba(20,20,20,.08);padding:1.5rem 0;display:grid;grid-template-columns:2.5rem 1fr auto;gap:1.5rem;align-items:start;transition:padding-left .3s cubic-bezier(.16,1,.3,1)}
+.scenario-card:hover{padding-left:.5rem}
+
+/* Теговые пилюли */
+.pill{display:inline-block;font-family:'Roboto Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .65rem;background:rgba(20,20,20,.06)}
+
+/* Строительные фото — особый фильтр */
+.construction-img{filter:contrast(1.05) saturate(.85)}
+</style>
+</head>
+
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a href="#" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<div id="hero-veil"></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 1 · HERO                                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="hero-sticky-wrap">
+  <section id="hero-section" style="background:#0a0a0f">
+    <div class="absolute inset-0">
+      <!-- Лучший кадр в работе — тигр или динозавр с людьми -->
+      <img alt="Дополненная реальность — посетители взаимодействуют с виртуальными животными"
+           class="w-full h-full object-cover" style="object-position:center 35%"
+           src="[ФОТО HERO — доп_реал__3.png или доп_реал__2.png — лучший AR-кадр с людьми]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(10,10,15,.96) 0%, rgba(10,10,15,.45) 50%, rgba(10,10,15,.15) 100%)"></div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="absolute top-28 left-8 md:left-14 z-10 h0">
+      <p class="font-mono text-[9px] uppercase tracking-[.4em]" style="color:rgba(255,255,255,.25)">
+        monumforma&nbsp;&nbsp;/&nbsp;&nbsp;Проекты&nbsp;&nbsp;/&nbsp;&nbsp;Дополненная реальность
+      </p>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-14 pb-14">
+      <div class="grid lg:grid-cols-12 gap-8 items-end">
+
+        <!-- Заголовок -->
+        <div class="lg:col-span-7">
+          <div class="h0 mb-4">
+            <span class="spec-tag spec-tag-invert">Интерактивная система AR</span>
+          </div>
+          <h1 class="font-light text-white leading-none tracking-tight h1" style="font-size:clamp(2.8rem,5.5vw,5.2rem)">
+            Дополненная<br/>реальность
+          </h1>
+          <p class="font-light mt-5 h2" style="color:rgba(255,255,255,.38);font-size:clamp(.85rem,1.1vw,.95rem);letter-spacing:.03em;max-width:36rem">
+            LED-видеостена 7×4 м с системой трекинга движения. Посетитель становится частью цифровой среды — управляет сюжетом и взаимодействует с виртуальными животными в реальном времени.
+          </p>
+        </div>
+
+        <!-- Мета-блок справа -->
+        <div class="lg:col-span-4 lg:col-start-9 h3">
+          <div class="flex flex-col gap-4">
+            <div class="flex gap-4">
+              <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.22)"></div>
+              <div>
+                <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.25)">Экран</p>
+                <p class="font-light text-white" style="font-size:.9rem">7 × 4 м, шаг пикселя P4</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.22)"></div>
+              <div>
+                <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.25)">Взаимодействие</p>
+                <p class="font-light text-white" style="font-size:.9rem">Трекинг тела, жестов, присутствия</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.22)"></div>
+              <div>
+                <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.25)">Интеграция</p>
+                <p class="font-light text-white" style="font-size:.9rem">В ходе строительства объекта</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- scroll -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <div class="w-px h-9 relative overflow-hidden" style="background:rgba(255,255,255,.1)">
+        <div class="absolute inset-0 sl" style="background:#BFA37E"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-content">
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2 · ПАРАМЕТРЫ — тёмная полоса                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#141414;border-bottom:1px solid rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 grid grid-cols-2 md:grid-cols-4">
+      <div class="py-6 pr-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Экран</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">LED 7 × 4 м / P4</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Сценариев</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">15 животных, мультисцена</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Конструктив</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">Металлорама + подиум</p>
+      </div>
+      <div class="py-6 pl-6">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Цикл</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">Под ключ</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 3 · СУТЬ                                          -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16">
+
+        <div class="lg:col-span-4 reveal">
+          <div class="divider-label mb-8" style="justify-content:flex-start">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Концепция</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Не экран<br/>с контентом.<br/>А управляемая среда.
+          </h2>
+        </div>
+
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1 flex flex-col gap-6">
+          <p class="font-light leading-relaxed" style="font-size:1.05rem;color:rgba(20,20,20,.65)">
+            Посетитель подходит к определённой зоне атриума — система фиксирует его присутствие и запускает сценарий. На экране 7×4 метра он видит себя в окружении виртуальных животных: тигра, тираннозавра, крокодила, панды. Его цифровой двойник реагирует на движения в реальном времени — гладит животных, получает ответные реакции, управляет поведением сцены.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.5)">
+            В основе — три уровня: LED-видеостена с высокой плотностью пикселя, система трекинга камер и датчиков, и управляющий слой со сценарным контентом. Они работают как единая система. Убери любой — и взаимодействие разрушится.
+          </p>
+
+          <!-- Три уровня системы -->
+          <div class="mt-4 flex flex-col gap-0" style="border:1px solid rgba(20,20,20,.08)">
+            <div class="p-6 flex items-start gap-5" style="border-bottom:1px solid rgba(20,20,20,.06)">
+              <span class="font-mono text-[8px] pt-1 flex-shrink-0" style="color:#BFA37E">01</span>
+              <div>
+                <p class="font-light uppercase tracking-tight mb-1">Визуальный слой</p>
+                <p class="font-light" style="font-size:.88rem;color:rgba(20,20,20,.45)">LED-видеостена 7×4 м, шаг пикселя P4. Чёткое изображение на близкой дистанции — обязательное условие для работы AR.</p>
+              </div>
+            </div>
+            <div class="p-6 flex items-start gap-5" style="border-bottom:1px solid rgba(20,20,20,.06)">
+              <span class="font-mono text-[8px] pt-1 flex-shrink-0" style="color:#BFA37E">02</span>
+              <div>
+                <p class="font-light uppercase tracking-tight mb-1">Система трекинга</p>
+                <p class="font-light" style="font-size:.88rem;color:rgba(20,20,20,.45)">Камеры и датчики над экраном: определение входа в зону, трекинг положения в пространстве, считывание жестов и движения тела.</p>
+              </div>
+            </div>
+            <div class="p-6 flex items-start gap-5">
+              <span class="font-mono text-[8px] pt-1 flex-shrink-0" style="color:#BFA37E">03</span>
+              <div>
+                <p class="font-light uppercase tracking-tight mb-1">Управление и контент</p>
+                <p class="font-light" style="font-size:.88rem;color:rgba(20,20,20,.45)">Сценарная система с набором интерактивных программ. Контент адаптируется под поведение пользователя в реальном времени — не линейное видео.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 4 · СТРОИТЕЛЬСТВО — два горизонтальных фото       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#1a1612">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.15)">
+        До запуска — строительная фаза
+      </p>
+    </div>
+
+    <!-- Два горизонтальных фото строительства -->
+    <div class="grid md:grid-cols-2 gap-px reveal" style="background:rgba(255,255,255,.04)">
+      <div class="gal-img" style="height:clamp(280px,38vw,520px)">
+        <img alt="LED-экран 7×4 м — установка в атриуме, стадия строительства"
+             class="w-full h-full object-cover construction-img"
+             src="[ФОТО — 3.png — экран установлен, тёмный, красная металлорама снизу]"/>
+      </div>
+      <div class="gal-img" style="height:clamp(280px,38vw,520px)">
+        <img alt="Строительная стадия — атриум без отделки, металлоконструкции"
+             class="w-full h-full object-cover construction-img"
+             src="[ФОТО — 4.png — строительный вид атриума]"/>
+      </div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4 flex justify-between">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.15)">Экран смонтирован до завершения отделочных работ</p>
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.15)">Металлорама — собственная разработка</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5 · ИНЖЕНЕРИЯ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#EEECEA">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-16 reveal">
+        <div class="lg:col-span-4">
+          <div class="divider-label mb-8" style="justify-content:flex-start">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Конструктив</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Встроено в объект.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Несущая металлоконструкция под экран рассчитана и изготовлена специально — с учётом нагрузки от экрана, оборудования и акустики. Подиум, в котором скрыта вся инфраструктура — серверы, коммутация, кабели, вентиляция — спроектирован как часть архитектуры атриума с доступом для обслуживания. Всё решения заложены в ППР и согласованы с генподрядчиком до начала отделки.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px reveal d1" style="background:rgba(20,20,20,.08)">
+        <div class="p-10" style="background:#EEECEA">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">01</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Металлоконструкция</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Проектирование и изготовление несущей рамы под экран. Расчёт нагрузок, согласование с проектировщиком здания.</p>
+        </div>
+        <div class="p-10" style="background:#EEECEA">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">02</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Подиум-инфраструктура</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Разработка подиума со скрытым размещением оборудования, вентиляцией и техническим доступом для обслуживания.</p>
+        </div>
+        <div class="p-10" style="background:#EEECEA">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">03</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Монтаж в стройке</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Установка экрана и оборудования на стадии строительства. Интеграция в план работ, координация с генподрядчиком.</p>
+        </div>
+        <div class="p-10" style="background:#EEECEA">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">04</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Пусконаладка</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Калибровка зоны трекинга, настройка датчиков и камер, отладка сценариев взаимодействия. Тестирование в потоке.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 6 · ГАЛЕРЕЯ AR — СЦЕНАРИИ В РАБОТЕ               -->
+  <!-- ФОТО 3–8: три пары кадров из работающей системы  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="reveal mb-14">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <div class="divider-label mb-6" style="justify-content:flex-start">
+              <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Система в работе</span>
+            </div>
+            <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.4rem,2vw,2rem)">
+              Посетитель внутри сцены.
+            </h2>
+          </div>
+          <div class="flex gap-2 flex-wrap pb-1">
+            <span class="spec-tag">Трекинг тела</span>
+            <span class="spec-tag">Реакция на жест</span>
+            <span class="spec-tag">Звуковая среда</span>
+            <span class="spec-tag">Мультипользователь</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ряд 1: одно широкое горизонтальное — тигр с людьми -->
+      <div class="mb-3 reveal">
+        <div class="gal-img">
+          <img alt="AR — посетители взаимодействуют с виртуальным тигром на экране"
+               class="w-full object-cover" style="aspect-ratio:16/9"
+               src="[ФОТО — доп_реал__2.png — тигр, группа людей перед экраном]"/>
+        </div>
+        <div class="flex justify-between mt-3">
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.3)">Сценарий «Тигр» — групповое взаимодействие</p>
+          <span class="pill">Реальное время</span>
+        </div>
+      </div>
+
+      <!-- Ряд 2: два равных — T-Rex + крокодил -->
+      <div class="grid md:grid-cols-2 gap-3 mb-3 reveal d1">
+        <div>
+          <div class="gal-img">
+            <img alt="AR — ребёнок рядом с тираннозавром на экране"
+                 class="w-full object-cover" style="aspect-ratio:4/3"
+                 src="[ФОТО — доп_реал__3.png — девочка и тираннозавр]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.3)">Сценарий «Тираннозавр» — одиночное взаимодействие</p>
+        </div>
+        <div>
+          <div class="gal-img">
+            <img alt="AR — семья с детьми рядом с виртуальным крокодилом"
+                 class="w-full object-cover" style="aspect-ratio:4/3"
+                 src="[ФОТО — доп_реал__4.png — крокодил, мама с детьми]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.3)">Сценарий «Крокодил» — семейный сценарий</p>
+        </div>
+      </div>
+
+      <!-- Ряд 3: три фото — доп. ракурсы или другие сценарии -->
+      <div class="grid md:grid-cols-3 gap-3 reveal d2">
+        <div>
+          <div class="gal-img">
+            <img alt="Дополненная реальность — дополнительный сценарий 1"
+                 class="w-full object-cover" style="aspect-ratio:3/4"
+                 src="[ФОТО — ракурс 6, доп сценарий или другое животное]"/>
+          </div>
+        </div>
+        <div>
+          <div class="gal-img">
+            <img alt="Дополненная реальность — дополнительный сценарий 2"
+                 class="w-full object-cover" style="aspect-ratio:3/4"
+                 src="[ФОТО — ракурс 7, общий план или детали экрана]"/>
+          </div>
+        </div>
+        <div>
+          <div class="gal-img">
+            <img alt="Дополненная реальность — дополнительный сценарий 3"
+                 class="w-full object-cover" style="aspect-ratio:3/4"
+                 src="[ФОТО — ракурс 8, финальный кадр]"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8 · ФИНАЛЬНЫЙ КАДР                                -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="position:relative;background:#0a0a0f;overflow:hidden">
+    <div class="gal-img" style="height:clamp(420px,65vw,860px)">
+      <img alt="Дополненная реальность — финальный атмосферный кадр"
+           class="w-full h-full object-cover" style="opacity:.4"
+           src="[ФОТО HERO — лучший кадр с людьми и животным, масштаб и атмосфера]"/>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style="z-index:2">
+      <div class="max-w-[1400px] mx-auto w-full reveal">
+        <h2 class="font-light text-white leading-none tracking-tight mb-10" style="font-size:clamp(1.6rem,4.5vw,3rem)">
+          Не просто экран с контентом.<br/>Это инженерная система.
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:#BFA37E"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.5);font-size:clamp(.9rem,1.2vw,1.05rem)">Встроена в здание. Управляет поведением пространства.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.28);font-size:clamp(.9rem,1.2vw,1.05rem)">Полный цикл: концепция → проектирование → монтаж → пусконаладка</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- CTA + НАВИГАЦИЯ                                   -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-20 pb-20 border-b" style="border-color:rgba(20,20,20,.08)">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div>
+            <h2 class="font-light tracking-tight leading-none" style="font-size:clamp(1.6rem,2.5vw,2.4rem)">
+              Внедрим интерактивные системы,<br/>работающие на трафик и вовлечение.
+            </h2>
+          </div>
+          <a href="#" class="btn-cta flex-shrink-0">
+            Обсудить проект
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background:rgba(20,20,20,.06)">
+        <a href="#" class="flex items-center gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_back</span>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Все проекты</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Вернуться в архив</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-end gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <div class="text-right">
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Следующий проект</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Кинетическая люстра — 524 сферы</p>
+          </div>
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E">
+          <span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span>
+        </div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const heroWrap=document.getElementById('hero-sticky-wrap'),heroVeil=document.getElementById('hero-veil'),siteNav=document.getElementById('site-nav');
+function onScroll(){const sy=window.scrollY,h=heroWrap.offsetHeight;heroVeil.style.opacity=Math.min(1,Math.max(0,(sy-h*.3)/(h*.5)));siteNav.classList.toggle('scrolled',sy>h*.4)}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

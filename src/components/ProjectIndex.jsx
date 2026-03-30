@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import { IKEA_XMAS_SPLASH } from "./IkeaXmas";
 import { IKEA_PARK_SPLASH } from "./IkeaPark";
 import { FOREST_SPLASH } from "./Forest";
+import { TVER_SPLASH } from "./Tver";
+import { RADDISON_SPLASH } from "./Raddison";
+import { PASSAGE_SPLASH } from "./Passage";
+import { LUSTRA_SPLASH } from "./Lustra";
+import { KURSK_SPLASH } from "./Kursk";
 
 export default function ProjectIndex() {
   const [filter, setFilter] = useState("all");
@@ -39,7 +44,7 @@ export default function ProjectIndex() {
   const cards = [
     { f: "light" },
     { f: "light" },
-    { f: "media" },
+    { f: "light" },
     { f: "light" },
     { f: "light" },
     { f: "light" },
@@ -186,59 +191,56 @@ export default function ProjectIndex() {
         </div>
 
         <main className="max-w-[1440px] mx-auto px-8 md:px-14 py-20">
-          {/* ROW 1: CENTRAL PLAZA (7) + NORDIC WINTER (5) */}
+          {/* ROW 1: ТВЕРСКАЯ ПЛОЩАДЬ (7) + РАДISSON (5) */}
           <div className="swiss mb-8">
             <Link
-              to="/projects/022"
+              to="/tver"
               className={`pc reveal col-span-12 lg:col-span-7 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "16/10" }}>
-                <img
-                  alt="Central Plaza"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldUVennI4I72et6AuVe32w-YlxSfQ0R38jKo5B5P-XJymM8WIfFZ9bzsdLK-9EiP4Aod628-0yPk5Qd0P4fH2xedJ61ejgvtwQIRrAHBEpmSIRSF_3jM4bi-IzUv3NqSPJ0yUC0BmlxMSf0qwZuaeJG_u86SS5hAvEdMzhMfcWm6_PLgzklpzlEcQKHeuvSxiWEwTn2go_LINB_7FEI2U8vzKSlNFTmo_LfeGgthMeiCrTundUjsfP1Z6vPhX9D4n_rpWph4NfbeF"
-                />
+                <img alt="Тверская площадь" src={TVER_SPLASH} />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Central Plaza
+                Тверская площадь
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  Городское оформление
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Municipal Commission
+                  Мэрия города Москвы
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Capital Region
+                  Центр города
                 </span>
               </div>
             </Link>
             <Link
-              to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-5 lg:mt-12 ${!isVisible("light") ? "hidden" : ""}`}
+              to="/raddison"
+              className={`pc reveal col-span-12 lg:col-span-5 lg:mt-12 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "4/5" }}>
                 <img
-                  alt="Nordic Winter"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfGRnRhZ4D_ZLaJm-8P4h9_JU-Jl99xO7G0KcjUIB6SCvz2ubgTmgl97ezTmWtOaYIqCogjZsIVwIbTFB5FI1kMDOD0W9EC4bqxAoJCCyT1P00TjOhDSyF7px2Hwe-4CHR_idWFDMUGPuyxVU7KiERxBFi1EEzyFj_-QtVYzrmnRVTtVZ9OqWBlsj6NwAq0TPsF_yteEA4Z1zxznU2qC-MCaeszmtqvy_vHhyAi6HVQZ6S7IEK7K4kQtB2rv3EgmY9hwDs4lXCOIC"
+                  alt="Матрёшки — Radisson Collection"
+                  src={RADDISON_SPLASH}
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Nordic Winter
+                Матрёшки
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  Скульптурная инсталляция
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  Radisson Collection
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Capital Region
+                  Москва
                 </span>
               </div>
             </Link>
@@ -251,10 +253,7 @@ export default function ProjectIndex() {
               className={`pc reveal col-span-12 lg:col-span-4 ${!isVisible("media") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
-                <img
-                  alt="Волшебное фортепиано"
-                  src="/magic-piano/vf2.jpeg"
-                />
+                <img alt="Волшебное фортепиано" src="/magic-piano/vf2.jpeg" />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
                 Волшебное фортепиано
@@ -357,7 +356,7 @@ export default function ProjectIndex() {
             </Link>
           </div>
 
-          {/* ROW 4: РОЖДЕСТВЕНСКИЙ ЛЕС (4) + CENTRAL PARK (8) */}
+          {/* ROW 4: РОЖДЕСТВЕНСКИЙ ЛЕС (4) + CENTRAL PLAZA (8) */}
           <div className="swiss mb-8">
             <Link
               to="/forest"
@@ -384,29 +383,31 @@ export default function ProjectIndex() {
               </div>
             </Link>
             <Link
-              to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-8 ${!isVisible("media") ? "hidden" : ""}`}
+              to="/lustra"
+              className={`pc reveal col-span-12 lg:col-span-8 ${
+                !isVisible("light") ? "hidden" : ""
+              }`}
             >
               <div className="pc-img" style={{ aspectRatio: "21/9" }}>
                 <img
-                  alt="Central Park"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNS-FWZUsMYZTSMtIKH0U4Ozhdd5_85qa_0sSyTCpIZjOTLa8PswOFtP-rRj5gnL338tZWO2DIRmiLfTENKu0FMHkxvBLrZXAbRq6hRExk2cUZhB3Q9d0_RmjMqYnCNYDU1SKwEyt4_PQ45bx6ECUkN9-kdWBfyls1TBSD7hxRtgC6atNdaxOJYxzTIlfBUo4SywMBaTq4xw6ciVTNVKRydN3NDXvHjGh4bKtB7FtcogH9cFrc9d77UY6uC3HMO89MMQbdMGy5xqSl"
+                  alt="Кинетическая люстра"
+                  src={LUSTRA_SPLASH}
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Central Park
+                Люстра
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Мультимедиа
+                  Кинетическая световая система
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional Developer
+                  Лебёдочная система
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional Flagship
+                  Цифровое DMX
                 </span>
               </div>
             </Link>
@@ -415,62 +416,59 @@ export default function ProjectIndex() {
           {/* ROW 5: AURORA + KINETIC CHANDELIER */}
           <div className="swiss mb-8">
             <Link
-              to="/projects/022"
+              to="/kursk"
               className={`pc reveal col-span-12 lg:col-span-6 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Aurora"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2adHrk6cfEWxdZyys0C3lXJmLKNXAFr9sEFPbJq8EVD5I1TwzWWlw1nULwEwmVBznXsq16ETTrvfeputOCwPgTEI3CIehlfl6vvDNXam49DYK4vphHgHsPFlNNlYHjxfY04a6rooPcBkBfTBVISM-zv9OI_67HeI0desGJlbDN1fFHaV_goNTmdOJ0S2CJPhrTHQlLnzRWW_kXaCVQ6QPxWMld-Db0_Kp70KDBBXxNDoYjKQlCFQEvDbE88WnX8QDP08SX3rPe4J7"
+                  alt="Дополненная реальность — экран КУРСК+++"
+                  src={KURSK_SPLASH}
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Aurora
+                KURSK+++
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  Мультимедиа · AR
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  LED 7×4 м / P4
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Capital Region
+                  Трекинг движения
                 </span>
               </div>
             </Link>
             <Link
-              to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-6 lg:mt-[-60px] ${!isVisible("media") ? "hidden" : ""}`}
+              to="/passage"
+              className={`pc reveal col-span-12 lg:col-span-6 ${!isVisible("media") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
-                <img
-                  alt="Kinetic Chandelier"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGAdx3ehF7y0gAaYtnrWx_b-8_t3K_UkNMbYnHZQQW-gtbmGZftglyZ3GebqzeUVJa90OOx2QP_xgCZ0HWbXWaDyjr_arrL7NNoz3yeqSfJMOjUuFR5ZgR3p9fEdrF9WbJPAR7mM97Uyv-W55RFmuthsb1CLhUsWR2UItDqXqarSjFsHsL_WZBsLQFJ2CnG6SOq7cXA58iMDgzVmMxJ2s9moI9Xh3S6Ey_3eXl-G3_gFF8Gzjc5polQyI5ZnS_vtH5AYQghME9_Eeb"
-                />
+                <img alt="Невский пассаж" src={PASSAGE_SPLASH} />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Kinetic Chandelier
+                Пассаж
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Мультимедиа
+                  Временная инсталляция
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional Developer
+                  Исторический объект XIX века
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional Flagship
+                  Санкт-Петербург
                 </span>
               </div>
             </Link>
           </div>
 
-          {/* ROW 6: FOREST CAMPUS (8) + RADISSON OBJECT (4) */}
+          {/* ROW 6: FOREST CAMPUS (8) + NORDIC WINTER (4) */}
           <div className="swiss mb-8">
             <Link
               to="/projects/022"
@@ -501,24 +499,24 @@ export default function ProjectIndex() {
             </Link>
             <Link
               to="/projects/022"
-              className={`pc reveal col-span-12 lg:col-span-4 lg:mt-16 ${!isVisible("objects") ? "hidden" : ""}`}
+              className={`pc reveal col-span-12 lg:col-span-4 lg:mt-16 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Radisson Object"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"
+                  alt="Nordic Winter"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfGRnRhZ4D_ZLaJm-8P4h9_JU-Jl99xO7G0KcjUIB6SCvz2ubgTmgl97ezTmWtOaYIqCogjZsIVwIbTFB5FI1kMDOD0W9EC4bqxAoJCCyT1P00TjOhDSyF7px2Hwe-4CHR_idWFDMUGPuyxVU7KiERxBFi1EEzyFj_-QtVYzrmnRVTtVZ9OqWBlsj6NwAq0TPsF_yteEA4Z1zxznU2qC-MCaeszmtqvy_vHhyAi6HVQZ6S7IEK7K4kQtB2rv3EgmY9hwDs4lXCOIC"
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Radisson Object
+                Nordic Winter
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-объект
+                  Праздничное оформление
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  International Hotel Group
+                  Swedish Global Retailer
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
@@ -531,29 +529,29 @@ export default function ProjectIndex() {
           {/* ROW 7: WIND (4) + OWL (4) + AERIAL GARDEN (4) */}
           <div className="swiss mb-8">
             <Link
-              to="/projects/022"
+              to="/lustra"
               className={`pc reveal col-span-12 lg:col-span-4 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Wind"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNS-FWZUsMYZTSMtIKH0U4Ozhdd5_85qa_0sSyTCpIZjOTLa8PswOFtP-rRj5gnL338tZWO2DIRmiLfTENKu0FMHkxvBLrZXAbRq6hRExk2cUZhB3Q9d0_RmjMqYnCNYDU1SKwEyt4_PQ45bx6ECUkN9-kdWBfyls1TBSD7hxRtgC6atNdaxOJYxzTIlfBUo4SywMBaTq4xw6ciVTNVKRydN3NDXvHjGh4bKtB7FtcogH9cFrc9d77UY6uC3HMO89MMQbdMGy5xqSl"
+                  alt="Кинетическая люстра"
+                  src={LUSTRA_SPLASH}
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Wind
+                Люстра
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-объект
+                  Кинетическая световая система
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Public Commission
+                  Лебёдочная система
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional City
+                  Цифровое DMX
                 </span>
               </div>
             </Link>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — Кинетическая люстра | 524 сферы</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-light': '#F9F9F7', 'bg-dark': '#141414' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'], condensed: ['Barlow Condensed','sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.h0{animation:fu 1.4s cubic-bezier(.16,1,.3,1) both}
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .25s cubic-bezier(.16,1,.3,1) both}
+.h3{animation:fu 1.4s .38s cubic-bezier(.16,1,.3,1) both}
+
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+
+/* counter animation */
+@keyframes countUp {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.count-el{animation:countUp 1s cubic-bezier(.16,1,.3,1) both}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}
+
+.gal-img{overflow:hidden}
+.gal-img img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gal-img:hover img{transform:scale(1.04)}
+
+#hero-sticky-wrap{position:sticky;top:0;z-index:1;height:100vh;overflow:hidden}
+#hero-section{width:100%;height:100%;position:relative;display:flex;align-items:flex-end}
+#hero-veil{position:fixed;inset:0;z-index:9;background:#F9F9F7;opacity:0;pointer-events:none;will-change:opacity}
+#page-content{position:relative;z-index:10;background:#F9F9F7;margin-top:-2px}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:color .4s;text-decoration:none}
+#site-nav.scrolled .nav-logo{color:#141414}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#fff;transition:background .4s,transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+#site-nav.scrolled .burger span{background:#141414}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s;cursor:pointer}
+.btn-cta:hover{background:transparent;color:#141414}
+
+/* Спец-стиль для больших чисел */
+.big-num{font-family:'Barlow Condensed',sans-serif;font-weight:200;line-height:.88;letter-spacing:-.02em}
+
+/* Горизонтальный разделитель с надписью */
+.section-tag{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
+.section-tag::after{content:'';flex:1;height:1px;background:rgba(20,20,20,.1)}
+.section-tag-dark::after{background:rgba(255,255,255,.1)}
+
+/* Теговый маркер */
+.spec-tag{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(20,20,20,.15);padding:.3rem .7rem;display:inline-block}
+.spec-tag-invert{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.5)}
+
+/* Прогресс-полоска для характеристик */
+.spec-bar{height:2px;background:rgba(20,20,20,.08);position:relative;overflow:hidden}
+.spec-bar-fill{position:absolute;top:0;left:0;height:100%;background:#BFA37E;transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1) .3s}
+.reveal.visible .spec-bar-fill{transform:scaleX(1)}
+
+/* Hover-line для программ */
+.program-row{border-bottom:1px solid rgba(255,255,255,.07);padding:1rem 0;display:flex;align-items:center;justify-content:space-between;transition:padding-left .3s cubic-bezier(.16,1,.3,1)}
+.program-row:hover{padding-left:.75rem}
+.program-row:first-child{border-top:1px solid rgba(255,255,255,.07)}
+</style>
+</head>
+
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a href="#" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<div id="hero-veil"></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 1 · HERO                                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="hero-sticky-wrap">
+  <section id="hero-section" style="background:#060608">
+    <div class="absolute inset-0">
+      <img alt="Кинетическая люстра — 524 светодиодные сферы в торговом центре"
+           class="w-full h-full object-cover" style="object-position:center 40%"
+           src="[ФОТО HERO — 2.png — общий вид люстры в работе, яркие сферы]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,6,8,.97) 0%, rgba(6,6,8,.55) 45%, rgba(6,6,8,.2) 100%)"></div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="absolute top-28 left-8 md:left-14 z-10 h0">
+      <p class="font-mono text-[9px] uppercase tracking-[.4em]" style="color:rgba(255,255,255,.25)">
+        monumforma&nbsp;&nbsp;/&nbsp;&nbsp;Проекты&nbsp;&nbsp;/&nbsp;&nbsp;Кинетическая люстра
+      </p>
+    </div>
+
+    <!-- Hero: заголовок + цифры -->
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-14 pb-14">
+      <div class="grid lg:grid-cols-12 gap-8 items-end">
+
+        <!-- Заголовок -->
+        <div class="lg:col-span-6">
+          <div class="h0 mb-3">
+            <span class="spec-tag spec-tag-invert">Кинетическая световая система</span>
+          </div>
+          <h1 class="big-num text-white h1" style="font-size:clamp(4rem,9vw,8.5rem)">
+            Люстра<br/>532
+          </h1>
+          <p class="font-light mt-5 h2" style="color:rgba(255,255,255,.38);font-size:clamp(.85rem,1.1vw,.95rem);letter-spacing:.03em;max-width:30rem">
+            Динамическая световая инсталляция с индивидуально управляемыми сферами.
+          </p>
+        </div>
+
+        <!-- Три цифры -->
+        <div class="lg:col-span-5 lg:col-start-8 h3">
+          <div class="grid grid-cols-3 gap-px" style="background:rgba(255,255,255,.06)">
+            <div class="p-6 md:p-8 flex flex-col gap-1" style="background:rgba(6,6,8,.7);backdrop-filter:blur(8px)">
+              <p class="big-num text-white" style="font-size:clamp(2.5rem,4vw,3.8rem)">532</p>
+              <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Сферы</p>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col gap-1" style="background:rgba(6,6,8,.7);backdrop-filter:blur(8px)">
+              <p class="big-num text-white" style="font-size:clamp(2.5rem,4vw,3.8rem)">14x5<span style="font-size:.45em;opacity:.6"> м</span></p>
+              <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Размер</p>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col gap-1" style="background:rgba(6,6,8,.7);backdrop-filter:blur(8px)">
+              <p class="big-num text-white" style="font-size:clamp(2.5rem,4vw,3.8rem)">9<span style="font-size:.45em;opacity:.6"> м</span></p>
+              <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.3)">Высота</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <div class="w-px h-9 relative overflow-hidden" style="background:rgba(255,255,255,.1)">
+        <div class="absolute inset-0 sl" style="background:#BFA37E"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!-- PAGE CONTENT                                                      -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div id="page-content">
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2 · ПАРАМЕТРЫ — тёмная полоса, не светлая         -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#141414;border-bottom:1px solid rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 grid grid-cols-2 md:grid-cols-5">
+      <div class="py-6 pr-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Тип</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.75)">Кинетическая инсталляция</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Механика</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.75)">Лебёдочная система</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Управление</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.75)">Цифровое DMX, 532 точки</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Интеграция</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.75)">В ходе строительства</p>
+      </div>
+      <div class="py-6 pl-6">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.25)">Цикл</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.75)">Под ключ</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 3 · СУТЬ                                          -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16">
+
+        <div class="lg:col-span-4 reveal">
+          <div class="section-tag">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">О проекте</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Не просто декор.<br/>А инженерная система.
+          </h2>
+        </div>
+
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1 flex flex-col gap-6">
+          <p class="font-light leading-relaxed" style="font-size:1.05rem;color:rgba(20,20,20,.65)">
+            532 кинетические точки на лебёдочной системе формируют программируемую световую среду. Каждый элемент управляется индивидуально: высота, свет и ритм синхронизируются в рамках заданных сценариев. Разработано 20 программ, адаптированных под разные режимы работы — от повседневных сценариев до событийных и тайминговых световых шоу.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.5)">
+            Система функционирует, как единый цифровой слой пространства, позволяя изменять восприятие среды без физического вмешательства.
+          </p>
+
+          <!-- Инлайн-характеристики -->
+          <div class="grid grid-cols-3 gap-px mt-4" style="background:rgba(20,20,20,.07)">
+            <div class="p-6" style="background:#F9F9F7">
+              <p class="big-num" style="font-size:clamp(2.2rem,3.5vw,3.2rem);color:#141414">14x5<span class="font-light" style="font-size:.5em;color:rgba(20,20,20,.4)"> м</span></p>
+              <p class="font-mono text-[8px] uppercase tracking-widest mt-1" style="color:rgba(20,20,20,.35)">размер инсталляции</p>
+            </div>
+            <div class="p-6" style="background:#F9F9F7">
+              <p class="big-num" style="font-size:clamp(2.2rem,3.5vw,3.2rem);color:#141414">9<span class="font-light" style="font-size:.5em;color:rgba(20,20,20,.4)"> м</span></p>
+              <p class="font-mono text-[8px] uppercase tracking-widest mt-1" style="color:rgba(20,20,20,.35)">высота системы</p>
+            </div>
+            <div class="p-6" style="background:#F9F9F7">
+              <p class="big-num" style="font-size:clamp(2.2rem,3.5vw,3.2rem);color:#141414">20</p>
+              <p class="font-mono text-[8px] uppercase tracking-widest mt-1" style="color:rgba(20,20,20,.35)">светодинамических программ</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 4 · КАДР В РАБОТЕ — full bleed тёмный             -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#060608">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">
+        Система в работе — активный световой сценарий
+      </p>
+    </div>
+    <div class="gal-img reveal" style="height:clamp(380px,60vw,820px)">
+      <img alt="524 кинетических светодиодных сферы — активный сценарий"
+           class="w-full h-full object-cover"
+           src="[ФОТО — 2.png — общий вид люстры с яркими сферами]"/>
+    </div>
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4 flex justify-between items-end">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">Одновременно активны все 532 точки</p>
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">Central Park</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5 · ИНЖЕНЕРИЯ — тёмная секция + два вертикальных  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#141414">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-16">
+        <div class="lg:col-span-4 reveal">
+          <div class="section-tag section-tag-dark">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(255,255,255,.25)">Конструктив</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none text-white" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Несущая рама.<br/>Собственная<br/>разработка.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1">
+          <p class="font-light leading-relaxed" style="color:rgba(255,255,255,.45)">
+            Металлическая рама спроектирована и изготовлена под оборудование этой системы. Интегрирована в объект через сварку на стадии строительства — до завершения отделочных работ. Фальш-потолок с точной перфорацией под тросовую систему разработан и произведён в рамках того же проекта.
+          </p>
+        </div>
+      </div>
+
+      <!-- Два фото + вертикальное видео — строительный процесс -->
+      <div class="grid md:grid-cols-3 gap-3 reveal d2">
+
+        <div>
+          <div class="gal-img mb-3">
+            <img alt="Несущая металлическая рама — вид снизу на конструкцию с лебёдками"
+                 class="w-full object-cover" style="aspect-ratio:3/4"
+                 src="[ФОТО — ChatGPT_Image_26_марта_2026_г___19_48_16.png — рама снизу с лебёдками]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">
+            Лебёдочные механизмы — 532 точки подвеса
+          </p>
+        </div>
+
+        <div>
+          <div class="gal-img mb-3">
+            <img alt="Металлическая рама — вид сбоку на полную высоту конструкции"
+                 class="w-full object-cover" style="aspect-ratio:3/4"
+                 src="[ФОТО — ChatGPT_Image_26_марта_2026_г___19_49_21.png — рама сбоку, полная высота]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">
+            Несущая рама — интегрирована до завершения отделки
+          </p>
+        </div>
+
+        <!-- ВИДЕО 1 — вертикальное: техническое испытание / первый запуск -->
+        <div>
+          <div class="mb-3" style="aspect-ratio:3/4;background:#0a0a0c;position:relative;overflow:hidden">
+            <video
+              src="[ВИДЕО — первый запуск / техническое испытание системы]"
+              playsinline autoplay muted loop
+              class="w-full h-full object-cover"
+              style="display:block">
+            </video>
+            <!-- Плейсхолдер если видео не загружено -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-3" style="background:rgba(10,10,12,.85)">
+              <div style="width:44px;height:44px;border:1px solid rgba(191,163,126,.4);display:flex;align-items:center;justify-content:center">
+                <span class="material-symbols-outlined" style="color:#BFA37E;font-size:20px">play_arrow</span>
+              </div>
+              <p class="font-mono text-[8px] uppercase tracking-widest text-center" style="color:rgba(255,255,255,.3)">Первый запуск</p>
+            </div>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">
+            Техническое испытание — первый запуск системы
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 6 · ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ                    -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#EEECEA">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="mb-16 reveal">
+        <div class="section-tag">
+          <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Спецификация</span>
+        </div>
+        <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+          Точность на уровне<br/>каждого элемента.
+        </h2>
+      </div>
+
+      <!-- Таблица характеристик -->
+      <div class="grid md:grid-cols-2 gap-px reveal d1" style="background:rgba(20,20,20,.08)">
+
+        <div class="p-10" style="background:#EEECEA">
+          <div class="flex justify-between items-start mb-6">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Кинетика</p>
+            <span class="spec-tag">Система</span>
+          </div>
+          <p class="big-num mb-2" style="font-size:clamp(2.8rem,4.5vw,4rem)">532</p>
+          <p class="font-light" style="color:rgba(20,20,20,.5);font-size:.9rem">Индивидуальное управление каждой сферой. Композиция собирается из сотен элементов, где точность каждого влияет на целостность всей системы.</p>
+          <div class="spec-bar mt-6 reveal"><div class="spec-bar-fill" style="width:100%"></div></div>
+        </div>
+
+        <div class="p-10" style="background:#EEECEA">
+          <div class="flex justify-between items-start mb-6">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Высота системы</p>
+            <span class="spec-tag">Особенность</span>
+          </div>
+          <p class="big-num mb-2" style="font-size:clamp(2.8rem,4.5vw,4rem)">9 m</p>
+          <p class="font-light" style="color:rgba(20,20,20,.5);font-size:.9rem">Динамическая подвесная структура. Синхронизированная лебёдочная механика с точным позиционированием на всём диапазоне хода.</p>
+          <div class="spec-bar mt-6 reveal"><div class="spec-bar-fill" style="width:88%"></div></div>
+        </div>
+
+        <div class="p-10" style="background:#EEECEA">
+          <div class="flex justify-between items-start mb-6">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Управление</p>
+            <span class="spec-tag">Цифровое DMX</span>
+          </div>
+          <p class="font-light mb-4 uppercase tracking-tight" style="font-size:clamp(1.1rem,1.5vw,1.4rem)">Единая система управления</p>
+          <p class="font-light" style="color:rgba(20,20,20,.5);font-size:.9rem">Свет и движение синхронизированы в одном медиаслое. Механика, RGB-управление и сценарии работают как единое целое.</p>
+        </div>
+
+        <div class="p-10" style="background:#EEECEA">
+          <div class="flex justify-between items-start mb-6">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Фальш-потолок</p>
+            <span class="spec-tag">Сервис</span>
+          </div>
+          <p class="font-light mb-4 uppercase tracking-tight" style="font-size:clamp(1.1rem,1.5vw,1.4rem)">Точечная перфорация</p>
+          <p class="font-light" style="color:rgba(20,20,20,.5);font-size:.9rem">Разработка и производство декоративного фальш-потолка с перфорацией под тросовую систему конструкции с удобным сервисным обслуживанием.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7 · 17 ПРОГРАММ — тёмный блок-список              -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#0c0c0e">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-16">
+        <div class="lg:col-span-4 reveal">
+          <div class="section-tag section-tag-dark">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(255,255,255,.25)">Программы</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none text-white" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            20 независимых<br/>сценариев работы.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1">
+          <p class="font-light leading-relaxed" style="color:rgba(255,255,255,.4)">
+            Контент меняется без физического вмешательства. Каждый сценарий — самостоятельная хореография из 532 точек: своя динамика высот, своя цветовая партитура, свой ритм. Система адаптирована под сезонные и событийные режимы объекта.
+          </p>
+        </div>
+      </div>
+
+      <!-- Список программ -->
+      <div class="reveal d2">
+        <div class="program-row">
+          <div class="flex items-center gap-6">
+            <span class="font-mono text-[9px]" style="color:rgba(255,255,255,.2);min-width:2rem">01</span>
+            <p class="font-light text-white">Волна</p>
+          </div>
+          <span class="spec-tag spec-tag-invert">Кинетика + цвет</span>
+        </div>
+        <div class="program-row">
+          <div class="flex items-center gap-6">
+            <span class="font-mono text-[9px]" style="color:rgba(255,255,255,.2);min-width:2rem">02</span>
+            <p class="font-light text-white">Пульс</p>
+          </div>
+          <span class="spec-tag spec-tag-invert">Ритм</span>
+        </div>
+        <div class="program-row">
+          <div class="flex items-center gap-6">
+            <span class="font-mono text-[9px]" style="color:rgba(255,255,255,.2);min-width:2rem">03</span>
+            <p class="font-light text-white">Рассвет</p>
+          </div>
+          <span class="spec-tag spec-tag-invert">Градиент</span>
+        </div>
+        <div class="program-row">
+          <div class="flex items-center gap-6">
+            <span class="font-mono text-[9px]" style="color:rgba(255,255,255,.2);min-width:2rem">04</span>
+            <p class="font-light text-white">Дождь</p>
+          </div>
+          <span class="spec-tag spec-tag-invert">Кинетика</span>
+        </div>
+        <div class="program-row">
+          <div class="flex items-center gap-6">
+            <span class="font-mono text-[9px]" style="color:rgba(255,255,255,.2);min-width:2rem">05</span>
+            <p class="font-light text-white">Архитектор</p>
+          </div>
+          <span class="spec-tag spec-tag-invert">Геоометрия</span>
+        </div>
+        <div class="program-row">
+          <div class="flex items-center gap-6">
+            <span class="font-mono text-[9px]" style="color:rgba(255,255,255,.2);min-width:2rem">06–20</span>
+            <p class="font-light" style="color:rgba(255,255,255,.4)">Сезонные и событийные сценарии</p>
+          </div>
+          <span class="spec-tag spec-tag-invert">По расписанию</span>
+        </div>
+      </div>
+
+      <p class="font-mono text-[8px] uppercase tracking-widest mt-8" style="color:rgba(255,255,255,.15)">
+        Индивидуальные настройки программ — сценарии разрабатываются на этапе пусконаладки
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7b · ВИДЕО 2 — вертикальное, из центра            -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#0c0c0e;padding-bottom:5rem">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14">
+      <div class="grid md:grid-cols-12 gap-3 items-end">
+
+        <!-- Вертикальное видео — широко, по центру -->
+        <div class="md:col-span-5 md:col-start-4">
+          <div class="mb-4" style="aspect-ratio:9/16;background:#080810;position:relative;overflow:hidden">
+            <video
+              src="[ВИДЕО — съёмка из торгового центра, люстра в работе, вертикальный формат]"
+              playsinline autoplay muted loop
+              class="w-full h-full object-cover"
+              style="display:block">
+            </video>
+            <!-- Плейсхолдер -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-3" style="background:rgba(8,8,16,.8)">
+              <div style="width:44px;height:44px;border:1px solid rgba(191,163,126,.4);display:flex;align-items:center;justify-content:center">
+                <span class="material-symbols-outlined" style="color:#BFA37E;font-size:20px">play_arrow</span>
+              </div>
+              <p class="font-mono text-[8px] uppercase tracking-widest text-center" style="color:rgba(255,255,255,.3)">В работе</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">
+              Система в штатном режиме — торговый центр
+            </p>
+            <span class="spec-tag spec-tag-invert">Вертикальное видео</span>
+          </div>
+        </div>
+
+        <!-- Текст рядом -->
+        <div class="md:col-span-3 md:col-start-9 flex flex-col justify-end pb-8">
+          <div class="w-5 h-px mb-5" style="background:#BFA37E"></div>
+          <p class="font-light leading-relaxed" style="color:rgba(255,255,255,.35);font-size:.9rem">
+            Пространство постоянно меняется. Программы работают по расписанию — без участия оператора.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8 · ИНТЕГРАЦИЯ В СТРОЙКУ                          -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-16 reveal">
+        <div class="lg:col-span-4">
+          <div class="section-tag">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Реализация</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Внедрено в ППР.<br/>Не добавлено<br/>после.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Проект реализован в плотной координации с генподрядчиком. Все решения — последовательность монтажа, точки крепления, доступы, электрика — заложены в план производства работ до начала отделки. Работа с инженерными ограничениями строящегося объекта: параллельные процессы, жёсткие сроки, ограниченный доступ.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px reveal d1" style="background:rgba(20,20,20,.07)">
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">01</p>
+          <p class="font-light text-base mb-4 uppercase tracking-tight">Проектирование</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">
+            Рама, фальш-потолок, тросовая система. Всё спроектировано в связке с общестроительными разделами. Документация передана в ППР.
+          </p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">02</p>
+          <p class="font-light text-base mb-4 uppercase tracking-tight">Производство</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">
+            Изготовление металлоконструкций. Производство фальш-потолка с точечной перфорацией. Монтаж лебёдочных блоков и калибровка кабелей.
+          </p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">03</p>
+          <p class="font-light text-base mb-4 uppercase tracking-tight">Монтаж</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">
+            Установка рамы и оборудования до завершения отделки. Разводка, подключение, интеграция системы управления в условиях строящегося объекта.
+          </p>
+        </div>
+
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">04</p>
+          <p class="font-light text-base mb-4 uppercase tracking-tight">Пусконаладка</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">
+            Калибровка 532 точек. Настройка движения и световых сценариев. Отладка 20 программ. Передача в эксплуатацию.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 9 · ВИДЕО 3 — горизонтальное, финальная работа    -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#060608">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3 flex justify-between items-center">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">
+        Финальная работа — 524 сферы в активном сценарии
+      </p>
+      <span class="spec-tag spec-tag-invert">Горизонтальное видео</span>
+    </div>
+
+    <!-- Горизонтальное видео — полная ширина -->
+    <div style="position:relative;aspect-ratio:16/9;background:#030305;overflow:hidden">
+      <video
+        src="[ВИДЕО — финальная работа системы, горизонтальный формат, лучший ракурс]"
+        playsinline autoplay muted loop
+        class="w-full h-full object-cover"
+        style="display:block">
+      </video>
+      <!-- Плейсхолдер -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-4" style="background:rgba(3,3,5,.85)">
+        <div style="width:56px;height:56px;border:1px solid rgba(191,163,126,.35);display:flex;align-items:center;justify-content:center">
+          <span class="material-symbols-outlined" style="color:#BFA37E;font-size:26px">play_arrow</span>
+        </div>
+        <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(255,255,255,.2)">Финальная работа системы</p>
+      </div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">
+        Одновременно активны все 524 точки — кинетика, цвет, ритм
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 10 · ФИНАЛЬНЫЙ КАДР                               -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="position:relative;background:#060608;overflow:hidden">
+    <div class="gal-img" style="height:clamp(420px,65vw,860px)">
+      <img alt="Кинетическая люстра — финальный кадр в пространстве"
+           class="w-full h-full object-cover" style="opacity:.45"
+           src="[ФОТО — 2.png или IMG_9778.HEIC — атмосферный кадр с видом снизу или сбоку]"/>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style="z-index:2">
+      <div class="max-w-[1400px] mx-auto w-full reveal">
+        <h2 class="font-light text-white leading-none tracking-tight mb-10" style="font-size:clamp(1.6rem,4.5vw,3rem)">
+          Механика, свет<br/>и управление —<br/>единая система.
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:#BFA37E"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.5);font-size:clamp(.9rem,1.2vw,1.05rem)">Полный цикл: проектирование → производство → монтаж → пусконаладка</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.28);font-size:clamp(.9rem,1.2vw,1.05rem)">Интеграция в здание на стадии строительства</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:2rem;right:3rem;z-index:2">
+      <p class="big-num" style="font-size:clamp(5rem,10vw,9rem);color:rgba(255,255,255,.04);line-height:1">524</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- CTA + НАВИГАЦИЯ                                   -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-20 pb-20 border-b" style="border-color:rgba(20,20,20,.08)">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div>
+            <h2 class="font-light tracking-tight leading-none" style="font-size:clamp(1.6rem,2.5vw,2.4rem)">
+              Нужна кинетическая или световая система<br/>для вашего объекта?
+            </h2>
+          </div>
+          <a href="#" class="btn-cta flex-shrink-0">
+            Обсудить проект
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background:rgba(20,20,20,.06)">
+        <a href="#" class="flex items-center gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_back</span>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Все проекты</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Вернуться в архив</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-end gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <div class="text-right">
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Следующий проект</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Невский пассаж</p>
+          </div>
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E">
+          <span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span>
+        </div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+
+</div><!-- /page-content -->
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const heroWrap=document.getElementById('hero-sticky-wrap'),heroVeil=document.getElementById('hero-veil'),siteNav=document.getElementById('site-nav');
+function onScroll(){const sy=window.scrollY,h=heroWrap.offsetHeight;heroVeil.style.opacity=Math.min(1,Math.max(0,(sy-h*.3)/(h*.5)));siteNav.classList.toggle('scrolled',sy>h*.4)}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

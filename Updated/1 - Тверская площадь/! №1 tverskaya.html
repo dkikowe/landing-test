@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — Тверская площадь | Городское оформление</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-light': '#F9F9F7', 'bg-dark': '#141414' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.h0{animation:fu 1.4s cubic-bezier(.16,1,.3,1) both}
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .25s cubic-bezier(.16,1,.3,1) both}
+
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+
+.gal-img{overflow:hidden}
+.gal-img img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gal-img:hover img{transform:scale(1.04)}
+
+#hero-sticky-wrap{position:sticky;top:0;z-index:1;height:100vh;overflow:hidden}
+#hero-section{width:100%;height:100%;position:relative;display:flex;align-items:flex-end}
+#hero-veil{position:fixed;inset:0;z-index:9;background:#F9F9F7;opacity:0;pointer-events:none;will-change:opacity}
+#page-content{position:relative;z-index:10;background:#F9F9F7;margin-top:-2px}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:color .4s;text-decoration:none}
+#site-nav.scrolled .nav-logo{color:#141414}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#fff;transition:background .4s,transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+#site-nav.scrolled .burger span{background:#141414}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s;cursor:pointer}
+.btn-cta:hover{background:transparent;color:#141414}
+</style>
+</head>
+
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a href="#" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<div id="hero-veil"></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 1 · HERO                                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="hero-sticky-wrap">
+  <section id="hero-section" style="background:#141414">
+    <div class="absolute inset-0">
+      <img alt="Тверская площадь — световые арки и ёлки в ночной Москве"
+           class="w-full h-full object-cover" style="object-position:center 40%"
+           src="[ФОТО HERO — TM.webp, световые арки с людьми]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(20,20,20,.92) 0%, rgba(20,20,20,.25) 55%, rgba(20,20,20,.1) 100%)"></div>
+    </div>
+
+    <div class="absolute top-28 left-8 md:left-14 z-10 h0">
+      <p class="font-mono text-[9px] uppercase tracking-[.4em]" style="color:rgba(255,255,255,.35)">
+        monumforma&nbsp;&nbsp;/&nbsp;&nbsp;Проекты&nbsp;&nbsp;/&nbsp;&nbsp;Тверская площадь
+      </p>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-14 pb-16 grid lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-8">
+        <h1 class="font-light text-white leading-none tracking-tight h1" style="font-size:clamp(2.5rem,5.5vw,5rem)">
+          Тверская<br/>площадь
+        </h1>
+        <p class="font-light mt-4 h2" style="color:rgba(255,255,255,.45);font-size:clamp(.85rem,1.2vw,1rem);letter-spacing:.02em">
+          Комплексное праздничное оформление центральной площади Москвы
+        </p>
+      </div>
+      <div class="lg:col-span-4 lg:col-start-9 h2 flex flex-col gap-4 pb-2">
+        <div class="flex items-center gap-4">
+          <div class="w-px h-10 flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.3)">Проект реализован для</p>
+            <p class="font-light text-white">Мэрия города Москвы</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-px h-10 flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.3)">Локация</p>
+            <p class="font-light text-white">Центр города, главный туристический маршрут</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <div class="w-px h-9 relative overflow-hidden" style="background:rgba(255,255,255,.12)">
+        <div class="absolute inset-0 sl" style="background:#BFA37E"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-content">
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2 · ПАРАМЕТРЫ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="border-b" style="background:#F0EFEB;border-color:rgba(20,20,20,.07)">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 grid grid-cols-2 md:grid-cols-5">
+      <div class="py-7 pr-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Тип</p>
+        <p class="font-light text-base leading-snug">Городское оформление</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Сезон</p>
+        <p class="font-light text-base">2022 год</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Формат</p>
+        <p class="font-light text-base">Сезонная инсталляция</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Цикл</p>
+        <p class="font-light text-base">Концепция/монтаж/эксплуатация</p>
+      </div>
+      <div class="py-7 pl-6">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Площадь</p>
+        <p class="font-light text-base">4.500 м²</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 3 · СУТЬ                                          -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-4 reveal">
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Самая сложная аудитория — весь город сразу.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1">
+          <p class="font-light leading-relaxed mb-6" style="font-size:1.05rem;color:rgba(20,20,20,.65)">
+            Тверская площадь — центральная публичная точка города с непрерывным пешеходным и туристическим трафиком. Здесь нет права на эстетическую небрежность: объект читается с расстояния ста метров с магистрали и одновременно выдерживает рассмотрение вплотную.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.5)">
+            Задача — создать цельную праздничную среду, которая работает на трёх уровнях восприятия: силуэт в городском масштабе, структура маршрута на площади, детальность вблизи. Именно детальная проработка становится ключевым фактором качества в городских проектах.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 4 · КРУПНЫЙ КАДР — арки                           -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="reveal" style="background:#141414">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">Центральный световой портал — главная архитектурная доминанта площади</p>
+    </div>
+    <div class="gal-img" style="height:clamp(340px,62vw,800px)">
+      <img alt="Световые арки на Тверской площади — ночной вид"
+           class="w-full h-full object-cover"
+           src="[ФОТО — TM.webp, главный кадр со световыми арками]"/>
+    </div>
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">Ажурный орнамент ручной проработки — читается как с городской магистрали, так и вблизи</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5 · КОНЦЕПЦИЯ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16 mb-14 reveal">
+        <div class="lg:col-span-4">
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Архитектурная логика, а не декоративная.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Пространство спроектировано как последовательность сценариев: входной портал задаёт масштаб и направление, ёлочный партер структурирует площадь, боковые галереи формируют маршрут вдоль периметра. Посетитель движется по логике, заложенной в планировку, — и воспринимает это как естественное поведение в пространстве.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-px reveal d1" style="background:rgba(20,20,20,.07)">
+
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-light text-base mb-4 uppercase tracking-tight">Дальний план</p>
+          <p class="font-light leading-relaxed" style="font-size:.95rem;color:rgba(20,20,20,.5)">Световой портал высотой в несколько этажей читается с Тверской улицы и Охотного ряда. Силуэт площади опознаётся издалека — это работает на трафик ещё до того, как человек принял решение подойти.</p>
+        </div>
+
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-light text-base mb-4 uppercase tracking-tight">Средний план</p>
+          <p class="font-light leading-relaxed" style="font-size:.95rem;color:rgba(20,20,20,.5)">Ритмика ёлок в кашпо с подсветкой и боковые галереи делят площадь на читаемые зоны. Человек интуитивно понимает, куда идти, и проводит на площади больше времени, чем планировал.</p>
+        </div>
+
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-light text-base mb-4 uppercase tracking-tight">Ближний план</p>
+          <p class="font-light leading-relaxed" style="font-size:.95rem;color:rgba(20,20,20,.5)">Ажурный орнамент арок, декоративные элементы ёлок, детальность кашпо — уровень проработки, который удерживает внимание вблизи и провоцирует фотосъёмку. Каждый элемент выдерживает рассмотрение в упор.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 6 · ГАЛЕРЕЯ                                       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-12">
+        <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.4rem,2vw,2rem)">Проект в кадрах</h2>
+      </div>
+
+      <!-- Row 1: 2 equal -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3 reveal">
+        <div class="gal-img">
+          <img alt="Световые арки — вид с уровня площади"
+               class="w-full object-cover" style="aspect-ratio:4/3"
+               src="[ФОТО — TM.webp]"/>
+        </div>
+        <div class="gal-img">
+          <img alt="Ёлки на площади — ночная съёмка с деталями"
+               class="w-full object-cover" style="aspect-ratio:4/3"
+               src="[ФОТО — 9.jpg, ёлки ночью крупно]"/>
+        </div>
+      </div>
+
+      <!-- Row 2: 1 ultra wide -->
+      <div class="mb-3 reveal d1">
+        <div class="gal-img">
+          <img alt="Ночная визуализация — общий вид площади сверху"
+               class="w-full object-cover" style="aspect-ratio:21/9"
+               src="[ФОТО — 7.jpg, ночная визуализация сверху]"/>
+        </div>
+      </div>
+
+      <!-- Row 3: 1 wide + 1 portrait -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 reveal d2">
+        <div class="gal-img md:col-span-3">
+          <img alt="Дневная концепция — ёлки и оранжереи"
+               class="w-full object-cover" style="aspect-ratio:16/10"
+               src="[ФОТО — 8.jpg, дневная визуализация]"/>
+        </div>
+        <div class="gal-img md:col-span-2">
+          <img alt="Декоративные ёлки в кашпо — детальный кадр"
+               class="w-full object-cover" style="aspect-ratio:3/4"
+               src="[ФОТО — 9.jpg]"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7 · РЕАЛИЗАЦИЯ                                    -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16 mb-14 reveal">
+        <div class="lg:col-span-4">
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Город не останавливается. Монтаж — тоже.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Тверская площадь работает без перерывов. Монтаж крупногабаритных конструкций, установка портальных арок, подключение световой системы — всё выполнено без закрытия пространства. Строгие регламенты городской среды, согласование с эксплуатирующими службами, ночные окна для тяжёлой техники.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px reveal d1" style="background:rgba(20,20,20,.07)">
+
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Концепция</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Архитектурная и световая концепция разработана с учётом охранного статуса исторической среды и регламентов городских праздничных мероприятий</p>
+        </div>
+
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Проектирование</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Расчёт ветровых и снеговых нагрузок для крупногабаритных порталов. Интеграция в существующую инфраструктуру — без капитальных вмешательств в покрытие площади</p>
+        </div>
+
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Производство</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Все элементы выполнены по проектной документации с учетом нагрузок, условий городской эксплуатации и сроков монтажа. Ажурный орнамент порталов реализован с высокой детализацией</p>
+        </div>
+
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-light text-lg mb-4 uppercase tracking-tight">Монтаж</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Установка в условиях действующей городской площади. Координация с городскими службами, соблюдение сроков праздничного календаря — без единого дня переноса</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8 · РЕЗУЛЬТАТ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16 items-start">
+        <div class="lg:col-span-5 reveal">
+          <h2 class="font-light uppercase tracking-tight leading-none mb-8" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Площадь вошла в туристический маршрут города.
+          </h2>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Тверская площадь в период праздничного оформления стала одной из ключевых точек московского маршрута «Путешествие в Рождество». Устойчивый пешеходный поток, высокий уровень пользовательского контента в соцсетях, присутствие в федеральных и международных медиа.
+          </p>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7 reveal d1">
+          <div class="grid grid-cols-2 gap-px" style="background:rgba(20,20,20,.07)">
+
+            <div class="p-10" style="background:#F9F9F7">
+              <p class="font-light mb-2 leading-tight" style="font-size:clamp(1.1rem,1.5vw,1.4rem)">Туристический<br/>поток</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">рост посещения со стороны туристов</p>
+            </div>
+
+            <div class="p-10" style="background:#F9F9F7">
+              <p class="font-light mb-2 leading-tight" style="font-size:clamp(1.1rem,1.5vw,1.4rem)">3 уровня<br/>восприятия</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">дальний / средний / ближний план</p>
+            </div>
+
+            <!-- заглушки под реальные данные -->
+            <div class="p-10" style="background:#F9F9F7">
+              <p class="font-light mb-2" style="font-size:clamp(2.5rem,4vw,3.5rem);line-height:1">30+</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">событий (ярамарки, концерты, активности)</p>
+            </div>
+
+            <div class="p-10" style="background:#F9F9F7">
+              <p class="font-light mb-2" style="font-size:clamp(2.5rem,4vw,3.5rem);line-height:1">4.500</p>
+              <p class="font-mono text-[9px] uppercase tracking-widest" style="color:rgba(20,20,20,.4)">м² площади оформления</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 9 · ФИНАЛЬНЫЙ КАДР                               -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="position:relative;background:#141414;overflow:hidden">
+    <div class="gal-img" style="height:clamp(420px,65vw,860px)">
+      <img alt="Тверская площадь — финальный кадр"
+           class="w-full h-full object-cover" style="opacity:.4"
+           src="[ФОТО — лучший атмосферный кадр с людьми и арками, TM.webp]"/>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style="z-index:2">
+      <div class="max-w-[1400px] mx-auto w-full reveal">
+        <h2 class="font-light text-white leading-none tracking-tight mb-10" style="font-size:clamp(1.6rem,4.5vw,3rem)">
+          Городской уровень.<br/>Сложная среда.<br/>Точная реализация.
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:#BFA37E"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.6);font-size:clamp(.9rem,1.2vw,1.1rem)">Полный цикл реализации в условиях действующей городской среды</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:2rem;left:2.5rem;z-index:2">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.2)">Тверская площадь, Москва</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- CTA + НАВИГАЦИЯ                                   -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-20 pb-20 border-b" style="border-color:rgba(20,20,20,.08)">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div>
+            <h2 class="font-light tracking-tight leading-none" style="font-size:clamp(1.6rem,2.5vw,2.4rem)">Работаете с городским<br/>или общественным пространством?</h2>
+          </div>
+          <a href="#" class="btn-cta flex-shrink-0">
+            Обсудить проект
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background:rgba(20,20,20,.06)">
+        <a href="#" class="flex items-center gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_back</span>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Все проекты</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Вернуться в архив</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-end gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <div class="text-right">
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Следующий проект</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Матрёшки — Radisson Collection</p>
+          </div>
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E">
+          <span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span>
+        </div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const heroWrap=document.getElementById('hero-sticky-wrap'),heroVeil=document.getElementById('hero-veil'),siteNav=document.getElementById('site-nav');
+function onScroll(){const sy=window.scrollY,h=heroWrap.offsetHeight;heroVeil.style.opacity=Math.min(1,Math.max(0,(sy-h*.3)/(h*.5)));siteNav.classList.toggle('scrolled',sy>h*.4)}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

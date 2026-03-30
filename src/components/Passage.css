@@ -1,0 +1,102 @@
+/* Passage — скоуп под #passage-root */
+#passage-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+#passage-root .ps-h0 {
+  animation: ps-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#passage-root .ps-h1 {
+  animation: ps-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#passage-root .ps-h2 {
+  animation: ps-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ps-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ps-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#passage-root .ps-sl {
+  animation: ps-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#passage-root .ps-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#passage-root .ps-reveal.ps-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#passage-root .ps-d1 {
+  transition-delay: 0.1s;
+}
+#passage-root .ps-d2 {
+  transition-delay: 0.2s;
+}
+#passage-root .ps-d3 {
+  transition-delay: 0.3s;
+}
+
+#passage-root .ps-gal-img {
+  overflow: hidden;
+}
+#passage-root .ps-gal-img img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#passage-root .ps-gal-img:hover img {
+  transform: scale(1.04);
+}
+
+#passage-root .ps-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: #bfa37e;
+  color: #141414;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border: 1px solid #bfa37e;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+#passage-root .ps-btn-cta:hover {
+  background: transparent;
+  color: #141414;
+}
+

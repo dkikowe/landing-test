@@ -17,18 +17,28 @@ import IkeaMall from "./components/IkeaMall";
 import IkeaXmas from "./components/IkeaXmas";
 import IkeaPark from "./components/IkeaPark";
 import Forest from "./components/Forest";
+import Tver from "./components/Tver";
+import Raddison from "./components/Raddison";
+import Passage from "./components/Passage";
+import Lustra from "./components/Lustra";
+import Kursk from "./components/Kursk";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
+        <Route path="/raddison" element={<Raddison />} />
         <Route path="/forest" element={<Forest />} />
         <Route path="/ikea-park" element={<IkeaPark />} />
         <Route path="/ikea-xmas" element={<IkeaXmas />} />
         <Route path="/ikea_xmasl" element={<IkeaXmas />} />
         <Route path="/ikea-mall" element={<IkeaMall />} />
         <Route path="/magicpiano" element={<MagicPiano />} />
+        <Route path="/tver" element={<Tver />} />
+        <Route path="/passage" element={<Passage />} />
+        <Route path="/lustra" element={<Lustra />} />
+        <Route path="/kursk" element={<Kursk />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Manifest />} />
           <Route path="evolution" element={<Evolution />} />
