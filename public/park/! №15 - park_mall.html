@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — Благоустройство | Парковая зона перед ТЦ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-light': '#F9F9F7', 'bg-dark': '#141414' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'], condensed: ['Barlow Condensed','sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.h0{animation:fu 1.4s cubic-bezier(.16,1,.3,1) both}
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .25s cubic-bezier(.16,1,.3,1) both}
+.h3{animation:fu 1.4s .38s cubic-bezier(.16,1,.3,1) both}
+
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+.d3{transition-delay:.3s}
+
+.gal-img{overflow:hidden}
+.gal-img img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gal-img:hover img{transform:scale(1.04)}
+
+#hero-sticky-wrap{position:sticky;top:0;z-index:1;height:100vh;overflow:hidden}
+#hero-section{width:100%;height:100%;position:relative;display:flex;align-items:flex-end}
+#hero-veil{position:fixed;inset:0;z-index:9;background:#F9F9F7;opacity:0;pointer-events:none;will-change:opacity}
+#page-content{position:relative;z-index:10;background:#F9F9F7;margin-top:-2px}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:color .4s;text-decoration:none}
+#site-nav.scrolled .nav-logo{color:#141414}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#fff;transition:background .4s,transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+#site-nav.scrolled .burger span{background:#141414}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s;cursor:pointer}
+.btn-cta:hover{background:transparent;color:#141414}
+
+.big-num{font-family:'Barlow Condensed',sans-serif;font-weight:200;line-height:.88;letter-spacing:-.02em}
+
+/* Сценарий движения — пронумерованные шаги */
+.flow-step{display:grid;grid-template-columns:3.5rem 1fr;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid rgba(20,20,20,.07);align-items:start}
+.flow-step:first-child{border-top:1px solid rgba(20,20,20,.07)}
+.flow-step:last-child{border-bottom:none}
+.flow-num{font-family:'Barlow Condensed',sans-serif;font-weight:200;font-size:2.8rem;line-height:1;color:rgba(20,20,20,.1);transition:color .3s;padding-top:.2rem}
+.flow-step:hover .flow-num{color:#BFA37E}
+
+/* Материальная полоска */
+.mat-row{display:flex;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid rgba(20,20,20,.06)}
+.mat-row:last-child{border-bottom:none}
+.mat-dot{width:8px;height:8px;flex-shrink:0;background:#BFA37E}
+
+.spec-tag{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(20,20,20,.15);padding:.3rem .7rem;display:inline-block}
+</style>
+</head>
+
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a href="#" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<div id="hero-veil"></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 1 · HERO — рендер территории днём                 -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="hero-sticky-wrap">
+  <section id="hero-section" style="background:#1a1810">
+    <div class="absolute inset-0">
+      <img alt="Благоустройство территории перед ТЦ — рендер с видом на МАФ, деревянную детскую зону и навесы"
+           class="w-full h-full object-cover" style="object-position:center 45%"
+           src="[ФОТО HERO — ChatGPT_Image_26_марта_2026_г___18_15_11.png — рендер территории с видом на ТЦ, лежаки, зелень]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(20,20,16,.95) 0%, rgba(20,20,16,.3) 50%, rgba(20,20,16,.08) 100%)"></div>
+    </div>
+
+    <div class="absolute top-28 left-8 md:left-14 z-10 h0">
+      <p class="font-mono text-[9px] uppercase tracking-[.4em]" style="color:rgba(255,255,255,.22)">
+        monumforma&nbsp;&nbsp;/&nbsp;&nbsp;Проекты&nbsp;&nbsp;/&nbsp;&nbsp;Благоустройство
+      </p>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-14 pb-14">
+      <div class="grid lg:grid-cols-12 gap-8 items-end">
+
+        <div class="lg:col-span-7">
+          <p class="font-mono text-[9px] uppercase tracking-[.28em] mb-5 h0" style="color:rgba(255,255,255,.25)">
+            МАФ / Парковая зона перед ТЦ
+          </p>
+          <h1 class="font-light text-white leading-none tracking-tight h1" style="font-size:clamp(2.8rem,5.5vw,5rem)">
+            Природа<br/>и инженерия
+          </h1>
+          <p class="font-light mt-5 h2" style="color:rgba(255,255,255,.35);font-size:clamp(.85rem,1.1vw,.95rem);letter-spacing:.03em;max-width:36rem">
+            Проектирование и производство малых архитектурных форм для парковой территории перед торговым центром. Постоянные объекты из термодревесины, архитектурного бетона и металла.
+          </p>
+        </div>
+
+        <!-- Мета -->
+        <div class="lg:col-span-4 lg:col-start-9 h3 flex flex-col gap-4">
+          <div class="flex gap-4">
+            <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.2)"></div>
+            <div>
+              <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.22)">Тип</p>
+              <p class="font-light text-white" style="font-size:.9rem">Благоустройство / МАФ</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.2)"></div>
+            <div>
+              <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.22)">Материалы</p>
+              <p class="font-light text-white" style="font-size:.9rem">Термодревесина / Бетон / Металл</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.2)"></div>
+            <div>
+              <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.22)">Детская зона</p>
+              <p class="font-light text-white" style="font-size:.9rem">Совместная разработка с подрядчиком</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <div class="w-px h-9 relative overflow-hidden" style="background:rgba(255,255,255,.1)">
+        <div class="absolute inset-0 sl" style="background:#BFA37E"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-content">
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2 · ПАРАМЕТРЫ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="border-b" style="background:#F0EFEB;border-color:rgba(20,20,20,.07)">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 grid grid-cols-2 md:grid-cols-4">
+      <div class="py-7 pr-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Тип</p>
+        <p class="font-light text-sm">МАФ / Парковая среда</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Объекты</p>
+        <p class="font-light text-sm">Навесы / Перголы / Лежаки</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Детская зона</p>
+        <p class="font-light text-sm">Горка + деревянный шалаш</p>
+      </div>
+      <div class="py-7 pl-6">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Цикл</p>
+        <p class="font-light text-sm">Проект / Произв. / Монтаж</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 3 · СУТЬ                                          -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16">
+
+        <div class="lg:col-span-4 reveal">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-6" style="color:rgba(20,20,20,.3)">Задача</p>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Транзитная зона —<br/>в точку<br/>назначения.
+          </h2>
+        </div>
+
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1 flex flex-col gap-6">
+          <p class="font-light leading-relaxed" style="font-size:1.05rem;color:rgba(20,20,20,.65)">
+            Территория перед торговым центром — это не вход. Это первый опыт, который человек получает ещё до того, как открыл дверь. Задача — превратить проходную зону в причину приезда: создать маршрут, дать поводы замедлиться, зафиксировать семью в пространстве через детскую зону.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.5)">
+            Наша роль — проектирование, разработка и производство всех малых архитектурных форм: навесов, пергол, лежаков, скамеек. Плюс совместная работа с подрядчиком по детскому оборудованию — мы разработали концепцию и декор горки, они обеспечили механику и безопасность.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 4 · ПАНОРАМА — рендер общего вида                 -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#141414">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">
+        Концептуальный рендер — общий вид территории
+      </p>
+    </div>
+    <div class="gal-img reveal" style="height:clamp(360px,55vw,740px)">
+      <img alt="Благоустройство территории перед ТЦ — рендер: МАФ, деревянная детская зона, навесы, лежаки"
+           class="w-full h-full object-cover"
+           src="[ФОТО — ChatGPT_Image_26_марта_2026_г___18_10_53.png — рендер, вид на фасад ТЦ + территория с МАФ]"/>
+    </div>
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4 flex justify-between">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">Деревянные объёмы / Лежаки / Перголы / Детская зона</p>
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">Постоянные элементы</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5 · СЦЕНАРИЙ ДВИЖЕНИЯ                             -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-14 reveal">
+        <div class="lg:col-span-4">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-6" style="color:rgba(20,20,20,.3)">Сценарий</p>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Не прямой путь.<br/>Маршрут<br/>вовлечения.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Пространство устроено так, что человек не идёт напрямую ко входу. Маршрут «ломаный» — с отклонениями, промежуточными остановками и точкой притяжения в виде детской зоны. Каждый элемент создаёт повод задержаться.
+          </p>
+        </div>
+      </div>
+
+      <!-- Четыре шага сценария -->
+      <div class="reveal d1">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <div>
+            <p class="font-light uppercase tracking-tight mb-2">Подход</p>
+            <p class="font-light" style="font-size:.9rem;color:rgba(20,20,20,.5)">С границы парковки видны освещённые объекты и силуэты МАФ. Первый визуальный якорь — территория читается как самостоятельная зона, не просто путь к двери.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <div>
+            <p class="font-light uppercase tracking-tight mb-2">Маршрут через парк</p>
+            <p class="font-light" style="font-size:.9rem;color:rgba(20,20,20,.5)">Перголы, навесы и зоны отдыха распределены вдоль пути. Человек замедляется, останавливается, выбирает направление. Лежаки и скамейки дают повод сесть ещё до входа в ТЦ.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <div>
+            <p class="font-light uppercase tracking-tight mb-2">Детская зона — точка фиксации</p>
+            <p class="font-light" style="font-size:.9rem;color:rgba(20,20,20,.5)">Центр активности удерживает семьи. Дети фиксируют родителей в пространстве дольше запланированного. Деревянные объёмы в стиле шалаша, горка, зона свободной игры без жёсткого маршрута.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <div>
+            <p class="font-light uppercase tracking-tight mb-2">Возврат в ТЦ</p>
+            <p class="font-light" style="font-size:.9rem;color:rgba(20,20,20,.5)">Человек заходит внутрь после взаимодействия с пространством. Меняется сценарий потребления — сначала опыт, потом покупки. Вечером тёплая подсветка удерживает на улице после выхода из ТЦ.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5b · ГОРИЗОНТАЛЬНОЕ ФОТО 7 — общий вид территории -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="px-8 md:px-14 py-3 reveal" style="background:#F9F9F7;max-width:none">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="gal-img">
+        <img alt="Благоустройство — горизонтальный кадр территории, общий вид"
+             class="w-full object-cover" style="aspect-ratio:21/8"
+             src="[ФОТО 7 — горизонтальный, общий вид пространства или маршрутов]"/>
+      </div>
+      <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.25)">
+        Пространство перед ТЦ — маршруты, МАФ, детская зона
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 6 · ДВА ФОТО — день и вечер                       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="grid md:grid-cols-2 gap-px" style="background:rgba(20,20,20,.07)">
+
+    <!-- День: детская зона, дети в игре -->
+    <div style="position:relative;overflow:hidden;height:clamp(340px,48vw,660px)">
+      <img alt="Детская зона — деревянные объёмы-шалаши, горка, дети и родители"
+           class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+           src="[ФОТО — 1c3dcc1f1e784d5f5346de3c931b4a1e.jpg — детская площадка, дети в игре]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(20,20,16,.6) 0%, transparent 50%)"></div>
+      <div class="absolute bottom-6 left-6">
+        <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.45)">День</p>
+        <p class="font-light text-white">Детская зона / Деревянные объёмы</p>
+      </div>
+    </div>
+
+    <!-- Вечер: лежаки с подсветкой -->
+    <div style="position:relative;overflow:hidden;height:clamp(340px,48vw,660px)">
+      <img alt="Вечер — лежаки с тёплой подсветкой на фоне освещённого фасада ТЦ"
+           class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+           src="[ФОТО — ChatGPT_Image_26_марта_2026_г___18_15_11.png — вечер, лежаки с подсветкой, снег]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(10,10,16,.65) 0%, transparent 50%)"></div>
+      <div class="absolute bottom-6 left-6">
+        <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.45)">Вечер</p>
+        <p class="font-light text-white">Лежаки / Подсветка / Круглый год</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7 · ДЕТСКАЯ ЗОНА + СОВМЕСТНАЯ РАБОТА              -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 items-start">
+
+        <div class="lg:col-span-5 reveal">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-6" style="color:rgba(20,20,20,.3)">Детская зона</p>
+          <h2 class="font-light uppercase tracking-tight leading-none mb-8" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Один объект —<br/>два подрядчика<br/>как одна команда.
+          </h2>
+          <p class="font-light leading-relaxed mb-6" style="color:rgba(20,20,20,.55)">
+            Горка с деревянными объёмами-шалашами — результат совместной разработки. Мы отвечали за концепцию, форму и визуальный язык. Партнёр — за инженерную механику и сертификацию оборудования. Результат — единый объект, а не типовые элементы с декором сверху.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.4)">
+            Деревянные конусовидные объёмы образуют сценарий свободной игры: нет жёсткого маршрута, нет одного правильного способа взаимодействия. Ребёнок сам выбирает, как использовать пространство.
+          </p>
+
+          <div class="flex gap-3 flex-wrap mt-8">
+            <span class="spec-tag">Концепция + декор</span>
+            <span class="spec-tag">Партнёр — механика</span>
+            <span class="spec-tag">Термодревесина</span>
+          </div>
+        </div>
+
+        <!-- Фото детской зоны + три тезиса справа -->
+        <div class="lg:col-span-6 lg:col-start-7 reveal d1">
+          <div class="gal-img mb-6">
+            <img alt="Детская площадка — деревянные шалаши, горка, дети играют"
+                 class="w-full object-cover" style="aspect-ratio:4/3"
+                 src="[ФОТО — 1c3dcc1f1e784d5f5346de3c931b4a1e.jpg — верхний ракурс детской зоны с семьями]"/>
+          </div>
+          <div class="flex flex-col gap-0" style="border-top:1px solid rgba(20,20,20,.07)">
+            <div class="py-4 flex items-center gap-4" style="border-bottom:1px solid rgba(20,20,20,.07)">
+              <div class="w-4 h-px flex-shrink-0" style="background:#BFA37E"></div>
+              <p class="font-light text-sm" style="color:rgba(20,20,20,.6)">Свободная игра — нет жёсткого маршрута</p>
+            </div>
+            <div class="py-4 flex items-center gap-4" style="border-bottom:1px solid rgba(20,20,20,.07)">
+              <div class="w-4 h-px flex-shrink-0" style="background:#BFA37E"></div>
+              <p class="font-light text-sm" style="color:rgba(20,20,20,.6)">Материалы сертифицированы для детской эксплуатации</p>
+            </div>
+            <div class="py-4 flex items-center gap-4">
+              <div class="w-4 h-px flex-shrink-0" style="background:#BFA37E"></div>
+              <p class="font-light text-sm" style="color:rgba(20,20,20,.6)">Дети фиксируют семью в пространстве — увеличивают dwell time</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7b · ГОРИЗОНТАЛЬНОЕ ФОТО 8 — деталь МАФ или навес -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 pb-16">
+      <div class="grid md:grid-cols-2 gap-3 reveal">
+        <div>
+          <div class="gal-img">
+            <img alt="Детали МАФ — деревянный навес или пергола, детальный кадр"
+                 class="w-full object-cover" style="aspect-ratio:4/3"
+                 src="[ФОТО 8а — горизонтальный, деталь навеса / перголы / лежака]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.25)">
+            Навес — термодревесина, встроенная подсветка
+          </p>
+        </div>
+        <div>
+          <div class="gal-img">
+            <img alt="Зона отдыха — лежаки или скамейки, атмосферный кадр"
+                 class="w-full object-cover" style="aspect-ratio:4/3"
+                 src="[ФОТО 8б — горизонтальный, зона отдыха с лежаками / скамейками]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.25)">
+            Зона отдыха — разные форматы посадки
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8 · МАТЕРИАЛЫ И МАФ                               -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-14 reveal">
+        <div class="lg:col-span-4">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-6" style="color:rgba(20,20,20,.3)">МАФ и материалы</p>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Постоянные<br/>объекты.<br/>На годы.
+          </h2>
+        </div>
+        <div class="lg:col-span-4 lg:col-start-6 reveal d1">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            Все элементы — стационарные. Термодревесина сохраняет стабильность при перепадах влажности и температуры. Архитектурный бетон — прочность и долговечность несущих элементов. Металл — в узловых соединениях и несущих частях.
+          </p>
+        </div>
+        <div class="lg:col-span-3 lg:col-start-10 reveal d2">
+          <div class="mt-2">
+            <div class="mat-row">
+              <div class="mat-dot"></div>
+              <p class="font-light text-sm">Термодревесина</p>
+            </div>
+            <div class="mat-row">
+              <div class="mat-dot"></div>
+              <p class="font-light text-sm">Архитектурный бетон</p>
+            </div>
+            <div class="mat-row">
+              <div class="mat-dot"></div>
+              <p class="font-light text-sm">Металл (узлы)</p>
+            </div>
+            <div class="mat-row">
+              <div class="mat-dot" style="background:rgba(20,20,20,.25)"></div>
+              <p class="font-light text-sm" style="color:rgba(20,20,20,.45)">LED тёплый спектр</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Четыре типа МАФ -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px reveal d1" style="background:rgba(20,20,20,.07)">
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">МАФ 01</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Навесы и перголы</p>
+          <p class="font-light" style="font-size:.88rem;color:rgba(20,20,20,.5)">Органические формы, термодревесина. Создают укрытие и промежуточные остановки вдоль маршрута.</p>
+        </div>
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">МАФ 02</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Лежаки</p>
+          <p class="font-light" style="font-size:.88rem;color:rgba(20,20,20,.5)">Индивидуальная разработка. Волновой профиль под анатомию тела. Металл + термодревесина, встроенная подсветка.</p>
+        </div>
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">МАФ 03</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Скамейки и зоны ожидания</p>
+          <p class="font-light" style="font-size:.88rem;color:rgba(20,20,20,.5)">Разные форматы посадки: краткая остановка и длительный отдых. Распределены по всей территории без перегрузки одной точки.</p>
+        </div>
+        <div class="p-10" style="background:#F0EFEB">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">МАФ 04</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Детская зона</p>
+          <p class="font-light" style="font-size:.88rem;color:rgba(20,20,20,.5)">Деревянные объёмы + горка. Совместная разработка со смежным подрядчиком. Единая концепция.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8b · ГОРИЗОНТАЛЬНОЕ ФОТО 9 — ночной / атмосферный -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#141414">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">
+        Территория в вечернем режиме
+      </p>
+    </div>
+    <div class="gal-img reveal" style="height:clamp(300px,42vw,560px)">
+      <img alt="Вечерний вид — МАФ с подсветкой, атмосферный горизонтальный кадр"
+           class="w-full h-full object-cover"
+           src="[ФОТО 9 — горизонтальный, атмосферный вечерний / ночной кадр]"/>
+    </div>
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.16)">
+        Тёплый спектр подсветки — безопасность и атмосфера круглый год
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 9 · ФИНАЛЬНЫЙ КАДР — вечер с подсветкой           -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="position:relative;background:#0e0c08;overflow:hidden">
+    <div class="gal-img" style="height:clamp(420px,65vw,860px)">
+      <img alt="Благоустройство — вечерний вид, тёплая подсветка лежаков, деревянная горка на фоне ТЦ"
+           class="w-full h-full object-cover" style="opacity:.55"
+           src="[ФОТО — ChatGPT_Image_26_марта_2026_г___18_15_11.png — лучший вечерний кадр с подсветкой]"/>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style="z-index:2">
+      <div class="max-w-[1400px] mx-auto w-full reveal">
+        <h2 class="font-light text-white leading-none tracking-tight mb-10" style="font-size:clamp(1.6rem,4.5vw,3rem)">
+          Снаружи —<br/>так же комфортно,<br/>как внутри.
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:#BFA37E"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.5);font-size:clamp(.9rem,1.2vw,1.05rem)">Постоянные объекты — термодревесина, бетон, металл, LED</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.28);font-size:clamp(.9rem,1.2vw,1.05rem)">Полный цикл: концепция → производство → монтаж</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA + НАВИГАЦИЯ -->
+  <section class="py-24 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-20 pb-20 border-b" style="border-color:rgba(20,20,20,.08)">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div>
+            <h2 class="font-light tracking-tight leading-none" style="font-size:clamp(1.6rem,2.5vw,2.4rem)">
+              Нужно благоустройство прилегающей<br/>территории или разработка МАФ?
+            </h2>
+          </div>
+          <a href="#" class="btn-cta flex-shrink-0">
+            Обсудить проект
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background:rgba(20,20,20,.06)">
+        <a href="#" class="flex items-center gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_back</span>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Все проекты</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Вернуться в архив</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-end gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <div class="text-right">
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Следующий проект</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">МЕГА Дыбенко</p>
+          </div>
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E">
+          <span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span>
+        </div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const heroWrap=document.getElementById('hero-sticky-wrap'),heroVeil=document.getElementById('hero-veil'),siteNav=document.getElementById('site-nav');
+function onScroll(){const sy=window.scrollY,h=heroWrap.offsetHeight;heroVeil.style.opacity=Math.min(1,Math.max(0,(sy-h*.3)/(h*.5)));siteNav.classList.toggle('scrolled',sy>h*.4)}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+#popit-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+@keyframes pi-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#popit-root .pi-h0 {
+  animation: pi-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#popit-root .pi-h1 {
+  animation: pi-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#popit-root .pi-h2 {
+  animation: pi-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#popit-root .pi-h3 {
+  animation: pi-fu 1.4s 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pi-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#popit-root .pi-sl {
+  animation: pi-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#popit-root .pi-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#popit-root .pi-reveal.pi-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#popit-root .pi-d1 {
+  transition-delay: 0.1s;
+}
+#popit-root .pi-d2 {
+  transition-delay: 0.2s;
+}
+
+#popit-root .pi-gal-img {
+  overflow: hidden;
+}
+#popit-root .pi-gal-img img,
+#popit-root .pi-gal-img video {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#popit-root .pi-gal-img:hover img,
+#popit-root .pi-gal-img:hover video {
+  transform: scale(1.04);
+}
+

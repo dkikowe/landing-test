@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — Медиафасад 220 м | 1 760 м²</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-light': '#F9F9F7', 'bg-dark': '#141414' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'], condensed: ['Barlow Condensed','sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.h0{animation:fu 1.4s cubic-bezier(.16,1,.3,1) both}
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .25s cubic-bezier(.16,1,.3,1) both}
+.h3{animation:fu 1.4s .38s cubic-bezier(.16,1,.3,1) both}
+
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+.d3{transition-delay:.3s}
+
+.gal-img{overflow:hidden}
+.gal-img img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gal-img:hover img{transform:scale(1.04)}
+
+#hero-sticky-wrap{position:sticky;top:0;z-index:1;height:100vh;overflow:hidden}
+#hero-section{width:100%;height:100%;position:relative;display:flex;align-items:flex-end}
+#hero-veil{position:fixed;inset:0;z-index:9;background:#F9F9F7;opacity:0;pointer-events:none;will-change:opacity}
+#page-content{position:relative;z-index:10;background:#F9F9F7;margin-top:-2px}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:color .4s;text-decoration:none}
+#site-nav.scrolled .nav-logo{color:#141414}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#fff;transition:background .4s,transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+#site-nav.scrolled .burger span{background:#141414}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s;cursor:pointer}
+.btn-cta:hover{background:transparent;color:#141414}
+
+.big-num{font-family:'Barlow Condensed',sans-serif;font-weight:200;line-height:.88;letter-spacing:-.02em}
+
+/* Шкала размера фасада — визуальная полоска */
+.scale-bar{height:3px;background:rgba(20,20,20,.08);position:relative;overflow:hidden}
+.scale-bar-fill{position:absolute;top:0;left:0;height:100%;background:#BFA37E;transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.16,1,.3,1) .2s}
+.reveal.visible .scale-bar-fill{transform:scaleX(1)}
+
+/* Таймлайн монтажа */
+.timeline-step{display:grid;grid-template-columns:4rem 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);align-items:start}
+.timeline-step:last-child{border-bottom:none}
+.timeline-num{font-family:'Barlow Condensed',sans-serif;font-weight:200;font-size:2.8rem;line-height:1;color:rgba(20,20,20,.12)}
+
+/* Гарантийная таблица */
+.warranty-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.warranty-row:first-child{border-top:1px solid rgba(255,255,255,.07)}
+
+.spec-tag{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(20,20,20,.15);padding:.3rem .7rem;display:inline-block}
+.spec-tag-invert{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.45)}
+</style>
+</head>
+
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a href="#" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<div id="hero-veil"></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 1 · HERO                                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="hero-sticky-wrap">
+  <section id="hero-section" style="background:#050810">
+    <div class="absolute inset-0">
+      <img alt="Медиафасад — вид с высоты, торговый центр МЕГА ночью"
+           class="w-full h-full object-cover" style="object-position:center 40%"
+           src="[ФОТО HERO — mediafasade_4.png — аэросъёмка ТЦ ночью с медиафасадом]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(5,8,16,.97) 0%, rgba(5,8,16,.4) 50%, rgba(5,8,16,.15) 100%)"></div>
+    </div>
+
+    <div class="absolute top-28 left-8 md:left-14 z-10 h0">
+      <p class="font-mono text-[9px] uppercase tracking-[.4em]" style="color:rgba(255,255,255,.22)">
+        monumforma&nbsp;&nbsp;/&nbsp;&nbsp;Проекты&nbsp;&nbsp;/&nbsp;&nbsp;Медиафасад
+      </p>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-14 pb-14">
+      <div class="grid lg:grid-cols-12 gap-8 items-end">
+
+        <!-- Заголовок — большие числа как основной элемент -->
+        <div class="lg:col-span-6">
+          <p class="font-mono text-[9px] uppercase tracking-[.28em] mb-4 h0" style="color:rgba(255,255,255,.28)">
+            LED Медиафасад
+          </p>
+          <div class="h1 flex items-baseline gap-4 flex-wrap">
+            <span class="big-num text-white" style="font-size:clamp(5rem,11vw,10rem)">220</span>
+            <span class="font-light text-white" style="font-size:clamp(1.2rem,2.5vw,2rem);opacity:.45">×</span>
+            <span class="big-num text-white" style="font-size:clamp(5rem,11vw,10rem)">8</span>
+            <span class="big-num" style="font-size:clamp(2rem,4vw,3.5rem);color:rgba(255,255,255,.3)">м</span>
+          </div>
+          <p class="font-light mt-4 h2" style="color:rgba(255,255,255,.35);font-size:clamp(.85rem,1.1vw,.95rem);letter-spacing:.03em;max-width:34rem">
+            Медиафасад площадью 1 760 м² с шагом пикселя 40 см. Видимость с шоссе и парковки. 4 эксплуатационных сезона.
+          </p>
+        </div>
+
+        <!-- Мета справа -->
+        <div class="lg:col-span-4 lg:col-start-9 h3 flex flex-col gap-4">
+          <div class="flex gap-4">
+            <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.2)"></div>
+            <div>
+              <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.22)">Площадь</p>
+              <p class="font-light text-white" style="font-size:.9rem">1 760 м²</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.2)"></div>
+            <div>
+              <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.22)">Оборудование</p>
+              <p class="font-light text-white" style="font-size:.9rem">Итальянский партнёр</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-px flex-shrink-0 self-stretch" style="background:rgba(191,163,126,.2)"></div>
+            <div>
+              <p class="font-mono text-[8px] uppercase tracking-widest mb-1" style="color:rgba(255,255,255,.22)">Конструктив</p>
+              <p class="font-light text-white" style="font-size:.9rem">Собственная разработка</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <div class="w-px h-9 relative overflow-hidden" style="background:rgba(255,255,255,.1)">
+        <div class="absolute inset-0 sl" style="background:#BFA37E"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-content">
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2 · ПАРАМЕТРЫ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#141414;border-bottom:1px solid rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 grid grid-cols-2 md:grid-cols-5">
+      <div class="py-6 pr-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.22)">Размер</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">220 × 8 м / 1 760 м²</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.22)">Пиксель</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">Шаг P40 (40 см)</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.22)">Инженерия и установка</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">23 дня под ключ</p>
+      </div>
+      <div class="py-6 px-6 border-r" style="border-color:rgba(255,255,255,.06)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.22)">Использование</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">4 сезона в эксплуатации</p>
+      </div>
+      <div class="py-6 pl-6">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(255,255,255,.22)">Гарантия</p>
+        <p class="font-light text-sm" style="color:rgba(255,255,255,.7)">До 5 лет</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 3 · СУТЬ + ВИЗУАЛЬНАЯ ШКАЛА РАЗМЕРА               -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-20">
+        <div class="lg:col-span-4 reveal">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-6" style="color:rgba(20,20,20,.3)">О проекте</p>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Виден с шоссе.<br/>Работает<br/>четыре сезона.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1">
+          <p class="font-light leading-relaxed mb-6" style="font-size:1.05rem;color:rgba(20,20,20,.65)">
+            Медиафасад 220 × 8 метров расположен на внешнем периметре торгового центра. Шаг пикселя 40 см — оптимальный для наружной демонстрации контента с дальних дистанций: с проезжей части шоссе и парковки.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.45)">
+            За четыре сезона эксплуатации фасад использовался для информирования о сезонных распродажах, новогодних праздничных программах и других событийных кампаниях торгового центра. Контент меняется без вмешательства в конструктив.
+          </p>
+        </div>
+      </div>
+
+      <!-- Визуальная шкала: 220м относительно контекста -->
+      <div class="reveal d1">
+        <div class="flex items-end justify-between mb-3">
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.3)">Протяжённость фасада</p>
+          <p class="big-num" style="font-size:clamp(1.8rem,3vw,2.8rem);color:rgba(20,20,20,.12)">220 м</p>
+        </div>
+        <div class="scale-bar reveal"><div class="scale-bar-fill" style="width:100%"></div></div>
+        <div class="flex justify-between mt-2">
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.2)">0 м</p>
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.2)">Высота 8 м — виден с шоссе</p>
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.2)">1 760 м²</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 4 · ВИДЕО — горизонтальное                        -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#050810">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3 flex justify-between items-center">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.15)">
+        Медиафасад в работе — вечерний режим
+      </p>
+      <span class="spec-tag spec-tag-invert">Видео</span>
+    </div>
+
+    <div style="position:relative;aspect-ratio:16/9;background:#020408;overflow:hidden">
+      <video
+        src="[ВИДЕО — горизонтальное, фасад в работе, ночной вид]"
+        playsinline autoplay muted loop
+        class="w-full h-full object-cover"
+        style="display:block">
+      </video>
+      <!-- Плейсхолдер -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center gap-4" style="background:rgba(2,4,8,.9)">
+        <div style="width:56px;height:56px;border:1px solid rgba(191,163,126,.3);display:flex;align-items:center;justify-content:center">
+          <span class="material-symbols-outlined" style="color:#BFA37E;font-size:26px">play_arrow</span>
+        </div>
+        <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(255,255,255,.2)">220 × 8 м — активный режим</p>
+      </div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.15)">
+        Шаг пикселя P40 — оптимален для просмотра с расстояния 50+ метров
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5 · КОНСТРУКТИВ + МОНТАЖНОЕ ФОТО                  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-14 reveal">
+        <div class="lg:col-span-4">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-6" style="color:rgba(20,20,20,.3)">Конструктив</p>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Лёгкая рама.<br/>Модульный<br/>монтаж.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed mb-5" style="color:rgba(20,20,20,.55)">
+            Специально для этого проекта разработана облегчённая металлоконструкция — рассчитана под нагрузку оборудования с учётом ветровых условий и эксплуатации на открытом воздухе. Оборудование монтировалось на конструкцию модулями в собственном сборочном цехе, затем в собранном виде устанавливалось на фасад.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.4)">
+            Модульный принцип сократил время монтажа на объекте и снизил зависимость от погодных условий: сборка шла в цехе, на фасаде — только установка готовых блоков.
+          </p>
+        </div>
+      </div>
+
+      <!-- Монтажное фото (вертикальное) + текстовый блок -->
+      <div class="grid md:grid-cols-12 gap-3 reveal d1">
+
+        <div class="gal-img md:col-span-4">
+          <img alt="Монтаж медиафасада — установка модулей, монтажник на лесах"
+               class="w-full object-cover" style="aspect-ratio:3/4"
+               src="[ФОТО — mediafasade_5.png — монтажник на лесах крупным планом]"/>
+        </div>
+
+        <div class="md:col-span-4 flex flex-col gap-px" style="background:rgba(20,20,20,.07)">
+          <div class="p-8 flex flex-col gap-2 flex-1" style="background:#F0EFEB">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.3)">Сборочный цех</p>
+            <p class="big-num" style="font-size:clamp(3rem,5vw,4.5rem)">12</p>
+            <p class="font-light" style="font-size:.85rem;color:rgba(20,20,20,.45)">дней предмонтажной сборки модулей</p>
+          </div>
+          <div class="p-8 flex flex-col gap-2 flex-1" style="background:#F0EFEB">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.3)">На объекте</p>
+            <p class="big-num" style="font-size:clamp(3rem,5vw,4.5rem)">8</p>
+            <p class="font-light" style="font-size:.85rem;color:rgba(20,20,20,.45)">дней монтажа на фасад</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 flex flex-col gap-px" style="background:rgba(20,20,20,.07)">
+          <div class="p-8 flex flex-col gap-2 flex-1" style="background:#F0EFEB">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.3)">Пусконаладка</p>
+            <p class="big-num" style="font-size:clamp(3rem,5vw,4.5rem)">3</p>
+            <p class="font-light" style="font-size:.85rem;color:rgba(20,20,20,.45)">дня настройки и калибровки</p>
+          </div>
+          <div class="p-8 flex flex-col justify-center gap-2 flex-1" style="background:#F0EFEB">
+            <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-3" style="color:rgba(20,20,20,.3)">Итого</p>
+            <p class="big-num" style="font-size:clamp(2rem,3.5vw,3.2rem)">23 <span class="font-light" style="font-size:.45em;color:rgba(20,20,20,.4)">дня</span></p>
+            <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.3)">Под ключ — от цеха до запуска</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="font-mono text-[8px] uppercase tracking-widest mt-4 reveal d2" style="color:rgba(20,20,20,.25)">
+        Модульный принцип: монтаж на объекте сведён к установке готовых блоков
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 6 · РЕЗУЛЬТАТ — ночные фото                       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="flex items-end justify-between mb-12 reveal">
+        <div>
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-4" style="color:rgba(20,20,20,.3)">Результат</p>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.4rem,2vw,2rem)">
+            Объект в работе.
+          </h2>
+        </div>
+        <div class="flex gap-2 flex-wrap justify-end">
+          <span class="spec-tag">Наружный монтаж</span>
+          <span class="spec-tag">Круглосуточно</span>
+          <span class="spec-tag">4 сезона</span>
+        </div>
+      </div>
+
+      <!-- Широкое фото — аэросъёмка -->
+      <div class="mb-3 reveal">
+        <div class="gal-img">
+          <img alt="Медиафасад — аэросъёмка торгового центра ночью"
+               class="w-full object-cover" style="aspect-ratio:16/7"
+               src="[ФОТО — mediafasade_4.png — общий вид фасада с высоты ночью]"/>
+        </div>
+        <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.25)">
+          Вид с высоты — масштаб фасада в контексте объекта
+        </p>
+      </div>
+
+      <!-- Два равных — уличный вид + доп фото -->
+      <div class="grid md:grid-cols-2 gap-3 reveal d1">
+        <div>
+          <div class="gal-img">
+            <img alt="Медиафасад — вид с уровня улицы, ночная работа"
+                 class="w-full object-cover" style="aspect-ratio:4/3"
+                 src="[ФОТО — mediafasade_8.jpg — ночной вид с улицы, фасад + арт-объект]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.25)">
+            Видимость с парковки и пешеходной зоны
+          </p>
+        </div>
+        <div>
+          <div class="gal-img">
+            <img alt="Медиафасад — дополнительный ракурс"
+                 class="w-full object-cover" style="aspect-ratio:4/3"
+                 src="[ФОТО — дополнительный ракурс фасада]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest mt-3" style="color:rgba(20,20,20,.25)">
+            Сезонный контент — информирование о распродажах
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7 · ОБОРУДОВАНИЕ И ГАРАНТИЯ — тёмная секция       -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#141414">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-16">
+        <div class="lg:col-span-4 reveal">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-6" style="color:rgba(255,255,255,.22)">Оборудование</p>
+          <h2 class="font-light uppercase tracking-tight leading-none text-white" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Итальянский<br/>партнёр.<br/>Гарантия<br/>до 5 лет.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal d1">
+          <p class="font-light leading-relaxed mb-8" style="color:rgba(255,255,255,.4)">
+            Оборудование поставлено через сертифицированного итальянского партнёра. Полная документация, гарантийное и постгарантийное обслуживание. Контроллеры и управляющие системы — расширенная гарантия.
+          </p>
+          <!-- Гарантийная таблица -->
+          <div>
+            <div class="warranty-row">
+              <p class="font-light text-white" style="font-size:.95rem">Контроллеры и управляющее оборудование</p>
+              <div class="flex items-baseline gap-2 ml-6">
+                <p class="big-num text-white" style="font-size:2.2rem">5</p>
+                <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.3)">лет</p>
+              </div>
+            </div>
+            <div class="warranty-row">
+              <p class="font-light text-white" style="font-size:.95rem">Остальное оборудование и модули</p>
+              <div class="flex items-baseline gap-2 ml-6">
+                <p class="big-num text-white" style="font-size:2.2rem">3</p>
+                <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.3)">года</p>
+              </div>
+            </div>
+            <div class="warranty-row" style="border-bottom:none">
+              <p class="font-light" style="font-size:.95rem;color:rgba(255,255,255,.35)">Металлоконструкция (собственная разработка)</p>
+              <p class="font-mono text-[8px] uppercase tracking-widest ml-6" style="color:rgba(255,255,255,.2)">По проекту</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Четыре карточки использования -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px reveal d2" style="background:rgba(255,255,255,.06)">
+        <div class="p-8" style="background:#141414">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-4" style="color:#BFA37E"></p>
+          <p class="font-light text-white mb-2">Новогодние праздники</p>
+          <p class="font-light" style="font-size:.85rem;color:rgba(255,255,255,.28)">Праздничный контент, анонсы событий, поздравления</p>
+        </div>
+        <div class="p-8" style="background:#141414">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-4" style="color:#BFA37E"></p>
+          <p class="font-light text-white mb-2">Сезонные распродажи</p>
+          <p class="font-light" style="font-size:.85rem;color:rgba(255,255,255,.28)">Информирование о скидках арендаторов, навигация трафика</p>
+        </div>
+        <div class="p-8" style="background:#141414">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-4" style="color:#BFA37E"></p>
+          <p class="font-light text-white mb-2">Мероприятия и события</p>
+          <p class="font-light" style="font-size:.85rem;color:rgba(255,255,255,.28)">Промо акций, специальных программ, брендинг событий</p>
+        </div>
+        <div class="p-8" style="background:#141414">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-4" style="color:rgba(255,255,255,.2)"></p>
+          <p class="font-light text-white mb-2">Имиджевый контент</p>
+          <p class="font-light" style="font-size:.85rem;color:rgba(255,255,255,.28)">Идентификация объекта с шоссе, формирование узнаваемости</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8 · ФИНАЛЬНЫЙ КАДР                                -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="position:relative;background:#050810;overflow:hidden">
+    <div class="gal-img" style="height:clamp(420px,65vw,860px)">
+      <img alt="Медиафасад — финальный ночной кадр"
+           class="w-full h-full object-cover" style="opacity:.4"
+           src="[ФОТО — mediafasade_8.jpg или mediafasade_4.png — лучший ночной кадр]"/>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style="z-index:2">
+      <div class="max-w-[1400px] mx-auto w-full reveal">
+        <h2 class="font-light text-white leading-none tracking-tight mb-10" style="font-size:clamp(1.6rem,4.5vw,3rem)">
+          1 760 м²<br/>видны с шоссе.<br/>Работают круглый год.
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:#BFA37E"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.5);font-size:clamp(.9rem,1.2vw,1.05rem)">Собственная металлоконструкция — монтаж 23 дня под ключ</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.28);font-size:clamp(.9rem,1.2vw,1.05rem)">Итальянское оборудование, гарантия до 5 лет</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Декоративное число -->
+    <div style="position:absolute;bottom:-2rem;right:2rem;z-index:2;line-height:1;pointer-events:none">
+      <p class="big-num" style="font-size:clamp(8rem,15vw,14rem);color:rgba(255,255,255,.025)">220</p>
+    </div>
+  </div>
+
+  <!-- CTA + НАВИГАЦИЯ -->
+  <section class="py-24 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-20 pb-20 border-b" style="border-color:rgba(20,20,20,.08)">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div>
+            <h2 class="font-light tracking-tight leading-none" style="font-size:clamp(1.6rem,2.5vw,2.4rem)">
+              Нужен медиафасад или наружная<br/>световая система для вашего объекта?
+            </h2>
+          </div>
+          <a href="#" class="btn-cta flex-shrink-0">
+            Обсудить проект
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background:rgba(20,20,20,.06)">
+        <a href="#" class="flex items-center gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_back</span>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Все проекты</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Вернуться в архив</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-end gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <div class="text-right">
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Следующий проект</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Кинетическая люстра — 524 сферы</p>
+          </div>
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E">
+          <span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span>
+        </div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const heroWrap=document.getElementById('hero-sticky-wrap'),heroVeil=document.getElementById('hero-veil'),siteNav=document.getElementById('site-nav');
+function onScroll(){const sy=window.scrollY,h=heroWrap.offsetHeight;heroVeil.style.opacity=Math.min(1,Math.max(0,(sy-h*.3)/(h*.5)));siteNav.classList.toggle('scrolled',sy>h*.4)}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

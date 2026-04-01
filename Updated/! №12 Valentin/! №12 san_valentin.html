@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>monumforma — San Valentín | Сезонное оформление 200 м</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#BFA37E', 'bg-light': '#F9F9F7', 'bg-dark': '#141414' },
+        fontFamily: { display: ['Inter','sans-serif'], mono: ['Roboto Mono','monospace'], condensed: ['Barlow Condensed','sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+* { border-radius: 0 !important; box-sizing: border-box; }
+body { margin: 0; }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+.h0{animation:fu 1.4s cubic-bezier(.16,1,.3,1) both}
+.h1{animation:fu 1.4s .12s cubic-bezier(.16,1,.3,1) both}
+.h2{animation:fu 1.4s .25s cubic-bezier(.16,1,.3,1) both}
+.h3{animation:fu 1.4s .38s cubic-bezier(.16,1,.3,1) both}
+
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sl{animation:sd 2.2s cubic-bezier(.76,0,.24,1) infinite}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+.d3{transition-delay:.3s}
+
+.gal-img{overflow:hidden}
+.gal-img img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.gal-img:hover img{transform:scale(1.04)}
+
+#hero-sticky-wrap{position:sticky;top:0;z-index:1;height:100vh;overflow:hidden}
+#hero-section{width:100%;height:100%;position:relative;display:flex;align-items:flex-end}
+#hero-veil{position:fixed;inset:0;z-index:9;background:#F9F9F7;opacity:0;pointer-events:none;will-change:opacity}
+#page-content{position:relative;z-index:10;background:#F9F9F7;margin-top:-2px}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.75rem 3.5rem;transition:background .4s,border-color .4s}
+#site-nav.scrolled{background:rgba(249,249,247,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,20,20,.07)}
+.nav-logo{font-family:'Roboto Mono',monospace;font-weight:300;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;transition:color .4s;text-decoration:none}
+#site-nav.scrolled .nav-logo{color:#141414}
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;cursor:pointer;background:none;border:none;padding:0}
+.burger span{display:block;width:100%;height:1px;background:#fff;transition:background .4s,transform .35s cubic-bezier(.76,0,.24,1),opacity .25s;transform-origin:center}
+#site-nav.scrolled .burger span{background:#141414}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#nav-panel{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#F9F9F7;z-index:199;display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem 3rem;transform:translateX(100%);transition:transform .55s cubic-bezier(.76,0,.24,1);border-left:1px solid rgba(20,20,20,.07)}
+#nav-panel.open{transform:translateX(0)}
+#nav-overlay{position:fixed;inset:0;z-index:198;background:rgba(20,20,20,.35);opacity:0;pointer-events:none;transition:opacity .45s}
+#nav-overlay.open{opacity:1;pointer-events:all}
+.nav-link{display:block;font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.01em;color:#141414;text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(20,20,20,.07);transition:color .25s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.nav-link:hover{color:#BFA37E;padding-left:.6rem}
+.nav-link.active{color:#BFA37E}
+.nav-cta{display:inline-flex;align-items:center;gap:.75rem;margin-top:2.5rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#F9F9F7;background:#141414;padding:.85rem 1.75rem;text-decoration:none;transition:background .3s}
+.nav-cta:hover{background:#BFA37E}
+.btn-cta{display:inline-flex;align-items:center;gap:1rem;font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;background:#BFA37E;color:#141414;padding:1rem 2rem;text-decoration:none;border:1px solid #BFA37E;transition:background .3s,color .3s;cursor:pointer}
+.btn-cta:hover{background:transparent;color:#141414}
+
+.big-num{font-family:'Barlow Condensed',sans-serif;font-weight:200;line-height:.88;letter-spacing:-.02em}
+
+/* Акцентная черта перед заголовком */
+.pre-tag{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.pre-tag::before{content:'';width:2rem;height:1px;background:#BFA37E;flex-shrink:0}
+
+/* Metric row */
+.metric-row{display:flex;align-items:baseline;gap:.75rem;padding:1.25rem 0;border-bottom:1px solid rgba(20,20,20,.07)}
+.metric-row:last-child{border-bottom:none}
+
+/* Теги */
+.spec-tag{font-family:'Roboto Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(20,20,20,.15);padding:.3rem .7rem;display:inline-block}
+.spec-tag-invert{border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.45)}
+</style>
+</head>
+
+<body class="font-display" style="background:#F9F9F7;color:#141414;overflow-x:hidden">
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a href="#" class="nav-logo">monumforma</a>
+  <button class="burger" id="burger-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+<div id="nav-overlay"></div>
+<div id="nav-panel">
+  <nav style="margin-top:1rem">
+    <a class="nav-link active" href="#">Проекты</a>
+    <a class="nav-link" href="#">Компетенции</a>
+    <a class="nav-link" href="#">Инженерия</a>
+    <a class="nav-link" href="#">Клиентам</a>
+    <a class="nav-link" href="#">О компании</a>
+    <a class="nav-link" href="#">Контакты</a>
+  </nav>
+  <a class="nav-cta" href="#">Обсудить проект <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+  <p class="font-mono mt-8" style="font-size:.6rem;letter-spacing:.18em;color:rgba(20,20,20,.3);text-transform:uppercase">Valencia &amp; Barcelona, España</p>
+</div>
+
+<div id="hero-veil"></div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- 1 · HERO                                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div id="hero-sticky-wrap">
+  <section id="hero-section" style="background:#1a0a0a">
+    <div class="absolute inset-0">
+      <img alt="San Valentín — 1500 подвесных сердец вдоль галереи торгового центра"
+           class="w-full h-full object-cover" style="object-position:center 45%"
+           src="[ФОТО HERO — ChatGPT_Image_26_марта_2026_г___20_13_27.png — вид вдоль галереи с сердцами]"/>
+      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(20,8,8,.95) 0%, rgba(20,8,8,.35) 50%, rgba(20,8,8,.1) 100%)"></div>
+    </div>
+
+    <div class="absolute top-28 left-8 md:left-14 z-10 h0">
+      <p class="font-mono text-[9px] uppercase tracking-[.4em]" style="color:rgba(255,255,255,.25)">
+        monumforma&nbsp;&nbsp;/&nbsp;&nbsp;Проекты&nbsp;&nbsp;/&nbsp;&nbsp;San Valentín
+      </p>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-14 pb-14">
+      <div class="grid lg:grid-cols-12 gap-8 items-end">
+
+        <div class="lg:col-span-8">
+          <p class="font-mono text-[9px] uppercase tracking-[.28em] mb-5 h0" style="color:rgba(255,255,255,.3)">
+            Сезонное оформление торгового центра
+          </p>
+          <h1 class="font-light text-white leading-none tracking-tight h1" style="font-size:clamp(3.5rem,8vw,7.5rem)">
+            San<br/>Valentín
+          </h1>
+          <p class="font-light mt-5 h2" style="color:rgba(255,255,255,.35);font-size:clamp(.85rem,1.1vw,.95rem);letter-spacing:.03em;max-width:38rem">
+            Пространственная инсталляция на 200 метрах торговой галереи. 16 500 элементов. Модульная система монтажа. Собственное производство.
+          </p>
+        </div>
+
+        <!-- Три ключевых числа в герое -->
+        <div class="lg:col-span-3 lg:col-start-10 h3 flex flex-col gap-5">
+          <div>
+            <p class="big-num text-white" style="font-size:clamp(2.8rem,4vw,3.8rem)">200<span class="font-light" style="font-size:.45em;opacity:.5"> м</span></p>
+            <p class="font-mono text-[8px] uppercase tracking-widest mt-1" style="color:rgba(255,255,255,.25)">Протяжённость галереи</p>
+          </div>
+          <div style="height:1px;background:rgba(255,255,255,.08)"></div>
+          <div>
+            <p class="big-num text-white" style="font-size:clamp(2.8rem,4vw,3.8rem)">16 500</p>
+            <p class="font-mono text-[8px] uppercase tracking-widest mt-1" style="color:rgba(255,255,255,.25)">Единиц декора</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+      <div class="w-px h-9 relative overflow-hidden" style="background:rgba(255,255,255,.1)">
+        <div class="absolute inset-0 sl" style="background:#BFA37E"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-content">
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2 · ПАРАМЕТРЫ                                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="border-b" style="background:#F0EFEB;border-color:rgba(20,20,20,.07)">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 grid grid-cols-2 md:grid-cols-5">
+      <div class="py-7 pr-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Тип</p>
+        <p class="font-light text-sm">Сезонное оформление</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Материал</p>
+        <p class="font-light text-sm">Стеклопластик</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Объекты</p>
+        <p class="font-light text-sm">20 шт. × 2 м высота</p>
+      </div>
+      <div class="py-7 px-6 border-r" style="border-color:rgba(20,20,20,.07)">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Подвес</p>
+        <p class="font-light text-sm">1 500 элементов</p>
+      </div>
+      <div class="py-7 pl-6">
+        <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-2" style="color:rgba(20,20,20,.35)">Цикл</p>
+        <p class="font-light text-sm">Производство / Монтаж</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 3 · СУТЬ + МЕТРИКИ                                -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-16">
+
+      <!-- Текст -->
+      <div class="lg:col-span-5 reveal">
+        <div class="pre-tag">
+          <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">О проекте</span>
+        </div>
+        <h2 class="font-light uppercase tracking-tight leading-none mb-8" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+          Масштаб через повторяемость. Качество через систему.
+        </h2>
+        <p class="font-light leading-relaxed mb-6" style="color:rgba(20,20,20,.6)">
+          Оформление охватывает всю длину торговой галереи и центральный атриум. Подвесной слой из сердец разного масштаба и цвета создаёт непрерывную визуальную среду — без провалов и разрывов на протяжении двухсот метров.
+        </p>
+        <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.45)">
+          Ключевая задача проекта — обеспечить масштаб без потери качества на повторяемых элементах. Решение — модульность: элементы сгруппированы в укрупнённые блоки, монтируются одной бригадой и рассчитаны на многократное использование.
+        </p>
+      </div>
+
+      <!-- Метрики в виде строк -->
+      <div class="lg:col-span-6 lg:col-start-7 reveal d1">
+        <div class="metric-row">
+          <p class="big-num flex-shrink-0" style="font-size:clamp(3rem,5vw,4.5rem);color:#141414">200</p>
+          <div>
+            <p class="font-light text-sm uppercase tracking-tight">метров</p>
+            <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.35)">Протяжённость галереи</p>
+          </div>
+        </div>
+        <div class="metric-row">
+          <p class="big-num flex-shrink-0" style="font-size:clamp(3rem,5vw,4.5rem);color:#141414">1 500</p>
+          <div>
+            <p class="font-light text-sm uppercase tracking-tight">подвесных гирлянд</p>
+            <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.35)">4 размера / 8 цветовых оттенков</p>
+          </div>
+        </div>
+        <div class="metric-row">
+          <p class="big-num flex-shrink-0" style="font-size:clamp(3rem,5vw,4.5rem);color:#141414">16 500</p>
+          <div>
+            <p class="font-light text-sm uppercase tracking-tight">единиц декора</p>
+            <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.35)">Суммарно по всему объекту</p>
+          </div>
+        </div>
+        <div class="metric-row">
+          <p class="big-num flex-shrink-0" style="font-size:clamp(3rem,5vw,4.5rem);color:#141414">20</p>
+          <div>
+            <p class="font-light text-sm uppercase tracking-tight">крупноформатных объектов</p>
+            <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.35)">Высота 2 м, стеклопластик, атриум</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 4 · ПАНОРАМА ГАЛЕРЕИ — полная ширина              -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="background:#141414">
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-3">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.18)">
+        Галерея — вид вдоль оси / 1 500 подвесных элементов
+      </p>
+    </div>
+    <div class="gal-img reveal" style="height:clamp(360px,56vw,760px)">
+      <img alt="San Valentín — панорама галереи с подвесными сердцами"
+           class="w-full h-full object-cover"
+           src="[ФОТО — ChatGPT_Image_26_марта_2026_г___20_13_27.png — вид вдоль галереи]"/>
+    </div>
+    <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-4 flex justify-between">
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.18)">Подвесной слой формирует непрерывную визуальную среду</p>
+      <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(255,255,255,.18)">4 типоразмера / 8 оттенков</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 5 · ПРОИЗВОДСТВО                                  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F0EFEB">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-16 reveal">
+        <div class="lg:col-span-4">
+          <div class="pre-tag">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Производство</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Серийное.<br/>Без потери<br/>качества.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed mb-6" style="color:rgba(20,20,20,.55)">
+            Крупноформатные сердца высотой 2 метра изготовлены из стеклопластика через созданную матрицу. Серийное производство под единую матрицу обеспечивает идентичность формы и качества поверхности на всех 20 объектах.
+          </p>
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.4)">
+            Многослойная система окраски с повышенной стойкостью — обязательное условие для интерьерной эксплуатации при высокой проходимости. Все объекты рассчитаны на многократное использование в следующих сезонах.
+          </p>
+        </div>
+      </div>
+
+      <!-- Два фото производства: вертикальное + горизонтальное -->
+      <div class="grid md:grid-cols-12 gap-3 reveal d1">
+
+        <!-- Вертикальное: красное готовое сердце -->
+        <div class="gal-img md:col-span-4">
+          <img alt="Крупноформатное сердце 2 м — финальная покраска в производственном цехе"
+               class="w-full object-cover" style="aspect-ratio:3/4"
+               src="[ФОТО — ChatGPT_Image_26_марта_2026_г___20_15_57.png — красное сердце в покрасочном цехе]"/>
+        </div>
+
+        <!-- Горизонтальное: белые заготовки -->
+        <div class="gal-img md:col-span-8">
+          <img alt="Производство — стеклопластиковые заготовки сердец в цехе"
+               class="w-full h-full object-cover" style="aspect-ratio:16/10;min-height:100%"
+               src="[ФОТО — ChatGPT_Image_26_марта_2026_г___20_30_48.png — белые заготовки в цехе]"/>
+        </div>
+
+      </div>
+
+      <!-- Подписи под фото -->
+      <div class="grid md:grid-cols-12 gap-3 mt-3 reveal d2">
+        <div class="md:col-span-4">
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.3)">
+            Финальная покраска — многослойная износостойкая система
+          </p>
+        </div>
+        <div class="md:col-span-8">
+          <p class="font-mono text-[8px] uppercase tracking-widest" style="color:rgba(20,20,20,.3)">
+            Производство по матрице — идентичность формы на всей серии из 20 объектов
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 6 · СИСТЕМА ХРАНЕНИЯ — тёмный фон, 3D рендер     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#141414">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 items-center">
+
+        <!-- 3D рендер мобильной подставки -->
+        <div class="lg:col-span-6 reveal">
+          <div class="gal-img">
+            <img alt="3D-модель мобильной подставки для хранения и транспортировки объектов"
+                 class="w-full object-cover" style="aspect-ratio:16/10"
+                 src="[ФОТО — PHOTO-2021-12-22-16-16-49_2.jpg — 3D рендер подставки с колёсами]"/>
+          </div>
+          <p class="font-mono text-[8px] uppercase tracking-widest mt-4" style="color:rgba(255,255,255,.2)">
+            Мобильная подставка — собственная разработка под хранение и транспортировку объектов
+          </p>
+        </div>
+
+        <!-- Текст рядом -->
+        <div class="lg:col-span-5 lg:col-start-8 reveal d1">
+          <div class="pre-tag" style="margin-bottom:1.5rem">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(255,255,255,.25)">Эксплуатация</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none text-white mb-8" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Решение для<br/>повторного<br/>использования.
+          </h2>
+          <p class="font-light leading-relaxed mb-8" style="color:rgba(255,255,255,.4)">
+            Для крупноформатных объектов разработаны мобильные подставки на колёсах. Обеспечивают безопасное хранение между сезонами, удобную транспортировку внутри объекта и снижают затраты на эксплуатацию.
+          </p>
+          <!-- Три преимущества -->
+          <div class="flex flex-col gap-0" style="border-top:1px solid rgba(255,255,255,.07)">
+            <div class="py-4 flex items-center gap-4" style="border-bottom:1px solid rgba(255,255,255,.07)">
+              <div class="w-4 h-px flex-shrink-0" style="background:#BFA37E"></div>
+              <p class="font-light text-sm" style="color:rgba(255,255,255,.55)">Безопасное хранение объектов 2 м</p>
+            </div>
+            <div class="py-4 flex items-center gap-4" style="border-bottom:1px solid rgba(255,255,255,.07)">
+              <div class="w-4 h-px flex-shrink-0" style="background:#BFA37E"></div>
+              <p class="font-light text-sm" style="color:rgba(255,255,255,.55)">Транспортировка внутри объекта без подъёмной техники</p>
+            </div>
+            <div class="py-4 flex items-center gap-4">
+              <div class="w-4 h-px flex-shrink-0" style="background:#BFA37E"></div>
+              <p class="font-light text-sm" style="color:rgba(255,255,255,.55)">Многосезонное использование — снижение CapEx</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 7 · РЕАЛИЗАЦИЯ — четыре этапа                     -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-28 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+
+      <div class="grid lg:grid-cols-12 gap-16 mb-16 reveal">
+        <div class="lg:col-span-4">
+          <div class="pre-tag">
+            <span class="font-mono text-[8px] uppercase tracking-[.3em]" style="color:rgba(20,20,20,.35)">Реализация</span>
+          </div>
+          <h2 class="font-light uppercase tracking-tight leading-none" style="font-size:clamp(1.6rem,2.2vw,2.2rem)">
+            Полный цикл.<br/>Один подрядчик.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="font-light leading-relaxed" style="color:rgba(20,20,20,.55)">
+            От проектирования матриц до демонтажа и подготовки к следующему сезону. Модульная система монтажа позволяет устанавливать всё пространство одной бригадой — без дополнительной координации и потерь времени на стыках.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px reveal d1" style="background:rgba(20,20,20,.07)">
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">01</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Проектирование</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Разработка геометрии объектов, производственных матриц и модульной системы подвесных конструкций.</p>
+        </div>
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">02</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Производство</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Серийное изготовление объектов и подвесных элементов. Подготовка поверхности и многослойная окраска.</p>
+        </div>
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">03</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">Монтаж</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Установка по всей галерее и атриуму. Модульная сборка ускоряет монтаж и обеспечивает точность геометрии.</p>
+        </div>
+        <div class="p-10" style="background:#F9F9F7">
+          <p class="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style="color:#BFA37E">04</p>
+          <p class="font-light text-base mb-3 uppercase tracking-tight">После сезона</p>
+          <p class="font-light leading-relaxed" style="font-size:.9rem;color:rgba(20,20,20,.5)">Демонтаж, чистка, подготовка к хранению. Все объекты укладываются в мобильные подставки для следующего сезона.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 8 · ФИНАЛЬНЫЙ КАДР                                -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div style="position:relative;background:#1a0a0a;overflow:hidden">
+    <div class="gal-img" style="height:clamp(420px,65vw,860px)">
+      <img alt="San Valentín — финальный кадр галереи"
+           class="w-full h-full object-cover" style="opacity:.42"
+           src="[ФОТО — ChatGPT_Image_26_марта_2026_г___20_13_27.png — лучший атмосферный кадр с людьми]"/>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style="z-index:2">
+      <div class="max-w-[1400px] mx-auto w-full reveal">
+        <h2 class="font-light text-white leading-none tracking-tight mb-10" style="font-size:clamp(1.6rem,4.5vw,3rem)">
+          200 метров.<br/>16 500 элементов.<br/>Одна система.
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:#BFA37E"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.5);font-size:clamp(.9rem,1.2vw,1.05rem)">Собственное производство — от матрицы до монтажа</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-5 h-px flex-shrink-0" style="background:rgba(191,163,126,.3)"></div>
+            <p class="font-light" style="color:rgba(255,255,255,.28);font-size:clamp(.9rem,1.2vw,1.05rem)">Рассчитано на многократное использование</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Декоративное большое число -->
+    <div style="position:absolute;bottom:-1rem;right:3rem;z-index:2;line-height:1">
+      <p class="big-num" style="font-size:clamp(8rem,16vw,16rem);color:rgba(255,255,255,.03)">♥</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- CTA + НАВИГАЦИЯ                                   -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-8 md:px-14" style="background:#F9F9F7">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-20 pb-20 border-b" style="border-color:rgba(20,20,20,.08)">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div>
+            <h2 class="font-light tracking-tight leading-none" style="font-size:clamp(1.6rem,2.5vw,2.4rem)">
+              Нужно сезонное оформление<br/>торгового или публичного пространства?
+            </h2>
+          </div>
+          <a href="#" class="btn-cta flex-shrink-0">
+            Обсудить проект
+            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style="background:rgba(20,20,20,.06)">
+        <a href="#" class="flex items-center gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_back</span>
+          <div>
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Все проекты</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Вернуться в архив</p>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-end gap-6 p-8" style="background:#F9F9F7;text-decoration:none;transition:background .3s" onmouseenter="this.style.background='rgba(20,20,20,.02)'" onmouseleave="this.style.background='#F9F9F7'">
+          <div class="text-right">
+            <p class="font-mono text-[9px] uppercase tracking-widest mb-2" style="color:rgba(20,20,20,.35)">Следующий проект</p>
+            <p class="font-light uppercase tracking-tight" style="color:#141414">Невский пассаж</p>
+          </div>
+          <span class="material-symbols-outlined text-2xl" style="color:#BFA37E">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 px-8 md:px-14 border-t" style="background:#141414;color:#F9F9F7;border-color:rgba(255,255,255,.06)">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 flex items-center justify-center" style="background:#BFA37E">
+          <span class="material-symbols-outlined" style="color:#141414;font-size:14px">architecture</span>
+        </div>
+        <span class="text-lg font-light tracking-tight">monumforma</span>
+      </div>
+      <p class="font-mono text-[9px] uppercase leading-loose" style="color:rgba(255,255,255,.2)">© 2025 monumforma studio — Valencia &amp; Barcelona, España</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burgerBtn=document.getElementById('burger-btn'),navPanel=document.getElementById('nav-panel'),navOverlay=document.getElementById('nav-overlay');
+function openMenu(){burgerBtn.classList.add('open');navPanel.classList.add('open');navOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){burgerBtn.classList.remove('open');navPanel.classList.remove('open');navOverlay.classList.remove('open');document.body.style.overflow=''}
+burgerBtn.addEventListener('click',()=>navPanel.classList.contains('open')?closeMenu():openMenu());
+navOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const heroWrap=document.getElementById('hero-sticky-wrap'),heroVeil=document.getElementById('hero-veil'),siteNav=document.getElementById('site-nav');
+function onScroll(){const sy=window.scrollY,h=heroWrap.offsetHeight;heroVeil.style.opacity=Math.min(1,Math.max(0,(sy-h*.3)/(h*.5)));siteNav.classList.toggle('scrolled',sy>h*.4)}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

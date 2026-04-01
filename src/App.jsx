@@ -22,6 +22,12 @@ import Raddison from "./components/Raddison";
 import Passage from "./components/Passage";
 import Lustra from "./components/Lustra";
 import Kursk from "./components/Kursk";
+import MediaFasade from "./components/MediaFasade";
+import Valentin from "./components/Valentin";
+import Popit from "./components/Popit";
+import Campus from "./components/Campus";
+import Park from "./components/Park";
+import FairyForest from "./components/FairyForest";
 
 function App() {
   return (
@@ -39,6 +45,15 @@ function App() {
         <Route path="/passage" element={<Passage />} />
         <Route path="/lustra" element={<Lustra />} />
         <Route path="/kursk" element={<Kursk />} />
+        <Route path="/media-fasade" element={<MediaFasade />} />
+        <Route path="/valentin" element={<Valentin />} />
+        <Route path="/popit" element={<Popit />} />
+        <Route path="/campus" element={<Campus />} />
+        <Route path="/park" element={<Park />} />
+        <Route
+          path="/fairy-forest"
+          element={React.createElement(FairyForest)}
+        />
         <Route path="/" element={<Layout />}>
           <Route index element={<Manifest />} />
           <Route path="evolution" element={<Evolution />} />

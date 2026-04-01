@@ -8,6 +8,12 @@ import { RADDISON_SPLASH } from "./Raddison";
 import { PASSAGE_SPLASH } from "./Passage";
 import { LUSTRA_SPLASH } from "./Lustra";
 import { KURSK_SPLASH } from "./Kursk";
+import { MEDIA_FASADE_SPLASH } from "./MediaFasade";
+import { VALENTIN_SPLASH } from "./Valentin";
+import { POPIT_SPLASH } from "./Popit";
+import { CAMPUS_SPLASH } from "./Campus";
+import { PARK_SPLASH } from "./Park";
+import { FAIRY_FOREST_SPLASH } from "./FairyForest";
 
 export default function ProjectIndex() {
   const [filter, setFilter] = useState("all");
@@ -471,56 +477,56 @@ export default function ProjectIndex() {
           {/* ROW 6: FOREST CAMPUS (8) + NORDIC WINTER (4) */}
           <div className="swiss mb-8">
             <Link
-              to="/projects/022"
+              to="/media-fasade"
               className={`pc reveal col-span-12 lg:col-span-8 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "16/9" }}>
                 <img
-                  alt="Forest Campus"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxfj8-imnVbLN4qJfMR3cUThBizt4wIHcqbioDUj9GO3MeNf-4W2BJU5EqvDCAMZzy9rjTB44rsVEEC6HnBnTOAR9YnzHYCdgeIvIVRVuIWlZ1ZbaWaNAS8DEeBnZZa26yCMcJexMRmwxMSZxSl3f6trytG1pnwBBwT2sHtWYFY-Gk98NTIjIDKdYhRIQzX1tDeu3Hva0nOlliKIfo5U-BHY7myaWGtUxCQT6zIpROUs9VdpM1uc-q3wT4INQUU7UWXvzxEU_O7pC8"
+                  alt="Медиафасад 220×8 м"
+                  src={MEDIA_FASADE_SPLASH}
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Forest Campus
+                Media Fasade
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-объект
+                  Медиафасад
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  220 × 8 м / 1 760 м²
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional Flagship
+                  4 сезона
                 </span>
               </div>
             </Link>
             <Link
-              to="/projects/022"
+              to="/valentin"
               className={`pc reveal col-span-12 lg:col-span-4 lg:mt-16 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Nordic Winter"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfGRnRhZ4D_ZLaJm-8P4h9_JU-Jl99xO7G0KcjUIB6SCvz2ubgTmgl97ezTmWtOaYIqCogjZsIVwIbTFB5FI1kMDOD0W9EC4bqxAoJCCyT1P00TjOhDSyF7px2Hwe-4CHR_idWFDMUGPuyxVU7KiERxBFi1EEzyFj_-QtVYzrmnRVTtVZ9OqWBlsj6NwAq0TPsF_yteEA4Z1zxznU2qC-MCaeszmtqvy_vHhyAi6HVQZ6S7IEK7K4kQtB2rv3EgmY9hwDs4lXCOIC"
+                  alt="San Valentín — сезонное оформление"
+                  src={VALENTIN_SPLASH}
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Nordic Winter
+                Valentin
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  Сезонное оформление
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  200 м · 16 500 элементов
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Capital Region
+                  1 500 подвесов
                 </span>
               </div>
             </Link>
@@ -529,83 +535,83 @@ export default function ProjectIndex() {
           {/* ROW 7: WIND (4) + OWL (4) + AERIAL GARDEN (4) */}
           <div className="swiss mb-8">
             <Link
-              to="/lustra"
+              to="/popit"
               className={`pc reveal col-span-12 lg:col-span-4 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Кинетическая люстра"
-                  src={LUSTRA_SPLASH}
+                  alt="POP IT — интерактивный МАФ"
+                  src={POPIT_SPLASH}
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Люстра
+                Pop It
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Кинетическая световая система
+                  Интерактивный МАФ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Лебёдочная система
+                  2,5 × 4 × 1,15 м
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Цифровое DMX
+                  Тактильная инсталляция
                 </span>
               </div>
             </Link>
             <Link
-              to="/projects/022"
+              to="/campus"
               className={`pc reveal col-span-12 lg:col-span-4 lg:mt-16 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Owl"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoelvO_UGTW5A9ZCq3ejeW9JMqDoIEftFm9fv6laTJJN4NOC5upVWgzZj77oINPGJyTNkLftaagxjfFAUxzbj3DK8F3CfkUlHnSbF0TcJ5ArPV7g9GEPAvVGJtkNexMfKfykVa-_vRyNIfGWApATuL4cYHTPHk-ZkX6WD1ZNDKHxYBkaeTp9ki4je56gEgET8h_6GTjOB2p0uHVIMLNNiQgkWBZY_xQkgpCBRNqL0pL3c89ovfCOT0f7NqUmeruftcGkGselw5jTcP"
+                  alt="Corporate Campus — lobby and landscape art"
+                  src={CAMPUS_SPLASH}
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Owl
+                Campus
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-объект
+                  Lobby & Landscape
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Educational Institution
+                  Corporate Business Park
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional City
+                  Corten + mirror steel
                 </span>
               </div>
             </Link>
             <Link
-              to="/projects/022"
+              to="/park"
               className={`pc reveal col-span-12 lg:col-span-4 lg:mt-8 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
-                  alt="Aerial Garden"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGAdx3ehF7y0gAaYtnrWx_b-8_t3K_UkNMbYnHZQQW-gtbmGZftglyZ3GebqzeUVJa90OOx2QP_xgCZ0HWbXWaDyjr_arrL7NNoz3yeqSfJMOjUuFR5ZgR3p9fEdrF9WbJPAR7mM97Uyv-W55RFmuthsb1CLhUsWR2UItDqXqarSjFsHsL_WZBsLQFJ2CnG6SOq7cXA58iMDgzVmMxJ2s9moI9Xh3S6Ey_3eXl-G3_gFF8Gzjc5polQyI5ZnS_vtH5AYQghME9_Eeb"
+                  alt="Park — благоустройство территории"
+                  src={PARK_SPLASH}
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Aerial Garden
+                Park
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-объект
+                  Благоустройство / МАФ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Swedish Global Retailer
+                  Парковая зона перед ТЦ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Regional Flagship
+                  Термодревесина / Бетон / Металл
                 </span>
               </div>
             </Link>
@@ -614,29 +620,29 @@ export default function ProjectIndex() {
           {/* ROW 8: MRIYA OBJECT (5) + ORQUÍDEA in dev (7) */}
           <div className="swiss mb-0">
             <Link
-              to="/projects/022"
+              to="/fairy-forest"
               className={`pc reveal col-span-12 lg:col-span-5 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "4/5" }}>
                 <img
-                  alt="Mriya Object"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"
+                  alt="Сказочный лес — МЕГА Дыбенко"
+                  src={FAIRY_FOREST_SPLASH}
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Mriya Object
+                Fairy Forest
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-объект
+                  «Волшебный лес»
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Resort & Spa
+                  МЕГА Дыбенко · ТРЦ + парк
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Coastal Location
+                  272 000 м² · 2018–2023
                 </span>
               </div>
             </Link>
