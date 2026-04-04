@@ -468,7 +468,7 @@ export default function Passage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 ps-reveal ps-d2">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-3 ps-reveal ps-d2">
               {galleryRow3.map((src, i) => (
                 <div key={src + i} className="ps-gal-img">
                   <img

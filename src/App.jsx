@@ -28,6 +28,7 @@ import Popit from "./components/Popit";
 import Campus from "./components/Campus";
 import Park from "./components/Park";
 import FairyForest from "./components/FairyForest";
+import JuncoArquitectura from "./components/JuncoArquitectura";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           path="/fairy-forest"
           element={React.createElement(FairyForest)}
         />
+        <Route path="/junco-arquitectura" element={<JuncoArquitectura />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Manifest />} />
           <Route path="evolution" element={<Evolution />} />

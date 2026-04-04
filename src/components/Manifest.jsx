@@ -437,27 +437,25 @@ export default function Manifest() {
                     </span>
                   </div>
                 </div>
-                <div className="md:col-span-6 md:pl-10">
+                <Link to="/junco-arquitectura" className="md:col-span-6 md:pl-10 block group">
                   <div className="inline-flex items-center gap-2 mb-4">
                     <span className="inline-block w-[7px] h-[7px] rounded-full bg-[#BFA37E]"></span>
                     <span className="font-mono text-[9px] text-[#BFA37E] uppercase tracking-[0.3em]">
                       В стадии реализации / Проектирование
                     </span>
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-light uppercase tracking-tight leading-none mb-4 text-[#111]">
+                  <h3 className="text-3xl md:text-4xl font-light uppercase tracking-tight leading-none mb-4 text-[#111] group-hover:text-[#BFA37E] transition-colors">
                     ORQUÍDEA
                     <br />
-                    Junco Houses
+                    Junco Arquitectura
                   </h3>
                   <p className="font-mono text-[9px] text-[#141414]/40 uppercase tracking-wide mb-6">
-                    Аликанте, Испания
+                    Малага, Андалусия
                   </p>
                   <p className="text-[#141414]/50 font-light leading-relaxed text-sm max-w-sm">
-                    Комплекс резиденций с авторской концепцией светового и
-                    архитектурного решения. Знаковый объект испанского
-                    побережья.
+                    Совместно с Junco Arquitectura — декоративный слой жилого комплекса как часть архитектурного замысла с первой стадии.
                   </p>
-                </div>
+                </Link>
               </div>
             </div>
 

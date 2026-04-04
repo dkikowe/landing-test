@@ -194,8 +194,15 @@ export default function Valentin() {
               </h2>
               <p className="font-light leading-relaxed mb-6" style={{ color: "rgba(20,20,20,.6)" }}>
                 Оформление охватывает всю длину торговой галереи и центральный
-                атриум. Подвесной слой из сердец создаёт непрерывную визуальную
-                среду — без провалов и разрывов на протяжении двухсот метров.
+                атриум. Подвесной слой из сердец разного масштаба и цвета создаёт
+                непрерывную визуальную среду — без провалов и разрывов на
+                протяжении двухсот метров.
+              </p>
+              <p className="font-light leading-relaxed" style={{ color: "rgba(20,20,20,.45)" }}>
+                Ключевая задача проекта — обеспечить масштаб без потери качества
+                на повторяемых элементах. Решение — модульность: элементы
+                сгруппированы в укрупнённые блоки, монтируются одной бригадой и
+                рассчитаны на многократное использование.
               </p>
             </div>
             <div className="lg:col-span-6 lg:col-start-7 va-reveal va-d1">
@@ -221,33 +228,49 @@ export default function Valentin() {
           </div>
         </section>
 
-        <div style={{ background: "#141414" }}>
-          <div className="max-w-[1400px] mx-auto px-8 md:px-14 py-3">
-            <p className="font-mono text-[8px] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.18)" }}>
-              Галерея — вид вдоль оси / 1 500 подвесных элементов
-            </p>
-          </div>
-          <div className="va-gal-img va-reveal" style={{ height: "clamp(360px,56vw,760px)" }}>
-            <img alt="Панорама галереи с сердцами" className="w-full h-full object-cover" src={VA.hero} />
-          </div>
-          <div className="max-w-[1400px] mx-auto px-8 md:px-14 py-4 flex justify-between">
-            <p className="font-mono text-[8px] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.18)" }}>
-              Подвесной слой формирует непрерывную визуальную среду
-            </p>
-            <p className="font-mono text-[8px] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.18)" }}>
-              4 типоразмера / 8 оттенков
-            </p>
-          </div>
-        </div>
-
         <section className="py-28 px-8 md:px-14" style={{ background: "#F0EFEB" }}>
           <div className="max-w-[1400px] mx-auto">
+            <div className="grid lg:grid-cols-12 gap-16 mb-16 va-reveal">
+              <div className="lg:col-span-4">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-px bg-[#BFA37E]" />
+                  <span className="font-mono text-[8px] uppercase tracking-[.3em]" style={{ color: "rgba(20,20,20,.35)" }}>
+                    Производство
+                  </span>
+                </div>
+                <h2 className="font-light uppercase tracking-tight leading-none" style={{ fontSize: "clamp(1.6rem,2.2vw,2.2rem)" }}>
+                  Серийное.
+                  <br />
+                  Без потери
+                  <br />
+                  качества.
+                </h2>
+              </div>
+              <div className="lg:col-span-7 lg:col-start-6">
+                <p className="font-light leading-relaxed mb-6" style={{ color: "rgba(20,20,20,.55)" }}>
+                  Крупноформатные сердца высотой 2 метра изготовлены из стеклопластика через созданную матрицу. Серийное производство под единую матрицу обеспечивает идентичность формы и качества поверхности на всех 20 объектах.
+                </p>
+                <p className="font-light leading-relaxed" style={{ color: "rgba(20,20,20,.4)" }}>
+                  Многослойная система окраски с повышенной стойкостью — обязательное условие для интерьерной эксплуатации при высокой проходимости. Все объекты рассчитаны на многократное использование в следующих сезонах.
+                </p>
+              </div>
+            </div>
             <div className="grid md:grid-cols-12 gap-3 va-reveal va-d1">
               <div className="va-gal-img md:col-span-4">
-                <img alt="Производство — готовое сердце" className="w-full object-cover" style={{ aspectRatio: "3/4" }} src={VA.one} />
+                <div className="pm-frame">
+                  <img alt="Производство — готовое сердце" className="pm-img" src={VA.one} />
+                </div>
+                <p className="font-mono text-[8px] uppercase tracking-widest mt-3" style={{ color: "rgba(20,20,20,.3)" }}>
+                  Финальная покраска — многослойная износостойкая система
+                </p>
               </div>
               <div className="va-gal-img md:col-span-8">
-                <img alt="Производство — заготовки в цехе" className="w-full h-full object-cover" style={{ aspectRatio: "16/10", minHeight: "100%" }} src={VA.two} />
+                <div className="pm-frame">
+                  <img alt="Производство — заготовки в цехе" className="pm-img" src={VA.two} />
+                </div>
+                <p className="font-mono text-[8px] uppercase tracking-widest mt-3" style={{ color: "rgba(20,20,20,.3)" }}>
+                  Производство по матрице — идентичность формы на всей серии из 20 объектов
+                </p>
               </div>
             </div>
           </div>
@@ -257,9 +280,20 @@ export default function Valentin() {
           <div className="max-w-[1400px] mx-auto">
             <div className="grid lg:grid-cols-12 gap-16 items-center">
               <div className="va-gal-img lg:col-span-6 va-reveal">
-                <img alt="Подставка для хранения и транспортировки" className="w-full object-cover" style={{ aspectRatio: "16/10" }} src={VA.pred} />
+                <div className="pm-frame" style={{ background: "rgba(255,255,255,.04)" }}>
+                  <img alt="Подставка для хранения и транспортировки" className="pm-img" src={VA.pred} />
+                </div>
+                <p className="font-mono text-[8px] uppercase tracking-widest mt-4" style={{ color: "rgba(255,255,255,.2)" }}>
+                  Мобильная подставка — собственная разработка под хранение и транспортировку объектов
+                </p>
               </div>
               <div className="lg:col-span-5 lg:col-start-8 va-reveal va-d1">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-px bg-[#BFA37E]" />
+                  <span className="font-mono text-[8px] uppercase tracking-[.3em]" style={{ color: "rgba(255,255,255,.25)" }}>
+                    Эксплуатация
+                  </span>
+                </div>
                 <h2 className="font-light uppercase tracking-tight leading-none text-white mb-8" style={{ fontSize: "clamp(1.6rem,2.2vw,2.2rem)" }}>
                   Решение для
                   <br />
@@ -267,11 +301,26 @@ export default function Valentin() {
                   <br />
                   использования.
                 </h2>
-                <p className="font-light leading-relaxed" style={{ color: "rgba(255,255,255,.4)" }}>
+                <p className="font-light leading-relaxed mb-8" style={{ color: "rgba(255,255,255,.4)" }}>
                   Для крупноформатных объектов разработаны мобильные подставки на
-                  колёсах — безопасное хранение между сезонами и удобная
-                  транспортировка внутри объекта.
+                  колёсах. Обеспечивают безопасное хранение между сезонами,
+                  удобную транспортировку внутри объекта и снижают затраты на
+                  эксплуатацию.
                 </p>
+                <div className="flex flex-col gap-0" style={{ borderTop: "1px solid rgba(255,255,255,.07)" }}>
+                  {[
+                    "Безопасное хранение объектов 2 м",
+                    "Транспортировка внутри объекта без подъёмной техники",
+                    "Многосезонное использование — снижение CapEx",
+                  ].map((line) => (
+                    <div key={line} className="flex items-center gap-4 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,.07)" }}>
+                      <div className="w-4 h-px flex-shrink-0" style={{ background: "#BFA37E" }} />
+                      <p className="font-light text-sm" style={{ color: "rgba(255,255,255,.55)" }}>
+                        {line}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -284,32 +333,91 @@ export default function Valentin() {
                 Проект в кадрах
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-3 mb-3 va-reveal">
+            <div className="pm-masonry mb-6 va-reveal">
               <div className="va-gal-img">
-                <img alt="Сердца над галереей — ракурс 1" className="w-full object-cover" style={{ aspectRatio: "4/3" }} src={VA.four} />
-              </div>
-              <div className="va-gal-img">
-                <img alt="Сердца над галереей — ракурс 2" className="w-full object-cover" style={{ aspectRatio: "4/3" }} src={VA.five} />
-              </div>
-            </div>
-            <div className="grid md:grid-cols-3 gap-3 va-reveal va-d1">
-              {[VA.six, VA.one, VA.two].map((src, i) => (
-                <div key={src + i} className="va-gal-img">
-                  <img alt={`Кадр ${i + 1}`} className="w-full object-cover" style={{ aspectRatio: "3/4" }} src={src} />
+                <div className="pm-frame">
+                  <img alt="Сердца над галереей — ракурс 1" className="pm-img" src={VA.four} />
                 </div>
-              ))}
+              </div>
+              <div className="va-gal-img">
+                <div className="pm-frame">
+                  <img alt="Сердца над галереей — ракурс 2" className="pm-img" src={VA.five} />
+                </div>
+              </div>
+              <div className="va-gal-img pm-span-2">
+                <div className="pm-frame">
+                  <img alt="Галерея — кадр" className="pm-img" src={VA.six} />
+                </div>
+              </div>
+              <div className="va-gal-img">
+                <div className="pm-frame">
+                  <img alt="Производство" className="pm-img" src={VA.one} />
+                </div>
+              </div>
+              <div className="va-gal-img">
+                <div className="pm-frame">
+                  <img alt="Цех" className="pm-img" src={VA.two} />
+                </div>
+              </div>
             </div>
             <div className="mt-6 va-reveal va-d2">
-              <video controls playsInline preload="metadata" className="w-full object-cover" style={{ aspectRatio: "16/9" }}>
-                <source src={VA.video} type="video/mp4" />
-              </video>
+              <div className="pm-video-frame">
+                <video controls playsInline preload="metadata">
+                  <source src={VA.video} type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* РЕАЛИЗАЦИЯ */}
+        <section className="py-28 px-8 md:px-14" style={{ background: "#F9F9F7" }}>
+          <div className="max-w-[1400px] mx-auto">
+            <div className="grid lg:grid-cols-12 gap-16 mb-16 va-reveal">
+              <div className="lg:col-span-4">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-px bg-[#BFA37E]" />
+                  <span className="font-mono text-[8px] uppercase tracking-[.3em]" style={{ color: "rgba(20,20,20,.35)" }}>
+                    Реализация
+                  </span>
+                </div>
+                <h2 className="font-light uppercase tracking-tight leading-none" style={{ fontSize: "clamp(1.6rem,2.2vw,2.2rem)" }}>
+                  Полный цикл.
+                  <br />
+                  Один подрядчик.
+                </h2>
+              </div>
+              <div className="lg:col-span-7 lg:col-start-6">
+                <p className="font-light leading-relaxed" style={{ color: "rgba(20,20,20,.55)" }}>
+                  От проектирования матриц до демонтажа и подготовки к следующему сезону. Модульная система монтажа позволяет устанавливать всё пространство одной бригадой — без дополнительной координации и потерь времени на стыках.
+                </p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px va-reveal va-d1" style={{ background: "rgba(20,20,20,.08)" }}>
+              {[
+                ["Проектирование", "Разработка геометрии объектов, производственных матриц и модульной системы подвесных конструкций."],
+                ["Производство", "Серийное изготовление объектов и подвесных элементов. Подготовка поверхности и многослойная окраска."],
+                ["Монтаж", "Установка по всей галерее и атриуму. Модульная сборка ускоряет монтаж и обеспечивает точность геометрии."],
+                ["После сезона", "Демонтаж, чистка, подготовка к хранению. Все объекты укладываются в мобильные подставки для следующего сезона."],
+              ].map(([title, desc]) => (
+                <div key={title} className="p-10" style={{ background: "#F9F9F7" }}>
+                  <p className="font-mono text-[8px] uppercase tracking-[.3em] mb-5" style={{ color: "#BFA37E" }}>
+                    {title}
+                  </p>
+                  <p className="font-light leading-relaxed" style={{ fontSize: ".9rem", color: "rgba(20,20,20,.5)" }}>
+                    {desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         <div style={{ position: "relative", background: "#1a0a0a", overflow: "hidden" }}>
-          <div className="va-gal-img" style={{ height: "clamp(420px,65vw,860px)" }}>
-            <img alt="San Valentín — финальный кадр" className="w-full h-full object-cover" style={{ opacity: 0.42 }} src={VA.last} />
+          <div className="va-gal-img" style={{ minHeight: "min(70vh, 860px)" }}>
+            <div className="pm-frame" style={{ background: "#1a0a0a", minHeight: "min(70vh, 860px)" }}>
+              <img alt="San Valentín — финальный кадр" className="pm-img" style={{ opacity: 0.42 }} src={VA.last} />
+            </div>
           </div>
           <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-14" style={{ zIndex: 2 }}>
             <div className="max-w-[1400px] mx-auto w-full va-reveal">
@@ -320,6 +428,20 @@ export default function Valentin() {
                 <br />
                 Одна система.
               </h2>
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-5 h-px flex-shrink-0" style={{ background: "#BFA37E" }} />
+                  <p className="font-light" style={{ color: "rgba(255,255,255,.55)", fontSize: "clamp(.9rem,1.2vw,1.05rem)" }}>
+                    Собственное производство — от матрицы до монтажа
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-5 h-px flex-shrink-0" style={{ background: "rgba(191,163,126,.3)" }} />
+                  <p className="font-light" style={{ color: "rgba(255,255,255,.3)", fontSize: "clamp(.9rem,1.2vw,1.05rem)" }}>
+                    Рассчитано на многократное использование
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

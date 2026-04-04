@@ -80,3 +80,35 @@
   transform: scale(1.04);
 }
 
+#media-fasade-root .mf-scale-bar {
+  height: 3px;
+  background: rgba(20, 20, 20, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+#media-fasade-root .mf-scale-bar-fill {
+  position: absolute;
+  inset: 0;
+  background: #bfa37e;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+#media-fasade-root .mf-reveal.mf-visible .mf-scale-bar-fill {
+  transform: scaleX(1);
+}
+
+#media-fasade-root .mf-warranty-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+#media-fasade-root .mf-warranty-row:first-of-type {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+

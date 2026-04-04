@@ -229,20 +229,19 @@ export default function Campus() {
               <div className="lg:col-span-3 ca-reveal ca-d1">
                 <p
                   className="font-light leading-relaxed mb-6"
-                  style={{ color: "rgba(20,20,20,.7)" }}
+                  style={{ fontSize: "1.05rem", color: "rgba(20,20,20,.7)" }}
                 >
-                  Повысить статус объекта, структурировать потоки на территории
-                  и в лобби, снизить визуальный шум — без капитальной
-                  реконструкции.
+                  Управляющая компания бизнес-парка поставила задачу: повысить статус объекта, структурировать пешеходные потоки на территории и в лобби, снизить визуальный шум — без капитальной реконструкции.
+                </p>
+                <p className="font-light leading-relaxed" style={{ color: "rgba(20,20,20,.5)" }}>
+                  Дополнительное требование: возможность сезонного обновления оформления. Новогодняя композиция, тематические сценарии — монтаж без изменения инженерной инфраструктуры, на базе существующих точек крепления.
                 </p>
               </div>
               <div className="lg:col-span-2 ca-reveal ca-d2">
-                <div className="ca-gal-img w-full" style={{ aspectRatio: "4/5" }}>
-                  <img
-                    alt="Кортеновая сфера в кампусе"
-                    className="w-full h-full object-cover"
-                    src={CA.second}
-                  />
+                <div className="ca-gal-img w-full">
+                  <div className="pm-frame">
+                    <img alt="Кортеновая сфера в кампусе" className="pm-img" src={CA.second} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -259,35 +258,92 @@ export default function Campus() {
         </div>
 
         <section className="py-28 px-8 md:px-14" style={{ background: "#F0EFEB" }}>
-          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 ca-reveal">
-            <div>
-              <p className="font-light leading-relaxed mb-6" style={{ color: "rgba(20,20,20,.6)" }}>
-                Экстерьер — кортеновая сталь: модульная геометрия, параметрическая
-                сборка и автономная эксплуатация. Интерьер — полированная
-                нержавеющая сталь: отражения света и людей, визуальное расширение
-                пространства лобби.
-              </p>
+          <div className="max-w-[1400px] mx-auto">
+            <div className="grid lg:grid-cols-12 gap-16 mb-14 ca-reveal">
+              <div className="lg:col-span-4">
+                <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-4">
+                  Engineering Focus
+                </p>
+                <h2
+                  className="font-light uppercase tracking-tight leading-none"
+                  style={{ fontSize: "clamp(1.8rem,2.5vw,2.4rem)" }}
+                >
+                  Два слоя
+                  <br />
+                  материала.
+                  <br />
+                  Одна система.
+                </h2>
+              </div>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-16 ca-reveal">
+              <div>
+                <p className="font-light leading-relaxed mb-6" style={{ color: "rgba(20,20,20,.6)" }}>
+                  Экстерьер — кортеновая сталь. Модульная геометрия, параметрическая
+                  сборка. Объекты не требуют обслуживания: самопатинирующийся сплав
+                  формирует защитный слой и интегрируется в ландшафт. Размещение — на
+                  линиях подхода и разворотах пешеходных потоков. Навигационная
+                  функция, не декоративная.
+                </p>
+                <p className="font-light leading-relaxed mb-8" style={{ color: "rgba(20,20,20,.5)" }}>
+                  Интерьер — полированная нержавеющая сталь. Полигональные фигуры
+                  отражают свет и людей, визуально расширяют пространство лобби без
+                  увеличения световых мощностей. Объекты размещены вне транзитных
+                  коридоров, но в постоянной зоне визуального контакта — формируют
+                  естественные точки остановки.
+                </p>
+                <div
+                  className="grid grid-cols-2 gap-6 pt-8"
+                  style={{ borderTop: "1px solid rgba(20,20,20,.08)" }}
+                >
+                  <div>
+                    <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-2">
+                      Exterior
+                    </p>
+                    <p
+                      className="font-mono text-[10px] uppercase leading-loose"
+                      style={{ color: "rgba(20,20,20,.45)" }}
+                    >
+                      Corten steel, modular parametric assembly, zero maintenance
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-2">
+                      Interior
+                    </p>
+                    <p
+                      className="font-mono text-[10px] uppercase leading-loose"
+                      style={{ color: "rgba(20,20,20,.45)" }}
+                    >
+                      Mirror-polished stainless steel, polygonal geometry, reflective surface
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="ca-gal-img">
-              <img
-                alt="Полигональная скульптура — крупно"
-                className="w-full h-full object-cover"
-                style={{ aspectRatio: "3/4" }}
-                src={CA.deerClose}
-              />
+              <div className="pm-frame">
+                <img alt="Полигональная скульптура — крупно" className="pm-img" src={CA.deerClose} />
+              </div>
             </div>
           </div>
         </section>
 
-        <div className="grid grid-cols-3 gap-px" style={{ background: "#E0DFDB" }}>
-          <div className="ca-gal-img ca-reveal" style={{ height: "55vh" }}>
-            <img alt="Экстерьер — pinecone" className="w-full h-full object-cover" src={CA.pinecone} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: "#E0DFDB" }}>
+          <div className="ca-gal-img ca-reveal" style={{ minHeight: "min(55vh, 720px)" }}>
+            <div className="pm-frame" style={{ minHeight: "min(55vh, 720px)" }}>
+              <img alt="Экстерьер — pinecone" className="pm-img" src={CA.pinecone} />
+            </div>
           </div>
-          <div className="ca-gal-img ca-reveal ca-d1" style={{ height: "55vh" }}>
-            <img alt="Сезонная инсталляция в лобби" className="w-full h-full object-cover" src={CA.tree} />
+          <div className="ca-gal-img ca-reveal ca-d1" style={{ minHeight: "min(55vh, 720px)" }}>
+            <div className="pm-frame" style={{ minHeight: "min(55vh, 720px)" }}>
+              <img alt="Сезонная инсталляция в лобби" className="pm-img" src={CA.tree} />
+            </div>
           </div>
-          <div className="ca-gal-img ca-reveal ca-d2" style={{ height: "55vh" }}>
-            <img alt="Экстерьер — wide" className="w-full h-full object-cover" src={CA.wide} />
+          <div className="ca-gal-img ca-reveal ca-d2" style={{ minHeight: "min(55vh, 720px)" }}>
+            <div className="pm-frame" style={{ minHeight: "min(55vh, 720px)" }}>
+              <img alt="Экстерьер — wide" className="pm-img" src={CA.wide} />
+            </div>
           </div>
         </div>
 
@@ -307,22 +363,62 @@ export default function Campus() {
               </h2>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">
-              <p className="font-light leading-relaxed" style={{ color: "rgba(20,20,20,.65)" }}>
-                Лобби стало пространством взаимодействия, территория получила
-                читаемую навигационную структуру, а сезонные обновления
-                выполняются без перестройки инфраструктуры.
+              <p className="font-light leading-relaxed" style={{ fontSize: "1.05rem", color: "rgba(20,20,20,.65)" }}>
+                Лобби начало работать не только как транзитная зона, а как пространство взаимодействия. Арендаторы фиксируют рост неформальной активности — короткие встречи, фото, мероприятия. Территория получила читаемую навигационную структуру без информационных стендов. Сезонное обновление оформления занимает один день без остановки работы бизнес-парка.
               </p>
+              <div
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8"
+                style={{ borderTop: "1px solid rgba(20,20,20,.08)" }}
+              >
+                <div>
+                  <span className="block font-light leading-none mb-2" style={{ fontSize: "1.8rem", color: "#BFA37E" }}>
+                    2
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest" style={{ color: "rgba(20,20,20,.3)" }}>
+                    Слоя среды
+                    <br />
+                    экстерьер + интерьер
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-light leading-none mb-2" style={{ fontSize: "1.8rem", color: "#BFA37E" }}>
+                    0
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest" style={{ color: "rgba(20,20,20,.3)" }}>
+                    Обслуживание
+                    <br />
+                    кортен — автономный материал
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-light leading-none mb-2" style={{ fontSize: "1.8rem", color: "#BFA37E" }}>
+                    1
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest" style={{ color: "rgba(20,20,20,.3)" }}>
+                    День
+                    <br />
+                    на сезонное обновление
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-light leading-none mb-2" style={{ fontSize: "1.8rem", color: "#BFA37E" }}>
+                    ∅
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest" style={{ color: "rgba(20,20,20,.3)" }}>
+                    Реконструкция
+                    <br />
+                    обновление без перестройки
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <div className="ca-gal-img" style={{ height: "65vh" }}>
-          <img
-            alt="Финальный кадр Campus"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: "center 30%" }}
-            src={CA.last}
-          />
+        <div className="ca-gal-img pm-panorama">
+          <div className="pm-frame" style={{ minHeight: "min(65vh, 900px)" }}>
+            <img alt="Финальный кадр Campus" className="pm-img" src={CA.last} />
+          </div>
         </div>
 
         <section className="py-24 px-8 md:px-14">
@@ -338,6 +434,42 @@ export default function Campus() {
                   Получить оценку за 24 часа
                 </Link>
               </div>
+            </div>
+
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 gap-px ca-reveal"
+              style={{ background: "rgba(20,20,20,.06)" }}
+            >
+              <Link
+                to="/projects"
+                className="flex items-center gap-6 p-8"
+                style={{ background: "#F9F9F7", textDecoration: "none", transition: "background .3s" }}
+              >
+                <span className="material-symbols-outlined text-2xl" style={{ color: "#BFA37E" }}>
+                  arrow_back
+                </span>
+                <div>
+                  <p className="font-mono text-[9px] uppercase tracking-widest mb-2" style={{ color: "rgba(20,20,20,.35)" }}>
+                    All Projects
+                  </p>
+                  <p className="font-light uppercase tracking-tight">Back to Archive</p>
+                </div>
+              </Link>
+              <Link
+                to="/magicpiano"
+                className="flex items-center justify-end gap-6 p-8"
+                style={{ background: "#F9F9F7", textDecoration: "none", transition: "background .3s" }}
+              >
+                <div className="text-right">
+                  <p className="font-mono text-[9px] uppercase tracking-widest mb-2" style={{ color: "rgba(20,20,20,.35)" }}>
+                    Next Project
+                  </p>
+                  <p className="font-light uppercase tracking-tight">MAGIC PIANO | Interactive Atrium Installation</p>
+                </div>
+                <span className="material-symbols-outlined text-2xl" style={{ color: "#BFA37E" }}>
+                  arrow_forward
+                </span>
+              </Link>
             </div>
           </div>
         </section>

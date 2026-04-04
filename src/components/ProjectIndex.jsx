@@ -14,6 +14,7 @@ import { POPIT_SPLASH } from "./Popit";
 import { CAMPUS_SPLASH } from "./Campus";
 import { PARK_SPLASH } from "./Park";
 import { FAIRY_FOREST_SPLASH } from "./FairyForest";
+import { JUNCO_ARQUITECTURA_SPLASH } from "./JuncoArquitectura";
 
 export default function ProjectIndex() {
   const [filter, setFilter] = useState("all");
@@ -362,7 +363,7 @@ export default function ProjectIndex() {
             </Link>
           </div>
 
-          {/* ROW 4: РОЖДЕСТВЕНСКИЙ ЛЕС (4) + CENTRAL PLAZA (8) */}
+          {/* ROW 4: РОЖДЕСТВЕНСКИЙ ЛЕС (4) + ПАССАЖ (8) — правильная последовательность */}
           <div className="swiss mb-8">
             <Link
               to="/forest"
@@ -389,10 +390,36 @@ export default function ProjectIndex() {
               </div>
             </Link>
             <Link
+              to="/passage"
+              className={`pc reveal col-span-12 lg:col-span-8 lg:mt-0 ${!isVisible("light") ? "hidden" : ""}`}
+            >
+              <div className="pc-img" style={{ aspectRatio: "4/3" }}>
+                <img alt="Невский пассаж" src={PASSAGE_SPLASH} />
+              </div>
+              <h3 className="text-2xl font-light uppercase tracking-tight">
+                Невский пассаж
+              </h3>
+              <div className="pc-meta">
+                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
+                  Временная инсталляция
+                </span>
+                <div className="pc-dot"></div>
+                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
+                  Исторический объект XIX века
+                </span>
+                <div className="pc-dot"></div>
+                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
+                  Санкт-Петербург
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          {/* ROW 5: ЛЮСТРА (8) + КУРСК (4) — правильный порядок 9→10 */}
+          <div className="swiss mb-8">
+            <Link
               to="/lustra"
-              className={`pc reveal col-span-12 lg:col-span-8 ${
-                !isVisible("light") ? "hidden" : ""
-              }`}
+              className={`pc reveal col-span-12 lg:col-span-8 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "21/9" }}>
                 <img
@@ -401,7 +428,7 @@ export default function ProjectIndex() {
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Люстра
+                Кинетическая люстра
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
@@ -417,13 +444,9 @@ export default function ProjectIndex() {
                 </span>
               </div>
             </Link>
-          </div>
-
-          {/* ROW 5: AURORA + KINETIC CHANDELIER */}
-          <div className="swiss mb-8">
             <Link
               to="/kursk"
-              className={`pc reveal col-span-12 lg:col-span-6 ${!isVisible("light") ? "hidden" : ""}`}
+              className={`pc reveal col-span-12 lg:col-span-4 lg:mt-16 ${!isVisible("media") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
@@ -432,7 +455,7 @@ export default function ProjectIndex() {
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                KURSK+++
+                Экран КУРСК
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
@@ -445,30 +468,6 @@ export default function ProjectIndex() {
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
                   Трекинг движения
-                </span>
-              </div>
-            </Link>
-            <Link
-              to="/passage"
-              className={`pc reveal col-span-12 lg:col-span-6 ${!isVisible("media") ? "hidden" : ""}`}
-            >
-              <div className="pc-img" style={{ aspectRatio: "3/4" }}>
-                <img alt="Невский пассаж" src={PASSAGE_SPLASH} />
-              </div>
-              <h3 className="text-2xl font-light uppercase tracking-tight">
-                Пассаж
-              </h3>
-              <div className="pc-meta">
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Временная инсталляция
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Исторический объект XIX века
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Санкт-Петербург
                 </span>
               </div>
             </Link>
@@ -647,7 +646,7 @@ export default function ProjectIndex() {
               </div>
             </Link>
             <Link
-              to="/projects/022"
+              to="/junco-arquitectura"
               className={`pc reveal col-span-12 lg:col-span-7 lg:mt-20 ${!isVisible("dev") ? "hidden" : ""}`}
             >
               <div
@@ -656,7 +655,7 @@ export default function ProjectIndex() {
               >
                 <img
                   alt="Orquídea"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMs0orzF2FtEs4LE-uOY-0z7ro0xTiF9WZoyF1NKa2ZhdjnWJAQfk35VBK31gsvmSGA-S8Oy5J7uwiyT0WKogBRr5UNOiRnyv71rBU-Au51AZKMor1BwM5kFHar2c7Ndqdrk3EMnrv5KLcSl-7sGKucBLgZGZT3Pio9QSa0seMRNzkAFjYFs77dOFwXXxp1SaPQUBQnyCgY5_Pu0HvGDPQ8R9Axgrz3YFA2Spl1ni-9NAZ9Ag3NBwSGJcBUcnOOSU_OJ4DvQvqH61u"
+                  src={JUNCO_ARQUITECTURA_SPLASH}
                 />
                 <div
                   style={{
@@ -676,19 +675,19 @@ export default function ProjectIndex() {
                 </div>
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                ORQUÍDEA | Junco Houses
+                ORQUÍDEA | Junco Arquitectura
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-объект
+                  Концепция · В разработке
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Residential Developer
+                  Junco Arquitectura
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Alfàs del Pi, Alicante — 2025
+                  Малага, Андалусия
                 </span>
               </div>
             </Link>
