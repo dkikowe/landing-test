@@ -655,8 +655,7 @@ export default function IkeaMall() {
               <div className="im-gal-img">
                 <img
                   alt="Монтаж подвесных конструкций в галерее"
-                  className="h-full w-full object-cover"
-                  style={{ aspectRatio: "3/2" }}
+                  className="w-full h-auto"
                   src={`${IM}/predposled.png`}
                 />
               </div>
