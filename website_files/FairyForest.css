@@ -1,0 +1,131 @@
+#fairy-forest-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+@keyframes ff-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#fairy-forest-root .ff-h0 {
+  animation: ff-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#fairy-forest-root .ff-h1 {
+  animation: ff-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#fairy-forest-root .ff-h2 {
+  animation: ff-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#fairy-forest-root .ff-h3 {
+  animation: ff-fu 1.4s 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ff-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#fairy-forest-root .ff-sl {
+  animation: ff-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#fairy-forest-root .ff-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#fairy-forest-root .ff-reveal.ff-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#fairy-forest-root .ff-d1 {
+  transition-delay: 0.1s;
+}
+#fairy-forest-root .ff-d2 {
+  transition-delay: 0.2s;
+}
+#fairy-forest-root .ff-d3 {
+  transition-delay: 0.3s;
+}
+
+#fairy-forest-root .ff-gal-img {
+  overflow: hidden;
+}
+#fairy-forest-root .ff-gal-img img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#fairy-forest-root .ff-gal-img:hover img {
+  transform: scale(1.04);
+}
+
+#fairy-forest-root .ff-zone-card {
+  position: relative;
+  overflow: hidden;
+}
+#fairy-forest-root .ff-zone-label {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 2;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(20, 20, 20, 0.6);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.4rem 0.8rem;
+  backdrop-filter: blur(8px);
+}
+
+#fairy-forest-root .ff-tl-year {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 200;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.1);
+  transition: color 0.3s;
+}
+#fairy-forest-root .ff-tl-item:hover .ff-tl-year {
+  color: #bfa37e;
+}
+#fairy-forest-root .ff-tl-item {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 2rem;
+  padding-bottom: 2.5rem;
+  transition: border-color 0.3s;
+}
+#fairy-forest-root .ff-tl-item:hover {
+  border-color: #bfa37e;
+}
+#fairy-forest-root .ff-tl-item:last-child {
+  padding-bottom: 0;
+}
+
+#fairy-forest-root .ff-big-num {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 200;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+}

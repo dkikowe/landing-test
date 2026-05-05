@@ -486,7 +486,7 @@ export default function TechnicalExpertise() {
                   </div>
                   <div className="border-t pt-5 border-black/10">
                     <p className="font-mono text-[#BFA37E] font-light text-[1.6rem]">
-                      182
+                      180+
                     </p>
                     <p className="font-mono text-[9px] uppercase tracking-widest mt-1 text-black/40">
                       Реализованных проектов

@@ -710,7 +710,7 @@ export default function ProjectIndex() {
                   className="font-light tracking-tight mb-3"
                   style={{ fontSize: "clamp(1.6rem,2.5vw,2.2rem)" }}
                 >
-                  182 реализованных проектов
+                  180+ реализованных проектов
                 </h4>
                 <p
                   style={{
@@ -858,7 +858,7 @@ export default function ProjectIndex() {
                       >
                         Проектов в архиве
                       </span>
-                      <span className="font-mono text-primary">182</span>
+                      <span className="font-mono text-primary">180+</span>
                     </div>
                     <div
                       className="flex justify-between items-end border-b pb-2"

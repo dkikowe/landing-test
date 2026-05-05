@@ -1,0 +1,106 @@
+/* Tver — скоуп под #tver-root */
+#tver-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+#tver-root .tv-h0 {
+  animation: tv-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#tver-root .tv-h1 {
+  animation: tv-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#tver-root .tv-h2 {
+  animation: tv-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tv-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tv-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#tver-root .tv-sl {
+  animation: tv-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#tver-root .tv-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#tver-root .tv-reveal.tv-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#tver-root .tv-d1 {
+  transition-delay: 0.1s;
+}
+
+#tver-root .tv-d2 {
+  transition-delay: 0.2s;
+}
+
+#tver-root .tv-gal-img {
+  overflow: hidden;
+}
+
+#tver-root .tv-gal-img img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#tver-root .tv-gal-img:hover img {
+  transform: scale(1.04);
+}
+
+#tver-root .tv-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: #bfa37e;
+  color: #141414;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border: 1px solid #bfa37e;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+#tver-root .tv-btn-cta:hover {
+  background: transparent;
+  color: #141414;
+}
+

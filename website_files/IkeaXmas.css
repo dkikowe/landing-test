@@ -1,0 +1,97 @@
+/* IKEA Xmas — скоуп под #ikea-xmas-root */
+#ikea-xmas-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+#ikea-xmas-root .ix-h0 {
+  animation: ix-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#ikea-xmas-root .ix-h1 {
+  animation: ix-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#ikea-xmas-root .ix-h2 {
+  animation: ix-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ix-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ix-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#ikea-xmas-root .ix-sl {
+  animation: ix-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#ikea-xmas-root .ix-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#ikea-xmas-root .ix-reveal.ix-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#ikea-xmas-root .ix-d1 {
+  transition-delay: 0.1s;
+}
+#ikea-xmas-root .ix-d2 {
+  transition-delay: 0.2s;
+}
+
+#ikea-xmas-root .ix-gal-img {
+  overflow: hidden;
+}
+#ikea-xmas-root .ix-gal-img img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#ikea-xmas-root .ix-gal-img:hover img {
+  transform: scale(1.04);
+}
+
+#ikea-xmas-root .ix-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: #bfa37e;
+  color: #141414;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border: 1px solid #bfa37e;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+#ikea-xmas-root .ix-btn-cta:hover {
+  background: transparent;
+  color: #141414;
+}

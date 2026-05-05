@@ -10,6 +10,7 @@ body {
 }
 
 .logo-gold {
+  filter: brightness(0) saturate(100%) invert(100%);
   transition: filter 0.3s ease;
 }
 
@@ -133,6 +134,14 @@ body {
 .dir-card:hover .card-overlay { opacity: 0 !important; }
 .dir-card .card-arrow { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s; opacity: 0; }
 .dir-card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
+.second-screen-card {
+  transform: translateY(42px);
+  opacity: 0;
+}
+.second-screen-card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
 
 .proj-card img { transition: transform 1s cubic-bezier(0.16,1,0.3,1); }
 .proj-card:hover img { transform: scale(1.05); }
@@ -165,6 +174,14 @@ body {
 .gal-img { overflow: hidden; cursor: zoom-in; }
 .gal-img img { transition: transform 1.2s cubic-bezier(0.16,1,0.3,1); }
 .gal-img:hover img { transform: scale(1.04); }
+.project-hero-static .gal-img {
+  cursor: default;
+}
+.project-hero-static .gal-img img,
+.project-hero-static .gal-img:hover img {
+  transform: none;
+  transition: none;
+}
 
 .nav-proj { transition: background 0.35s ease; }
 .nav-proj:hover { background: rgba(20,20,20,0.04); }

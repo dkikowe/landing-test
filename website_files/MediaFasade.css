@@ -1,0 +1,114 @@
+/* Media Fasade page scope */
+#media-fasade-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+#media-fasade-root .mf-h0 {
+  animation: mf-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#media-fasade-root .mf-h1 {
+  animation: mf-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#media-fasade-root .mf-h2 {
+  animation: mf-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#media-fasade-root .mf-h3 {
+  animation: mf-fu 1.4s 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes mf-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mf-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#media-fasade-root .mf-sl {
+  animation: mf-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#media-fasade-root .mf-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#media-fasade-root .mf-reveal.mf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#media-fasade-root .mf-d1 {
+  transition-delay: 0.1s;
+}
+#media-fasade-root .mf-d2 {
+  transition-delay: 0.2s;
+}
+
+#media-fasade-root .mf-gal-img {
+  overflow: hidden;
+}
+#media-fasade-root .mf-gal-img img,
+#media-fasade-root .mf-gal-img video {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#media-fasade-root .mf-gal-img:hover img,
+#media-fasade-root .mf-gal-img:hover video {
+  transform: scale(1.04);
+}
+
+#media-fasade-root .mf-scale-bar {
+  height: 3px;
+  background: rgba(20, 20, 20, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+#media-fasade-root .mf-scale-bar-fill {
+  position: absolute;
+  inset: 0;
+  background: #bfa37e;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+#media-fasade-root .mf-reveal.mf-visible .mf-scale-bar-fill {
+  transform: scaleX(1);
+}
+
+#media-fasade-root .mf-warranty-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+#media-fasade-root .mf-warranty-row:first-of-type {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+

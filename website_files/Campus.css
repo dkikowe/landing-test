@@ -1,0 +1,76 @@
+#campus-root * {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+@keyframes ca-fu {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#campus-root .ca-h0 {
+  animation: ca-fu 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#campus-root .ca-h1 {
+  animation: ca-fu 1.4s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#campus-root .ca-h2 {
+  animation: ca-fu 1.4s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ca-sd {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+#campus-root .ca-sl {
+  animation: ca-sd 2.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+#campus-root .ca-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#campus-root .ca-reveal.ca-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#campus-root .ca-d1 {
+  transition-delay: 0.1s;
+}
+#campus-root .ca-d2 {
+  transition-delay: 0.2s;
+}
+
+#campus-root .ca-gal-img {
+  overflow: hidden;
+}
+#campus-root .ca-gal-img img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#campus-root .ca-gal-img:hover img {
+  transform: scale(1.04);
+}
+

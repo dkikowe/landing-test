@@ -4,7 +4,8 @@ import { projects } from "../data/projects";
 
 export default function ProjectDetail() {
   const { id } = useParams();
-  const projectIndex = projects.findIndex((p) => p.id === id);
+  const normalizedId = String(id).padStart(3, "0");
+  const projectIndex = projects.findIndex((p) => p.id === normalizedId);
   const project = projects[projectIndex];
 
   const heroWrapRef = useRef(null);
@@ -51,10 +52,12 @@ export default function ProjectDetail() {
     );
   }
 
-  const nextProject = projectIndex < projects.length - 1 ? projects[projectIndex + 1] : projects[0];
+  const prevProject = projectIndex > 0 ? projects[projectIndex - 1] : projects[projects.length - 1];
+  const nextProject =
+    projectIndex < projects.length - 1 ? projects[projectIndex + 1] : projects[0];
 
   return (
-    <div className="font-display bg-[#F9F9F7] text-[#141414]">
+    <div className="font-display bg-[#F9F9F7] text-[#141414] project-hero-static">
       {/* VEIL */}
       <div 
         id="hero-veil" 
@@ -68,7 +71,7 @@ export default function ProjectDetail() {
         ref={heroWrapRef}
         style={{ position: "sticky", top: 0, zIndex: 1, height: "100dvh", overflow: "hidden" }}
       >
-        <section 
+        <section
           id="hero-section" 
           className="bg-[#141414]"
           style={{ width: "100%", height: "100%", position: "relative", display: "flex", alignItems: "flex-end" }}
@@ -79,60 +82,9 @@ export default function ProjectDetail() {
               className="w-full h-full object-cover"
               style={{ objectPosition: "center 45%" }}
               src={project.image}
+              fetchPriority="high"
+              decoding="async"
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to top,rgba(20,20,20,.85) 0%,rgba(20,20,20,.15) 55%,transparent 100%)",
-              }}
-            ></div>
-          </div>
-          <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-14 w-full pb-20">
-            <div className="grid lg:grid-cols-12 gap-8 items-end">
-              <div className="lg:col-span-7">
-                <p className="hero-text font-mono text-[10px] text-primary tracking-[.45em] uppercase mb-5">
-                  {project.category} — {project.scale}
-                </p>
-                <h1
-                  className="hero-text-delay font-light leading-none tracking-tight"
-                  style={{ fontSize: "clamp(2.8rem,5.5vw,5.5rem)" }}
-                >
-                  <span className="text-primary" style={{ fontStyle: "italic" }}>
-                    {project.title.split(" ")[0]}
-                  </span>
-                  <br />
-                  <span className="text-white" style={{ fontSize: "clamp(1.4rem,2.5vw,2.2rem)", letterSpacing: ".02em" }}>
-                    {project.title.split(" ").slice(1).join(" ") || project.material}
-                  </span>
-                </h1>
-              </div>
-              <div className="lg:col-span-4 lg:col-start-9 hero-text-delay-2 flex flex-col gap-4 pb-2">
-                <div className="flex items-center gap-4">
-                  <div className="w-px h-10 flex-shrink-0" style={{ background: "rgba(191,163,126,.3)" }}></div>
-                  <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,.3)" }}>
-                      Material
-                    </p>
-                    <p className="font-light text-white">{project.material}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-px h-10 flex-shrink-0" style={{ background: "rgba(191,163,126,.3)" }}></div>
-                  <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,.3)" }}>
-                      Scale
-                    </p>
-                    <p className="font-light text-white">{project.scale}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-            <div className="w-px h-9 relative overflow-hidden" style={{ background: "rgba(255,255,255,.12)" }}>
-              <div className="absolute inset-0 scroll-indicator" style={{ background: "#BFA37E" }}></div>
-            </div>
           </div>
         </section>
       </div>
@@ -198,7 +150,13 @@ export default function ProjectDetail() {
 
         {/* GALLERY — главное фото */}
         <div className="gal-img reveal" style={{ height: "75vh" }}>
-          <img alt="Project detail" className="w-full h-full object-cover" src={project.image} />
+          <img
+            alt="Project detail"
+            className="w-full h-full object-cover"
+            src={project.image}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         {/* ENGINEERING FOCUS */}
@@ -271,6 +229,8 @@ export default function ProjectDetail() {
               alt="Macro detail"
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="gal-img reveal reveal-delay-1" style={{ height: "52vh" }}>
@@ -278,6 +238,8 @@ export default function ProjectDetail() {
               alt="Elevation view"
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMs0orzF2FtEs4LE-uOY-0z7ro0xTiF9WZoyF1NKa2ZhdjnWJAQfk35VBK31gsvmSGA-S8Oy5J7uwiyT0WKogBRr5UNOiRnyv71rBU-Au51AZKMor1BwM5kFHar2c7Ndqdrk3EMnrv5KLcSl-7sGKucBLgZGZT3Pio9QSa0seMRNzkAFjYFs77dOFwXXxp1SaPQUBQnyCgY5_Pu0HvGDPQ8R9Axgrz3YFA2Spl1ni-9NAZ9Ag3NBwSGJcBUcnOOSU_OJ4DvQvqH61u"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="gal-img reveal reveal-delay-2" style={{ height: "52vh" }}>
@@ -285,6 +247,8 @@ export default function ProjectDetail() {
               alt="Context view"
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1uzqlT1Sr4tVtX27b1DvLay-Px56xMBdxevn__-Hg_lGY-1CEInhzKd6X1nBxriS0xsx0nqAQYpvGLMFftJAfWXrylmap8zkT9Z1MkP6Wi5nCeNpsG_s0MfT7XQanB1PwvHuomuqy3BLLeSOs5vud_S0skwCiRohBoiofkSCzTdsXAegXcNmA5WYjZ-hXBXy5o5Lya9Emzjcr1_JT5j843IdljFh6jEkHml37iHCEN7FYK7_3ynP1W3ZFIbts97TL-Y1ILWgRII"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -392,6 +356,8 @@ export default function ProjectDetail() {
             alt="Completed object"
             className="w-full h-full object-cover"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldUVennI4I72et6AuVe32w-YlxSfQ0R38jKo5B5P-XJymM8WIfFZ9bzsdLK-9EiP4Aod628-0yPk5Qd0P4fH2xedJ61ejgvtwQIRrAHBEpmSIRSF_3jM4bi-IzUv3NqSPJ0yUC0BmlxMSf0qwZuaeJG_u86SS5hAvEdMzhMfcWm6_PLgzklpzlEcQKHeuvSxiWEwTn2go_LINB_7FEI2U8vzKSlNFTmo_LfeGgthMeiCrTundUjsfP1Z6vPhX9D4n_rpWph4NfbeF"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -423,7 +389,7 @@ export default function ProjectDetail() {
             </div>
 
             {/* Next / Prev */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px reveal" style={{ background: "rgba(20,20,20,.06)" }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px reveal" style={{ background: "rgba(20,20,20,.06)" }}>
               <Link
                 to="/projects"
                 className="nav-proj flex items-center gap-6 p-8 group"
@@ -445,12 +411,38 @@ export default function ProjectDetail() {
                 </div>
               </Link>
               <Link
+                to={`/projects/${prevProject.id}`}
+                className="nav-proj flex items-center justify-between gap-6 p-8 group"
+                style={{ background: "#F9F9F7" }}
+              >
+                <span className="material-symbols-outlined text-2xl" style={{ color: "#BFA37E" }}>
+                  arrow_back
+                </span>
+                <div className="flex-1">
+                  <p
+                    className="font-mono text-[9px] uppercase tracking-widest mb-2"
+                    style={{ color: "rgba(20,20,20,.35)" }}
+                  >
+                    Previous Project
+                  </p>
+                  <p className="font-light uppercase tracking-tight" style={{ fontSize: "1rem", color: "#141414" }}>
+                    {prevProject.title}
+                  </p>
+                </div>
+              </Link>
+              <Link
                 to={`/projects/${nextProject.id}`}
                 className="nav-proj flex items-center justify-between gap-6 p-8 group"
                 style={{ background: "#F9F9F7" }}
               >
                 <div className="overflow-hidden flex-shrink-0" style={{ width: "80px", height: "60px" }}>
-                  <img alt="Next project" className="w-full h-full object-cover" src={nextProject.image} />
+                  <img
+                    alt="Next project"
+                    className="w-full h-full object-cover"
+                    src={nextProject.image}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div className="flex-1 text-right">
                   <p
