@@ -316,9 +316,6 @@ export default function Company() {
           <section className="bg-[#F9F9F7] py-28 px-8 md:px-14">
             <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               <div className="lg:col-span-4 reveal">
-                <span className="font-mono text-[9px] text-primary uppercase tracking-[0.4em] mb-4 block">
-                  Позиция студии
-                </span>
                 <h2
                   className="font-light uppercase tracking-tight leading-none mb-6"
                   style={{ fontSize: "clamp(2rem,3vw,2.8rem)" }}
@@ -344,7 +341,8 @@ export default function Company() {
                   проверенное десятилетиями практики, даёт точность: расчёт,
                   допуск, нагрузку. Дизайн среды задаёт другое измерение — опыт
                   человека в пространстве.
-                  <br /><br />
+                  <br />
+                  <br />
                   Точность отвечает на вопрос{" "}
                   <em style={{ color: "#141414" }}>как</em>. Нас интересует
                   другой — <em style={{ color: "#141414" }}>зачем</em>.
@@ -369,9 +367,6 @@ export default function Company() {
             <div className="max-w-[1400px] mx-auto">
               <div className="grid lg:grid-cols-12 gap-16 mb-16 tl-header">
                 <div className="lg:col-span-4">
-                  <p className="font-mono text-[9px] text-primary uppercase tracking-[0.4em] mb-4">
-                    История компании
-                  </p>
                   <h2
                     className="font-light uppercase tracking-tight leading-none"
                     style={{ fontSize: "clamp(2rem,3.2vw,3rem)" }}
@@ -1217,317 +1212,10 @@ export default function Company() {
           </section>
 
           {/* ПРИНЦИПЫ — компактный тёмный блок */}
-          <div
-            className="w-full px-8 md:px-14 py-16 clip-reveal"
-            style={{
-              background: "#F9F9F7",
-              borderTop: "1px solid rgba(20,20,20,0.07)",
-            }}
-          >
-            <div
-              className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-px"
-              style={{ background: "rgba(20,20,20,0.07)" }}
-            >
-              <div className="px-10 py-10" style={{ background: "#F5F5F3" }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[0.35em] mb-4">
-                  Форма
-                </p>
-                <p
-                  className="font-light leading-relaxed"
-                  style={{ fontSize: "1rem", color: "rgba(20,20,20,0.6)" }}
-                >
-                  Каждый объект — конструктивное решение, а не декорация.
-                </p>
-              </div>
-              <div className="px-10 py-10" style={{ background: "#F5F5F3" }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[0.35em] mb-4">
-                  Свет
-                </p>
-                <p
-                  className="font-light leading-relaxed"
-                  style={{ fontSize: "1rem", color: "rgba(20,20,20,0.6)" }}
-                >
-                  Световая сцена — такой же материал, как сталь или смола.
-                </p>
-              </div>
-              <div className="px-10 py-10" style={{ background: "#F5F5F3" }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[0.35em] mb-4">
-                  Инженерия
-                </p>
-                <p
-                  className="font-light leading-relaxed"
-                  style={{ fontSize: "1rem", color: "rgba(20,20,20,0.6)" }}
-                >
-                  Производственная точность — условие долгой жизни объекта.
-                </p>
-              </div>
-            </div>
-          </div>
 
           {/* ПОЧЕМУ ИСПАНИЯ */}
-          <section
-            className="py-28 px-8 md:px-14"
-            style={{ background: "#F5F5F3" }}
-          >
-            <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-16 items-start">
-              <div className="lg:col-span-6 slide-left">
-                <h2
-                  className="font-light uppercase tracking-tight leading-none mb-10"
-                  style={{
-                    fontSize: "clamp(2.2rem,3.5vw,3.2rem)",
-                    color: "#141414",
-                  }}
-                >
-                  Почему
-                  <br />
-                  Испания.
-                </h2>
-                <div
-                  className="space-y-6 font-light leading-relaxed mb-12"
-                  style={{ color: "rgba(20,20,20,0.6)" }}
-                >
-                  <p>
-                    Испания — один из наиболее активных европейских рынков в
-                    части городского развития, реконструкции общественных
-                    пространств и инвестиций в коммерческую недвижимость.
-                  </p>
-                  <p>
-                    Мы видим в Испании точку входа на европейский рынок — потому
-                    что здесь есть реальный запрос на то, что мы умеем делать:
-                    крупные архитектурные объекты с производственной точностью и
-                    художественным характером.
-                  </p>
-                  <p>
-                    monumforma зарегистрирована в Валенсии и имеет офисы в
-                    Валенсии и Барселоне. Работаем напрямую с девелоперами,
-                    муниципальными службами, архитектурными бюро и управляющими
-                    компаниями.
-                  </p>
-                </div>
-                <div
-                  className="border p-8 space-y-5"
-                  style={{ borderColor: "rgba(20,20,20,0.1)" }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div
-                      className="w-1.5 h-1.5 flex-shrink-0 mt-1.5"
-                      style={{ background: "#BFA37E" }}
-                    ></div>
-                    <p
-                      className="font-mono text-[11px] uppercase leading-loose"
-                      style={{ color: "rgba(20,20,20,0.55)" }}
-                    >
-                      Реализация проектов в юрисдикции ЕС
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div
-                      className="w-1.5 h-1.5 flex-shrink-0 mt-1.5"
-                      style={{ background: "#BFA37E" }}
-                    ></div>
-                    <p
-                      className="font-mono text-[11px] uppercase leading-loose"
-                      style={{ color: "rgba(20,20,20,0.55)" }}
-                    >
-                      Контракты на испанском и английском языках
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div
-                      className="w-1.5 h-1.5 flex-shrink-0 mt-1.5"
-                      style={{ background: "#BFA37E" }}
-                    ></div>
-                    <p
-                      className="font-mono text-[11px] uppercase leading-loose"
-                      style={{ color: "rgba(20,20,20,0.55)" }}
-                    >
-                      Технические стандарты EN / ISO
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div
-                      className="w-1.5 h-1.5 flex-shrink-0 mt-1.5"
-                      style={{ background: "#BFA37E" }}
-                    ></div>
-                    <p
-                      className="font-mono text-[11px] uppercase leading-loose"
-                      style={{ color: "rgba(20,20,20,0.55)" }}
-                    >
-                      Производственные площадки в Испании
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="lg:col-span-5 lg:col-start-8 slide-right">
-                <div
-                  className="overflow-hidden"
-                  style={{ height: "60vh", position: "relative" }}
-                >
-                  <img
-                    alt="Spain Urban"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXkSqJWpXEKjKOWDQG8lecsnzd40ExKTdGfiPpg-N9TtKpcGvtlzSTYuGyaEXYjA8jdMl8p6jhRNw15ULv1xsfny9RM2YT5mstgOX-KHg5jICP7ZCJ_xRPGUX90cs5h-g5q4kn_FVL0o2NJY-mB3RamIipdKBtdOCsl3FsGxE5V68D3_HWx85lfNzdPajXy_Ke5-RjWnfZlacdmbLWfngblOybjCkDu3vPmLzdT7ojtm_lnpQRub_0eFA0BY87-Jasq47mtFc2LM5m"
-                  />
-                  <div
-                    className="absolute bottom-6 left-6 p-5"
-                    style={{ background: "rgba(20,20,20,0.8)" }}
-                  >
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-primary mb-1">
-                      Valencia + Barcelona
-                    </p>
-                    <p
-                      className="font-light text-sm"
-                      style={{ color: "rgba(255,255,255,0.75)" }}
-                    >
-                      Два офиса. Один стандарт качества.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* МАНИФЕСТ */}
-          <section
-            className="py-36 px-8 md:px-14 border-t"
-            style={{
-              background: "#EEEEEC",
-              borderColor: "rgba(20,20,20,0.07)",
-            }}
-          >
-            <div className="max-w-[1400px] mx-auto">
-              {/* Заголовок раздела */}
-              <div className="flex items-center gap-6 mb-20 reveal">
-                <div
-                  className="w-8 h-px"
-                  style={{ background: "#BFA37E" }}
-                ></div>
-                <span
-                  className="font-mono text-[9px] uppercase tracking-[0.4em]"
-                  style={{ color: "rgba(20,20,20,0.35)" }}
-                >
-                  Манифест
-                </span>
-              </div>
-
-              <div className="grid lg:grid-cols-12 gap-16 items-start">
-                {/* Метка слева */}
-                <div className="lg:col-span-3 reveal">
-                  <h2
-                    className="font-light uppercase tracking-tight leading-none mb-6"
-                    style={{
-                      fontSize: "clamp(2rem,3vw,2.8rem)",
-                      color: "#141414",
-                    }}
-                  >
-                    О том,
-                    <br />
-                    зачем
-                    <br />
-                    мы здесь.
-                  </h2>
-                  <div
-                    className="h-px w-14 mb-8"
-                    style={{ background: "#BFA37E" }}
-                  ></div>
-                </div>
-
-                {/* Текст манифеста справа */}
-                <div className="lg:col-span-8 lg:col-start-5">
-                  <div
-                    className="space-y-7 font-light leading-relaxed reveal"
-                    style={{
-                      color: "rgba(20,20,20,0.6)",
-                      fontSize: "clamp(0.95rem,1.15vw,1.1rem)",
-                    }}
-                  >
-                    <p>
-                      Я вырос в инженерной среде, где каждое решение проверялось
-                      расчётом, каждая идея — нагрузкой и допуском. Инженерия
-                      даёт ответ на вопрос{" "}
-                      <em style={{ color: "#141414" }}>как</em> — как построить
-                      надёжно, безопасно, точно. Но я начал задавать другой
-                      вопрос: не только как, но и{" "}
-                      <em style={{ color: "#141414" }}>зачем</em>. Какой эффект
-                      это создаст? Что почувствует человек который окажется
-                      рядом?
-                    </p>
-
-                    <p>
-                      Объект должен отвечать на вопрос зачем он здесь — до того
-                      как мы начнём думать как он выглядит.
-                    </p>
-
-                    <p>
-                      Я понял что создаю не объекты — я создаю{" "}
-                      <em style={{ color: "#141414" }}>места</em>. Разница
-                      принципиальная. Объект занимает пространство. Место
-                      притягивает людей. Это и есть важнейший критерий по
-                      которому мы оцениваем свою работу.
-                    </p>
-
-                    {/* Выделенная мысль */}
-                    <p
-                      className="font-light py-8 px-0 leading-snug"
-                      style={{
-                        fontSize: "clamp(1.15rem,1.5vw,1.4rem)",
-                        color: "#141414",
-                        borderTop: "1px solid rgba(191,163,126,0.5)",
-                        borderBottom: "1px solid rgba(191,163,126,0.5)",
-                      }}
-                    >
-                      Пространство должно работать для человека,
-                      <br />а не существовать ради формы.
-                    </p>
-
-                    <p>
-                      Этот принцип сделал нас партнёром IKEA на долгие годы — не
-                      производственные мощности и не цена, а общее понимание что
-                      такое среда для человека. Скандинавская философия
-                      пространства — уют, безопасность, желание возвращаться —
-                      стала нашей рабочей системой координат.
-                    </p>
-
-                    <p>
-                      Когда я начал жить в Испании, я увидел здесь тот же запрос
-                      — выраженный через plaza, paseo, terraza. Люди проводят
-                      время на улице не по необходимости — по желанию. Именно
-                      здесь то что мы умеем делать работает в полную силу.
-                    </p>
-
-                    <p>
-                      Придумать форму — это лишь начало разговора. Настоящая
-                      работа — перевести идею в конструкцию которая безопасна,
-                      долговечна и реализуема в понятном бюджете. Художественное
-                      и инженерное у нас неразделимы. Стоимость не
-                      пересматривается в процессе. Объект который мы сдаём
-                      идентичен тому что мы показали на концепции.
-                    </p>
-
-                    <p style={{ color: "rgba(20,20,20,0.35)" }}>
-                      Семнадцать лет практики. Три собственных цеха. Сеть
-                      надёжных партнёрских фабрик в Европе и мире. За этим стоит
-                      одна позиция: мы создаём пространства где человеку хорошо.
-                    </p>
-                  </div>
-
-                  {/* Подпись */}
-                  <div className="flex items-center gap-6 mt-12 reveal">
-                    <div
-                      className="w-8 h-px"
-                      style={{ background: "#BFA37E" }}
-                    ></div>
-                    <span
-                      className="font-mono text-[10px] uppercase tracking-[0.3em]"
-                      style={{ color: "rgba(20,20,20,0.35)" }}
-                    >
-                      Константин Бурцев, основатель monumforma
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* ДЛЯ КОГО */}
           <section
@@ -1931,12 +1619,6 @@ export default function Company() {
                       className="w-8 h-px"
                       style={{ background: "#BFA37E" }}
                     ></div>
-                    <span
-                      className="font-mono text-[9px] uppercase tracking-[0.4em]"
-                      style={{ color: "rgba(20,20,20,0.35)" }}
-                    >
-                      Как начать с нами работу
-                    </span>
                   </div>
                   <h2
                     className="font-light tracking-tight leading-none mb-8"

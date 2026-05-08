@@ -16,32 +16,6 @@ export default function Clients() {
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Hero sticky transition
-    const heroWrap = document.getElementById('hero-wrap');
-    const heroBg   = document.getElementById('hero-bg');
-    const heroVeil = document.getElementById('hero-veil');
-    
-    function updateHero() {
-      if (!heroWrap || !heroBg || !heroVeil) return;
-      const s = window.scrollY;
-      // Плавная анимация, зависящая от высоты экрана (постепенное исчезновение)
-      const maxScroll = window.innerHeight || 800;
-      const p = Math.min(1, s / maxScroll);
-
-      // Весь hero вниз + исчезает
-      heroWrap.style.transform = `translateY(${s * 0.3}px)`;
-      heroWrap.style.opacity = 1 - p;
-
-      // Белый veil нарастает динамически
-      heroVeil.style.opacity = p;
-
-      // Фон параллакс внутри
-      heroBg.style.transform = `translateY(${s * 0.2}px)`;
-    }
-    
-    window.addEventListener('scroll', updateHero, { passive: true });
-    updateHero();
-
     // Active client tab on scroll
     const sections = ['developers', 'retail', 'hotels', 'city', 'architects', 'culture'];
     const handleScroll = () => {
@@ -60,7 +34,6 @@ export default function Clients() {
 
     return () => {
       obs.disconnect();
-      window.removeEventListener('scroll', updateHero);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -180,224 +153,9 @@ export default function Clients() {
         }
       `}</style>
 
-      {/* ═══ HERO ═══ */}
-      <div id="hero-wrap">
-        <div id="hero-bg">
-          <img alt="Architectural object in luxury setting"
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85"/>
-        </div>
-        <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to top,rgba(10,10,10,.85) 0%,rgba(10,10,10,.55) 50%,rgba(10,10,10,.25) 100%)', pointerEvents: 'none' }}></div>
-        <div id="hero-veil"></div>
-
-        <div className="relative z-20 flex items-end pb-24" style={{ height: '100vh' }}>
-          <div className="max-w-[1400px] mx-auto px-8 md:px-14 w-full">
-            <div className="max-w-3xl">
-              <p className="h0 font-mono text-[10px] text-primary tracking-[.5em] uppercase mb-6">Global Retail · Real Estate · Corporate · Hospitality · Public Space</p>
-              <h1 className="h1 font-light leading-[1.05] tracking-tight text-white mb-8" style={{ fontSize: 'clamp(2.2rem,4vw,4rem)' }}>
-                Партнёрство в создании<br/>архитектурных доминант.
-              </h1>
-              <p className="h2 font-light leading-relaxed max-w-2xl mb-12" style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,.55)' }}>
-                Мы помогаем девелоперам, брендам и городам создавать визуальные акценты, которые увеличивают коммерческую привлекательность и узнаваемость объектов.
-              </p>
-              <div className="h3 flex flex-col sm:flex-row gap-4">
-                <a href="#segments" onClick={(e) => scrollToSection('segments', e)} className="inline-flex items-center gap-3 px-8 py-4 font-mono text-[10px] uppercase tracking-widest transition-all hover:bg-white hover:text-bg-dark" style={{ background: '#BFA37E', color: '#141414' }}>
-                  Направления работы
-                  <span className="material-symbols-outlined text-sm">arrow_downward</span>
-                </a>
-                <Link to="/contact" className="inline-flex items-center gap-3 px-8 py-4 font-mono text-[10px] uppercase tracking-widest border transition-all hover:border-primary hover:text-primary" style={{ borderColor: 'rgba(255,255,255,.2)', color: 'rgba(255,255,255,.6)' }}>
-                  Обсудить проект
-                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3">
-          <div className="w-px h-12 relative overflow-hidden" style={{ background: 'rgba(255,255,255,.15)' }}>
-            <div className="absolute inset-0 scroll-line-custom" style={{ background: '#BFA37E' }}></div>
-          </div>
-          <span className="font-mono text-[9px] uppercase tracking-[.3em]" style={{ color: 'rgba(255,255,255,.25)' }}>scroll</span>
-        </div>
-      </div>
-
       {/* ═══ PAGE CONTENT ═══ */}
       <div id="page-content" style={{ background: '#fff' }}>
-
-        {/* ══ ОПЫТ ПО НАПРАВЛЕНИЯМ ══ */}
-        <section id="segments" className="py-32 px-8 md:px-14" style={{ background: '#fff' }}>
-          <div className="max-w-[1400px] mx-auto">
-
-            <div className="grid lg:grid-cols-12 gap-16 mb-24">
-              <div className="lg:col-span-5 reveal">
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-5">Опыт по направлениям</p>
-                <h2 className="font-light uppercase tracking-tight leading-none" style={{ fontSize: 'clamp(2rem,3.2vw,3rem)' }}>Разные задачи.<br/>Один стандарт.</h2>
-                <div className="h-px w-12 mt-6" style={{ background: '#BFA37E' }}></div>
-              </div>
-              <div className="lg:col-span-6 lg:col-start-7 flex items-end reveal d1">
-                <p className="font-light leading-relaxed" style={{ color: 'rgba(0,0,0,.5)', fontSize: '1rem' }}>
-                  Мы работаем с девелоперами, торговыми сетями, отелями, городскими службами, архитектурными бюро и культурными институциями. Задачи разные — подход к качеству и ответственности одинаковый. Вот несколько направлений, где наш опыт наиболее глубок.
-                </p>
-              </div>
-            </div>
-
-            {/* 3 сегмента */}
-            <div className="grid grid-cols-1 lg:grid-cols-3" style={{ gap: '2px', background: 'rgba(0,0,0,.06)' }}>
-
-              {/* 01 — Global Retail */}
-              <div className="seg-card reveal" style={{ border: '1px solid rgba(0,0,0,.06)' }}>
-                <div className="client-img-wrap" style={{ height: '280px' }}>
-                  <img alt="Retail atrium installation" className="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfGRnRhZ4D_ZLaJm-8P4h9_JU-Jl99xO7G0KcjUIB6SCvz2ubgTmgl97ezTmWtOaYIqCogjZsIVwIbTFB5FI1kMDOD0W9EC4bqxAoJCCyT1P00TjOhDSyF7px2Hwe-4CHR_idWFDMUGPuyxVU7KiERxBFi1EEzyFj_-QtVYzrmnRVTtVZ9OqWBlsj6NwAq0TPsF_yteEA4Z1zxznU2qC-MCaeszmtqvy_vHhyAi6HVQZ6S7IEK7K4kQtB2rv3EgmY9hwDs4lXCOIC"/>
-                </div>
-                <div className="p-10" style={{ background: '#fff' }}>
-                  <span className="seg-num">01</span>
-                  <h3 className="text-xl font-light uppercase tracking-tight mt-4 mb-2" style={{ color: '#111' }}>Global Retail</h3>
-                  <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-6">Масштабируемость и сетевые стандарты</p>
-                  <p className="font-light leading-relaxed mb-8" style={{ color: 'rgba(0,0,0,.5)', fontSize: '.95rem' }}>
-                    Работа с торговыми сетями требует воспроизводимости решений без потери качества. Мы проектируем объекты, которые тиражируются по единому стандарту — от первого объекта до двадцатого.
-                  </p>
-                  <div style={{ borderTop: '1px solid rgba(0,0,0,.07)', paddingTop: '1.25rem' }}>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: 'rgba(0,0,0,.3)' }}>Кейс</p>
-                    <p className="font-light text-sm" style={{ color: '#111' }}>IKEA / Ingka Centres — 13+ реализованных объектов по единому стандарту качества и согласования.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 02 — Real Estate Developers */}
-              <div className="seg-card reveal d1" style={{ border: '1px solid rgba(0,0,0,.06)' }}>
-                <div className="client-img-wrap" style={{ height: '280px' }}>
-                  <img alt="Premium residential complex" className="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMs0orzF2FtEs4LE-uOY-0z7ro0xTiF9WZoyF1NKa2ZhdjnWJAQfk35VBK31gsvmSGA-S8Oy5J7uwiyT0WKogBRr5UNOiRnyv71rBU-Au51AZKMor1BwM5kFHar2c7Ndqdrk3EMnrv5KLcSl-7sGKucBLgZGZT3Pio9QSa0seMRNzkAFjYFs77dOFwXXxp1SaPQUBQnyCgY5_Pu0HvGDPQ8R9Axgrz3YFA2Spl1ni-9NAZ9Ag3NBwSGJcBUcnOOSU_OJ4DvQvqH61u"/>
-                </div>
-                <div className="p-10" style={{ background: '#fff' }}>
-                  <span className="seg-num">02</span>
-                  <h3 className="text-xl font-light uppercase tracking-tight mt-4 mb-2" style={{ color: '#111' }}>Real Estate Developers</h3>
-                  <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-6">Повышение класса объекта через арт и свет</p>
-                  <p className="font-light leading-relaxed mb-8" style={{ color: 'rgba(0,0,0,.5)', fontSize: '.95rem' }}>
-                    Арт-объект в правильном месте меняет класс восприятия жилого комплекса. Мы создаём элементы среды, которые повышают привлекательность объекта до уровня Premium и A+.
-                  </p>
-                  <div style={{ borderTop: '1px solid rgba(0,0,0,.07)', paddingTop: '1.25rem' }}>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: 'rgba(0,0,0,.3)' }}>Кейс</p>
-                    <p className="font-light text-sm" style={{ color: '#111' }}>PRIME RESIDENCE / ORQUÍDEA — скульптурные формы и световые сценарии для жилых комплексов класса Premium.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 03 — Corporate & HQ */}
-              <div className="seg-card reveal d2" style={{ border: '1px solid rgba(0,0,0,.06)' }}>
-                <div className="client-img-wrap" style={{ height: '280px' }}>
-                  <img alt="Corporate headquarters art object" className="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuATovlV39tQpjucQSb6EsuzQdCblfsMwRPIs11mxACgXHZDS8kbhDal1XanoVV22qeI3Hf34U1Sz5S5-UKpp7VpUZBifop7nBGxsvhEI9gayPJyA42WAIWF7lxX3069DBZGG17Vie6AgofQYHFGwJruMv5VZSUfaEBUyKeXY02hUn8kNzuiF15ONzHZTL0fdlLa-Dn1W6begYVlssidwa4XzIJe98ll1rlN9DdDP1m_QpMhUql2yLwijTzvURbY2x9mcusz9prbKPcp"/>
-                </div>
-                <div className="p-10" style={{ background: '#fff' }}>
-                  <span className="seg-num">03</span>
-                  <h3 className="text-xl font-light uppercase tracking-tight mt-4 mb-2" style={{ color: '#111' }}>Corporate & HQ</h3>
-                  <p className="font-mono text-[9px] text-primary uppercase tracking-widest mb-6">Технологичность и корпоративный имидж</p>
-                  <p className="font-light leading-relaxed mb-8" style={{ color: 'rgba(0,0,0,.5)', fontSize: '.95rem' }}>
-                    Штаб-квартира — лицо компании. Объект в лобби или на фасаде должен точно соответствовать корпоративной идентичности и выдерживать высокие технические требования.
-                  </p>
-                  <div style={{ borderTop: '1px solid rgba(0,0,0,.07)', paddingTop: '1.25rem' }}>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mb-1" style={{ color: 'rgba(0,0,0,.3)' }}>Кейс</p>
-                    <p className="font-light text-sm" style={{ color: '#111' }}>ENERGY TOWER — кинетическая световая система для фасада штаб-квартиры с DMX-управлением.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-
-        {/* ══ ЦЕННОСТЬ ДЛЯ ЗАКАЗЧИКА ══ */}
-        <section className="py-28 px-8 md:px-14" style={{ background: '#f5f5f3' }}>
-          <div className="max-w-[1400px] mx-auto">
-            <div className="grid lg:grid-cols-12 gap-16 mb-20">
-              <div className="lg:col-span-5 reveal">
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-5">Ценность для бизнеса</p>
-                <h2 className="font-light uppercase tracking-tight leading-none" style={{ fontSize: 'clamp(2rem,3vw,2.8rem)' }}>Что получает<br/>заказчик.</h2>
-                <div className="h-px w-12 mt-6" style={{ background: '#BFA37E' }}></div>
-              </div>
-              <div className="lg:col-span-6 lg:col-start-7 flex items-end reveal d1">
-                <p className="font-light leading-relaxed" style={{ color: 'rgba(0,0,0,.5)', fontSize: '1rem' }}>
-                  Мы создаём объекты, которые работают на бизнес заказчика — привлекают внимание, повышают стоимость актива и соответствуют всем нормам от первого чертежа до сдачи.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: 'rgba(0,0,0,.07)' }}>
-
-              <div className="val-card p-12 reveal" style={{ background: '#fff' }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[.35em] mb-6">Identity</p>
-                <h4 className="text-lg font-light uppercase tracking-tight mb-4" style={{ color: '#111' }}>Точка притяжения</h4>
-                <p className="font-light leading-relaxed" style={{ color: 'rgba(0,0,0,.5)', fontSize: '.95rem' }}>
-                  Объект, который формирует облик места. Люди запоминают пространство через то, что в нём невозможно не заметить. Мы проектируем именно такие вещи.
-                </p>
-              </div>
-
-              <div className="val-card p-12 reveal d1" style={{ background: '#fff' }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[.35em] mb-6">Technical Safety</p>
-                <h4 className="text-lg font-light uppercase tracking-tight mb-4" style={{ color: '#111' }}>Европейские стандарты</h4>
-                <p className="font-light leading-relaxed" style={{ color: 'rgba(0,0,0,.5)', fontSize: '.95rem' }}>
-                  Полное соответствие нормам EN / ISO. Документация для согласования с муниципальными, пожарными и строительными службами входит в стандартный пакет.
-                </p>
-              </div>
-
-              <div className="val-card p-12 reveal d2" style={{ background: '#fff' }}>
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[.35em] mb-6">Full Cycle</p>
-                <h4 className="text-lg font-light uppercase tracking-tight mb-4" style={{ color: '#111' }}>От эскиза до монтажа</h4>
-                <p className="font-light leading-relaxed" style={{ color: 'rgba(0,0,0,.5)', fontSize: '.95rem' }}>
-                  Rhino / Grasshopper → рабочая документация → производство → авторский надзор на площадке. Один договор, один ответственный. Без зазоров между подрядчиками.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-
-        {/* ══ ПОСТОЯННЫЕ ПАРТНЁРЫ ══ */}
-        <section className="py-24 px-8 md:px-14" style={{ background: '#fff', borderTop: '1px solid rgba(0,0,0,.06)' }}>
-          <div className="max-w-[1400px] mx-auto">
-            <div className="grid lg:grid-cols-12 gap-16 mb-16">
-              <div className="lg:col-span-5 reveal">
-                <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-4">Системное партнёрство</p>
-                <h2 className="font-light uppercase tracking-tight leading-none" style={{ fontSize: 'clamp(1.8rem,2.8vw,2.6rem)' }}>Якорные клиенты.</h2>
-                <div className="h-px w-12 mt-6" style={{ background: '#BFA37E' }}></div>
-              </div>
-              <div className="lg:col-span-6 lg:col-start-7 flex items-end reveal d1">
-                <p className="font-light leading-relaxed" style={{ color: 'rgba(0,0,0,.5)', fontSize: '1rem' }}>
-                  Это компании, с которыми у нас не разовые заказы, а многолетняя работа: несколько объектов, единые стандарты, совместные регламенты согласования. Они нам доверяют сложные и повторяющиеся задачи.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px reveal" style={{ background: 'rgba(0,0,0,.06)' }}>
-              <div className="partner-logo" style={{ background: '#fff' }}>
-                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>IKEA</span>
-                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Global Retailer</span>
-              </div>
-              <div className="partner-logo" style={{ background: '#fff' }}>
-                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>Ingka Centres</span>
-                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Global Retail Real Estate</span>
-              </div>
-              <div className="partner-logo" style={{ background: '#fff' }}>
-                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>AFI Europe</span>
-                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>International Developer</span>
-              </div>
-              <div className="partner-logo" style={{ background: '#fff' }}>
-                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>Marriott</span>
-                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Hospitality Group</span>
-              </div>
-              <div className="partner-logo" style={{ background: '#fff' }}>
-                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>Gals / Prime Park</span>
-                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Premium Development</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        {/* ══ С КЕМ МЫ РАБОТАЕМ — заголовок перед табами ══ */}
+        {/* ══ С КЕМ МЫ РАБОТАЕМ — старт страницы ══ */}
         <section className="pt-24 pb-0 px-8 md:px-14" style={{ background: '#fff', borderTop: '1px solid rgba(0,0,0,.06)' }}>
           <div className="max-w-[1400px] mx-auto">
             <div className="grid lg:grid-cols-12 gap-16 pb-16">
@@ -722,6 +480,46 @@ export default function Clients() {
           </div>
         </section>
 
+
+        {/* ══ ЯКОРНЫЕ КЛИЕНТЫ ══ */}
+        <section className="py-24 px-8 md:px-14" style={{ background: '#fff', borderTop: '1px solid rgba(0,0,0,.06)' }}>
+          <div className="max-w-[1400px] mx-auto">
+            <div className="grid lg:grid-cols-12 gap-16 mb-16">
+              <div className="lg:col-span-5 reveal">
+                <p className="font-mono text-[9px] text-primary uppercase tracking-[.4em] mb-4">Системное партнёрство</p>
+                <h2 className="font-light uppercase tracking-tight leading-none" style={{ fontSize: 'clamp(1.8rem,2.8vw,2.6rem)' }}>Якорные клиенты.</h2>
+                <div className="h-px w-12 mt-6" style={{ background: '#BFA37E' }}></div>
+              </div>
+              <div className="lg:col-span-6 lg:col-start-7 flex items-end reveal d1">
+                <p className="font-light leading-relaxed" style={{ color: 'rgba(0,0,0,.5)', fontSize: '1rem' }}>
+                  Это компании, с которыми у нас не разовые заказы, а многолетняя работа: несколько объектов, единые стандарты, совместные регламенты согласования. Они нам доверяют сложные и повторяющиеся задачи.
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px reveal" style={{ background: 'rgba(0,0,0,.06)' }}>
+              <div className="partner-logo" style={{ background: '#fff' }}>
+                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>IKEA</span>
+                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Global Retailer</span>
+              </div>
+              <div className="partner-logo" style={{ background: '#fff' }}>
+                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>Ingka Centres</span>
+                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Global Retail Real Estate</span>
+              </div>
+              <div className="partner-logo" style={{ background: '#fff' }}>
+                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>AFI Europe</span>
+                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>International Developer</span>
+              </div>
+              <div className="partner-logo" style={{ background: '#fff' }}>
+                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>Marriott</span>
+                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Hospitality Group</span>
+              </div>
+              <div className="partner-logo" style={{ background: '#fff' }}>
+                <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.35)' }}>Gals / Prime Park</span>
+                <span className="font-mono text-[8px] uppercase tracking-widest" style={{ color: 'rgba(0,0,0,.2)' }}>Premium Development</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* ══ CTA ══ */}
         <section className="py-36 px-8 md:px-14" style={{ background: '#f5f5f3' }}>

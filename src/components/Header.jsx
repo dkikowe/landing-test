@@ -4,11 +4,25 @@ import { Link, useLocation } from "react-router-dom";
 export default function Header() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isExpertisePage = location.pathname === "/expertise";
+  const isProjectsPage = location.pathname === "/projects";
+  const useDarkHeaderText = isExpertisePage || isProjectsPage || isScrolled;
+  const useDarkLogo = isExpertisePage || isProjectsPage || isScrolled;
 
   // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const updateScrollState = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollState);
+  }, [location.pathname]);
 
   // Prevent scroll when menu is open
   useEffect(() => {
@@ -28,7 +42,7 @@ export default function Header() {
         id="site-nav"
         className="fixed top-0 left-0 w-full z-[300] px-5 md:px-10 py-4 md:py-5"
       >
-        <div className="hidden md:grid grid-cols-[auto_1fr_auto] items-center w-full gap-8 mix-blend-difference">
+        <div className="hidden md:grid grid-cols-[auto_1fr_auto] items-center w-full gap-8">
           <Link
             to="/"
             className="group inline-flex items-center"
@@ -37,44 +51,56 @@ export default function Header() {
             <img
               src="/assets/logowhite.png"
               alt="MONUMFORMA"
-              className="logo-gold h-16 lg:h-20 w-auto object-contain"
+              className={`${useDarkLogo ? "logo-default" : "logo-gold"} h-16 lg:h-20 w-auto object-contain`}
             />
           </Link>
 
           <div className="flex justify-center items-center gap-9 lg:gap-12">
             <Link
               to="/"
-              className="nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] text-white/95 font-mono"
+              className={`nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] font-mono transition-colors ${
+                useDarkHeaderText ? "text-[#111]" : "text-white/95"
+              }`}
             >
               Главная
             </Link>
             <Link
               to="/projects"
-              className="nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] text-white/95 font-mono"
+              className={`nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] font-mono transition-colors ${
+                useDarkHeaderText ? "text-[#111]" : "text-white/95"
+              }`}
             >
               Проекты
             </Link>
             <Link
               to="/expertise"
-              className="nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] text-white/95 font-mono"
+              className={`nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] font-mono transition-colors ${
+                useDarkHeaderText ? "text-[#111]" : "text-white/95"
+              }`}
             >
               Компетенции
             </Link>
             <Link
               to="/clients"
-              className="nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] text-white/95 font-mono"
+              className={`nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] font-mono transition-colors ${
+                useDarkHeaderText ? "text-[#111]" : "text-white/95"
+              }`}
             >
               Клиентам
             </Link>
             <Link
               to="/company"
-              className="nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] text-white/95 font-mono"
+              className={`nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] font-mono transition-colors ${
+                useDarkHeaderText ? "text-[#111]" : "text-white/95"
+              }`}
             >
               О компании
             </Link>
             <Link
               to="/contact"
-              className="nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] text-white/95 font-mono"
+              className={`nav-link text-[13px] lg:text-[14px] uppercase tracking-[0.2em] font-mono transition-colors ${
+                useDarkHeaderText ? "text-[#111]" : "text-white/95"
+              }`}
             >
               Контакты
             </Link>
@@ -89,7 +115,7 @@ export default function Header() {
         </div>
 
         {/* Mobile */}
-        <div className="md:hidden flex items-center justify-between w-full mix-blend-difference">
+        <div className="md:hidden flex items-center justify-between w-full">
           <Link
             to="/"
             className="group inline-flex items-center"
@@ -98,18 +124,34 @@ export default function Header() {
             <img
               src="/assets/logowhite.png"
               alt="MONUMFORMA"
-              className="logo-gold h-12 w-auto object-contain"
+              className={`${useDarkLogo ? "logo-default" : "logo-gold"} h-12 w-auto object-contain`}
             />
           </Link>
 
           <button
             id="burger-btn"
             onClick={() => setIsMenuOpen(true)}
-            className="cursor-pointer flex flex-col justify-center gap-[4px] p-2.5 rounded-md border border-white/20 bg-black/20 backdrop-blur-sm z-[301]"
+            className={`cursor-pointer flex flex-col justify-center gap-[4px] p-2.5 rounded-md backdrop-blur-sm z-[301] transition-colors ${
+              useDarkHeaderText
+                ? "border border-black/15 bg-white/75"
+                : "border border-white/20 bg-black/20"
+            }`}
           >
-            <span className="block w-6 h-[1.5px] bg-white transition-all duration-300"></span>
-            <span className="block w-6 h-[1.5px] bg-white transition-all duration-300"></span>
-            <span className="block w-6 h-[1.5px] bg-white transition-all duration-300"></span>
+            <span
+              className={`block w-6 h-[1.5px] transition-all duration-300 ${
+                useDarkHeaderText ? "bg-[#111]" : "bg-white"
+              }`}
+            ></span>
+            <span
+              className={`block w-6 h-[1.5px] transition-all duration-300 ${
+                useDarkHeaderText ? "bg-[#111]" : "bg-white"
+              }`}
+            ></span>
+            <span
+              className={`block w-6 h-[1.5px] transition-all duration-300 ${
+                useDarkHeaderText ? "bg-[#111]" : "bg-white"
+              }`}
+            ></span>
           </button>
         </div>
       </nav>

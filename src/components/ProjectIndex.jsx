@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IKEA_XMAS_SPLASH } from "./IkeaXmas";
-import { IKEA_PARK_SPLASH } from "./IkeaPark";
 import { FOREST_SPLASH } from "./Forest";
 import { TVER_SPLASH } from "./Tver";
 import { RADDISON_SPLASH } from "./Raddison";
-import { PASSAGE_SPLASH } from "./Passage";
-import { LUSTRA_SPLASH } from "./Lustra";
-import { KURSK_SPLASH } from "./Kursk";
-import { MEDIA_FASADE_SPLASH } from "./MediaFasade";
-import { VALENTIN_SPLASH } from "./Valentin";
-import { POPIT_SPLASH } from "./Popit";
-import { CAMPUS_SPLASH } from "./Campus";
-import { PARK_SPLASH } from "./Park";
 import { FAIRY_FOREST_SPLASH } from "./FairyForest";
 import { JUNCO_ARQUITECTURA_SPLASH } from "./JuncoArquitectura";
 
@@ -116,11 +107,11 @@ export default function ProjectIndex() {
       {/* INTRO */}
       <div id="intro">
         <div className="max-w-[1440px] mx-auto">
-          <h1>Архив проектов</h1>
+          <h1>Реализованные проекты</h1>
           <p className="sub">
-            Архив реализованных и текущих проектов.
+            Проекты из портфеля 180+.
             <br />
-            Пространственные объекты, световые инсталляции, медиаархитектура.
+            Как мы повышаем ценность, трафик и коммерческий результат объектов.
           </p>
         </div>
       </div>
@@ -144,7 +135,7 @@ export default function ProjectIndex() {
                 }}
                 onClick={() => setFilter("all")}
               >
-                Все работы
+                ВСЕ ПРОЕКТЫ
               </button>
               <button
                 className={`fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap ${filter === "light" ? "active" : ""}`}
@@ -154,7 +145,7 @@ export default function ProjectIndex() {
                 }}
                 onClick={() => setFilter("light")}
               >
-                Праздничное оформление
+                ПОСТОЯННЫЕ РЕШЕНИЯ
               </button>
               <button
                 className={`fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap ${filter === "media" ? "active" : ""}`}
@@ -164,7 +155,7 @@ export default function ProjectIndex() {
                 }}
                 onClick={() => setFilter("media")}
               >
-                Мультимедиа
+                СЕЗОННЫЕ ПРОЕКТЫ
               </button>
               <button
                 className={`fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap ${filter === "objects" ? "active" : ""}`}
@@ -174,7 +165,7 @@ export default function ProjectIndex() {
                 }}
                 onClick={() => setFilter("objects")}
               >
-                Арт-объекты
+                ИНТЕРАКТИВ И МЕДИА
               </button>
               <button
                 className={`fb px-5 py-1.5 border text-[10px] font-mono uppercase tracking-widest whitespace-nowrap ${filter === "dev" ? "active" : ""}`}
@@ -184,7 +175,7 @@ export default function ProjectIndex() {
                 }}
                 onClick={() => setFilter("dev")}
               >
-                В разработке
+                В РАЗРАБОТКЕ
               </button>
             </div>
             <span
@@ -198,29 +189,25 @@ export default function ProjectIndex() {
         </div>
 
         <main className="max-w-[1440px] mx-auto px-8 md:px-14 py-20">
-          {/* ROW 1: ТВЕРСКАЯ ПЛОЩАДЬ (7) + РАДISSON (5) */}
+          {/* ROW 1: JUNCO + RADDISON */}
           <div className="swiss mb-8">
             <Link
-              to="/tver"
-              className={`pc reveal col-span-12 lg:col-span-7 ${!isVisible("light") ? "hidden" : ""}`}
+              to="/junco-arquitectura"
+              className={`pc reveal col-span-12 lg:col-span-7 ${!isVisible("dev") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "16/10" }}>
-                <img alt="Тверская площадь" src={TVER_SPLASH} />
+                <img alt="Orquídea" src={JUNCO_ARQUITECTURA_SPLASH} />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Тверская площадь
+                ORQUÍDEA | Junco Arquitectura
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Городское оформление
+                  ЖИЛОЙ ПРОЕКТ → УСКОРЕНИЕ ПРОДАЖ ЧЕРЕЗ СРЕДУ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Мэрия города Москвы
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Центр города
+                  ТЕГИ: ДЕВЕЛОПМЕНТ · ПРИВЛЕЧЕНИЕ · УДЕРЖАНИЕ
                 </span>
               </div>
             </Link>
@@ -235,25 +222,25 @@ export default function ProjectIndex() {
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Матрёшки
+                Herencia de Formas
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Скульптурная инсталляция
+                  ГОРОДСКАЯ СРЕДА → ВОВЛЕЧЕНИЕ И ПОВТОРНЫЕ ВИЗИТЫ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Radisson Collection
+                  ТЕГИ: ПРИВЛЕЧЕНИЕ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Москва
+                  УДЕРЖАНИЕ · UGC
                 </span>
               </div>
             </Link>
           </div>
 
-          {/* ROW 2: ВОЛШЕБНОЕ ФОРТЕПИАНО (4) + IKEA (8 — на месте Digital Canvas) */}
+          {/* ROW 2: ВОЛШЕБНОЕ ФОРТЕПИАНО (4) + ТВЕРСКАЯ */}
           <div className="swiss mb-8">
             <Link
               to="/magicpiano"
@@ -267,42 +254,27 @@ export default function ProjectIndex() {
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Мультимедиа
+                  ИНТЕРАКТИВ → УВЕЛИЧЕНИЕ ВРЕМЕНИ ПРЕБЫВАНИЯ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Интерактивная инсталляция
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Торговый центр · 2019
+                  ТЕГИ: УДЕРЖАНИЕ · ВОВЛЕЧЕНИЕ
                 </span>
               </div>
             </Link>
             <Link
-              to="/ikea-mall"
+              to="/tver"
               className={`pc reveal col-span-12 lg:col-span-8 lg:mt-[-25px] ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "16/10" }}>
-                <img
-                  alt="IKEA — световое оформление торгового центра"
-                  src="/ikea-mall/it1.jpg"
-                />
+                <img alt="Тверская площадь" src={TVER_SPLASH} />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                IKEA — Световое оформление
+                Тверская площадь
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Торговый центр · 157 000 м²
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Световая инфраструктура
+                  ТРАНЗИТ → ТОЧКА ПРИТЯЖЕНИЯ | 4 500 М² ГОРОДСКОГО ПРОСТРАНСТВА
                 </span>
               </div>
             </Link>
@@ -321,19 +293,15 @@ export default function ProjectIndex() {
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Новогоднее оформление mall
+                СЕМЕЙНЫЙ КОММЕРЧЕСКИЙ ЦЕНТР (210 600 М²)
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  ИНТЕРАКТИВНАЯ СРЕДА → ПОСЕЩАЕМОСТЬ +14%
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  IKEA · Mall
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  160 000 м²
+                  ТЕГИ: ПРИВЛЕЧЕНИЕ · УДЕРЖАНИЕ · ВОВЛЕЧЕНИЕ
                 </span>
               </div>
             </Link>
@@ -342,22 +310,18 @@ export default function ProjectIndex() {
               className={`pc reveal col-span-12 lg:col-span-5 lg:mt-20 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "4/5" }}>
-                <img alt="Парк IKEA" src={IKEA_PARK_SPLASH} />
+                <img alt="ПАРК 13 500 М²" src="/photos/6.jpeg" />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Парк IKEA
+                ПАРК 13 500 М²
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Арт-инсталляция
+                  ПУСТАЯ ТЕРРИТОРИЯ → +22% ТРАФИКА
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Public space
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  58 объектов
+                  ТЕГИ: ПРИВЛЕЧЕНИЕ · УДЕРЖАНИЕ · ПОТОКИ
                 </span>
               </div>
             </Link>
@@ -373,19 +337,15 @@ export default function ProjectIndex() {
                 <img alt="Рождественский лес IKEA" src={FOREST_SPLASH} />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Рождественский лес
+                СЕМЕЙНЫЙ КОММЕРЧЕСКИЙ ЦЕНТР (150 000 М²)
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Праздничное оформление
+                  СЕЗОННЫЙ БЮДЖЕТ → ДОЛГОСРОЧНЫЙ АКТИВ ОБЪЕКТА
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  IKEA
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  150 000 м² · галерея
+                  ТЕГИ: СЕЗОН · УДЕРЖАНИЕ · АКТИВ
                 </span>
               </div>
             </Link>
@@ -394,22 +354,18 @@ export default function ProjectIndex() {
               className={`pc reveal col-span-12 lg:col-span-8 lg:mt-0 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "4/3" }}>
-                <img alt="Невский пассаж" src={PASSAGE_SPLASH} />
+                <img alt="ПАССАЖ (XIX ВЕК)" src="/photos/8.jpeg" />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Невский пассаж
+                ПАССАЖ (XIX ВЕК)
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Временная инсталляция
+                  ИСТОРИЧЕСКАЯ СРЕДА → СОВРЕМЕННОЕ ВОВЛЕЧЕНИЕ БЕЗ НАРУШЕНИЯ АРХИТЕКТУРЫ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Исторический объект XIX века
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Санкт-Петербург
+                  ТЕГИ: УДЕРЖАНИЕ · ВОВЛЕЧЕНИЕ
                 </span>
               </div>
             </Link>
@@ -422,25 +378,18 @@ export default function ProjectIndex() {
               className={`pc reveal col-span-12 lg:col-span-8 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "21/9" }}>
-                <img
-                  alt="Кинетическая люстра"
-                  src={LUSTRA_SPLASH}
-                />
+                <img alt="КИНЕТИЧЕСКАЯ ЛЮСТРА" src="/photos/9.jpeg" />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
                 Кинетическая люстра
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Кинетическая световая система
+                  ГАЛЕРЕЯ → ЦЕНТРАЛЬНАЯ ТОЧКА ПРИТЯЖЕНИЯ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Лебёдочная система
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Цифровое DMX
+                  ТЕГИ: ПРИВЛЕЧЕНИЕ · ПОТОКИ · UGC
                 </span>
               </div>
             </Link>
@@ -451,23 +400,19 @@ export default function ProjectIndex() {
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
                   alt="Дополненная реальность — экран КУРСК+++"
-                  src={KURSK_SPLASH}
+                  src="/photos/10.jpeg"
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Экран КУРСК
+                ДОПОЛНЕННАЯ РЕАЛЬНОСТЬ
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Мультимедиа · AR
+                  АТРИУМ → УПРАВЛЕНИЕ ПОВЕДЕНИЕМ ПОСЕТИТЕЛЕЙ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  LED 7×4 м / P4
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Трекинг движения
+                  ТЕГИ: ВОВЛЕЧЕНИЕ · УДЕРЖАНИЕ · ПОТОКИ
                 </span>
               </div>
             </Link>
@@ -480,25 +425,18 @@ export default function ProjectIndex() {
               className={`pc reveal col-span-12 lg:col-span-8 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "16/9" }}>
-                <img
-                  alt="Медиафасад 220×8 м"
-                  src={MEDIA_FASADE_SPLASH}
-                />
+                <img alt="МЕДИАФАСАД 1 760 М²" src="/photos/11.jpeg" />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Media Fasade
+                МЕДИАФАСАД 1 760 М²
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Медиафасад
+                  ФАСАД → ПОСТОЯННАЯ ВИДИМОСТЬ И КОММЕРЧЕСКАЯ ФУНКЦИЯ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  220 × 8 м / 1 760 м²
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  4 сезона
+                  ТЕГИ: ПРИВЛЕЧЕНИЕ · АКТИВ
                 </span>
               </div>
             </Link>
@@ -509,23 +447,19 @@ export default function ProjectIndex() {
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
                   alt="San Valentín — сезонное оформление"
-                  src={VALENTIN_SPLASH}
+                  src="/photos/12.jpeg"
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Valentin
+                SAN VALENTÍN
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Сезонное оформление
+                  СЕЗОН → РОСТ ВРЕМЕНИ ПРЕБЫВАНИЯ И ТРАФИКА
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  200 м · 16 500 элементов
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  1 500 подвесов
+                  ТЕГИ: УДЕРЖАНИЕ · ПРИВЛЕЧЕНИЕ · UGC
                 </span>
               </div>
             </Link>
@@ -538,25 +472,18 @@ export default function ProjectIndex() {
               className={`pc reveal col-span-12 lg:col-span-4 ${!isVisible("objects") ? "hidden" : ""}`}
             >
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
-                <img
-                  alt="POP IT — интерактивный МАФ"
-                  src={POPIT_SPLASH}
-                />
+                <img alt="POP IT" src="/photos/13%20new.png" />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Pop It
+                POP IT
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Интерактивный МАФ
+                  СЕМЕЙНАЯ АУДИТОРИЯ → ТРАФИК И UGC
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  2,5 × 4 × 1,15 м
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Тактильная инсталляция
+                  ТЕГИ: ПРИВЛЕЧЕНИЕ · УДЕРЖАНИЕ · UGC
                 </span>
               </div>
             </Link>
@@ -567,23 +494,19 @@ export default function ProjectIndex() {
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
                   alt="Corporate Campus — lobby and landscape art"
-                  src={CAMPUS_SPLASH}
+                  src="/photos/14.jpeg"
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Campus
+                CENTRO DE NEGOCIOS
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Lobby & Landscape
+                  СТАНДАРТНЫЙ ОБЪЕКТ → ВОСПРИЯТИЕ ПРЕМИАЛЬНОГО УРОВНЯ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Corporate Business Park
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Corten + mirror steel
+                  ТЕГИ: ИМИДЖ · ПРИВЛЕЧЕНИЕ · АКТИВ
                 </span>
               </div>
             </Link>
@@ -594,29 +517,25 @@ export default function ProjectIndex() {
               <div className="pc-img" style={{ aspectRatio: "3/4" }}>
                 <img
                   alt="Park — благоустройство территории"
-                  src={PARK_SPLASH}
+                  src="/photos/15.png"
                 />
               </div>
               <h3 className="text-xl font-light uppercase tracking-tight">
-                Park
+                БЛАГОУСТРОЙСТВО 13 500 М²
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Благоустройство / МАФ
+                  ХАОТИЧНОЕ ДВИЖЕНИЕ → УПРАВЛЕНИЕ ПОТОКАМИ И УДЕРЖАНИЕ
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Парковая зона перед ТЦ
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Термодревесина / Бетон / Металл
+                  ТЕГИ: ПОТОКИ · УДЕРЖАНИЕ
                 </span>
               </div>
             </Link>
           </div>
 
-          {/* ROW 8: MRIYA OBJECT (5) + ORQUÍDEA in dev (7) */}
+          {/* ROW 8: FAIRY FOREST + IKEA MALL */}
           <div className="swiss mb-0">
             <Link
               to="/fairy-forest"
@@ -629,65 +548,34 @@ export default function ProjectIndex() {
                 />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                Fairy Forest
+                СЕМЕЙНЫЙ КОММЕРЧЕСКИЙ ЦЕНТР (272 000 М²)
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  «Волшебный лес»
+                  РАЗРОЗНЕННОЕ ПРОСТРАНСТВО → ЕДИНЫЙ СЦЕНАРИЙ И РОСТ ТРАФИКА
                 </span>
                 <div className="pc-dot"></div>
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  МЕГА Дыбенко · ТРЦ + парк
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  272 000 м² · 2018–2023
+                  ТЕГИ: ПРИВЛЕЧЕНИЕ · УДЕРЖАНИЕ · ПОТОКИ
                 </span>
               </div>
             </Link>
             <Link
-              to="/junco-arquitectura"
-              className={`pc reveal col-span-12 lg:col-span-7 lg:mt-20 ${!isVisible("dev") ? "hidden" : ""}`}
+              to="/ikea-mall"
+              className={`pc reveal col-span-12 lg:col-span-7 lg:mt-20 ${!isVisible("light") ? "hidden" : ""}`}
             >
               <div
                 className="pc-img"
                 style={{ aspectRatio: "16/10", position: "relative" }}
               >
-                <img
-                  alt="Orquídea"
-                  src={JUNCO_ARQUITECTURA_SPLASH}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: ".75rem",
-                    left: ".75rem",
-                    background: "#141414",
-                    padding: ".25rem .75rem",
-                  }}
-                >
-                  <span
-                    className="font-mono text-[9px] uppercase tracking-widest"
-                    style={{ color: "#BFA37E" }}
-                  >
-                    В разработке
-                  </span>
-                </div>
+                <img alt="IKEA — световое оформление торгового центра" src="/photos/4.jpeg" />
               </div>
               <h3 className="text-2xl font-light uppercase tracking-tight">
-                ORQUÍDEA | Junco Arquitectura
+                СЕМЕЙНЫЙ КОММЕРЧЕСКИЙ ЦЕНТР (157 000 М²)
               </h3>
               <div className="pc-meta">
                 <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Концепция · В разработке
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Junco Arquitectura
-                </span>
-                <div className="pc-dot"></div>
-                <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
-                  Малага, Андалусия
+                  СЕЗОННОЕ ОФОРМЛЕНИЕ → ПОСТОЯННАЯ ИНФРАСТРУКТУРА ОБЪЕКТА
                 </span>
               </div>
             </Link>
@@ -701,29 +589,28 @@ export default function ProjectIndex() {
             <div className="swiss items-center">
               <div className="col-span-12 lg:col-span-6">
                 <p
-                  className="font-mono text-[10px] uppercase tracking-[.3em] mb-4"
-                  style={{ color: "rgba(20,20,20,.4)" }}
-                >
-                  Полный архив
-                </p>
-                <h4
-                  className="font-light tracking-tight mb-3"
-                  style={{ fontSize: "clamp(1.6rem,2.5vw,2.2rem)" }}
+                  className="font-mono uppercase tracking-widest mb-2"
+                  style={{ fontSize: "13px", color: "#999" }}
                 >
                   180+ реализованных проектов
+                </p>
+                <h4
+                  className="font-semibold tracking-tight mb-3"
+                  style={{ fontSize: "clamp(1.7rem,3vw,2rem)" }}
+                >
+                  Разбор вашего проекта
                 </h4>
                 <p
                   style={{
-                    fontSize: ".95rem",
+                    fontSize: "clamp(.95rem,1.25vw,1.05rem)",
                     fontWeight: 300,
-                    color: "rgba(20,20,20,.5)",
-                    maxWidth: "420px",
+                    color: "rgba(20,20,20,.6)",
+                    maxWidth: "560px",
                     lineHeight: 1.7,
                   }}
                 >
-                  Полное портфолио включает коммерческие и муниципальные
-                  объекты, ритейл-программы и частные инсталляции. Доступно по
-                  запросу.
+                  Определим, какие решения увеличат трафик, вовлеченность и
+                  ценность вашего объекта.
                 </p>
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col gap-4">
@@ -744,7 +631,7 @@ export default function ProjectIndex() {
                   }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-widest">
-                    Запросить портфолио
+                    Запросить разбор
                   </span>
                   <span
                     className="material-symbols-outlined"
@@ -757,7 +644,7 @@ export default function ProjectIndex() {
                   className="font-mono text-[9px] uppercase tracking-widest"
                   style={{ color: "rgba(20,20,20,.3)" }}
                 >
-                  PDF · Отправим в течение 24 часов
+                  Покажем 2-3 подхода под вашу задачу
                 </p>
               </div>
             </div>
@@ -870,7 +757,6 @@ export default function ProjectIndex() {
                       >
                         Лет опыта
                       </span>
-                      <span className="font-mono text-primary">17</span>
                     </div>
                     <div
                       className="flex justify-between items-end border-b pb-2"

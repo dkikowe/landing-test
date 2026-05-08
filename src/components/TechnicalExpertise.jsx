@@ -4,6 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 export default function TechnicalExpertise() {
   const { hash } = useLocation();
   const [openAcc, setOpenAcc] = useState(null);
+  const [openStep, setOpenStep] = useState(null);
 
   useEffect(() => {
     // Force light mode for this page
@@ -53,6 +54,9 @@ export default function TechnicalExpertise() {
   const toggleAcc = (index) => {
     setOpenAcc(openAcc === index ? null : index);
   };
+  const toggleStep = (index) => {
+    setOpenStep(openStep === index ? null : index);
+  };
 
   return (
     <div className="bg-[#F9F9F7] font-display text-[#141414] selection:bg-[#BFA37E] selection:text-white transition-colors duration-300 min-h-screen overflow-x-hidden">
@@ -88,6 +92,12 @@ export default function TechnicalExpertise() {
         .acc-row:hover { background:rgba(191,163,126,.04); }
         .acc-body { overflow:hidden; transition:max-height .55s cubic-bezier(.4,0,.2,1); }
         .acc-toggle { transition:transform .4s cubic-bezier(.16,1,.3,1); }
+        .step-item { transition:background .3s; }
+        .step-item:hover { background:rgba(255,255,255,.04); }
+        .step-detail { max-height:0; overflow:hidden; transition:max-height .5s cubic-bezier(.4,0,.2,1); }
+        .step-detail.open { max-height: 520px; }
+        .step-toggle { transition:transform .4s cubic-bezier(.16,1,.3,1); }
+        .step-item.open .step-toggle { transform:rotate(45deg); }
 
         /* CTA button */
         .btn-cta { display:inline-flex; align-items:center; gap:1rem; font-family:'Roboto Mono',monospace; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; background:#BFA37E; color:#141414; padding:1rem 2rem; text-decoration:none; border:1px solid #BFA37E; transition:background .3s,color .3s; }
@@ -451,12 +461,6 @@ export default function TechnicalExpertise() {
           <div className="max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-16 reveal">
               <div className="lg:col-span-6">
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="w-8 h-px bg-[#BFA37E]"></div>
-                  <span className="font-mono text-[9px] uppercase tracking-[.4em] text-black/35">
-                    Материальная база
-                  </span>
-                </div>
                 <h2
                   className="font-light leading-snug tracking-tight text-[#141414]"
                   style={{ fontSize: "clamp(1.8rem,2.8vw,2.6rem)" }}
@@ -467,32 +471,6 @@ export default function TechnicalExpertise() {
                 </h2>
               </div>
               <div className="lg:col-span-5 lg:col-start-8">
-                <div className="grid grid-cols-3 gap-6 mb-0">
-                  <div className="border-t pt-5 border-black/10">
-                    <p className="font-mono text-[#BFA37E] font-light text-[1.6rem]">
-                      17
-                    </p>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mt-1 text-black/40">
-                      Лет реализации
-                    </p>
-                  </div>
-                  <div className="border-t pt-5 border-black/10">
-                    <p className="font-mono text-[#BFA37E] font-light text-[1.6rem]">
-                      12
-                    </p>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mt-1 text-black/40">
-                      Фабрик-партнёров
-                    </p>
-                  </div>
-                  <div className="border-t pt-5 border-black/10">
-                    <p className="font-mono text-[#BFA37E] font-light text-[1.6rem]">
-                      180+
-                    </p>
-                    <p className="font-mono text-[9px] uppercase tracking-widest mt-1 text-black/40">
-                      Реализованных проектов
-                    </p>
-                  </div>
-                </div>
                 <p className="font-light leading-relaxed mt-6 text-[.95rem] text-black/45">
                   Проектируем, изготавливаем и монтируем пространственные
                   объекты, в которых форма и свет формируют характер места.
@@ -584,17 +562,130 @@ export default function TechnicalExpertise() {
           </div>
         </section>
 
+        {/* ПРОИЗВОДСТВЕННАЯ БАЗА (из Инженерии) */}
+        <section className="py-24 px-8 md:px-14 bg-[#252523]">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="mb-12 reveal">
+              <h2
+                className="font-light uppercase tracking-tight leading-none text-[#F9F9F7]"
+                style={{ fontSize: "clamp(2rem,3.5vw,3.2rem)" }}
+              >
+                Производственная база
+                <br />
+                Три цеха.
+                <br />
+                Двенадцать фабрик.
+                <br />
+                Один стандарт.
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 reveal">
+              {[
+                {
+                  title: "Металлообработка",
+                  text: "Сталь, алюминий, кортен, нержавеющая сталь. Лазерная резка, гибка, сварка, шлифовка. Антикоррозийная обработка и подготовка поверхностей.",
+                },
+                {
+                  title: "Смолы и композиты",
+                  text: "Ручное и вакуумное формование. Стеклопластик, углеткань, эпоксидные и полиэфирные смолы. Литье прозрачных и цветных смол для декоративных и функциональных элементов.",
+                },
+                {
+                  title: "Цифровое производство",
+                  text: "CNC-фрезерование, подготовка мастер-моделей и форм. Точная обработка элементов сложной геометрии и многокомпонентных конструкций.",
+                },
+                {
+                  title: "Световые системы",
+                  text: "Производство световых конструкций. Интеграция LED-систем. Программирование DMX и Madrix для динамического и медиа-освещения.",
+                },
+                {
+                  title: "Покраска и чистовая сборка",
+                  text: "Многоступенчатая подготовка поверхностей. Промышленная покраска и защитные покрытия. Финальная сборка объектов и контроль качества.",
+                },
+                {
+                  title: "Логистика и монтаж",
+                  text: "Подготовка объектов к транспортировке. Упаковка и доставка крупногабаритных элементов. Координация и монтаж на площадке.",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="bg-[#303030] p-8">
+                  <h4 className="text-[#F9F9F7] text-xl font-light uppercase tracking-tight mb-4">
+                    {item.title}
+                  </h4>
+                  <p className="font-mono text-[10px] uppercase leading-loose text-white/45">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ЦИКЛ РЕАЛИЗАЦИИ (из Инженерии) */}
+        <section className="py-24 px-8 md:px-14 bg-[#252523] border-t border-white/10">
+          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-14">
+            <div className="lg:col-span-4 reveal">
+              <h2
+                className="font-light uppercase tracking-tight leading-none text-[#F9F9F7] mb-6"
+                style={{ fontSize: "clamp(2rem,3.5vw,3.1rem)" }}
+              >
+                Цикл
+                <br />
+                реализации
+              </h2>
+            </div>
+            <div className="lg:col-span-8 reveal d1 border-t border-white/10">
+              {[
+                {
+                  title: "Анализ среды и постановка задачи",
+                  content:
+                    "3D-сканирование площадки, анализ потоков, нагрузки и освещённости. Фиксируем требования до старта проектирования.",
+                },
+                {
+                  title: "Параметрическое моделирование",
+                  content:
+                    "Параметрическая модель управляет геометрией, раскроем и сборкой. Фиксируем бюджет и сроки до производства.",
+                },
+                {
+                  title: "Технический аудит и документация",
+                  content:
+                    "Расчёты надёжности, рабочие чертежи, спецификации узлов и монтажные схемы в едином стандарте.",
+                },
+                {
+                  title: "Реализация, контроль качества, монтаж",
+                  content:
+                    "Производство под авторским надзором, выходной контроль каждого узла, монтаж и запуск на площадке.",
+                },
+              ].map((step, index) => (
+                <div
+                  key={index}
+                  className={`step-item border-b border-white/10 ${openStep === index ? "open" : ""}`}
+                  onClick={() => toggleStep(index)}
+                >
+                  <div className="grid grid-cols-12 gap-4 items-center py-6 px-1 cursor-pointer">
+                    <div className="col-span-10">
+                      <h4 className="text-[#F9F9F7] text-lg font-light uppercase tracking-tight">
+                        {step.title}
+                      </h4>
+                    </div>
+                    <div className="col-span-2 flex justify-end">
+                      <span className="step-toggle material-symbols-outlined text-[#BFA37E]">add</span>
+                    </div>
+                  </div>
+                  <div className={`step-detail ${openStep === index ? "open" : ""}`}>
+                    <p className="px-1 pb-6 max-w-2xl font-mono text-[10px] uppercase leading-loose text-white/45">
+                      {step.content}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ЕВРОПЕЙСКИЕ СТАНДАРТЫ */}
         <section className="py-24 px-8 md:px-14 border-t border-b border-black/10 bg-[#EDEDEB]">
           <div className="max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start reveal">
               <div className="lg:col-span-6">
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="w-8 h-px bg-[#BFA37E]"></div>
-                  <span className="font-mono text-[9px] uppercase tracking-[.4em] text-black/35">
-                    Стандарты и документация
-                  </span>
-                </div>
                 <h2
                   className="font-light leading-snug tracking-tight mb-6 text-[#141414]"
                   style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)" }}
@@ -639,9 +730,6 @@ export default function TechnicalExpertise() {
           <div className="max-w-[1400px] mx-auto reveal">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
               <div className="lg:col-span-7">
-                <p className="font-mono text-[9px] uppercase tracking-[.4em] mb-8 text-black/35">
-                  Как начать с нами работу
-                </p>
                 <h2
                   className="font-light leading-tight tracking-tight mb-8 text-[#141414]"
                   style={{ fontSize: "clamp(2rem,3.8vw,3.8rem)" }}

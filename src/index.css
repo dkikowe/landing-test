@@ -13,6 +13,10 @@ body {
   filter: brightness(0) saturate(100%) invert(100%);
   transition: filter 0.3s ease;
 }
+.logo-default {
+  filter: none;
+  transition: filter 0.3s ease;
+}
 
 .group:hover .logo-gold {
   filter: brightness(0) saturate(100%) invert(73%) sepia(13%) saturate(1476%) hue-rotate(354deg) brightness(93%) contrast(88%);
